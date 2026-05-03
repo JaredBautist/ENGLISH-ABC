@@ -1,0 +1,568 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800&family=Sora:wght@500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Design System Colors - English Learning Platform */
+    --color-primary: #0f766e;
+    --color-secondary: #0ea5a4;
+    --color-cta: #ea580c;
+    --color-background: #f8faf7;
+    --color-text: #134e4a;
+    
+    /* Spacing System */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    
+    /* Shadow Depths */
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+    --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
+    --shadow-xl: 0 20px 25px rgba(0,0,0,0.15);
+    
+    /* Legacy HSL Variables (for compatibility) */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.6%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.6%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.6%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 9.0%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.6%;
+    --radius: 0.5rem;
+    --primary: 177 77% 26%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 181 84% 36%;
+    --secondary-foreground: 0 0% 100%;
+    --surface-soft: 220 40% 97%;
+    --focus: 177 77% 26%;
+  }
+
+  html.dark, .dark {
+    --color-text: #F3F4F6;
+    --color-background: #111827;
+    --card-bg: #1F2937;
+    --background: 0 0% 3.6%;
+    --foreground: 0 0% 98.2%;
+    --card: 0 0% 3.6%;
+    --card-foreground: 0 0% 98.2%;
+    --popover: 0 0% 3.6%;
+    --popover-foreground: 0 0% 98.2%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 98.2%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 9%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --primary: 233 81% 61%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 190 95% 43%;
+    --secondary-foreground: 0 0% 98.2%;
+    --surface-soft: 222 47% 11%;
+    --focus: 233 81% 68%;
+  }
+
+  html {
+    font-family: 'Nunito Sans', 'Segoe UI', system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100dvh;
+    color: var(--color-text);
+    background: var(--color-background);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Sora', 'Nunito Sans', system-ui, sans-serif;
+    letter-spacing: 0;
+  }
+}
+
+@layer components {
+  /* Claymorphism Button Styles */
+  .btn-clay {
+    @apply rounded-2xl font-semibold transition-all duration-200 cursor-pointer;
+    box-shadow: 
+      0 4px 0 rgba(0, 0, 0, 0.1),
+      0 8px 16px rgba(0, 0, 0, 0.1),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-clay:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 6px 0 rgba(0, 0, 0, 0.1),
+      0 12px 20px rgba(0, 0, 0, 0.15),
+      inset 0 -2px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-clay:active {
+    transform: translateY(2px);
+    box-shadow: 
+      0 2px 0 rgba(0, 0, 0, 0.1),
+      0 4px 8px rgba(0, 0, 0, 0.1),
+      inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .btn-primary-clay {
+    @apply btn-clay;
+    background: var(--color-cta);
+    color: white;
+    padding: 12px 24px;
+  }
+  
+  .btn-secondary-clay {
+    @apply btn-clay;
+    background: var(--color-primary);
+    color: white;
+    padding: 12px 24px;
+  }
+  
+  /* Claymorphism Card Styles */
+  .card-clay {
+    @apply rounded-3xl transition-all duration-200;
+    background: var(--card-bg, white);
+    padding: var(--space-lg);
+    box-shadow: 
+      0 8px 0 rgba(79, 70, 229, 0.1),
+      0 12px 24px rgba(0, 0, 0, 0.08),
+      inset 0 -4px 0 rgba(0, 0, 0, 0.05);
+    border: 3px solid rgba(79, 70, 229, 0.1);
+  }
+  
+  .dark .card-clay {
+    box-shadow: 
+      0 8px 0 rgba(0, 0, 0, 0.4),
+      0 12px 24px rgba(0, 0, 0, 0.3),
+      inset 0 -4px 0 rgba(0, 0, 0, 0.2);
+    border: 3px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  .card-clay:hover {
+    transform: translateY(-4px);
+    box-shadow: 
+      0 12px 0 rgba(79, 70, 229, 0.15),
+      0 16px 32px rgba(0, 0, 0, 0.12),
+      inset 0 -4px 0 rgba(0, 0, 0, 0.05);
+  }
+  
+  /* Claymorphism Input Styles */
+  .input-clay {
+    @apply rounded-2xl transition-all duration-200;
+    padding: 12px 16px;
+    border: 3px solid rgba(79, 70, 229, 0.2);
+    background: white;
+    font-size: 16px;
+    box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.05),
+      0 2px 0 rgba(79, 70, 229, 0.1);
+  }
+  
+  .input-clay:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 
+      inset 0 2px 4px rgba(0, 0, 0, 0.05),
+      0 0 0 4px rgba(79, 70, 229, 0.1);
+  }
+  
+  /* Progress Bar Claymorphism */
+  .progress-clay {
+    @apply rounded-full overflow-hidden;
+    background: rgba(79, 70, 229, 0.1);
+    height: 16px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .progress-clay-fill {
+    @apply rounded-full transition-all duration-500;
+    background: linear-gradient(90deg, var(--color-cta), #10B981);
+    height: 100%;
+    box-shadow: 
+      0 2px 0 rgba(0, 0, 0, 0.1),
+      inset 0 -1px 0 rgba(255, 255, 255, 0.3);
+  }
+
+  /* Accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2;
+    outline-color: var(--color-primary);
+  }
+
+  button:disabled {
+    @apply cursor-not-allowed opacity-50;
+  }
+
+  input:disabled {
+    @apply cursor-not-allowed bg-slate-100 dark:bg-slate-900;
+  }
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Legacy CSS - to be migrated to Tailwind */
+
+.auth-page,
+.teacher-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0b1224 100%);
+  padding: 24px;
+  color: #f8fafc;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.auth-card,
+.teacher-card {
+  width: min(420px, 92vw);
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+}
+
+.auth-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.auth-icon {
+  font-size: 2.5rem;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.auth-title {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.auth-subtitle {
+  margin: 8px 0 0;
+  color: #cbd5f1;
+  font-size: 0.95rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.auth-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+}
+
+.auth-input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  background: rgba(15, 23, 42, 0.6);
+  color: #f8fafc;
+  font-size: 0.95rem;
+}
+
+.auth-input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.3);
+}
+
+.auth-error {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.5);
+  color: #fecaca;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+}
+
+.auth-button,
+.teacher-button {
+  padding: 12px 16px;
+  border-radius: 999px;
+  border: none;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+}
+
+.auth-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-help {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: #cbd5f1;
+  line-height: 1.5;
+}
+
+.teacher-card h1 {
+  margin-top: 0;
+}
+
+.teacher-actions {
+  margin-top: 20px;
+  display: flex;
+}
+
+.teacher-card {
+  width: min(980px, 95vw);
+}
+
+.teacher-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.teacher-header p {
+  margin: 8px 0 0;
+  color: #cbd5f1;
+}
+
+.teacher-actions {
+  margin-top: 0;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.teacher-button.ghost {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  color: #e2e8f0;
+}
+
+.teacher-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  margin-bottom: 20px;
+}
+
+.teacher-panel {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.teacher-panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.teacher-meta {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.teacher-form {
+  display: grid;
+  gap: 14px;
+}
+
+.teacher-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #e2e8f0;
+}
+
+.teacher-input {
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  background: rgba(15, 23, 42, 0.6);
+  color: #f8fafc;
+  font-size: 0.95rem;
+}
+
+.teacher-input:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.3);
+}
+
+.teacher-error {
+  background: rgba(239, 68, 68, 0.18);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  color: #fecaca;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.teacher-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.teacher-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.teacher-name {
+  margin: 0;
+  font-weight: 600;
+}
+
+.teacher-email {
+  margin: 4px 0 0;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
+
+.teacher-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.teacher-badge {
+  padding: 6px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: #a5b4fc;
+  border: 1px solid rgba(99, 102, 241, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.teacher-empty {
+  margin: 0;
+  color: #cbd5f1;
+  font-size: 0.9rem;
+}
+
+.teacher-progress-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.teacher-progress-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  background: rgba(15, 23, 42, 0.8);
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.teacher-module {
+  margin: 0;
+  font-weight: 600;
+}
+
+.teacher-module-meta {
+  margin: 4px 0 0;
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.teacher-progress-stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font-size: 0.85rem;
+}
+
+.teacher-status {
+  text-transform: capitalize;
+  color: #a5b4fc;
+}
+
+.teacher-percent {
+  font-weight: 700;
+  color: #f8fafc;
+}
+
+@media (max-width: 720px) {
+  .teacher-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .teacher-actions {
+    width: 100%;
+  }
+
+  .teacher-button {
+    width: 100%;
+  }
+
+  .teacher-row,
+  .teacher-progress-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .teacher-progress-stats {
+    align-items: flex-start;
+  }
+}
