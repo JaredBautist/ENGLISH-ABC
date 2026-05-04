@@ -13,7 +13,14 @@ def get_env_list(name, default=None):
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'dev-secret-key-change-me')
 DEBUG = os.getenv('DEBUG', '1') == '1'
-ALLOWED_HOSTS = get_env_list('ALLOWED_HOSTS', ['127.0.0.1', 'localhost'])
+IS_VERCEL = os.getenv('VERCEL') == '1'
+
+allowed_hosts_default = ['127.0.0.1', 'localhost', '.vercel.app']
+vercel_url = os.getenv('VERCEL_URL')
+if vercel_url:
+    allowed_hosts_default.append(vercel_url)
+
+ALLOWED_HOSTS = get_env_list('ALLOWED_HOSTS', allowed_hosts_default)
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -111,8 +118,15 @@ CORS_ALLOWED_ORIGINS = get_env_list(
 )
 CSRF_TRUSTED_ORIGINS = get_env_list(
     'CSRF_TRUSTED_ORIGINS',
-    ['http://127.0.0.1:5173', 'http://localhost:5173'],
+    ['http://127.0.0.1:5173', 'http://localhost:5173', 'https://*.vercel.app'],
 )
+
+if not DEBUG:
+    CORS_ALLOW_ALL_ORIGINS = False
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    USE_X_FORWARDED_HOST = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
