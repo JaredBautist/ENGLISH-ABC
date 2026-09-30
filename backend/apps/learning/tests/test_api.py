@@ -147,6 +147,31 @@ class LearningApiTests(APITestCase):
             StudentProgress.objects.filter(teacher=self.teacher, module=self.module_second).exists()
         )
 
+    def test_admin_overview_shows_institutional_metrics(self):
+        self.auth(self.teacher)
+        self.client.post(
+            reverse('teacher-progress-me'),
+            {'grade_code': 'primero', 'week_number': 1, 'completion_percent': 100},
+            format='json',
+        )
+
+        self.auth(self.admin)
+        response = self.client.get(reverse('admin-overview'))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['totals']['teachers'], 1)
+        self.assertEqual(response.data['totals']['active_teachers'], 1)
+        self.assertEqual(response.data['teachers'][0]['grade_codes'], ['primero'])
+        self.assertEqual(response.data['teachers'][0]['units_touched'], 1)
+        self.assertEqual(response.data['teachers'][0]['units_completed'], 1)
+        self.assertGreater(response.data['teachers'][0]['coverage_percent'], 0)
+        grade_codes = {g['code'] for g in response.data['grades']}
+        self.assertEqual(grade_codes, {'primero', 'segundo'})
+
+    def test_teacher_cannot_access_admin_overview(self):
+        self.auth(self.teacher)
+        response = self.client.get(reverse('admin-overview'))
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
     def test_teacher_summary_includes_dba_metadata(self):
         self.auth(self.teacher)
         response = self.client.get(reverse('teacher-me-summary'))

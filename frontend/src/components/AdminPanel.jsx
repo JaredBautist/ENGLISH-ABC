@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
-  AlertCircle, Edit2, GraduationCap, Layers, LogOut, Moon, Plus, Save, Search, Sun, X,
+  AlertCircle, BarChart3, Edit2, GraduationCap, Layers, LogOut, Moon, Plus, Save, Search, Sun, Users, X,
 } from 'lucide-react';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useTheme } from '../features/theme/ThemeProvider';
@@ -9,6 +9,13 @@ import { gradeOrder, grades } from '../data/grados';
 
 const focusRing =
   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2';
+
+const gradeTone = {
+  jardin: 'from-amber-400 to-orange-500',
+  transicion: 'from-violet-500 to-fuchsia-500',
+  primero: 'from-sky-500 to-cyan-500',
+  segundo: 'from-emerald-500 to-teal-500',
+};
 
 const inputClass =
   'input-clay w-full placeholder:text-slate-400';
@@ -22,6 +29,8 @@ export default function AdminPanel() {
   const { isDark, toggleTheme } = useTheme();
 
   const [teachers, setTeachers] = useState([]);
+  const [overview, setOverview] = useState(null);
+  const [activeTab, setActiveTab] = useState('overview');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [search, setSearch] = useState('');
@@ -38,11 +47,15 @@ export default function AdminPanel() {
   const loadTeachers = async () => {
     setLoading(true);
     try {
-      const data = await apiFetch('/admin/teachers/');
-      setTeachers(Array.isArray(data) ? data : data?.results || []);
+      const [teacherData, overviewData] = await Promise.all([
+        apiFetch('/admin/teachers/'),
+        apiFetch('/admin/overview/'),
+      ]);
+      setTeachers(Array.isArray(teacherData) ? teacherData : teacherData?.results || []);
+      setOverview(overviewData);
       setError('');
     } catch (err) {
-      setError('Error cargando docentes');
+      setError('Error cargando datos institucionales');
       console.error(err);
     } finally {
       setLoading(false);
@@ -264,7 +277,130 @@ export default function AdminPanel() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-3">
+        {/* Tabs: Resumen institucional / Docentes */}
+        <div className="mb-6 grid grid-cols-2 gap-2.5 sm:max-w-md" role="tablist" aria-label="Secciones">
+          {[
+            { id: 'overview', label: 'Resumen', icon: BarChart3 },
+            { id: 'teachers', label: 'Docentes', icon: Users },
+          ].map((tab) => {
+            const Icon = tab.icon;
+            return (
+              <button
+                key={tab.id}
+                type="button"
+                role="tab"
+                aria-selected={activeTab === tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`inline-flex items-center justify-center gap-2 rounded-2xl border-[3px] px-4 py-2.5 text-sm font-black transition-all sm:text-base ${focusRing} ${
+                  activeTab === tab.id
+                    ? '-translate-y-0.5 border-transparent bg-gradient-to-r from-blue-600 to-indigo-600 text-white shadow-[0_6px_16px_rgba(37,99,235,0.3)]'
+                    : 'border-blue-100 bg-white text-slate-500 hover:-translate-y-0.5 hover:border-blue-300 dark:border-slate-800 dark:bg-slate-900 dark:text-slate-300'
+                }`}
+              >
+                <Icon size={18} aria-hidden="true" /> {tab.label}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* ===== RESUMEN INSTITUCIONAL ===== */}
+        {activeTab === 'overview' && (
+          <section aria-label="Resumen institucional" className="animate-fadeIn">
+            {/* Métricas */}
+            <div className="mb-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-5">
+              {[
+                { label: 'Docentes', value: overview?.totals?.teachers ?? 0, tone: 'from-indigo-500 to-violet-600', shadow: 'rgba(76,29,149,0.35)' },
+                { label: 'Activos', value: overview?.totals?.active_teachers ?? 0, tone: 'from-emerald-400 to-teal-600', shadow: 'rgba(15,118,110,0.35)' },
+                { label: 'Grados', value: overview?.totals?.grades ?? 0, tone: 'from-sky-500 to-cyan-600', shadow: 'rgba(14,116,144,0.35)' },
+                { label: 'Unidades', value: overview?.totals?.total_units ?? 0, tone: 'from-amber-400 to-orange-500', shadow: 'rgba(180,83,9,0.35)' },
+                { label: 'Completadas', value: overview?.totals?.units_completed ?? 0, tone: 'from-blue-500 to-blue-700', shadow: 'rgba(29,78,216,0.35)' },
+              ].map((metric) => (
+                <div
+                  key={metric.label}
+                  className={`rounded-[1.4rem] bg-gradient-to-br ${metric.tone} p-4 text-white shadow-[0_6px_0_var(--m-shadow),0_14px_24px_rgba(15,23,42,0.15)] sm:p-5`}
+                  style={{ '--m-shadow': metric.shadow }}
+                >
+                  <p className="text-[10px] font-black uppercase tracking-widest text-white/80 sm:text-xs">{metric.label}</p>
+                  <p className="text-3xl font-black sm:text-4xl">{metric.value}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Cobertura por grado */}
+            <div className="card-clay mb-6 p-4 sm:p-6">
+              <h3 className="mb-4 text-lg font-black sm:text-xl">Cobertura por grado</h3>
+              <ul className="grid gap-3 sm:grid-cols-2">
+                {(overview?.grades || []).map((grade) => (
+                  <li key={grade.code} className="rounded-2xl border-[3px] border-blue-50 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/70">
+                    <div className="mb-2 flex items-center justify-between gap-2">
+                      <span className={`inline-flex h-8 items-center rounded-xl bg-gradient-to-r ${gradeTone[grade.code]} px-3 text-sm font-black text-white`}>
+                        {grade.name}
+                      </span>
+                      <span className="badge-clay badge-clay-blue">{grade.teacher_count} docente(s)</span>
+                    </div>
+                    <p className="text-xs font-bold text-slate-500 dark:text-slate-400">
+                      {grade.total_units} unidades · {grade.units_completed} completadas · avance {grade.avg_completion}%
+                    </p>
+                    <div className="progress-clay mt-2 h-2.5">
+                      <div className="progress-clay-fill" style={{ width: `${Math.min(100, grade.avg_completion)}%` }} />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Avance por docente */}
+            <div className="card-clay p-4 sm:p-6">
+              <h3 className="mb-4 text-lg font-black sm:text-xl">Avance por docente</h3>
+              {(overview?.teachers || []).length === 0 ? (
+                <p className="font-semibold text-slate-500 dark:text-slate-400">Aún no hay docentes registrados.</p>
+              ) : (
+                <ul className="space-y-3">
+                  {(overview?.teachers || []).map((teacher) => (
+                    <li key={teacher.id} className="rounded-2xl border-[3px] border-blue-50 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/70">
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <div className="min-w-0">
+                          <p className="truncate font-black">{teacher.username}</p>
+                          <p className="truncate text-sm font-semibold text-slate-500 dark:text-slate-400">{teacher.email}</p>
+                        </div>
+                        <div className="flex flex-wrap gap-1.5">
+                          {teacher.grade_codes.length === 0 ? (
+                            <span className="badge-clay badge-clay-amber">Sin grado</span>
+                          ) : (
+                            teacher.grade_codes.map((code) => (
+                              <span key={code} className={`inline-flex h-7 items-center rounded-xl bg-gradient-to-r ${gradeTone[code]} px-2.5 text-xs font-black text-white`}>
+                                {grades[code]?.name || code}
+                              </span>
+                            ))
+                          )}
+                          {!teacher.is_active && <span className="badge-clay badge-clay-slate">Inactivo</span>}
+                        </div>
+                      </div>
+                      <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+                        <div className="rounded-xl bg-blue-50 py-2 dark:bg-blue-500/10">
+                          <p className="text-lg font-black text-blue-700 dark:text-blue-300">{teacher.units_touched}</p>
+                          <p className="text-[10px] font-black uppercase tracking-wide text-slate-500 dark:text-slate-400">Unidades vistas</p>
+                        </div>
+                        <div className="rounded-xl bg-emerald-50 py-2 dark:bg-emerald-500/10">
+                          <p className="text-lg font-black text-emerald-700 dark:text-emerald-300">{teacher.units_completed}</p>
+                          <p className="text-[10px] font-black uppercase tracking-wide text-slate-500 dark:text-slate-400">Completadas</p>
+                        </div>
+                        <div className="rounded-xl bg-amber-50 py-2 dark:bg-amber-500/10">
+                          <p className="text-lg font-black text-amber-700 dark:text-amber-300">{teacher.coverage_percent}%</p>
+                          <p className="text-[10px] font-black uppercase tracking-wide text-slate-500 dark:text-slate-400">Cobertura</p>
+                        </div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </section>
+        )}
+
+        {/* ===== DOCENTES ===== */}
+        {activeTab === 'teachers' && (
+        <div className="animate-fadeIn grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-3">
           {/* Crear docente */}
           <div className="card-clay h-fit p-4 sm:p-6 lg:p-8">
             <h2 className="mb-5 flex items-center gap-2 text-xl font-black sm:mb-6 sm:text-2xl">
@@ -478,6 +614,7 @@ export default function AdminPanel() {
             )}
           </div>
         </div>
+        )}
       </main>
     </div>
   );

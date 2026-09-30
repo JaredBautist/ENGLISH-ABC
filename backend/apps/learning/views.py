@@ -1,10 +1,12 @@
 from django.contrib.auth import get_user_model
+from django.db.models import Avg, Count, Q
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .models import Grade, Module, TeacherGrade
+from .models import Grade, Module, StudentProgress, TeacherGrade
 from .permissions import IsPlatformAdmin, IsStaffMember
 from .selectors import (
     get_grade_modules,
@@ -81,6 +83,94 @@ class TeacherProgressMeView(APIView):
             score=data.get('score'),
         )
         return Response(ModuleProgressSerializer(progress).data)
+
+
+class AdminOverviewView(APIView):
+    """Resumen institucional: métricas globales, avance de cada docente y cobertura por grado."""
+
+    permission_classes = [IsPlatformAdmin]
+
+    def get(self, request):
+        teachers = User.objects.filter(role=User.Role.TEACHER).order_by('username')
+        grades = Grade.objects.filter(is_active=True).order_by('order')
+        total_modules = Module.objects.filter(is_active=True).count()
+
+        # Progreso por docente (grados asignados y unidades marcadas)
+        teacher_rows = []
+        progress_by_teacher = {
+            p['teacher_id']: p
+            for p in StudentProgress.objects.values('teacher_id').annotate(
+                units_touched=Count('id'),
+                completed=Count('id', filter=Q(completion_percent__gte=100)),
+                avg_completion=Avg('completion_percent'),
+            )
+        }
+        for teacher in teachers:
+            grade_codes = list(
+                TeacherGrade.objects.filter(teacher=teacher)
+                .order_by('grade__order')
+                .values_list('grade__code', flat=True)
+            )
+            stats = progress_by_teacher.get(teacher.id, {})
+            touched = stats.get('units_touched', 0)
+            completed = stats.get('completed', 0)
+            avg = stats.get('avg_completion')
+            assigned_total = len(grade_codes) * 8
+            teacher_rows.append(
+                {
+                    'id': teacher.id,
+                    'username': teacher.username,
+                    'email': teacher.email,
+                    'is_active': teacher.is_active,
+                    'date_joined': teacher.date_joined,
+                    'grade_codes': grade_codes,
+                    'units_touched': touched,
+                    'units_completed': completed,
+                    'avg_completion': round(float(avg), 2) if avg is not None else 0,
+                    'coverage_percent': round((touched / assigned_total) * 100, 2) if assigned_total else 0,
+                }
+            )
+
+        # Cobertura por grado (docentes asignados y progreso agregado)
+        grade_rows = []
+        for grade in grades:
+            modules_count = Module.objects.filter(grade=grade, is_active=True).count()
+            assignment_count = TeacherGrade.objects.filter(grade=grade).count()
+            grade_progress = StudentProgress.objects.filter(module__grade=grade).aggregate(
+                avg_completion=Avg('completion_percent'),
+                completed=Count('id', filter=Q(completion_percent__gte=100)),
+            )
+            grade_rows.append(
+                {
+                    'code': grade.code,
+                    'name': grade.name,
+                    'teacher_count': assignment_count,
+                    'total_units': modules_count,
+                    'avg_completion': round(float(grade_progress['avg_completion']), 2)
+                    if grade_progress['avg_completion'] is not None
+                    else 0,
+                    'units_completed': grade_progress['completed'] or 0,
+                }
+            )
+
+        active_teacher_ids = [
+            t['id']
+            for t in teacher_rows
+            if t['units_touched'] > 0
+        ]
+        return Response(
+            {
+                'totals': {
+                    'teachers': teachers.count(),
+                    'active_teachers': len(active_teacher_ids),
+                    'grades': grades.count(),
+                    'total_units': total_modules,
+                    'units_completed': StudentProgress.objects.filter(completion_percent__gte=100).count(),
+                },
+                'teachers': teacher_rows,
+                'grades': grade_rows,
+            }
+        )
 
 
 class AdminTeacherListCreateView(APIView):

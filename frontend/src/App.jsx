@@ -5,6 +5,7 @@ import NotFound from './pages/NotFound';
 import AdminPanel from './components/AdminPanel';
 import TeacherWorkspace from './components/TeacherWorkspace';
 import DBADeck from './components/DBADeck';
+import { ListeningPage, VideosPage, WritingPage } from './components/MaterialPages';
 import { useAuth } from './features/auth/hooks/useAuth';
 import { ToastContainer } from './components/Toast';
 import { getGrade, grades } from './data/grados';
@@ -91,6 +92,17 @@ export default function App() {
 
     if (path === '/' || path === '/docente') {
       return <TeacherWorkspace />;
+    }
+
+    // Material didáctico por grado (páginas independientes)
+    if (path === '/docente/videos') {
+      return <VideosPage />;
+    }
+    if (path === '/docente/listening') {
+      return <ListeningPage />;
+    }
+    if (path === '/docente/writing') {
+      return <WritingPage />;
     }
 
     // Slides de unidad: /:grado/unidad-N
