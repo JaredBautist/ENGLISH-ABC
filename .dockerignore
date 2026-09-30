@@ -1,0 +1,17 @@
+.git
+.agents
+.codex
+.claude
+.env*
+.local-runtime
+CREDENCIALES_LOCAL.md
+frontend
+image
+markdowns
+**/__pycache__
+**/*.py[cod]
+**/.venv
+**/node_modules
+**/*.sqlite3*
+**/.env*
+backend/staticfiles

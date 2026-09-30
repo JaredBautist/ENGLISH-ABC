@@ -3,133 +3,117 @@ from django.db import transaction
 from django.utils import timezone
 from rest_framework.exceptions import PermissionDenied, ValidationError
 
-from .models import Level, Module, StudentProfile, StudentProgress, TeacherStudent
+from .models import Grade, Module, StudentProgress, TeacherGrade
 
 User = get_user_model()
 
 
-def create_student_with_profile(*, teacher, username, email, password, level_code):
-    if not teacher.is_superuser and getattr(teacher, 'role', None) not in {User.Role.TEACHER, User.Role.SUPERADMIN}:
-        raise PermissionDenied('Only teachers can create students.')
+def create_teacher_with_grades(*, actor, username, email, password, grade_codes, is_active=True):
+    """La administración general crea un docente y le asigna su(s) grado(s)."""
+    if not (actor.is_superuser or getattr(actor, 'role', None) == User.Role.SUPERADMIN):
+        raise PermissionDenied('Only platform admins can create teachers.')
 
-    level = Level.objects.filter(code=level_code, is_active=True).first()
-    if not level:
-        raise ValidationError({'level_code': 'Level not found.'})
+    grades = Grade.objects.filter(code__in=grade_codes, is_active=True)
+    if len(grade_codes) != grades.count():
+        raise ValidationError({'grade_codes': 'One or more grades were not found.'})
 
     with transaction.atomic():
-        student = User.objects.create_user(
+        teacher = User.objects.create_user(
             username=username,
             email=email,
             password=password,
-            role=User.Role.STUDENT,
+            role=User.Role.TEACHER,
         )
-        profile = StudentProfile.objects.create(
-            user=student,
-            current_level=level,
-            assigned_by=teacher,
+        TeacherGrade.objects.bulk_create(
+            [TeacherGrade(teacher=teacher, grade=grade, assigned_by=actor) for grade in grades]
         )
-        if getattr(teacher, 'role', None) == User.Role.TEACHER:
-            TeacherStudent.objects.create(teacher=teacher, student=student)
-
-    return profile
-
-
-create_student = create_student_with_profile
+        if not is_active:
+            teacher.is_active = False
+            teacher.save(update_fields=['is_active'])
+    return teacher
 
 
-def update_student_profile(*, actor, student, username=None, email=None, password=None, level_code=None, is_active=None):
-    if not actor.is_superuser and getattr(actor, 'role', None) not in {User.Role.TEACHER, User.Role.SUPERADMIN}:
-        raise PermissionDenied('Only teachers can update students.')
+def update_teacher_account(*, actor, teacher, username=None, email=None, password=None, grade_codes=None, is_active=None):
+    """Actualiza datos de un docente y reasigna grados si se indican."""
+    if not (actor.is_superuser or getattr(actor, 'role', None) == User.Role.SUPERADMIN):
+        raise PermissionDenied('Only platform admins can update teachers.')
+    if getattr(teacher, 'role', None) != User.Role.TEACHER:
+        raise ValidationError({'detail': 'User is not a teacher.'})
 
-    profile, _ = StudentProfile.objects.get_or_create(user=student)
     update_user_fields = []
-
     if username is not None:
-        student.username = username
+        teacher.username = username
         update_user_fields.append('username')
-
     if email is not None:
-        student.email = email
+        teacher.email = email
         update_user_fields.append('email')
-
     if password:
-        student.set_password(password)
-        # set_password calls save() internally but let's be explicit with update_fields if possible
-        # Actually set_password doesn't take update_fields. It just modifies the object.
-
-    if level_code is not None:
-        level = Level.objects.filter(code=level_code, is_active=True).first()
-        if not level:
-            raise ValidationError({'level_code': 'Level not found.'})
-        profile.current_level = level
-        profile.assigned_by = actor
-
+        teacher.set_password(password)
     if is_active is not None:
-        profile.is_active = is_active
-        if student.is_active != is_active:
-            student.is_active = is_active
-            update_user_fields.append('is_active')
-
+        teacher.is_active = is_active
+        update_user_fields.append('is_active')
     if update_user_fields or password:
-        student.save()
+        teacher.save()
 
-    profile.save()
-    return profile
+    if grade_codes is not None:
+        grades = Grade.objects.filter(code__in=grade_codes, is_active=True)
+        if len(grade_codes) != grades.count():
+            raise ValidationError({'grade_codes': 'One or more grades were not found.'})
+        with transaction.atomic():
+            TeacherGrade.objects.filter(teacher=teacher).exclude(grade__in=grades).delete()
+            for grade in grades:
+                TeacherGrade.objects.get_or_create(
+                    teacher=teacher,
+                    grade=grade,
+                    defaults={'assigned_by': actor},
+                )
+    return teacher
 
 
-def upsert_student_progress(*, student, module_id=None, level_code=None, week_number=None, completion_percent=None, status=None, score=None):
+def upsert_module_progress(*, teacher, module_id=None, grade_code=None, week_number=None,
+                           completion_percent=None, status=None, score=None):
+    """El docente marca el avance de una unidad en clase (para su planificador)."""
     module = None
     if module_id is not None:
-        module = Module.objects.select_related('level').filter(
+        module = Module.objects.select_related('grade').filter(
             id=module_id,
             is_active=True,
-            level__is_active=True,
+            grade__is_active=True,
         ).first()
         if not module:
             raise ValidationError({'module_id': 'Module not found.'})
     else:
-        if not level_code or week_number is None:
-            raise ValidationError({'module': 'Provide module_id or level_code + week_number.'})
-        level = Level.objects.filter(code=level_code, is_active=True).first()
-        if not level:
-            raise ValidationError({'level_code': 'Level not found.'})
+        if not grade_code or week_number is None:
+            raise ValidationError({'module': 'Provide module_id or grade_code + week_number.'})
+        grade = Grade.objects.filter(code=grade_code, is_active=True).first()
+        if not grade:
+            raise ValidationError({'grade_code': 'Grade not found.'})
         module = (
-            Module.objects.select_related('level')
-            .filter(level=level, week_number=week_number, is_active=True, level__is_active=True)
+            Module.objects.select_related('grade')
+            .filter(grade=grade, week_number=week_number, is_active=True, grade__is_active=True)
             .order_by('order', 'id')
             .first()
         )
         if not module:
             module = Module.objects.create(
-                level=level,
+                grade=grade,
                 week_number=week_number,
-                title=f'Week {week_number}',
-                subtitle='Auto-created module',
-                slide_route=f'/{level.code}/week-{week_number}',
+                title=f'Unidad {week_number}',
+                subtitle='Unidad creada automáticamente',
+                slide_route=f'/{grade.code}/unidad-{week_number}',
                 order=week_number,
                 is_active=True,
             )
 
-    profile = (
-        StudentProfile.objects.filter(user=student, is_active=True)
-        .select_related('current_level')
-        .first()
-    )
-    if not profile or not profile.current_level or module.level_id != profile.current_level_id:
-        raise PermissionDenied('Module not available for this student.')
+    from .selectors import get_staff_grades
+    if grade_code is None:
+        grade_code = module.grade.code
+    if grade_code not in [g.code for g in get_staff_grades(teacher)]:
+        raise PermissionDenied('Grado no asignado a este docente.')
 
-    # Enforce unlock order: week N can be updated only if it is currently unlocked.
-    from .selectors import get_student_progress_summary
-    summary = get_student_progress_summary(student)
-    week_state = next((w for w in summary.get('weeks', []) if w.get('week_number') == module.week_number), None)
-    if week_state and not week_state.get('unlocked', False):
-        raise PermissionDenied('Week is locked. Complete previous week first.')
-
-    progress, _ = StudentProgress.objects.get_or_create(student=student, module=module)
+    progress, _ = StudentProgress.objects.get_or_create(teacher=teacher, module=module)
     if completion_percent is not None:
-        # Normalize and avoid unexpected jumps down.
         normalized = max(0.0, min(100.0, float(completion_percent)))
-
         progress.completion_percent = normalized
         if normalized >= 100:
             progress.status = StudentProgress.Status.COMPLETED
@@ -143,5 +127,4 @@ def upsert_student_progress(*, student, module_id=None, level_code=None, week_nu
         progress.score = score
     progress.last_activity = timezone.now()
     progress.save()
-
     return progress

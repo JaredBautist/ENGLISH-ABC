@@ -83,7 +83,7 @@ else:
         'default': {
             'ENGINE': DB_ENGINE,
             'NAME': os.getenv('DB_NAME', 'englishnow'),
-            'USER': os.getenv('DB_USER', 'root'),
+            'USER': os.getenv('DB_USER', 'englishnow_app'),
             'PASSWORD': os.getenv('DB_PASSWORD', '1234'),
             'HOST': os.getenv('DB_HOST', '127.0.0.1'),
             'PORT': os.getenv('DB_PORT', '3306'),
@@ -107,6 +107,7 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.User'

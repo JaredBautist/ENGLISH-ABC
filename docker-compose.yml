@@ -1,37 +1,75 @@
+name: english-platform
+
 services:
   db:
     image: mysql:8.0
-    container_name: englishnow-db
+    restart: unless-stopped
     environment:
       MYSQL_DATABASE: englishnow
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 1234
-      MYSQL_ROOT_PASSWORD: 1234
-    ports:
-      - "3306:3306"
+      MYSQL_USER: englishnow_app
+      MYSQL_PASSWORD: ${DB_PASSWORD:?Run python scripts/init_local.py first}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Run python scripts/init_local.py first}
     volumes:
       - db_data:/var/lib/mysql
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD-SHELL", "MYSQL_PWD=\"$$MYSQL_PASSWORD\" mysql -h 127.0.0.1 -u \"$$MYSQL_USER\" \"$$MYSQL_DATABASE\" -e 'SELECT 1' >/dev/null 2>&1"]
       interval: 5s
       timeout: 5s
-      retries: 10
+      retries: 30
+      start_period: 30s
+    ports:
+      - "127.0.0.1:3306:3306"
 
   backend:
     build:
       context: .
       dockerfile: backend/Dockerfile
-    container_name: englishnow-api
-    env_file:
-      - backend/.env
+    restart: unless-stopped
+    environment:
+      SECRET_KEY: ${SECRET_KEY:?Run python scripts/init_local.py first}
+      DB_PASSWORD: ${DB_PASSWORD:?Run python scripts/init_local.py first}
+      DB_ENGINE: django.db.backends.mysql
+      DB_NAME: englishnow
+      DB_USER: englishnow_app
+      DB_HOST: db
+      DB_PORT: "3306"
+      DEBUG: "1"
+      ALLOWED_HOSTS: localhost,127.0.0.1,backend
     depends_on:
       db:
         condition: service_healthy
     ports:
-      - "8000:8000"
+      - "127.0.0.1:8000:8000"
     volumes:
       - ./backend:/app
+      - ./.local-runtime:/local-data:ro
     command: python manage.py runserver 0.0.0.0:8000
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/admin/login/').close()"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
+
+  frontend:
+    build:
+      context: ./frontend
+    restart: unless-stopped
+    environment:
+      API_PROXY_TARGET: http://backend:8000
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:5173:5173"
+    volumes:
+      - ./frontend/src:/app/src:ro
+      - ./frontend/index.html:/app/index.html:ro
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:5173/').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
 
 volumes:
   db_data:

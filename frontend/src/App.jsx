@@ -1,24 +1,13 @@
-import { useEffect } from 'react';
-import A11Topics from './pages/a1-1/Topics';
-import A11WeekOneAlphabet from './pages/a1-1/WeekOneAlphabet';
-import A11WeekTwoGreetings from './pages/a1-1/WeekTwoGreetings';
-import A11ExercisesWeek1 from './pages/a1-1/ExercisesWeek1';
-import A12Topics from './pages/a1-2/Topics';
-import A12WeekOne from './pages/a1-2/WeekOne';
-import A12WeekTwo from './pages/a1-2/WeekTwo';
-import A12WeekThree from './pages/a1-2/WeekThree';
-import A12WeekFour from './pages/a1-2/WeekFour';
-import A12WeekFive from './pages/a1-2/WeekFive';
-import A12WeekSix from './pages/a1-2/WeekSix';
-import A12WeekSeven from './pages/a1-2/WeekSeven';
-import A12WeekEight from './pages/a1-2/WeekEight';
+import DiagnosticPage from './pages/DiagnosticPage';
 import LoginPage from './features/auth/pages/LoginPage';
 import Logout from './pages/Logout';
-import TeacherDashboard from './pages/TeacherDashboard';
-import DiagnosticPage from './pages/DiagnosticPage';
 import NotFound from './pages/NotFound';
+import AdminPanel from './components/AdminPanel';
+import TeacherWorkspace from './components/TeacherWorkspace';
+import DBADeck from './components/DBADeck';
 import { useAuth } from './features/auth/hooks/useAuth';
 import { ToastContainer } from './components/Toast';
+import { getGrade, grades } from './data/grados';
 
 const normalizePath = (pathname) => {
   if (!pathname) return '/';
@@ -32,18 +21,27 @@ const redirectTo = (target) => {
   }
 };
 
+const homeForRole = (role) => {
+  if (role === 'superadmin') return '/admin';
+  if (role === 'teacher') return '/docente';
+  return '/login';
+};
+
+const UNIT_PATTERN = /^\/(jardin|transicion|primero|segundo)\/unidad-(\d+)$/;
+
 export default function App() {
   const { isAuthenticated, user, isLoading } = useAuth();
   const path = normalizePath(window.location.pathname);
   const role = user?.role;
-  const level = user?.level === 'a1-2' ? 'a1-2' : 'a1-1';
-  const studentBase = `/${level}`;
 
-  // Show loading state while checking authentication
   if (isLoading) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-slate-900 to-slate-800">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      <div
+        className="flex items-center justify-center h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100"
+        role="status"
+        aria-label="Loading"
+      >
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
       </div>
     );
   }
@@ -65,12 +63,8 @@ export default function App() {
     }
 
     if (path === '/login') {
-      if (isAuthenticated && role === 'teacher') {
-        redirectTo('/teacher');
-        return null;
-      }
-      if (isAuthenticated && role === 'student') {
-        redirectTo(studentBase);
+      if (isAuthenticated && role) {
+        redirectTo(homeForRole(role));
         return null;
       }
       return <LoginPage />;
@@ -81,51 +75,54 @@ export default function App() {
       return null;
     }
 
-    if (role === 'teacher') {
-      if (path !== '/teacher') {
-        redirectTo('/teacher');
-        return null;
-      }
-      return <TeacherDashboard />;
+    // Solo personal institucional: docentes y administración.
+    if (role !== 'teacher' && role !== 'superadmin') {
+      redirectTo('/login');
+      return null;
     }
 
-    if (role === 'student') {
-      if (!path.startsWith(studentBase)) {
-        redirectTo(studentBase);
+    if (path === '/admin') {
+      if (role !== 'superadmin') {
+        redirectTo('/docente');
         return null;
       }
+      return <AdminPanel />;
     }
 
-    switch (path) {
-      case '/':
-      case '/a1-1':
-        return <A11Topics />;
-      case '/a1-1/week-1':
-        return <A11WeekOneAlphabet />;
-      case '/a1-1/week-2':
-        return <A11WeekTwoGreetings />;
-      case '/a1-1/exercises-week-1':
-        return <A11ExercisesWeek1 />;
-      case '/a1-2':
-        return <A12Topics />;
-      case '/a1-2/week-1':
-        return <A12WeekOne />;
-      case '/a1-2/week-2':
-        return <A12WeekTwo />;
-      case '/a1-2/week-3':
-        return <A12WeekThree />;
-      case '/a1-2/week-4':
-        return <A12WeekFour />;
-      case '/a1-2/week-5':
-        return <A12WeekFive />;
-      case '/a1-2/week-6':
-        return <A12WeekSix />;
-      case '/a1-2/week-7':
-        return <A12WeekSeven />;
-      case '/a1-2/week-8':
-        return <A12WeekEight />;
-      default:
+    if (path === '/' || path === '/docente') {
+      return <TeacherWorkspace />;
+    }
+
+    // Slides de unidad: /:grado/unidad-N
+    const unitMatch = path.match(UNIT_PATTERN);
+    if (unitMatch) {
+      const gradeId = unitMatch[1];
+      const week = Number(unitMatch[2]);
+      const grade = getGrade(gradeId);
+      const unit = grade?.units.find((u) => u.week === week);
+      if (!grade || !unit) {
         return <NotFound />;
+      }
+      return (
+        <DBADeck
+          slidesKey={unit.slides}
+          title={`${grade.name} • Unidad ${unit.week}: ${unit.title}`}
+          subtitle={unit.subtitle}
+          dashboardHref={role === 'superadmin' ? '/admin' : '/docente'}
+        />
+      );
     }
+
+    // Rutas legacy de niveles MCER: llevar al panel correspondiente.
+    if (path.startsWith('/a1-1') || path.startsWith('/a1-2') || path.startsWith('/a2-1')) {
+      redirectTo(homeForRole(role));
+      return null;
+    }
+
+    if (Object.prototype.hasOwnProperty.call(grades, path.slice(1))) {
+      return <TeacherWorkspace />;
+    }
+
+    return <NotFound />;
   }
 }

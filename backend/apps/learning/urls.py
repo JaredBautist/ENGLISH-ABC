@@ -1,28 +1,18 @@
 from django.urls import path
 from .views import (
-    LevelListView,
+    AdminTeacherDetailView,
+    AdminTeacherListCreateView,
+    GradeListView,
     ModuleListView,
-    StudentProgressListView,
-    StudentProgressMeView,
-    StudentProgressSummaryMeView,
-    TeacherStudentDetailView,
-    TeacherStudentListCreateView,
-    TeacherDashboardStatsView,
-    TeacherStudentProgressSummaryView,
-    TeacherActivityMetricsView,
-    LowProgressStudentsView,
+    TeacherMeSummaryView,
+    TeacherProgressMeView,
 )
 
 urlpatterns = [
-    path('levels/', LevelListView.as_view(), name='levels-list'),
+    path('grades/', GradeListView.as_view(), name='grades-list'),
     path('modules/', ModuleListView.as_view(), name='modules-list'),
-    path('teacher/students/', TeacherStudentListCreateView.as_view(), name='teacher-students'),
-    path('teacher/students/<int:student_id>/', TeacherStudentDetailView.as_view(), name='teacher-student-detail'),
-    path('teacher/students/<int:student_id>/progress/', StudentProgressListView.as_view(), name='student-progress'),
-    path('students/me/progress/', StudentProgressMeView.as_view(), name='student-progress-me'),
-    path('students/me/progress-summary/', StudentProgressSummaryMeView.as_view(), name='student-progress-summary-me'),
-    path('teacher/dashboard/stats/', TeacherDashboardStatsView.as_view(), name='teacher-dashboard-stats'),
-    path('teacher/students-progress-summary/', TeacherStudentProgressSummaryView.as_view(), name='teacher-students-summary'),
-    path('teacher/activity-metrics/', TeacherActivityMetricsView.as_view(), name='activity-metrics'),
-    path('teacher/low-progress-students/', LowProgressStudentsView.as_view(), name='low-progress-students'),
+    path('teachers/me/summary/', TeacherMeSummaryView.as_view(), name='teacher-me-summary'),
+    path('teachers/me/progress/', TeacherProgressMeView.as_view(), name='teacher-progress-me'),
+    path('admin/teachers/', AdminTeacherListCreateView.as_view(), name='admin-teachers'),
+    path('admin/teachers/<int:teacher_id>/', AdminTeacherDetailView.as_view(), name='admin-teacher-detail'),
 ]

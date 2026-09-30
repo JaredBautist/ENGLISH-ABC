@@ -36,36 +36,39 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
                 'username': user.username,
                 'email': user.email,
                 'role': user.role,
+                'grades': self._get_grade_codes(user),
             },
         }
 
-        student_profile = getattr(user, 'student_profile', None)
-        if student_profile and student_profile.current_level:
-            data['user']['level'] = student_profile.current_level.code
-        else:
-            data['user']['level'] = None
-
         return data
+
+    @staticmethod
+    def _get_grade_codes(user):
+        from apps.learning.models import TeacherGrade
+
+        return list(
+            TeacherGrade.objects.filter(teacher=user, grade__is_active=True)
+            .values_list('grade__code', flat=True)
+        )
 
     @classmethod
     def get_token(cls, user):
         token = super().get_token(user)
         token['role'] = user.role
-        student_profile = getattr(user, 'student_profile', None)
-        if student_profile and student_profile.current_level:
-            token['level'] = student_profile.current_level.code
         return token
 
 
 class UserMeSerializer(serializers.ModelSerializer):
-    level = serializers.SerializerMethodField()
+    grades = serializers.SerializerMethodField()
 
     class Meta:
         model = User
-        fields = ['id', 'username', 'email', 'role', 'level']
+        fields = ['id', 'username', 'email', 'role', 'grades']
 
-    def get_level(self, obj):
-        profile = getattr(obj, 'student_profile', None)
-        if profile and profile.current_level:
-            return profile.current_level.code
-        return None
+    def get_grades(self, obj):
+        from apps.learning.models import TeacherGrade
+
+        return list(
+            TeacherGrade.objects.filter(teacher=obj, grade__is_active=True)
+            .values_list('grade__code', flat=True)
+        )

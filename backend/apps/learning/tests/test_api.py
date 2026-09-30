@@ -3,149 +3,157 @@ from rest_framework import status
 from rest_framework.test import APITestCase
 
 from apps.accounts.models import User
-from apps.learning.models import Level, Module, StudentProfile, StudentProgress
+from apps.learning.models import Grade, Module, StudentProgress, TeacherGrade
 
 
 class LearningApiTests(APITestCase):
     def setUp(self):
-        self.level_a1_1 = Level.objects.create(code='a1-1', name='A1.1', order=1)
-        self.level_a1_2 = Level.objects.create(code='a1-2', name='A1.2', order=2)
-        self.module_a1_1 = Module.objects.create(
-            level=self.level_a1_1,
+        self.grade_first = Grade.objects.create(code='primero', name='Primero', order=3)
+        self.grade_second = Grade.objects.create(code='segundo', name='Segundo', order=4)
+        self.module_first = Module.objects.create(
+            grade=self.grade_first,
             week_number=1,
-            title='Basics',
-            slide_route='/a1-1/week-1',
+            title='Classroom instructions',
+            slide_route='/primero/unidad-1',
+            period=1,
+            dba_number=1,
+            dba_text='Comprende y responde a instrucciones sobre tareas escolares basicas.',
             order=1,
         )
-        self.module_a1_1_w2 = Module.objects.create(
-            level=self.level_a1_1,
-            week_number=2,
-            title='Greetings',
-            slide_route='/a1-1/week-2',
-            order=2,
-        )
-        self.module_a1_2 = Module.objects.create(
-            level=self.level_a1_2,
+        self.module_second = Module.objects.create(
+            grade=self.grade_second,
             week_number=1,
-            title='Listening',
+            title='Mi cuerpo y mi familia',
+            period=1,
+            dba_number=1,
             order=1,
         )
 
+        self.admin = User.objects.create_user(
+            email='admin@test.com',
+            password='admin12345',
+            username='admin',
+            role=User.Role.SUPERADMIN,
+            is_superuser=True,
+        )
         self.teacher = User.objects.create_user(
             email='teacher@test.com',
             password='teacher123',
             username='teacher',
             role=User.Role.TEACHER,
         )
-        self.student = User.objects.create_user(
-            email='student@test.com',
-            password='student123',
-            username='student',
-            role=User.Role.STUDENT,
-        )
-        StudentProfile.objects.create(
-            user=self.student,
-            current_level=self.level_a1_1,
-            assigned_by=self.teacher,
-        )
+        TeacherGrade.objects.create(teacher=self.teacher, grade=self.grade_first)
 
-    def test_teacher_can_create_student(self):
-        self.client.force_authenticate(self.teacher)
-        url = reverse('teacher-students')
-        payload = {
-            'username': 'student2',
-            'email': 'student2@test.com',
-            'password': 'student123',
-            'level_code': 'a1-2',
-        }
-        response = self.client.post(url, payload, format='json')
-        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-        self.assertEqual(response.data['level']['code'], 'a1-2')
-        self.assertTrue(User.objects.filter(email='student2@test.com').exists())
+    def auth(self, user):
+        self.client.force_authenticate(user)
 
-    def test_student_cannot_list_teacher_students(self):
-        self.client.force_authenticate(self.student)
-        url = reverse('teacher-students')
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+    @staticmethod
+    def _items(response):
+        data = response.data
+        return data['results'] if isinstance(data, dict) and 'results' in data else data
 
-    def test_student_cannot_update_other_level_progress(self):
-        self.client.force_authenticate(self.student)
-        url = reverse('student-progress-me')
-        payload = {
-            'module_id': self.module_a1_2.id,
-            'completion_percent': 10,
-            'status': 'in_progress',
-        }
-        response = self.client.post(url, payload, format='json')
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
-        self.assertFalse(
-            StudentProgress.objects.filter(student=self.student, module=self.module_a1_2).exists()
-        )
-
-    def test_student_progress_summary_defaults_and_unlocks(self):
-        self.client.force_authenticate(self.student)
-        url = reverse('student-progress-summary-me')
-
-        response = self.client.get(url)
+    def test_teacher_sees_only_assigned_grades(self):
+        self.auth(self.teacher)
+        response = self.client.get(reverse('grades-list'))
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['level_code'], 'a1-1')
-        self.assertEqual(response.data['total_weeks'], 2)
-        self.assertEqual(response.data['overall_percent'], 0)
-        self.assertTrue(response.data['weeks'][0]['unlocked'])
-        self.assertFalse(response.data['weeks'][1]['unlocked'])
+        codes = [item['code'] for item in self._items(response)]
+        self.assertIn('primero', codes)
+        self.assertNotIn('segundo', codes)
 
-        StudentProgress.objects.create(
-            student=self.student,
-            module=self.module_a1_1,
-            completion_percent=85,
-            status='in_progress',
-        )
-
-        response = self.client.get(url)
+    def test_teacher_cannot_list_modules_of_unassigned_grade(self):
+        self.auth(self.teacher)
+        response = self.client.get(reverse('modules-list'), {'grade': 'segundo'})
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertTrue(response.data['weeks'][1]['unlocked'])
+        self.assertEqual(self._items(response), [])
 
-    def test_progress_post_normalizes_status_from_percent(self):
-        self.client.force_authenticate(self.student)
-        url = reverse('student-progress-me')
+    def test_admin_sees_all_grades(self):
+        self.auth(self.admin)
+        response = self.client.get(reverse('grades-list'))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        codes = {item['code'] for item in self._items(response)}
+        self.assertEqual(codes, {'primero', 'segundo'})
 
+    def test_admin_can_create_teacher_with_grades(self):
+        self.auth(self.admin)
         response = self.client.post(
-            url,
-            {'module_id': self.module_a1_1.id, 'completion_percent': 0},
-            format='json',
-        )
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['status'], 'not_started')
-
-        response = self.client.post(
-            url,
-            {'module_id': self.module_a1_1.id, 'completion_percent': 30},
-            format='json',
-        )
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['status'], 'in_progress')
-
-        response = self.client.post(
-            url,
-            {'module_id': self.module_a1_1.id, 'completion_percent': 100},
-            format='json',
-        )
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['status'], 'completed')
-
-    def test_progress_post_supports_level_code_and_week_number(self):
-        self.client.force_authenticate(self.student)
-        url = reverse('student-progress-me')
-        response = self.client.post(
-            url,
+            reverse('admin-teachers'),
             {
-                'level_code': 'a1-1',
-                'week_number': 2,
-                'completion_percent': 42,
+                'username': 'teacher2',
+                'email': 'teacher2@test.com',
+                'password': 'Docente#2026',
+                'grade_codes': ['primero', 'segundo'],
+            },
+            format='json',
+        )
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+        self.assertEqual(set(response.data['grades']), {'primero', 'segundo'})
+        teacher = User.objects.get(email='teacher2@test.com')
+        self.assertEqual(teacher.role, User.Role.TEACHER)
+
+    def test_teacher_cannot_create_teachers(self):
+        self.auth(self.teacher)
+        response = self.client.post(
+            reverse('admin-teachers'),
+            {
+                'username': 'teacher3',
+                'email': 'teacher3@test.com',
+                'password': 'Docente#2026',
+                'grade_codes': ['primero'],
+            },
+            format='json',
+        )
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+
+    def test_admin_can_update_teacher_grades(self):
+        self.auth(self.admin)
+        response = self.client.patch(
+            reverse('admin-teacher-detail', args=[self.teacher.id]),
+            {'grade_codes': ['segundo']},
+            format='json',
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response.data['grades'], ['segundo'])
+
+    def test_teacher_progress_post_marks_unit(self):
+        self.auth(self.teacher)
+        response = self.client.post(
+            reverse('teacher-progress-me'),
+            {
+                'grade_code': 'primero',
+                'week_number': 1,
+                'completion_percent': 100,
             },
             format='json',
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(response.data['module']['week_number'], 2)
-        self.assertEqual(response.data['status'], 'in_progress')
+        self.assertEqual(response.data['status'], 'completed')
+        self.assertTrue(
+            StudentProgress.objects.filter(teacher=self.teacher, module=self.module_first).exists()
+        )
+
+    def test_teacher_cannot_mark_unit_of_unassigned_grade(self):
+        self.auth(self.teacher)
+        response = self.client.post(
+            reverse('teacher-progress-me'),
+            {
+                'grade_code': 'segundo',
+                'week_number': 1,
+                'completion_percent': 50,
+            },
+            format='json',
+        )
+        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
+        self.assertFalse(
+            StudentProgress.objects.filter(teacher=self.teacher, module=self.module_second).exists()
+        )
+
+    def test_teacher_summary_includes_dba_metadata(self):
+        self.auth(self.teacher)
+        response = self.client.get(reverse('teacher-me-summary'))
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        grade_entries = response.data['grades']
+        self.assertEqual(len(grade_entries), 1)
+        entry = grade_entries[0]
+        self.assertEqual(entry['grade_code'], 'primero')
+        self.assertEqual(entry['modules'][0]['dba_number'], 1)
+        self.assertIn('instrucciones', entry['modules'][0]['dba_text'])
