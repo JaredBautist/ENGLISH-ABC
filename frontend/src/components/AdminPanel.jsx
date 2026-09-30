@@ -8,14 +8,12 @@ import { apiFetch } from '../utils/api';
 import { gradeOrder, grades } from '../data/grados';
 
 const focusRing =
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2';
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2';
 
 const inputClass =
-  'w-full px-4 py-2.5 rounded-xl border border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-900 ' +
-  'text-slate-900 dark:text-white text-sm placeholder:text-slate-400 dark:placeholder:text-slate-500 ' +
-  'transition-colors focus:border-indigo-500 focus:ring-4 focus:ring-indigo-500/15 focus:outline-none';
+  'input-clay w-full placeholder:text-slate-400';
 
-const labelClass = 'block text-sm font-bold mb-1.5 text-slate-700 dark:text-slate-200';
+const labelClass = 'mb-1.5 block text-sm font-extrabold text-slate-700 dark:text-slate-200';
 
 const formatGrade = (code) => grades[code]?.name || code || '—';
 
@@ -98,7 +96,7 @@ export default function AdminPanel() {
     setEditForm({ username: '', email: '', grade_codes: [], password: '' });
   };
 
-  const toggleGrade = (form, setForm, code) => {
+  const toggleGrade = (setForm, code) => {
     setForm((prev) => {
       const has = prev.grade_codes.includes(code);
       return {
@@ -166,24 +164,35 @@ export default function AdminPanel() {
       <div className="grid grid-cols-2 gap-2">
         {gradeOrder.map((code) => {
           const selected = form.grade_codes.includes(code);
+          const tone = {
+            jardin: 'from-amber-400 to-orange-500 border-amber-300 bg-amber-50 text-amber-900',
+            transicion: 'from-violet-500 to-fuchsia-500 border-violet-300 bg-violet-50 text-violet-900',
+            primero: 'from-sky-500 to-cyan-500 border-sky-300 bg-sky-50 text-sky-900',
+            segundo: 'from-emerald-500 to-teal-500 border-emerald-300 bg-emerald-50 text-emerald-900',
+          }[code];
           return (
-            <label
+            <button
               key={code}
-              className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border-2 cursor-pointer text-xs sm:text-sm font-bold transition-all ${
+              id={`${idPrefix}-${code}`}
+              type="button"
+              aria-pressed={selected}
+              onClick={() => toggleGrade(setForm, code)}
+              className={`inline-flex items-center gap-2 rounded-2xl border-[3px] px-3 py-2.5 text-xs font-extrabold transition-all sm:text-sm ${
                 selected
-                  ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-200'
-                  : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-indigo-300'
-              }`}
+                  ? `${tone} shadow-[0_4px_0_rgba(15,23,42,0.12)] -translate-y-0.5`
+                  : 'border-blue-100 bg-white text-slate-500 hover:-translate-y-0.5 hover:border-blue-300 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300'
+              } ${focusRing}`}
             >
-              <input
-                id={`${idPrefix}-${code}`}
-                type="checkbox"
-                checked={selected}
-                onChange={() => toggleGrade(form, setForm, code)}
-                className="h-4 w-4 accent-indigo-600"
-              />
+              <span
+                className={`flex h-5 w-5 items-center justify-center rounded-lg border-2 text-[10px] font-black ${
+                  selected ? 'border-transparent bg-blue-600 text-white' : 'border-slate-300 dark:border-slate-600'
+                }`}
+                aria-hidden="true"
+              >
+                {selected ? '✓' : ''}
+              </span>
               {grades[code].name}
-            </label>
+            </button>
           );
         })}
       </div>
@@ -191,73 +200,78 @@ export default function AdminPanel() {
   );
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+    <div className="bg-blobs min-h-screen bg-[#eff6ff] text-slate-900 transition-colors duration-300 dark:bg-[#0b1224] dark:text-slate-100">
       <a
         href="#admin-main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-xl focus:bg-indigo-600 focus:text-white focus:font-bold"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-xl focus:bg-blue-600 focus:px-4 focus:py-2 focus:font-bold focus:text-white"
       >
         Saltar al contenido
       </a>
 
-      <header className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur">
-        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center gap-2 sm:gap-3">
-          <div className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white" aria-hidden="true">
-            <Layers size={20} />
+      <header className="sticky top-0 z-40 border-b-2 border-blue-100 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+        <div className="mx-auto flex max-w-6xl items-center gap-2.5 px-3 py-2.5 sm:gap-3 sm:px-6 sm:py-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-700 text-white shadow-[0_4px_0_rgba(76,29,149,0.35)]">
+            <Layers size={21} aria-hidden="true" />
           </div>
           <div className="mr-auto min-w-0">
-            <p className="font-black leading-tight text-sm sm:text-base truncate">Administración General</p>
-            <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 truncate">Institución · {user?.username}</p>
+            <p className="truncate text-sm font-black leading-tight sm:text-base">Administración General</p>
+            <p className="truncate text-[11px] font-semibold text-slate-500 dark:text-slate-400 sm:text-xs">
+              Institución · {user?.username}
+            </p>
           </div>
-          <button
-            type="button"
-            onClick={toggleTheme}
-            aria-label={isDark ? 'Modo claro' : 'Modo oscuro'}
-            className={`p-2.5 rounded-xl text-slate-500 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 ${focusRing}`}
-          >
-            {isDark ? <Sun size={20} aria-hidden="true" /> : <Moon size={20} aria-hidden="true" />}
-          </button>
           <a
             href="/docente"
             aria-label="Panel docente"
             title="Panel docente"
-            className={`p-2.5 rounded-xl bg-teal-600 text-white hover:bg-teal-700 transition-colors ${focusRing}`}
+            className={`rounded-2xl bg-teal-600 p-2.5 text-white shadow-[0_4px_0_rgba(15,118,110,0.35)] transition-all hover:-translate-y-0.5 ${focusRing}`}
           >
             <GraduationCap size={18} aria-hidden="true" />
           </a>
           <button
             type="button"
+            onClick={toggleTheme}
+            aria-label={isDark ? 'Modo claro' : 'Modo oscuro'}
+            className={`rounded-2xl border-2 border-blue-100 bg-white p-2.5 text-slate-600 transition-all hover:-translate-y-0.5 dark:border-slate-700 dark:bg-slate-900 dark:text-amber-300 ${focusRing}`}
+          >
+            {isDark ? <Sun size={19} aria-hidden="true" /> : <Moon size={19} aria-hidden="true" />}
+          </button>
+          <button
+            type="button"
             onClick={logout}
             aria-label="Cerrar sesión"
-            className={`p-2.5 rounded-xl text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-500/10 ${focusRing}`}
+            className={`rounded-2xl border-2 border-rose-100 bg-white p-2.5 text-rose-600 transition-all hover:-translate-y-0.5 dark:border-rose-500/20 dark:bg-slate-900 dark:text-rose-400 ${focusRing}`}
           >
-            <LogOut size={20} aria-hidden="true" />
+            <LogOut size={19} aria-hidden="true" />
           </button>
         </div>
       </header>
 
-      <main id="admin-main" className="max-w-6xl mx-auto px-3 sm:px-6 py-5 sm:py-8">
+      <main id="admin-main" className="relative z-10 mx-auto max-w-6xl px-3 py-5 sm:px-6 sm:py-8">
         {error && (
           <div
             role="alert"
-            className="mb-6 p-4 rounded-2xl bg-rose-50 dark:bg-rose-900/20 border border-rose-200 dark:border-rose-500/30 text-rose-800 dark:text-rose-300 flex justify-between items-center gap-4"
+            className="card-clay mb-6 flex items-center justify-between gap-4 border-rose-200 bg-rose-50 p-4 text-rose-800 dark:bg-rose-950/40 dark:text-rose-300"
           >
-            <span className="font-semibold">{error}</span>
+            <span className="font-bold">{error}</span>
             <button
               type="button"
               onClick={() => setError('')}
               aria-label="Descartar error"
-              className={`p-1 rounded-lg hover:bg-rose-100 dark:hover:bg-rose-500/20 ${focusRing}`}
+              className={`shrink-0 rounded-lg p-1 hover:bg-rose-100 dark:hover:bg-rose-500/20 ${focusRing}`}
             >
               <X size={18} aria-hidden="true" />
             </button>
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-3">
           {/* Crear docente */}
-          <div className="rounded-[2rem] p-4 sm:p-6 lg:p-8 border shadow-xl bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
-            <h2 className="text-xl sm:text-2xl font-black mb-5 sm:mb-6 flex items-center gap-2">
-              <Plus size={22} aria-hidden="true" /> Crear docente
+          <div className="card-clay h-fit p-4 sm:p-6 lg:p-8">
+            <h2 className="mb-5 flex items-center gap-2 text-xl font-black sm:mb-6 sm:text-2xl">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white shadow-[0_3px_0_rgba(29,78,216,0.35)]">
+                <Plus size={19} aria-hidden="true" />
+              </span>
+              Crear docente
             </h2>
             <form onSubmit={handleCreateTeacher} className="space-y-4" aria-busy={creating}>
               <div>
@@ -305,7 +319,7 @@ export default function AdminPanel() {
                 type="submit"
                 disabled={creating}
                 aria-busy={creating}
-                className={`w-full bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 disabled:from-indigo-400 disabled:to-violet-400 text-white font-black py-3 rounded-xl transition-all shadow-lg ${focusRing}`}
+                className={`btn-primary-clay w-full py-3 text-base disabled:opacity-60 ${focusRing}`}
               >
                 {creating ? 'Creando…' : 'Crear docente'}
               </button>
@@ -313,48 +327,49 @@ export default function AdminPanel() {
           </div>
 
           {/* Lista de docentes */}
-          <div className="lg:col-span-2 rounded-[2rem] p-4 sm:p-6 lg:p-8 border shadow-xl bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-5 sm:mb-6">
-              <h2 className="text-xl sm:text-2xl font-black flex items-center gap-2">
-                <GraduationCap size={22} aria-hidden="true" /> Docentes ({teachers.length})
+          <div className="card-clay p-4 sm:p-6 lg:col-span-2 lg:p-8">
+            <div className="mb-5 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+              <h2 className="flex items-center gap-2 text-xl font-black sm:text-2xl">
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shadow-[0_3px_0_rgba(4,120,87,0.35)]">
+                  <GraduationCap size={19} aria-hidden="true" />
+                </span>
+                Docentes ({teachers.length})
               </h2>
               <div className="relative">
                 <label htmlFor="teacher-search" className="sr-only">Buscar docentes</label>
-                <Search size={16} aria-hidden="true" className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+                <Search size={16} aria-hidden="true" className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   id="teacher-search"
                   type="search"
                   placeholder="Buscar por nombre, correo o grado…"
                   value={search}
                   onChange={(e) => setSearch(e.target.value)}
-                  className={`${inputClass} !pl-10`}
+                  className={`${inputClass} !pl-11`}
                 />
               </div>
             </div>
 
             {loading ? (
-              <div className="flex justify-center py-8" role="status" aria-label="Cargando docentes">
-                <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-indigo-600" />
+              <div className="flex justify-center py-10" role="status" aria-label="Cargando docentes">
+                <div className="h-9 w-9 animate-spin rounded-full border-4 border-blue-200 border-t-blue-600" />
               </div>
             ) : filteredTeachers.length === 0 ? (
-              <p className="text-slate-600 dark:text-slate-300 py-4" aria-live="polite">
+              <p className="py-4 text-slate-600 dark:text-slate-300" aria-live="polite">
                 {search
                   ? `Sin resultados para "${search}".`
                   : 'Aún no hay docentes. Crea el primero con el formulario.'}
               </p>
             ) : (
-              <ul className="space-y-3 max-h-[32rem] overflow-y-auto pr-2" aria-busy={loading}>
+              <ul className="max-h-[34rem] space-y-3 overflow-y-auto pr-1" aria-busy={loading}>
                 {filteredTeachers.map((teacher) => (
                   <li key={teacher.id}>
                     {editingId === teacher.id ? (
-                      <div className="rounded-2xl border-2 border-indigo-300/70 dark:border-indigo-500/40 bg-gradient-to-br from-indigo-50/70 to-white dark:from-slate-800/80 dark:to-slate-900 p-5 shadow-lg">
-                        <div className="mb-4 flex items-center justify-between">
-                          <p className="text-sm font-black tracking-wide text-indigo-700 dark:text-indigo-300">Editando docente</p>
-                          <div className="flex flex-wrap gap-1.5 justify-end">
+                      <div className="animate-pop rounded-2xl border-[3px] border-blue-300 bg-gradient-to-br from-blue-50/80 to-white p-4 shadow-lg sm:p-5 dark:border-blue-500/40 dark:from-slate-800 dark:to-slate-900">
+                        <div className="mb-4 flex items-center justify-between gap-2">
+                          <p className="text-xs font-black uppercase tracking-widest text-blue-700 dark:text-blue-300">Editando docente</p>
+                          <div className="flex flex-wrap justify-end gap-1.5">
                             {(teacher.grades || []).map((code) => (
-                              <span key={code} className="px-2 py-0.5 rounded-full text-[10px] font-black bg-indigo-100 text-indigo-700 dark:bg-indigo-500/20 dark:text-indigo-200">
-                                {formatGrade(code)}
-                              </span>
+                              <span key={code} className="badge-clay badge-clay-blue">{formatGrade(code)}</span>
                             ))}
                           </div>
                         </div>
@@ -366,7 +381,7 @@ export default function AdminPanel() {
                           className="space-y-4"
                           aria-busy={updating}
                         >
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                             <div>
                               <label htmlFor={`edit-username-${teacher.id}`} className={labelClass}>Usuario</label>
                               <input
@@ -393,7 +408,7 @@ export default function AdminPanel() {
                           <div>
                             <label htmlFor={`edit-password-${teacher.id}`} className={labelClass}>
                               Contraseña{' '}
-                              <span className="font-semibold text-slate-500 dark:text-slate-400">(déjala vacía para conservarla)</span>
+                              <span className="font-bold text-slate-500 dark:text-slate-400">(déjala vacía para conservarla)</span>
                             </label>
                             <input
                               id={`edit-password-${teacher.id}`}
@@ -406,47 +421,43 @@ export default function AdminPanel() {
                             />
                           </div>
                           <GradePicker form={editForm} setForm={setEditForm} idPrefix={`edit-${teacher.id}`} />
-                          <div className="flex flex-col sm:flex-row gap-3">
+                          <div className="flex flex-col gap-3 sm:flex-row">
                             <button
                               type="submit"
                               disabled={updating}
-                              className={`flex-1 inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-green-600 disabled:opacity-60 text-white font-black py-2.5 rounded-xl transition-all text-sm shadow-lg ${focusRing}`}
+                              className={`btn-primary-clay flex-1 py-2.5 text-sm disabled:opacity-60 ${focusRing}`}
                             >
-                              <Save size={16} aria-hidden="true" /> {updating ? 'Guardando…' : 'Guardar'}
+                              <Save size={16} aria-hidden="true" className="mr-2 inline" /> {updating ? 'Guardando…' : 'Guardar'}
                             </button>
                             <button
                               type="button"
                               onClick={cancelEdit}
                               disabled={updating}
-                              className={`flex-1 inline-flex items-center justify-center gap-2 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 disabled:opacity-60 text-slate-700 dark:text-slate-100 font-black py-2.5 rounded-xl transition-all text-sm border border-slate-300/80 dark:border-slate-500/80 ${focusRing}`}
+                              className={`btn-ghost-clay flex-1 py-2.5 text-sm disabled:opacity-60 ${focusRing}`}
                             >
-                              <X size={16} aria-hidden="true" /> Cancelar
+                              <X size={16} aria-hidden="true" className="mr-2 inline" /> Cancelar
                             </button>
                           </div>
                         </form>
                       </div>
                     ) : (
-                      <div className="p-4 rounded-2xl border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-indigo-300 dark:hover:border-indigo-500 transition-all">
-                        <div className="flex justify-between items-start gap-3">
+                      <div className="rounded-2xl border-[3px] border-blue-50 bg-white p-3.5 transition-all hover:-translate-y-0.5 hover:border-blue-300 sm:p-4 dark:border-slate-800 dark:bg-slate-900/70 dark:hover:border-indigo-500">
+                        <div className="flex items-start justify-between gap-3">
                           <div className="min-w-0">
-                            <p className="font-black text-slate-900 dark:text-white truncate">{teacher.username}</p>
-                            <p className="text-sm text-slate-600 dark:text-slate-300 truncate">{teacher.email}</p>
+                            <p className="truncate font-black text-slate-900 dark:text-white">{teacher.username}</p>
+                            <p className="truncate text-sm font-semibold text-slate-600 dark:text-slate-300">{teacher.email}</p>
                             <div className="mt-2 flex flex-wrap gap-1.5">
                               {(teacher.grades || []).length === 0 ? (
-                                <span className="text-xs font-bold text-amber-600 dark:text-amber-400 inline-flex items-center gap-1">
-                                  <AlertCircle size={13} aria-hidden="true" /> Sin grado asignado
+                                <span className="badge-clay badge-clay-amber">
+                                  <AlertCircle size={12} aria-hidden="true" /> Sin grado asignado
                                 </span>
                               ) : (
                                 teacher.grades.map((code) => (
-                                  <span key={code} className="px-2.5 py-1 text-xs font-black rounded-full bg-teal-100 dark:bg-teal-900/50 text-teal-700 dark:text-teal-300 border border-teal-200 dark:border-teal-700">
-                                    {formatGrade(code)}
-                                  </span>
+                                  <span key={code} className="badge-clay badge-clay-green">{formatGrade(code)}</span>
                                 ))
                               )}
                               {!teacher.is_active && (
-                                <span className="px-2.5 py-1 text-xs font-black rounded-full bg-rose-100 dark:bg-rose-900/50 text-rose-700 dark:text-rose-300">
-                                  Inactivo
-                                </span>
+                                <span className="badge-clay badge-clay-slate">Inactivo</span>
                               )}
                             </div>
                           </div>
@@ -454,7 +465,7 @@ export default function AdminPanel() {
                             type="button"
                             onClick={() => startEdit(teacher)}
                             aria-label={`Editar docente ${teacher.username}`}
-                            className={`shrink-0 p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/30 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all ${focusRing}`}
+                            className={`shrink-0 rounded-xl border-2 border-blue-100 bg-white p-2.5 text-slate-600 transition-all hover:-translate-y-0.5 hover:border-blue-300 hover:text-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 ${focusRing}`}
                           >
                             <Edit2 size={16} aria-hidden="true" />
                           </button>

@@ -9,12 +9,12 @@ import { getGrade, grades, unitsByPeriod } from '../data/grados';
 import DBADeck from './DBADeck';
 
 const focusRing =
-  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2';
+  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2';
 
 function statusTone(status) {
-  if (status === 'completed') return 'bg-emerald-100 text-emerald-700 border-emerald-200';
-  if (status === 'in_progress') return 'bg-sky-100 text-sky-700 border-sky-200';
-  return 'bg-slate-100 text-slate-500 border-slate-200';
+  if (status === 'completed') return 'badge-clay badge-clay-green';
+  if (status === 'in_progress') return 'badge-clay badge-clay-blue';
+  return 'badge-clay badge-clay-slate';
 }
 
 export default function TeacherWorkspace() {
@@ -69,77 +69,83 @@ export default function TeacherWorkspace() {
         slidesKey={deckUnit.slides}
         title={`${activeGrade.name} • Unidad ${deckUnit.week}: ${deckUnit.title}`}
         subtitle={deckUnit.subtitle}
-        dashboardHref={isAdmin ? '/admin' : `/docente/${activeGrade.id}`}
+        dashboardHref={isAdmin ? '/admin' : '/docente'}
       />
     );
   }
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-300">
+    <div className="bg-blobs min-h-screen bg-[#eff6ff] text-slate-900 transition-colors duration-300 dark:bg-[#0b1224] dark:text-slate-100">
       <a
         href="#teacher-main"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-[60] focus:px-4 focus:py-2 focus:rounded-xl focus:bg-indigo-600 focus:text-white focus:font-bold"
+        className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60] focus:rounded-xl focus:bg-blue-600 focus:px-4 focus:py-2 focus:font-bold focus:text-white"
       >
         Saltar al contenido
       </a>
 
-      <header className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur">
-        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center gap-2 sm:gap-3">
-          <div className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white" aria-hidden="true">
-            <GraduationCap size={20} />
+      <header className="sticky top-0 z-40 border-b-2 border-blue-100 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
+        <div className="mx-auto flex max-w-6xl items-center gap-2.5 px-3 py-2.5 sm:gap-3 sm:px-6 sm:py-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)]">
+            <GraduationCap size={21} aria-hidden="true" />
           </div>
           <div className="mr-auto min-w-0">
-            <p className="font-black leading-tight text-sm sm:text-base truncate">Plataforma Docente DBA</p>
-            <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 truncate">Hola, {user?.username} {isAdmin ? '• Administración' : ''}</p>
+            <p className="truncate text-sm font-black leading-tight sm:text-base">Plataforma Docente DBA</p>
+            <p className="truncate text-[11px] font-semibold text-slate-500 dark:text-slate-400 sm:text-xs">
+              Hola, {user?.username} {isAdmin ? '• Administración' : ''}
+            </p>
           </div>
-          <a
-            href="/admin"
-            aria-label="Panel administrativo"
-            title="Panel administrativo"
-            className={`p-2.5 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-colors ${focusRing} ${isAdmin ? '' : 'hidden'}`}
-          >
-            <Layers size={18} aria-hidden="true" />
-          </a>
+          {isAdmin && (
+            <a
+              href="/admin"
+              aria-label="Panel administrativo"
+              title="Panel administrativo"
+              className={`rounded-2xl bg-indigo-600 p-2.5 text-white shadow-[0_4px_0_rgba(76,29,149,0.35)] transition-all hover:-translate-y-0.5 ${focusRing}`}
+            >
+              <Layers size={18} aria-hidden="true" />
+            </a>
+          )}
           <button
             type="button"
             onClick={toggleTheme}
             aria-label={isDark ? 'Modo claro' : 'Modo oscuro'}
-            className={`p-2.5 rounded-xl text-slate-500 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 ${focusRing}`}
+            className={`rounded-2xl border-2 border-blue-100 bg-white p-2.5 text-slate-600 transition-all hover:-translate-y-0.5 dark:border-slate-700 dark:bg-slate-900 dark:text-amber-300 ${focusRing}`}
           >
-            {isDark ? <Sun size={20} aria-hidden="true" /> : <Moon size={20} aria-hidden="true" />}
+            {isDark ? <Sun size={19} aria-hidden="true" /> : <Moon size={19} aria-hidden="true" />}
           </button>
           <button
             type="button"
             onClick={logout}
             aria-label="Cerrar sesión"
-            className={`p-2.5 rounded-xl text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-500/10 ${focusRing}`}
+            className={`rounded-2xl border-2 border-rose-100 bg-white p-2.5 text-rose-600 transition-all hover:-translate-y-0.5 dark:border-rose-500/20 dark:bg-slate-900 dark:text-rose-400 ${focusRing}`}
           >
-            <LogOut size={20} aria-hidden="true" />
+            <LogOut size={19} aria-hidden="true" />
           </button>
         </div>
       </header>
 
-      <main id="teacher-main" className="max-w-6xl mx-auto px-3 sm:px-6 py-5 sm:py-8">
+      <main id="teacher-main" className="relative z-10 mx-auto max-w-6xl px-3 py-5 sm:px-6 sm:py-8">
         {error && (
-          <div role="alert" className="mb-6 p-4 rounded-2xl bg-rose-50 dark:bg-rose-900/20 border border-rose-200 dark:border-rose-500/30 text-rose-800 dark:text-rose-300 font-semibold">
+          <div role="alert" className="card-clay mb-6 border-rose-200 bg-rose-50 p-4 font-bold text-rose-800 dark:bg-rose-950/40 dark:text-rose-300">
             {error}
           </div>
         )}
 
         {loading ? (
           <div className="flex justify-center py-24" role="status" aria-label="Cargando grados">
-            <div className="animate-spin rounded-full h-10 w-10 border-t-2 border-teal-500" />
+            <div className="h-11 w-11 animate-spin rounded-full border-4 border-blue-200 border-t-blue-600" />
           </div>
         ) : assignedGrades.length === 0 ? (
-          <div className="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-10 text-center">
-            <p className="text-4xl mb-3" aria-hidden="true">🎓</p>
-            <p className="font-black text-lg">No tienes grados asignados todavía.</p>
-            <p className="text-slate-500 dark:text-slate-400 mt-1">La administración puede asignarte Jardín, Transición, 1° o 2°.</p>
+          <div className="card-clay mx-auto max-w-md p-10 text-center">
+            <p className="mb-3 text-5xl" aria-hidden="true">🎓</p>
+            <p className="text-lg font-black">No tienes grados asignados todavía.</p>
+            <p className="mt-1 text-slate-500 dark:text-slate-400">
+              La administración puede asignarte Jardín, Transición, 1° o 2°.
+            </p>
           </div>
         ) : (
           <>
             {/* Selector de grados */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8" role="tablist" aria-label="Grados asignados">
+            <div className="mb-6 grid grid-cols-2 gap-3 sm:mb-8 sm:gap-4 lg:grid-cols-4" role="tablist" aria-label="Grados asignados">
               {assignedGrades.map((grade) => {
                 const active = grade.id === activeGradeId;
                 const entry = summary?.grades?.find((g) => g.grade_code === grade.id);
@@ -150,17 +156,17 @@ export default function TeacherWorkspace() {
                     role="tab"
                     aria-selected={active}
                     onClick={() => setActiveGradeId(grade.id)}
-                    className={`text-left rounded-[1.6rem] border-2 p-3.5 sm:p-5 transition-all ${focusRing} ${
+                    className={`rounded-[1.6rem] border-[3px] p-3.5 text-left transition-all sm:p-5 ${focusRing} ${
                       active
-                        ? `border-transparent text-white bg-gradient-to-br ${grade.accent} shadow-lg`
-                        : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-indigo-300'
+                        ? `-translate-y-1 border-transparent bg-gradient-to-br ${grade.accent} shadow-[0_10px_24px_rgba(15,23,42,0.2)]`
+                        : 'border-blue-100 bg-white hover:-translate-y-0.5 hover:border-blue-300 dark:border-slate-800 dark:bg-slate-900'
                     }`}
                   >
-                    <p className={`text-[10px] sm:text-xs font-black uppercase tracking-widest ${active ? 'text-white/80' : 'text-slate-400'}`}>
+                    <p className={`text-[10px] font-black uppercase tracking-widest sm:text-xs ${active ? 'text-white/85' : 'text-slate-400'}`}>
                       Grado
                     </p>
-                    <p className="text-xl sm:text-2xl font-black">{grade.name}</p>
-                    <p className={`text-xs sm:text-sm font-bold mt-0.5 sm:mt-1 ${active ? 'text-white/90' : 'text-slate-500 dark:text-slate-400'}`}>
+                    <p className={`text-xl font-black sm:text-2xl ${active ? 'text-white' : ''}`}>{grade.name}</p>
+                    <p className={`mt-0.5 text-xs font-bold sm:mt-1 sm:text-sm ${active ? 'text-white/90' : 'text-slate-500 dark:text-slate-400'}`}>
                       {entry ? `${entry.completed_units}/${entry.total_units} vistas` : `${grade.units.length} unidades`}
                     </p>
                   </button>
@@ -171,97 +177,82 @@ export default function TeacherWorkspace() {
             {activeGrade && (
               <>
                 {/* DBA del grado */}
-                <section aria-labelledby="dba-heading" className="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
-                  <div className="flex items-center gap-3 mb-5">
-                    <span className="w-11 h-11 rounded-2xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 flex items-center justify-center" aria-hidden="true">
-                      <Target size={22} />
+                <section aria-labelledby="dba-heading" className="card-clay mb-6 p-4 sm:mb-8 sm:p-6 lg:p-8">
+                  <div className="mb-5 flex items-center gap-3">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-blue-500 to-blue-700 text-white shadow-[0_4px_0_rgba(29,78,216,0.3)]">
+                      <Target size={22} aria-hidden="true" />
                     </span>
                     <div>
-                      <h2 id="dba-heading" className="text-2xl font-black">Derechos Básicos de Aprendizaje — {activeGrade.name}</h2>
-                      <p className="text-sm text-slate-500 dark:text-slate-400">Cartilla MEN · Inglés, grados Transición a 5º de primaria</p>
+                      <h2 id="dba-heading" className="text-xl font-black sm:text-2xl">
+                        Derechos Básicos de Aprendizaje — {activeGrade.name}
+                      </h2>
+                      <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 sm:text-sm">
+                        Cartilla MEN · Inglés, grados Transición a 5º de primaria
+                      </p>
                     </div>
                   </div>
                   <ul className="space-y-2.5 sm:space-y-3">
                     {activeGrade.dbas.map((dba) => (
-                      <li key={dba.number} className="flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
-                        <span className="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-indigo-600 text-white font-black text-sm sm:text-base flex items-center justify-center" aria-hidden="true">
+                      <li
+                        key={dba.number}
+                        className="flex gap-3 rounded-2xl border-2 border-blue-50 bg-blue-50/60 p-3 sm:gap-4 sm:p-4 dark:border-slate-800 dark:bg-slate-800/60"
+                      >
+                        <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-blue-600 text-sm font-black text-white shadow-[0_3px_0_rgba(29,78,216,0.4)] sm:h-9 sm:w-9 sm:text-base">
                           {dba.number}
                         </span>
-                        <p className="text-sm sm:text-base font-semibold leading-relaxed text-slate-700 dark:text-slate-200">{dba.text}</p>
+                        <p className="text-sm font-semibold leading-relaxed text-slate-700 dark:text-slate-200 sm:text-base">{dba.text}</p>
                       </li>
                     ))}
                   </ul>
                 </section>
 
                 {/* Unidades agrupadas por periodo */}
-                <section aria-labelledby="units-heading" className="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-6 lg:p-8">
-                  <div className="flex items-center gap-3 mb-5">
-                    <span className="w-11 h-11 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 flex items-center justify-center" aria-hidden="true">
-                      <BookOpenCheck size={22} />
+                <section aria-labelledby="units-heading" className="card-clay p-4 sm:p-6 lg:p-8">
+                  <div className="mb-5 flex items-center gap-3">
+                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shadow-[0_4px_0_rgba(4,120,87,0.3)]">
+                      <BookOpenCheck size={22} aria-hidden="true" />
                     </span>
                     <div>
-                      <h2 id="units-heading" className="text-2xl font-black">Plan anual por periodos</h2>
-                      <p className="text-sm text-slate-500 dark:text-slate-400">Abre las slides listas para proyectar; el resto está en preparación</p>
+                      <h2 id="units-heading" className="text-xl font-black sm:text-2xl">Plan anual por periodos</h2>
+                      <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 sm:text-sm">
+                        Abre las slides para proyectar en clase
+                      </p>
                     </div>
                   </div>
 
                   <div className="space-y-8">
                     {unitsByPeriod(activeGrade).map((bucket) => (
                       <div key={bucket.period}>
-                        <h3 className="text-sm font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 mb-3">
+                        <h3 className="mb-3 text-xs font-black uppercase tracking-widest text-slate-400 dark:text-slate-500 sm:text-sm">
                           {bucket.label}
                         </h3>
-                        <ul className="space-y-4">
+                        <ul className="space-y-3.5 sm:space-y-4">
                           {bucket.units.map((unit) => {
                             const state = activeSummaryGrade?.modules?.find((m) => m.week_number === unit.week);
                             const percent = Math.round(state?.completion_percent || 0);
                             return (
-                              <li key={unit.week} className={`p-3.5 sm:p-5 rounded-2xl border-2 transition-all ${
-                                unit.ready === false
-                                  ? 'border-dashed border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/50'
-                                  : 'border-slate-100 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500'
-                              }`}>
-                                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                              <li
+                                key={unit.week}
+                                className="rounded-2xl border-[3px] border-blue-50 bg-white p-3.5 transition-all hover:-translate-y-0.5 hover:border-blue-300 sm:p-5 dark:border-slate-800 dark:bg-slate-900/70 dark:hover:border-indigo-500"
+                              >
+                                <div className="flex flex-col gap-3.5 sm:flex-row sm:items-center sm:gap-4">
                                   <div className="min-w-0 flex-1">
-                                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1">
-                                      <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-black bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300">
-                                        Unidad {unit.week}
-                                      </span>
-                                      <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-black bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30">
-                                        DBA {unit.dba}
-                                      </span>
-                                      {unit.ready === false ? (
-                                        <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-black bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
-                                          🛠 En preparación
-                                        </span>
-                                      ) : (
-                                        <span className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-black border ${statusTone(state?.status)}`}>
-                                          {percent}% visto
-                                        </span>
-                                      )}
+                                    <div className="mb-1.5 flex flex-wrap items-center gap-1.5 sm:gap-2">
+                                      <span className="badge-clay badge-clay-blue">Unidad {unit.week}</span>
+                                      <span className="badge-clay badge-clay-amber">DBA {unit.dba}</span>
+                                      <span className={statusTone(state?.status)}>{percent}% visto</span>
                                     </div>
-                                    <p className="font-black text-base sm:text-lg leading-tight">{unit.title}</p>
-                                    <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">{unit.subtitle}</p>
+                                    <p className="text-base font-black leading-tight sm:text-lg">{unit.title}</p>
+                                    <p className="text-xs font-semibold text-slate-500 dark:text-slate-400 sm:text-sm">{unit.subtitle}</p>
                                   </div>
-                                  {unit.ready === false ? (
-                                    <button
-                                      type="button"
-                                      disabled
-                                      title="Contenido en preparación"
-                                      className="shrink-0 inline-flex items-center gap-2 px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-2xl font-black text-sm sm:text-base bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 cursor-not-allowed"
-                                    >
-                                      <Presentation size={17} aria-hidden="true" /> Pronto
-                                    </button>
-                                  ) : (
-                                    <button
-                                      type="button"
-                                      onClick={() => setDeckUnit(unit)}
-                                      className={`w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-2xl font-black text-sm sm:text-base text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 active:scale-95 transition-all ${focusRing}`}
-                                    >
-                                      <Presentation size={17} aria-hidden="true" /> Abrir slides
-                                      <ChevronRight size={15} aria-hidden="true" />
-                                    </button>
-                                  )}
+                                  <button
+                                    type="button"
+                                    onClick={() => setDeckUnit(unit)}
+                                    className={`w-full shrink-0 items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 to-violet-600 px-4 py-3 text-sm font-black text-white shadow-[0_4px_0_rgba(67,56,202,0.4)] transition-all hover:-translate-y-0.5 hover:from-blue-700 hover:to-violet-700 active:translate-y-0.5 active:shadow-none sm:w-auto sm:px-5 sm:text-base ${focusRing} inline-flex`}
+                                  >
+                                    <Presentation size={17} aria-hidden="true" /> Abrir slides
+                                    <ChevronRight size={15} aria-hidden="true" />
+                                  </button>
                                 </div>
                               </li>
                             );
@@ -272,7 +263,7 @@ export default function TeacherWorkspace() {
                   </div>
 
                   {activeSummaryGrade && (
-                    <p className="mt-6 text-sm font-bold text-slate-500 dark:text-slate-400 flex items-center gap-2">
+                    <p className="mt-6 flex items-center gap-2 text-sm font-bold text-slate-500 dark:text-slate-400">
                       <Presentation size={15} aria-hidden="true" />
                       Avance del grado: {activeSummaryGrade.overall_percent}%
                     </p>

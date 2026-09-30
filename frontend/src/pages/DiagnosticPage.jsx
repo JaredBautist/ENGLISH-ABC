@@ -59,20 +59,20 @@ export default function DiagnosticPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
+    <div className="min-h-screen bg-[#eff6ff] p-4 sm:p-8 dark:bg-[#0b1224] min-h-screen">
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold mb-6">🔍 Diagnóstico de la plataforma</h1>
 
         {/* Storage Status */}
-        <div className="bg-white rounded-lg shadow p-6 mb-6">
+        <div className="card-clay p-5 sm:p-6 mb-6">
           <h2 className="text-xl font-bold mb-4">📦 Storage Status</h2>
-          <pre className="bg-gray-50 p-4 rounded text-sm overflow-auto">
+          <pre className="rounded-xl bg-slate-50 p-4 text-sm overflow-auto dark:bg-slate-900">
             {JSON.stringify(diagnostics.storage, null, 2)}
           </pre>
         </div>
 
         {/* API Test Results */}
-        <div className="bg-white rounded-lg shadow p-6 mb-6">
+        <div className="card-clay p-5 sm:p-6 mb-6">
           <h2 className="text-xl font-bold mb-4">📡 API Test Results</h2>
           <div className="space-y-4">
             {Object.entries(diagnostics.apiTest || {}).map(([endpoint, result]) => (
@@ -100,7 +100,7 @@ export default function DiagnosticPage() {
 
         {/* Errors */}
         {diagnostics.errors.length > 0 && (
-          <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+          <div className="card-clay border-rose-200 bg-rose-50 p-6 dark:bg-rose-950/30">
             <h2 className="text-xl font-bold text-red-700 mb-4">⚠️ Errores Detectados</h2>
             <ul className="space-y-2">
               {diagnostics.errors.map((error, idx) => (
@@ -111,7 +111,7 @@ export default function DiagnosticPage() {
         )}
 
         {diagnostics.errors.length === 0 && (
-          <div className="bg-green-50 border border-green-200 rounded-lg p-6">
+          <div className="card-clay border-emerald-200 bg-emerald-50 p-6 dark:bg-emerald-950/30">
             <h2 className="text-xl font-bold text-green-700">✅ Todo funciona correctamente</h2>
             <p className="text-green-600 mt-2">
               Los tokens se guardaron correctamente y los endpoints institucionales responden.
@@ -120,7 +120,7 @@ export default function DiagnosticPage() {
         )}
 
         <div className="mt-6">
-          <a href="/docente" className="inline-block px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+          <a href="/docente" className="btn-primary-clay">
             ← Volver al panel docente
           </a>
         </div>

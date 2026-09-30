@@ -23,21 +23,27 @@ function speak(text) {
 function ContentSlide({ slide }) {
   return (
     <div className="animate-fadeIn">
-      {slide.title && <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-800 text-center mb-3 sm:mb-4">{slide.title}</h3>}
-      {slide.description && <p className="text-base sm:text-lg text-slate-600 text-center mb-5 sm:mb-6">{slide.description}</p>}
+      {slide.title && (
+        <h3 className="mb-3 text-xl font-black text-slate-800 text-center sm:mb-4 sm:text-2xl lg:text-3xl">
+          {slide.title}
+        </h3>
+      )}
+      {slide.description && (
+        <p className="mb-5 text-base font-semibold text-slate-500 text-center sm:mb-6 sm:text-lg">{slide.description}</p>
+      )}
       {slide.items && (
-        <ul className={`grid gap-2.5 sm:gap-3 mb-4 ${slide.items.length > 6 ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-5' : 'grid-cols-1 sm:grid-cols-2'}`}>
+        <ul className={`mb-4 grid gap-2.5 sm:gap-3 ${slide.items.length > 6 ? 'grid-cols-2 sm:grid-cols-3 lg:grid-cols-5' : 'grid-cols-1 sm:grid-cols-2'}`}>
           {slide.items.map((item) => (
             <li
               key={item}
-              className="bg-white/85 border-2 border-indigo-100 rounded-2xl px-3 py-2.5 sm:px-4 sm:py-3 text-sm sm:text-base lg:text-lg font-bold text-slate-700 flex items-center justify-between gap-2 sm:gap-3"
+              className="flex items-center justify-between gap-2 rounded-2xl border-[3px] border-blue-100 bg-white px-3 py-2.5 text-sm font-extrabold text-slate-700 shadow-[0_4px_0_rgba(37,99,235,0.08)] sm:gap-3 sm:px-4 sm:py-3 sm:text-base lg:text-lg"
             >
               <span className="min-w-0">{item}</span>
               <button
                 type="button"
                 onClick={() => speak(item.split('(')[0])}
                 aria-label={`Pronunciar ${item}`}
-                className="shrink-0 p-1.5 sm:p-2 rounded-full bg-indigo-50 text-indigo-600 hover:bg-indigo-100 active:scale-90 transition"
+                className="shrink-0 rounded-full bg-blue-50 p-1.5 text-blue-600 transition hover:bg-blue-100 active:scale-90 sm:p-2"
               >
                 <Volume2 size={16} aria-hidden="true" />
               </button>
@@ -46,11 +52,11 @@ function ContentSlide({ slide }) {
         </ul>
       )}
       {slide.examples && (
-        <div className="mt-3 sm:mt-4 space-y-2">
+        <div className="mt-3 space-y-2 sm:mt-4">
           {slide.examples.map((example) => (
             <div
               key={example}
-              className="bg-amber-50 border-l-4 border-amber-400 rounded-xl px-3 py-2.5 sm:px-4 sm:py-3 font-bold text-amber-800 text-sm sm:text-base"
+              className="rounded-2xl border-l-[6px] border-amber-400 bg-amber-50 px-3 py-2.5 text-sm font-extrabold text-amber-800 sm:px-4 sm:py-3 sm:text-base"
             >
               {example}
             </div>
@@ -64,20 +70,22 @@ function ContentSlide({ slide }) {
 function VocabularySlide({ slide }) {
   return (
     <div className="animate-fadeIn">
-      <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-800 text-center mb-2">{slide.title}</h3>
-      {slide.description && <p className="text-sm sm:text-base text-slate-600 text-center mb-5 sm:mb-6">{slide.description}</p>}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+      <h3 className="mb-2 text-xl font-black text-slate-800 text-center sm:text-2xl lg:text-3xl">{slide.title}</h3>
+      {slide.description && (
+        <p className="mb-5 text-center text-sm font-semibold text-slate-500 sm:mb-6 sm:text-base">{slide.description}</p>
+      )}
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
         {slide.words.map((entry) => (
           <button
             key={entry.word}
             type="button"
             onClick={() => speak(entry.word)}
-            className="group bg-white rounded-3xl border-2 border-emerald-100 p-3 sm:p-4 flex flex-col items-center gap-1.5 sm:gap-2 hover:border-emerald-400 hover:shadow-lg active:scale-95 transition-all"
+            className="group flex flex-col items-center gap-1.5 rounded-3xl border-[3px] border-emerald-100 bg-white p-3 transition-all hover:-translate-y-1 hover:border-emerald-400 hover:shadow-[0_10px_20px_rgba(16,185,129,0.15)] active:translate-y-0 active:scale-95 sm:gap-2 sm:p-4"
           >
             <span className="text-4xl sm:text-5xl" aria-hidden="true">{entry.emoji}</span>
-            <span className="font-black text-slate-800 text-center leading-tight text-sm sm:text-base">{entry.word}</span>
-            <span className="text-xs sm:text-sm text-slate-500 text-center">{entry.es}</span>
-            <Volume2 size={15} className="text-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true" />
+            <span className="text-center text-sm font-black leading-tight text-slate-800 sm:text-base">{entry.word}</span>
+            <span className="text-center text-xs font-semibold text-slate-500 sm:text-sm">{entry.es}</span>
+            <Volume2 size={15} className="text-emerald-500 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true" />
           </button>
         ))}
       </div>
@@ -93,16 +101,19 @@ function ActivitySlide({ slide }) {
     const isCorrect = normalize(text) === normalize(slide.answer);
     return (
       <div className="animate-fadeIn">
-        <p className="text-lg sm:text-xl font-black text-slate-700 mb-5 sm:mb-6 text-center">{slide.prompt}</p>
+        <p className="mb-5 text-lg font-black text-slate-700 text-center sm:mb-6 sm:text-xl">{slide.prompt}</p>
         <input
           value={text}
           onChange={(event) => setText(event.target.value)}
           placeholder={slide.placeholder || 'Escribe tu respuesta...'}
           aria-label="Respuesta"
-          className="w-full max-w-md mx-auto block h-13 sm:h-14 px-5 sm:px-6 rounded-2xl border-2 border-sky-200 text-lg sm:text-xl font-bold focus:border-sky-500 focus:outline-none"
+          className="input-clay mx-auto block h-13 w-full max-w-md px-5 text-lg font-bold sm:h-14 sm:px-6 sm:text-xl"
         />
         {text && (
-          <p className={`mt-4 text-center font-black text-base sm:text-lg ${isCorrect ? 'text-emerald-600' : 'text-sky-600'}`} role="status">
+          <p
+            className={`mt-4 text-center text-base font-black sm:text-lg ${isCorrect ? 'text-emerald-600' : 'text-sky-600'}`}
+            role="status"
+          >
             {isCorrect ? '¡Muy bien! ✅' : `Sugerencia: ${slide.answer}`}
           </p>
         )}
@@ -113,8 +124,8 @@ function ActivitySlide({ slide }) {
   const isCorrect = selected === slide.correct;
   return (
     <div className="animate-fadeIn">
-      <p className="text-lg sm:text-xl font-black text-slate-700 mb-5 sm:mb-6 text-center">{slide.question}</p>
-      <div className="grid gap-2.5 sm:gap-3 max-w-xl mx-auto">
+      <p className="mb-5 text-lg font-black text-slate-700 text-center sm:mb-6 sm:text-xl">{slide.question}</p>
+      <div className="mx-auto grid max-w-xl gap-2.5 sm:gap-3">
         {slide.options.map((option) => {
           const active = selected === option;
           return (
@@ -122,21 +133,21 @@ function ActivitySlide({ slide }) {
               key={option}
               type="button"
               onClick={() => setSelected(option)}
-              className={`w-full text-left px-4 py-3.5 sm:px-5 sm:py-4 rounded-2xl border-2 font-bold text-base sm:text-lg transition-all ${
+              className={`w-full rounded-2xl border-[3px] px-4 py-3.5 text-left text-base font-extrabold transition-all sm:px-5 sm:py-4 sm:text-lg ${
                 active
                   ? isCorrect
-                    ? 'border-emerald-500 bg-emerald-50 text-emerald-700'
-                    : 'border-rose-500 bg-rose-50 text-rose-700'
-                  : 'border-slate-200 bg-white text-slate-700 hover:border-indigo-300'
+                    ? 'border-emerald-500 bg-emerald-50 text-emerald-700 shadow-[0_4px_0_rgba(16,185,129,0.3)]'
+                    : 'border-rose-400 bg-rose-50 text-rose-700 shadow-[0_4px_0_rgba(244,63,94,0.25)]'
+                  : 'border-blue-100 bg-white text-slate-700 hover:-translate-y-0.5 hover:border-blue-300'
               }`}
             >
               <span className="inline-flex items-center gap-3">
                 <span
-                  className={`w-6 h-6 shrink-0 rounded-full border-2 flex items-center justify-center text-sm font-black ${
+                  className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-full border-2 text-sm font-black ${
                     active
                       ? isCorrect
-                        ? 'border-emerald-500 bg-emerald-500 text-white'
-                        : 'border-rose-500 bg-rose-500 text-white'
+                        ? 'border-transparent bg-emerald-500 text-white'
+                        : 'border-transparent bg-rose-500 text-white'
                       : 'border-slate-300'
                   }`}
                 >
@@ -149,7 +160,10 @@ function ActivitySlide({ slide }) {
         })}
       </div>
       {selected && (
-        <p className={`mt-4 text-center font-black text-base sm:text-lg ${isCorrect ? 'text-emerald-600' : 'text-rose-600'}`} role="status">
+        <p
+          className={`mt-4 text-center text-base font-black sm:text-lg ${isCorrect ? 'text-emerald-600' : 'text-rose-600'}`}
+          role="status"
+        >
           {isCorrect ? '¡Excelente! ✅' : `Respuesta: ${slide.correct}`}
         </p>
       )}
@@ -160,13 +174,13 @@ function ActivitySlide({ slide }) {
 function SongSlide({ slide }) {
   return (
     <div className="animate-fadeIn">
-      <h3 className="text-xl sm:text-2xl lg:text-3xl font-black text-slate-800 text-center mb-2">
+      <h3 className="mb-2 text-center text-xl font-black text-slate-800 sm:text-2xl lg:text-3xl">
         {slide.emoji} {slide.title}
       </h3>
-      <p className="text-sm sm:text-base text-slate-600 text-center mb-4 sm:mb-6">{slide.description}</p>
-      <div className="max-w-3xl mx-auto rounded-2xl sm:rounded-[2rem] overflow-hidden border-2 sm:border-4 border-white shadow-2xl bg-slate-900">
+      <p className="mb-4 text-center text-sm font-semibold text-slate-500 sm:mb-6 sm:text-base">{slide.description}</p>
+      <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border-4 border-white bg-slate-900 shadow-[0_16px_40px_rgba(15,23,42,0.3)] sm:rounded-[2rem]">
         <div className="aspect-video">
-          <iframe src={slide.videoUrl} title={slide.title} className="w-full h-full" allowFullScreen />
+          <iframe src={slide.videoUrl} title={slide.title} className="h-full w-full" allowFullScreen />
         </div>
       </div>
     </div>
@@ -223,14 +237,11 @@ function DeckInner({ slides, title, subtitle, dashboardHref }) {
 
   if (!total) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-sky-100 via-emerald-50 to-violet-100 p-4 sm:p-6">
-        <div className="bg-white rounded-[2rem] border-2 border-slate-100 shadow-xl p-6 sm:p-10 text-center max-w-md">
-          <p className="text-5xl mb-4" aria-hidden="true">📚</p>
-          <p className="font-black text-slate-700 text-lg sm:text-xl">Aún no hay diapositivas para esta unidad.</p>
-          <a
-            href={dashboardHref}
-            className="mt-6 inline-flex items-center gap-2 px-5 py-3 rounded-2xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-colors"
-          >
+      <div className="flex min-h-screen items-center justify-center bg-[#eff6ff] p-4 sm:p-6 dark:bg-[#0b1224]">
+        <div className="card-clay max-w-md p-6 text-center sm:p-10">
+          <p className="mb-4 text-5xl" aria-hidden="true">📚</p>
+          <p className="text-lg font-black text-slate-700 sm:text-xl">Aún no hay diapositivas para esta unidad.</p>
+          <a href={dashboardHref} className="btn-primary-clay mt-6 inline-flex items-center gap-2">
             <Home size={18} aria-hidden="true" /> Volver al panel
           </a>
         </div>
@@ -240,35 +251,35 @@ function DeckInner({ slides, title, subtitle, dashboardHref }) {
 
   return (
     <div
-      className={`min-h-screen bg-gradient-to-br from-sky-100 via-emerald-50 to-violet-100 flex items-center justify-center transition-all ${
+      className={`flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-50 via-amber-50/60 to-emerald-50 transition-all dark:from-slate-950 dark:via-slate-950 dark:to-slate-900 ${
         isFullscreen ? 'p-0' : 'p-2 sm:p-4 lg:p-8'
       }`}
     >
       <div
-        className={`w-full bg-white/70 backdrop-blur border border-white shadow-2xl overflow-hidden flex flex-col transition-all ${
-          isFullscreen ? 'max-w-none rounded-none min-h-screen' : 'max-w-4xl rounded-none sm:rounded-[2rem]'
+        className={`flex w-full flex-col overflow-hidden bg-white/80 shadow-[0_24px_60px_rgba(15,23,42,0.18)] backdrop-blur transition-all dark:bg-slate-900/80 ${
+          isFullscreen ? 'min-h-screen max-w-none rounded-none' : 'max-w-4xl rounded-none border-[3px] border-white sm:rounded-[2rem]'
         }`}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-indigo-500 via-sky-500 to-emerald-500 text-white px-3 py-3 sm:px-6 sm:py-4 flex items-center justify-between gap-2 sm:gap-3">
+        <div className="flex items-center justify-between gap-2 bg-gradient-to-r from-blue-600 via-sky-500 to-emerald-500 px-3 py-3 text-white sm:gap-3 sm:px-6 sm:py-4">
           <div className="min-w-0">
-            <p className="font-black text-sm sm:text-base lg:text-lg leading-tight truncate">{title}</p>
-            {subtitle && <p className="text-[11px] sm:text-sm text-white/85 truncate">{subtitle}</p>}
+            <p className="truncate text-sm font-black leading-tight sm:text-base lg:text-lg">{title}</p>
+            {subtitle && <p className="truncate text-[11px] font-semibold text-white/85 sm:text-sm">{subtitle}</p>}
           </div>
-          <div className="shrink-0 flex items-center gap-2">
+          <div className="flex shrink-0 items-center gap-2">
             <button
               type="button"
               onClick={toggleFullscreen}
               aria-label={isFullscreen ? 'Salir de pantalla completa' : 'Pantalla completa para proyectar'}
               title={isFullscreen ? 'Salir de pantalla completa' : 'Pantalla completa'}
-              className="inline-flex items-center gap-1.5 px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl bg-white/15 hover:bg-white/25 font-bold text-xs sm:text-sm transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-white/20 px-2.5 py-2 text-xs font-extrabold transition hover:bg-white/30 sm:rounded-2xl sm:px-4 sm:py-2.5 sm:text-sm"
             >
               {isFullscreen ? <Minimize size={15} aria-hidden="true" /> : <Maximize size={15} aria-hidden="true" />}
               <span className="hidden sm:inline">{isFullscreen ? 'Salir' : 'Proyectar'}</span>
             </button>
             <a
               href={dashboardHref}
-              className="inline-flex items-center gap-1.5 px-2.5 sm:px-4 py-2 sm:py-2.5 rounded-xl sm:rounded-2xl bg-white/15 hover:bg-white/25 font-bold text-xs sm:text-sm transition-colors"
+              className="inline-flex items-center gap-1.5 rounded-xl bg-white/20 px-2.5 py-2 text-xs font-extrabold transition hover:bg-white/30 sm:rounded-2xl sm:px-4 sm:py-2.5 sm:text-sm"
             >
               <Home size={15} aria-hidden="true" />
               <span className="hidden sm:inline">Panel</span>
@@ -277,27 +288,30 @@ function DeckInner({ slides, title, subtitle, dashboardHref }) {
         </div>
 
         {/* Slide */}
-        <div className={`px-3 py-5 sm:px-8 sm:py-8 lg:px-10 lg:py-10 flex-1 flex flex-col justify-center ${isFullscreen ? 'py-[4vh]' : ''}`}>
-          <div className={`text-center mb-4 ${isFullscreen ? 'text-[6vh] leading-none' : 'text-5xl sm:text-6xl'}`} aria-hidden="true">
+        <div className={`flex flex-1 flex-col justify-center px-3 py-5 sm:px-8 sm:py-8 lg:px-10 ${isFullscreen ? 'py-[4vh]' : ''}`}>
+          <div
+            className={`mb-4 text-center ${isFullscreen ? 'text-[6vh] leading-none' : 'text-5xl sm:text-6xl'}`}
+            aria-hidden="true"
+          >
             {currentSlide.emoji || '✨'}
           </div>
           <SlideBody slide={currentSlide} />
         </div>
 
         {/* Controls */}
-        <div className="px-3 py-3.5 sm:px-6 sm:py-5 bg-slate-50/80 border-t border-slate-100 flex items-center justify-between gap-2 sm:gap-4">
+        <div className="flex items-center justify-between gap-2 border-t-[3px] border-blue-100 bg-blue-50/70 px-3 py-3.5 sm:gap-4 sm:px-6 sm:py-5 dark:border-slate-800 dark:bg-slate-950/60">
           <button
             type="button"
             onClick={() => setCurrent(Math.max(0, current - 1))}
             disabled={current === 0}
-            className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl font-black text-xs sm:text-base text-white bg-gradient-to-r from-indigo-500 to-sky-500 disabled:opacity-40 transition-all"
+            className="btn-clay inline-flex items-center gap-1 bg-gradient-to-r from-blue-600 to-sky-500 px-3 py-2.5 text-xs text-white disabled:opacity-40 sm:gap-2 sm:px-5 sm:py-3 sm:text-base"
           >
             <ChevronLeft size={17} aria-hidden="true" />
             <span className="hidden sm:inline">Anterior</span>
           </button>
 
-          <div className="flex-1 max-w-xs min-w-0 px-1">
-            <div className="flex items-center justify-between text-[10px] sm:text-xs font-black text-slate-500 mb-1">
+          <div className="min-w-0 flex-1 px-1">
+            <div className="mb-1 flex items-center justify-between text-[10px] font-black text-slate-500 sm:text-xs dark:text-slate-400">
               <span>{current + 1} / {total}</span>
               <span>{displayProgress}%</span>
             </div>
@@ -307,10 +321,10 @@ function DeckInner({ slides, title, subtitle, dashboardHref }) {
               aria-valuemin={0}
               aria-valuemax={100}
               aria-label="Progreso de la unidad"
-              className="h-2.5 sm:h-3 bg-slate-200 rounded-full overflow-hidden"
+              className="progress-clay h-2.5 sm:h-3"
             >
               <div
-                className="h-full bg-gradient-to-r from-amber-400 to-emerald-500 rounded-full transition-all duration-300"
+                className="progress-clay-fill"
                 style={{ width: `${displayProgress}%` }}
               />
             </div>
@@ -320,7 +334,7 @@ function DeckInner({ slides, title, subtitle, dashboardHref }) {
             type="button"
             onClick={() => setCurrent(Math.min(total - 1, current + 1))}
             disabled={current === total - 1}
-            className="inline-flex items-center gap-1 sm:gap-2 px-3 sm:px-5 py-2.5 sm:py-3 rounded-xl sm:rounded-2xl font-black text-xs sm:text-base text-white bg-gradient-to-r from-sky-500 to-emerald-500 disabled:opacity-40 transition-all"
+            className="btn-clay inline-flex items-center gap-1 bg-gradient-to-r from-sky-500 to-emerald-500 px-3 py-2.5 text-xs text-white disabled:opacity-40 sm:gap-2 sm:px-5 sm:py-3 sm:text-base"
           >
             {current === total - 1 && <CheckCircle2 size={17} aria-hidden="true" />}
             <span className="hidden sm:inline">Siguiente</span>
