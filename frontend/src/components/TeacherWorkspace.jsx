@@ -84,14 +84,22 @@ export default function TeacherWorkspace() {
       </a>
 
       <header className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white" aria-hidden="true">
-            <GraduationCap size={22} />
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center gap-2 sm:gap-3">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-2xl bg-gradient-to-br from-teal-500 to-emerald-600 flex items-center justify-center text-white" aria-hidden="true">
+            <GraduationCap size={20} />
           </div>
-          <div className="mr-auto">
-            <p className="font-black leading-tight">Plataforma Docente DBA</p>
-            <p className="text-xs text-slate-500 dark:text-slate-400">Hola, {user?.username} {isAdmin ? '• Administración' : ''}</p>
+          <div className="mr-auto min-w-0">
+            <p className="font-black leading-tight text-sm sm:text-base truncate">Plataforma Docente DBA</p>
+            <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 truncate">Hola, {user?.username} {isAdmin ? '• Administración' : ''}</p>
           </div>
+          <a
+            href="/admin"
+            aria-label="Panel administrativo"
+            title="Panel administrativo"
+            className={`p-2.5 rounded-xl bg-indigo-600 text-white hover:bg-indigo-700 transition-colors ${focusRing} ${isAdmin ? '' : 'hidden'}`}
+          >
+            <Layers size={18} aria-hidden="true" />
+          </a>
           <button
             type="button"
             onClick={toggleTheme}
@@ -100,14 +108,6 @@ export default function TeacherWorkspace() {
           >
             {isDark ? <Sun size={20} aria-hidden="true" /> : <Moon size={20} aria-hidden="true" />}
           </button>
-          {isAdmin && (
-            <a
-              href="/admin"
-              className={`hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm bg-indigo-600 text-white hover:bg-indigo-700 transition-colors ${focusRing}`}
-            >
-              <Layers size={16} aria-hidden="true" /> Panel administrativo
-            </a>
-          )}
           <button
             type="button"
             onClick={logout}
@@ -119,7 +119,7 @@ export default function TeacherWorkspace() {
         </div>
       </header>
 
-      <main id="teacher-main" className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+      <main id="teacher-main" className="max-w-6xl mx-auto px-3 sm:px-6 py-5 sm:py-8">
         {error && (
           <div role="alert" className="mb-6 p-4 rounded-2xl bg-rose-50 dark:bg-rose-900/20 border border-rose-200 dark:border-rose-500/30 text-rose-800 dark:text-rose-300 font-semibold">
             {error}
@@ -139,7 +139,7 @@ export default function TeacherWorkspace() {
         ) : (
           <>
             {/* Selector de grados */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8" role="tablist" aria-label="Grados asignados">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8" role="tablist" aria-label="Grados asignados">
               {assignedGrades.map((grade) => {
                 const active = grade.id === activeGradeId;
                 const entry = summary?.grades?.find((g) => g.grade_code === grade.id);
@@ -150,18 +150,18 @@ export default function TeacherWorkspace() {
                     role="tab"
                     aria-selected={active}
                     onClick={() => setActiveGradeId(grade.id)}
-                    className={`text-left rounded-[1.6rem] border-2 p-5 transition-all ${focusRing} ${
+                    className={`text-left rounded-[1.6rem] border-2 p-3.5 sm:p-5 transition-all ${focusRing} ${
                       active
                         ? `border-transparent text-white bg-gradient-to-br ${grade.accent} shadow-lg`
                         : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 hover:border-indigo-300'
                     }`}
                   >
-                    <p className={`text-xs font-black uppercase tracking-widest ${active ? 'text-white/80' : 'text-slate-400'}`}>
+                    <p className={`text-[10px] sm:text-xs font-black uppercase tracking-widest ${active ? 'text-white/80' : 'text-slate-400'}`}>
                       Grado
                     </p>
-                    <p className="text-2xl font-black">{grade.name}</p>
-                    <p className={`text-sm font-bold mt-1 ${active ? 'text-white/90' : 'text-slate-500 dark:text-slate-400'}`}>
-                      {entry ? `${entry.completed_units}/${entry.total_units} unidades vistas` : `${grade.units.length} unidades`}
+                    <p className="text-xl sm:text-2xl font-black">{grade.name}</p>
+                    <p className={`text-xs sm:text-sm font-bold mt-0.5 sm:mt-1 ${active ? 'text-white/90' : 'text-slate-500 dark:text-slate-400'}`}>
+                      {entry ? `${entry.completed_units}/${entry.total_units} vistas` : `${grade.units.length} unidades`}
                     </p>
                   </button>
                 );
@@ -171,7 +171,7 @@ export default function TeacherWorkspace() {
             {activeGrade && (
               <>
                 {/* DBA del grado */}
-                <section aria-labelledby="dba-heading" className="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8 mb-8">
+                <section aria-labelledby="dba-heading" className="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-6 lg:p-8 mb-6 sm:mb-8">
                   <div className="flex items-center gap-3 mb-5">
                     <span className="w-11 h-11 rounded-2xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-300 flex items-center justify-center" aria-hidden="true">
                       <Target size={22} />
@@ -181,20 +181,20 @@ export default function TeacherWorkspace() {
                       <p className="text-sm text-slate-500 dark:text-slate-400">Cartilla MEN · Inglés, grados Transición a 5º de primaria</p>
                     </div>
                   </div>
-                  <ul className="space-y-3">
+                  <ul className="space-y-2.5 sm:space-y-3">
                     {activeGrade.dbas.map((dba) => (
-                      <li key={dba.number} className="flex gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
-                        <span className="shrink-0 w-9 h-9 rounded-xl bg-indigo-600 text-white font-black flex items-center justify-center" aria-hidden="true">
+                      <li key={dba.number} className="flex gap-3 sm:gap-4 p-3 sm:p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/60 border border-slate-100 dark:border-slate-800">
+                        <span className="shrink-0 w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-indigo-600 text-white font-black text-sm sm:text-base flex items-center justify-center" aria-hidden="true">
                           {dba.number}
                         </span>
-                        <p className="font-semibold leading-relaxed text-slate-700 dark:text-slate-200">{dba.text}</p>
+                        <p className="text-sm sm:text-base font-semibold leading-relaxed text-slate-700 dark:text-slate-200">{dba.text}</p>
                       </li>
                     ))}
                   </ul>
                 </section>
 
                 {/* Unidades agrupadas por periodo */}
-                <section aria-labelledby="units-heading" className="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-6 sm:p-8">
+                <section aria-labelledby="units-heading" className="rounded-[2rem] border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 p-4 sm:p-6 lg:p-8">
                   <div className="flex items-center gap-3 mb-5">
                     <span className="w-11 h-11 rounded-2xl bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-300 flex items-center justify-center" aria-hidden="true">
                       <BookOpenCheck size={22} />
@@ -216,50 +216,50 @@ export default function TeacherWorkspace() {
                             const state = activeSummaryGrade?.modules?.find((m) => m.week_number === unit.week);
                             const percent = Math.round(state?.completion_percent || 0);
                             return (
-                              <li key={unit.week} className={`p-5 rounded-2xl border-2 transition-all ${
+                              <li key={unit.week} className={`p-3.5 sm:p-5 rounded-2xl border-2 transition-all ${
                                 unit.ready === false
                                   ? 'border-dashed border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/50'
                                   : 'border-slate-100 dark:border-slate-800 hover:border-indigo-300 dark:hover:border-indigo-500'
                               }`}>
                                 <div className="flex flex-col sm:flex-row sm:items-center gap-4">
                                   <div className="min-w-0 flex-1">
-                                    <div className="flex flex-wrap items-center gap-2 mb-1">
-                                      <span className="px-2.5 py-1 rounded-full text-[11px] font-black bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300">
+                                    <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-1">
+                                      <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-black bg-indigo-100 dark:bg-indigo-900/50 text-indigo-700 dark:text-indigo-300">
                                         Unidad {unit.week}
                                       </span>
-                                      <span className="px-2.5 py-1 rounded-full text-[11px] font-black bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30">
+                                      <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-black bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 border border-amber-200 dark:border-amber-500/30">
                                         DBA {unit.dba}
                                       </span>
                                       {unit.ready === false ? (
-                                        <span className="px-2.5 py-1 rounded-full text-[11px] font-black bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
+                                        <span className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-black bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 border border-slate-200 dark:border-slate-700">
                                           🛠 En preparación
                                         </span>
                                       ) : (
-                                        <span className={`px-2.5 py-1 rounded-full text-[11px] font-black border ${statusTone(state?.status)}`}>
+                                        <span className={`px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-[11px] font-black border ${statusTone(state?.status)}`}>
                                           {percent}% visto
                                         </span>
                                       )}
                                     </div>
-                                    <p className="font-black text-lg leading-tight">{unit.title}</p>
-                                    <p className="text-sm text-slate-500 dark:text-slate-400">{unit.subtitle}</p>
+                                    <p className="font-black text-base sm:text-lg leading-tight">{unit.title}</p>
+                                    <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">{unit.subtitle}</p>
                                   </div>
                                   {unit.ready === false ? (
                                     <button
                                       type="button"
                                       disabled
                                       title="Contenido en preparación"
-                                      className="shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-2xl font-black bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 cursor-not-allowed"
+                                      className="shrink-0 inline-flex items-center gap-2 px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-2xl font-black text-sm sm:text-base bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 cursor-not-allowed"
                                     >
-                                      <Presentation size={18} aria-hidden="true" /> Pronto
+                                      <Presentation size={17} aria-hidden="true" /> Pronto
                                     </button>
                                   ) : (
                                     <button
                                       type="button"
                                       onClick={() => setDeckUnit(unit)}
-                                      className={`shrink-0 inline-flex items-center gap-2 px-5 py-3 rounded-2xl font-black text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 transition-all ${focusRing}`}
+                                      className={`w-full sm:w-auto shrink-0 inline-flex items-center justify-center gap-2 px-3.5 sm:px-5 py-2.5 sm:py-3 rounded-2xl font-black text-sm sm:text-base text-white bg-gradient-to-r from-indigo-600 to-violet-600 hover:from-indigo-700 hover:to-violet-700 active:scale-95 transition-all ${focusRing}`}
                                     >
-                                      <Presentation size={18} aria-hidden="true" /> Abrir slides
-                                      <ChevronRight size={16} aria-hidden="true" />
+                                      <Presentation size={17} aria-hidden="true" /> Abrir slides
+                                      <ChevronRight size={15} aria-hidden="true" />
                                     </button>
                                   )}
                                 </div>

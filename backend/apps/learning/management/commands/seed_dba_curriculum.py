@@ -76,9 +76,9 @@ DBAS = {
     ],
 }
 
-# Plan anual completo: 4 periodos x 2 unidades por grado.
+# Plan anual completo: 4 periodos x 2 unidades por grado (32 unidades).
 # `dba_number` referencia la lista DBAS (o None para referentes de Jardin).
-# `ready` marca las unidades con slides terminadas en el frontend.
+# Todas las unidades tienen slides en el frontend (unitSlides.js).
 UNITS = {
     'jardin': [
         {'week_number': 1, 'period': 1, 'dba_number': None, 'ready': True,
@@ -202,8 +202,6 @@ class Command(BaseCommand):
                     dba_list[dba_number - 1] if dba_number and 1 <= dba_number <= len(dba_list) else ''
                 )
                 subtitle = unit['subtitle']
-                if not unit.get('ready') and 'En preparación' not in subtitle:
-                    subtitle = f"{subtitle} — en preparación"
                 _, module_created = Module.objects.update_or_create(
                     grade=grade,
                     week_number=unit['week_number'],

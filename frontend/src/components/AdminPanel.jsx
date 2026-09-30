@@ -169,7 +169,7 @@ export default function AdminPanel() {
           return (
             <label
               key={code}
-              className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border-2 cursor-pointer text-sm font-bold transition-all ${
+              className={`flex items-center gap-2 px-3 py-2.5 rounded-xl border-2 cursor-pointer text-xs sm:text-sm font-bold transition-all ${
                 selected
                   ? 'border-indigo-500 bg-indigo-50 dark:bg-indigo-900/40 text-indigo-700 dark:text-indigo-200'
                   : 'border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-indigo-300'
@@ -200,13 +200,13 @@ export default function AdminPanel() {
       </a>
 
       <header className="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white" aria-hidden="true">
-            <Layers size={22} />
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 py-2.5 sm:py-3 flex items-center gap-2 sm:gap-3">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white" aria-hidden="true">
+            <Layers size={20} />
           </div>
-          <div className="mr-auto">
-            <p className="font-black leading-tight">Administración General</p>
-            <p className="text-xs text-slate-500 dark:text-slate-400">Institución · {user?.username}</p>
+          <div className="mr-auto min-w-0">
+            <p className="font-black leading-tight text-sm sm:text-base truncate">Administración General</p>
+            <p className="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 truncate">Institución · {user?.username}</p>
           </div>
           <button
             type="button"
@@ -218,9 +218,11 @@ export default function AdminPanel() {
           </button>
           <a
             href="/docente"
-            className={`hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm bg-teal-600 text-white hover:bg-teal-700 transition-colors ${focusRing}`}
+            aria-label="Panel docente"
+            title="Panel docente"
+            className={`p-2.5 rounded-xl bg-teal-600 text-white hover:bg-teal-700 transition-colors ${focusRing}`}
           >
-            <GraduationCap size={16} aria-hidden="true" /> Panel docente
+            <GraduationCap size={18} aria-hidden="true" />
           </a>
           <button
             type="button"
@@ -233,7 +235,7 @@ export default function AdminPanel() {
         </div>
       </header>
 
-      <main id="admin-main" className="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+      <main id="admin-main" className="max-w-6xl mx-auto px-3 sm:px-6 py-5 sm:py-8">
         {error && (
           <div
             role="alert"
@@ -251,11 +253,11 @@ export default function AdminPanel() {
           </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Crear docente */}
-          <div className="rounded-[2rem] p-6 sm:p-8 border shadow-xl bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
-            <h2 className="text-2xl font-black mb-6 flex items-center gap-2">
-              <Plus size={24} aria-hidden="true" /> Crear docente
+          <div className="rounded-[2rem] p-4 sm:p-6 lg:p-8 border shadow-xl bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
+            <h2 className="text-xl sm:text-2xl font-black mb-5 sm:mb-6 flex items-center gap-2">
+              <Plus size={22} aria-hidden="true" /> Crear docente
             </h2>
             <form onSubmit={handleCreateTeacher} className="space-y-4" aria-busy={creating}>
               <div>
@@ -311,12 +313,12 @@ export default function AdminPanel() {
           </div>
 
           {/* Lista de docentes */}
-          <div className="lg:col-span-2 rounded-[2rem] p-6 sm:p-8 border shadow-xl bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
-              <h2 className="text-2xl font-black flex items-center gap-2">
-                <GraduationCap size={24} aria-hidden="true" /> Docentes ({teachers.length})
+          <div className="lg:col-span-2 rounded-[2rem] p-4 sm:p-6 lg:p-8 border shadow-xl bg-white dark:bg-slate-900 border-slate-200 dark:border-slate-700">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4 mb-5 sm:mb-6">
+              <h2 className="text-xl sm:text-2xl font-black flex items-center gap-2">
+                <GraduationCap size={22} aria-hidden="true" /> Docentes ({teachers.length})
               </h2>
-              <div className="relative sm:w-72">
+              <div className="relative">
                 <label htmlFor="teacher-search" className="sr-only">Buscar docentes</label>
                 <Search size={16} aria-hidden="true" className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
