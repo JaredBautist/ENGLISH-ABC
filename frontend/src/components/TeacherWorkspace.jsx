@@ -145,6 +145,43 @@ export default function TeacherWorkspace() {
           </div>
         ) : (
           <>
+            {/* Material didáctico del grado activo */}
+            {activeGrade && (
+              <section aria-labelledby="material-heading" className="mb-6 sm:mb-8">
+                <h2 id="material-heading" className="mb-3 text-xs font-black uppercase tracking-widest text-slate-400 sm:text-sm dark:text-slate-500">
+                  Material didáctico — {activeGrade.name}
+                </h2>
+                <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
+                  {[
+                    { href: `/docente/videos?grado=${activeGrade.id}`, icon: Play, title: 'Videos', description: 'Canciones y videos para proyectar', tone: 'from-rose-400 to-pink-600', shadow: 'rgba(190,18,60,0.3)' },
+                    { href: `/docente/listening?grado=${activeGrade.id}`, icon: Headphones, title: 'Listening', description: 'Actividades de escucha interactivas', tone: 'from-blue-500 to-sky-600', shadow: 'rgba(29,78,216,0.3)' },
+                    { href: `/docente/writing?grado=${activeGrade.id}`, icon: PenLine, title: 'Writing', description: 'Escritura guiada y libre con modelos', tone: 'from-emerald-400 to-teal-600', shadow: 'rgba(15,118,110,0.3)' },
+                  ].map((material) => {
+                    const Icon = material.icon;
+                    return (
+                      <a
+                        key={material.href}
+                        href={material.href}
+                        className={`card-clay card-clay-hover flex items-center gap-3.5 p-4 sm:flex-col sm:items-start sm:gap-3 sm:p-5 ${focusRing}`}
+                      >
+                        <span
+                          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${material.tone} text-white shadow-[0_4px_0_var(--mat-shadow)]`}
+                          style={{ '--mat-shadow': material.shadow }}
+                        >
+                          <Icon size={21} aria-hidden="true" />
+                        </span>
+                        <span className="min-w-0">
+                          <span className="block font-black sm:text-lg">{material.title}</span>
+                          <span className="block text-xs font-semibold text-slate-500 dark:text-slate-400 sm:text-sm">{material.description}</span>
+                        </span>
+                        <ChevronRight size={18} className="ml-auto shrink-0 text-slate-300 sm:hidden" aria-hidden="true" />
+                      </a>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
+
             {/* Selector de grados */}
             <div className="mb-6 grid grid-cols-2 gap-3 sm:mb-8 sm:gap-4 lg:grid-cols-4" role="tablist" aria-label="Grados asignados">
               {assignedGrades.map((grade) => {
@@ -269,41 +306,6 @@ export default function TeacherWorkspace() {
                       Avance del grado: {activeSummaryGrade.overall_percent}%
                     </p>
                   )}
-                </section>
-
-                {/* Material didáctico */}
-                <section aria-labelledby="material-heading" className="mt-6 sm:mt-8">
-                  <h2 id="material-heading" className="mb-3 text-xs font-black uppercase tracking-widest text-slate-400 sm:text-sm dark:text-slate-500">
-                    Material didáctico — {activeGrade.name}
-                  </h2>
-                  <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
-                    {[
-                      { href: '/docente/videos', icon: Play, title: 'Videos', description: 'Canciones y videos para proyectar', tone: 'from-rose-400 to-pink-600', shadow: 'rgba(190,18,60,0.3)' },
-                      { href: '/docente/listening', icon: Headphones, title: 'Listening', description: 'Actividades de escucha interactivas', tone: 'from-blue-500 to-sky-600', shadow: 'rgba(29,78,216,0.3)' },
-                      { href: '/docente/writing', icon: PenLine, title: 'Writing', description: 'Escritura guiada y libre con modelos', tone: 'from-emerald-400 to-teal-600', shadow: 'rgba(15,118,110,0.3)' },
-                    ].map((material) => {
-                      const Icon = material.icon;
-                      return (
-                        <a
-                          key={material.href}
-                          href={material.href}
-                          className={`card-clay card-clay-hover flex items-center gap-3.5 p-4 sm:flex-col sm:items-start sm:gap-3 sm:p-5 ${focusRing}`}
-                        >
-                          <span
-                            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br ${material.tone} text-white shadow-[0_4px_0_var(--mat-shadow)]`}
-                            style={{ '--mat-shadow': material.shadow }}
-                          >
-                            <Icon size={21} aria-hidden="true" />
-                          </span>
-                          <span className="min-w-0">
-                            <span className="block font-black sm:text-lg">{material.title}</span>
-                            <span className="block text-xs font-semibold text-slate-500 dark:text-slate-400 sm:text-sm">{material.description}</span>
-                          </span>
-                          <ChevronRight size={18} className="ml-auto shrink-0 text-slate-300 sm:hidden" aria-hidden="true" />
-                        </a>
-                      );
-                    })}
-                  </div>
                 </section>
               </>
             )}

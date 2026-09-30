@@ -4,10 +4,26 @@ import {
 } from 'lucide-react';
 import MaterialShell from './MaterialShell';
 import { getListening, getVideos, getWriting } from '../data/material';
+import { gradeOrder } from '../data/grados';
 
 function useActiveGrade() {
-  const [activeGrade, setActiveGrade] = useState('jardin');
-  return [activeGrade, setActiveGrade];
+  const initial = gradeOrder.includes(window.location.search.split('grado=')[1]?.split('&')[0])
+    ? window.location.search.split('grado=')[1].split('&')[0]
+    : 'jardin';
+  const [activeGrade, setActiveGrade] = useState(initial);
+
+  const selectGrade = (gradeId) => {
+    setActiveGrade(gradeId);
+    try {
+      const url = new URL(window.location);
+      url.searchParams.set('grado', gradeId);
+      window.history.replaceState({}, '', url);
+    } catch {
+      /* URL sync is a nice-to-have */
+    }
+  };
+
+  return [activeGrade, selectGrade];
 }
 
 /* ================= VIDEOS ================= */
