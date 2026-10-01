@@ -7,6 +7,7 @@ from .views import (
     ModuleListView,
     TeacherMeSummaryView,
     TeacherProgressMeView,
+    TTSView,
 )
 
 urlpatterns = [
@@ -17,4 +18,5 @@ urlpatterns = [
     path('admin/overview/', AdminOverviewView.as_view(), name='admin-overview'),
     path('admin/teachers/', AdminTeacherListCreateView.as_view(), name='admin-teachers'),
     path('admin/teachers/<int:teacher_id>/', AdminTeacherDetailView.as_view(), name='admin-teacher-detail'),
+    path('tts/', TTSView.as_view(), name='tts-audio'),
 ]

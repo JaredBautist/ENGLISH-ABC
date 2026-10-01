@@ -22,13 +22,10 @@ export default function LoginForm({ darkMode = false }) {
   const emailDescription = [emailError ? 'email-error' : '', hasAuthError ? 'auth-error' : ''].filter(Boolean).join(' ') || undefined;
   const passwordDescription = [passwordError ? 'password-error' : '', hasAuthError ? 'auth-error' : ''].filter(Boolean).join(' ') || undefined;
 
-  const fieldBase = `h-12 rounded-2xl !pl-12 pr-4 text-base shadow-sm transition-colors focus:ring-2 ${
-    darkMode
-      ? 'bg-[#0f172a]/75 text-slate-100 placeholder:text-slate-500 focus:border-[#818cf8] focus:ring-[#6366f1]/25'
-      : 'bg-white text-slate-950 placeholder:text-slate-400 focus:border-[#0f766e] focus:ring-[#0f766e]/20'
-  }`;
-  const fieldNormal = darkMode ? 'border-slate-700' : 'border-slate-300';
-  const fieldInvalid = 'border-red-400 focus:border-red-400 focus:ring-red-500/20';
+  // El estilo clay (borde 3px, esquinas redondeadas, foco azul) vive ahora
+  // en el primitivo shared/ui/Input; aquí solo los overrides del formulario.
+  const fieldBase = '!pl-12 pr-4';
+  const fieldInvalid = '!border-red-400 focus:!border-red-400 focus:ring-red-500/20';
   const iconTone = darkMode ? 'text-slate-400' : 'text-slate-500';
   const labelTone = darkMode ? 'text-slate-200' : 'text-slate-800';
 
@@ -63,7 +60,7 @@ export default function LoginForm({ darkMode = false }) {
             required
             aria-invalid={Boolean(emailError || hasAuthError)}
             aria-describedby={emailDescription}
-            className={`${fieldBase} ${emailError || hasAuthError ? fieldInvalid : fieldNormal}`}
+            className={`${fieldBase} ${emailError || hasAuthError ? fieldInvalid : ''}`}
           />
         </div>
         {emailError && (
@@ -92,7 +89,7 @@ export default function LoginForm({ darkMode = false }) {
             required
             aria-invalid={Boolean(passwordError || hasAuthError)}
             aria-describedby={passwordDescription}
-            className={`${fieldBase} !pr-12 ${passwordError || hasAuthError ? fieldInvalid : fieldNormal}`}
+            className={`${fieldBase} !pr-12 ${passwordError || hasAuthError ? fieldInvalid : ''}`}
           />
           <button
             type="button"
@@ -136,19 +133,19 @@ export default function LoginForm({ darkMode = false }) {
       )}
 
       <div className="flex items-center gap-3 pt-1">
-        <label className="flex min-h-11 cursor-pointer items-center gap-3">
+        <label htmlFor="rememberMe" className="flex min-h-11 cursor-pointer select-none items-center gap-3">
           <input
             id="rememberMe"
             type="checkbox"
             checked={formState.rememberMe}
             onChange={(event) => updateField('rememberMe', event.target.checked)}
             disabled={isLoading}
-            className={`h-5 w-5 rounded-md border text-[#0f766e] focus:ring-[#0f766e] ${
-              darkMode ? 'border-slate-600 bg-[#0f172a]' : 'border-slate-300 bg-white'
+            className={`h-5 w-5 rounded-lg border text-blue-600 focus:ring-blue-500/40 cursor-pointer ${
+              darkMode ? 'border-slate-600 bg-[#0f172a]' : 'border-blue-200 bg-white'
             }`}
             aria-label="Recordarme"
           />
-          <span className={`text-sm font-medium ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
+          <span className={`text-sm font-semibold cursor-pointer ${darkMode ? 'text-slate-300' : 'text-slate-700'}`}>
             Recordarme
           </span>
         </label>
@@ -157,7 +154,7 @@ export default function LoginForm({ darkMode = false }) {
       <Button
         type="submit"
         disabled={isLoading}
-        className="h-12 w-full rounded-2xl bg-gradient-to-r from-[#0f766e] to-[#0ea5a4] text-base font-bold text-white shadow-[0_14px_28px_rgba(15,118,110,0.28)] transition-all duration-200 hover:-translate-y-0.5 hover:from-[#0d9488] hover:to-[#14b8a6] hover:shadow-[0_18px_32px_rgba(15,118,110,0.36)] disabled:translate-y-0"
+        className="h-12 w-full rounded-2xl border-2 border-blue-300 bg-gradient-to-br from-blue-100 via-sky-100 to-cyan-100 text-base font-black text-blue-800 shadow-[0_4px_0_rgba(37,99,235,0.25),0_10px_20px_rgba(59,130,246,0.25),inset_0_2px_0_rgba(255,255,255,0.7)] transition-all duration-200 hover:-translate-y-0.5 hover:from-blue-200 hover:via-sky-200 hover:to-cyan-200 hover:shadow-[0_6px_0_rgba(37,99,235,0.25),0_14px_24px_rgba(59,130,246,0.3),inset_0_2px_0_rgba(255,255,255,0.7)] active:translate-y-0.5 active:shadow-[0_2px_0_rgba(37,99,235,0.25)] disabled:translate-y-0"
       >
         {isLoading ? (
           <>

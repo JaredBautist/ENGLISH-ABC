@@ -1,6 +1,6 @@
-# Plataforma Docente DBA — English Platform
+# English From Scratch
 
-Herramienta institucional de apoyo para la enseñanza del inglés en colegios colombianos. Los **docentes** son los usuarios de la plataforma: proyectan en clase lecciones alineadas a los **DBA (Derechos Básicos de Aprendizaje)** del MEN para los grados **Jardín, Transición, 1° y 2° de primaria**. La **administración general** crea los docentes y les asigna el grado que dictan.
+Nombre oficial de la plataforma: **English From Scratch**. Herramienta institucional de apoyo para la enseñanza del inglés en colegios colombianos. Los **docentes** son los usuarios de la plataforma: proyectan en clase lecciones alineadas a los **DBA (Derechos Básicos de Aprendizaje)** del MEN para los grados **Jardín, Transición, 1° y 2° de primaria**. La **administración general** crea los docentes y les asigna el grado que dictan.
 
 ## Stack
 
@@ -8,6 +8,7 @@ Herramienta institucional de apoyo para la enseñanza del inglés en colegios co
 - Backend: Python 3.12, Django 5.2, Django REST Framework, SimpleJWT.
 - Base de datos local: MySQL 8.0 en Docker con volumen persistente.
 - Tests: Vitest/Testing Library (frontend) y tests Django (backend).
+- Ilustraciones de slides: [OpenMoji](https://openmoji.org) (CC BY-SA 4.0), servidas localmente desde `frontend/public/openmoji/` — funcionan sin internet en el salón.
 
 ## Start local
 

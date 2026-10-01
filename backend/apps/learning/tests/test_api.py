@@ -1,3 +1,5 @@
+from unittest.mock import MagicMock, patch
+
 from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -166,6 +168,16 @@ class LearningApiTests(APITestCase):
         self.assertGreater(response.data['teachers'][0]['coverage_percent'], 0)
         grade_codes = {g['code'] for g in response.data['grades']}
         self.assertEqual(grade_codes, {'primero', 'segundo'})
+        primero_row = next(g for g in response.data['grades'] if g['code'] == 'primero')
+        self.assertEqual(primero_row['teacher_count'], 1)
+        self.assertEqual(primero_row['units_completed'], 1)
+        self.assertEqual(len(primero_row['teachers']), 1)
+        self.assertEqual(primero_row['teachers'][0]['username'], self.teacher.username)
+        self.assertEqual(primero_row['avg_completion'], 100.0)
+
+        segundo_row = next(g for g in response.data['grades'] if g['code'] == 'segundo')
+        self.assertEqual(segundo_row['teacher_count'], 0)
+        self.assertEqual(segundo_row['avg_completion'], 0.0)
 
     def test_teacher_cannot_access_admin_overview(self):
         self.auth(self.teacher)
@@ -182,3 +194,23 @@ class LearningApiTests(APITestCase):
         self.assertEqual(entry['grade_code'], 'primero')
         self.assertEqual(entry['modules'][0]['dba_number'], 1)
         self.assertIn('instrucciones', entry['modules'][0]['dba_text'])
+
+    def test_tts_requires_text(self):
+        response = self.client.get(reverse('tts-audio'))
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    def test_tts_rejects_long_text(self):
+        response = self.client.get(reverse('tts-audio'), {'text': 'a' * 305})
+        self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+    @patch('urllib.request.urlopen')
+    def test_tts_returns_audio_and_caches(self, mock_urlopen):
+        mock_cm = MagicMock()
+        mock_cm.__enter__.return_value.read.return_value = b'ID3dummy-mp3-data'
+        mock_urlopen.return_value = mock_cm
+
+        response = self.client.get(reverse('tts-audio'), {'text': 'Hello classroom test'})
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertEqual(response['Content-Type'], 'audio/mpeg')
+        self.assertEqual(response.content, b'ID3dummy-mp3-data')
+

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import {
-  AlertCircle, BarChart3, Edit2, GraduationCap, Layers, LogOut, Moon, Plus, Save, Search, Sun, Users, X,
+  AlertCircle, BarChart3, Edit2, GraduationCap, Layers, LogOut, Moon, Plus, RefreshCw, Save, Search, Sun, Users, X,
 } from 'lucide-react';
 import { useAuth } from '../features/auth/hooks/useAuth';
 import { useTheme } from '../features/theme/ThemeProvider';
@@ -32,6 +32,7 @@ export default function AdminPanel() {
   const [overview, setOverview] = useState(null);
   const [activeTab, setActiveTab] = useState('overview');
   const [loading, setLoading] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const [error, setError] = useState('');
   const [search, setSearch] = useState('');
   const [createForm, setCreateForm] = useState({ username: '', email: '', password: '', grade_codes: ['primero'] });
@@ -42,10 +43,26 @@ export default function AdminPanel() {
 
   useEffect(() => {
     loadTeachers();
+
+    // Auto-sync polling every 10 seconds and on window focus
+    const interval = setInterval(() => {
+      loadTeachers(true);
+    }, 10000);
+
+    const onFocus = () => {
+      loadTeachers(true);
+    };
+    window.addEventListener('focus', onFocus);
+
+    return () => {
+      clearInterval(interval);
+      window.removeEventListener('focus', onFocus);
+    };
   }, []);
 
-  const loadTeachers = async () => {
-    setLoading(true);
+  const loadTeachers = async (silent = false) => {
+    if (!silent) setLoading(true);
+    else setIsRefreshing(true);
     try {
       const [teacherData, overviewData] = await Promise.all([
         apiFetch('/admin/teachers/'),
@@ -55,10 +72,13 @@ export default function AdminPanel() {
       setOverview(overviewData);
       setError('');
     } catch (err) {
-      setError('Error cargando datos institucionales');
+      if (!silent) {
+        setError('Error cargando datos institucionales');
+      }
       console.error(err);
     } finally {
-      setLoading(false);
+      if (!silent) setLoading(false);
+      else setIsRefreshing(false);
     }
   };
 
@@ -223,7 +243,7 @@ export default function AdminPanel() {
 
       <header className="sticky top-0 z-40 border-b-2 border-blue-100 bg-white/90 backdrop-blur dark:border-slate-800 dark:bg-slate-950/90">
         <div className="mx-auto flex max-w-6xl items-center gap-2.5 px-3 py-2.5 sm:gap-3 sm:px-6 sm:py-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-gradient-to-br from-indigo-500 to-violet-700 text-white shadow-[0_4px_0_rgba(76,29,149,0.35)]">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border-2 border-indigo-300 bg-indigo-100 text-indigo-700 shadow-[0_4px_0_rgba(99,102,241,0.25),0_10px_20px_rgba(99,102,241,0.25),inset_0_2px_0_rgba(255,255,255,0.65)]">
             <Layers size={21} aria-hidden="true" />
           </div>
           <div className="mr-auto min-w-0">
@@ -236,15 +256,24 @@ export default function AdminPanel() {
             href="/docente"
             aria-label="Panel docente"
             title="Panel docente"
-            className={`rounded-2xl bg-teal-600 p-2.5 text-white shadow-[0_4px_0_rgba(15,118,110,0.35)] transition-all hover:-translate-y-0.5 ${focusRing}`}
+            className={`inline-flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-teal-300 bg-teal-100 p-0 text-teal-700 shadow-[0_4px_0_rgba(20,184,166,0.25),0_10px_20px_rgba(20,184,166,0.25),inset_0_2px_0_rgba(255,255,255,0.65)] transition-all hover:-translate-y-0.5 ${focusRing}`}
           >
             <GraduationCap size={18} aria-hidden="true" />
           </a>
           <button
             type="button"
+            onClick={() => loadTeachers(false)}
+            aria-label="Actualizar datos en tiempo real"
+            title="Actualizar datos en tiempo real"
+            className={`inline-flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-blue-100 bg-white p-0 text-slate-600 transition-all hover:-translate-y-0.5 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 ${focusRing}`}
+          >
+            <RefreshCw size={18} className={isRefreshing ? 'animate-spin text-blue-600' : ''} aria-hidden="true" />
+          </button>
+          <button
+            type="button"
             onClick={toggleTheme}
             aria-label={isDark ? 'Modo claro' : 'Modo oscuro'}
-            className={`rounded-2xl border-2 border-blue-100 bg-white p-2.5 text-slate-600 transition-all hover:-translate-y-0.5 dark:border-slate-700 dark:bg-slate-900 dark:text-amber-300 ${focusRing}`}
+            className={`inline-flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-blue-100 bg-white p-0 text-slate-600 transition-all hover:-translate-y-0.5 dark:border-slate-700 dark:bg-slate-900 dark:text-amber-300 ${focusRing}`}
           >
             {isDark ? <Sun size={19} aria-hidden="true" /> : <Moon size={19} aria-hidden="true" />}
           </button>
@@ -252,7 +281,7 @@ export default function AdminPanel() {
             type="button"
             onClick={logout}
             aria-label="Cerrar sesión"
-            className={`rounded-2xl border-2 border-rose-100 bg-white p-2.5 text-rose-600 transition-all hover:-translate-y-0.5 dark:border-rose-500/20 dark:bg-slate-900 dark:text-rose-400 ${focusRing}`}
+            className={`inline-flex h-11 w-11 items-center justify-center rounded-2xl border-2 border-rose-100 bg-white p-0 text-rose-600 transition-all hover:-translate-y-0.5 dark:border-rose-500/20 dark:bg-slate-900 dark:text-rose-400 ${focusRing}`}
           >
             <LogOut size={19} aria-hidden="true" />
           </button>
@@ -270,7 +299,7 @@ export default function AdminPanel() {
               type="button"
               onClick={() => setError('')}
               aria-label="Descartar error"
-              className={`shrink-0 rounded-lg p-1 hover:bg-rose-100 dark:hover:bg-rose-500/20 ${focusRing}`}
+              className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl hover:bg-rose-100 dark:hover:bg-rose-500/20 ${focusRing}`}
             >
               <X size={18} aria-hidden="true" />
             </button>
@@ -306,8 +335,28 @@ export default function AdminPanel() {
         {/* ===== RESUMEN INSTITUCIONAL ===== */}
         {activeTab === 'overview' && (
           <section aria-label="Resumen institucional" className="animate-fadeIn">
+            <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+              <div className="flex items-center gap-2">
+                <span className="relative flex h-3 w-3">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex h-3 w-3 rounded-full bg-emerald-500"></span>
+                </span>
+                <span className="text-xs font-black uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  Sincronización en vivo activada
+                </span>
+              </div>
+              <button
+                type="button"
+                onClick={() => loadTeachers(false)}
+                className={`inline-flex items-center gap-1.5 rounded-xl border border-blue-200 bg-white px-3 py-1.5 text-xs font-black text-blue-600 shadow-sm transition-all hover:-translate-y-0.5 hover:bg-blue-50 dark:border-slate-700 dark:bg-slate-800 dark:text-blue-400 ${focusRing}`}
+              >
+                <RefreshCw size={13} className={isRefreshing ? 'animate-spin' : ''} aria-hidden="true" />
+                <span>Actualizar datos</span>
+              </button>
+            </div>
+
             {/* Métricas */}
-            <div className="mb-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-5">
+            <div className="mb-6 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 md:grid-cols-5">
               {[
                 { label: 'Docentes', value: overview?.totals?.teachers ?? 0, tone: 'from-indigo-500 to-violet-600', shadow: 'rgba(76,29,149,0.35)' },
                 { label: 'Activos', value: overview?.totals?.active_teachers ?? 0, tone: 'from-emerald-400 to-teal-600', shadow: 'rgba(15,118,110,0.35)' },
@@ -328,24 +377,78 @@ export default function AdminPanel() {
 
             {/* Cobertura por grado */}
             <div className="card-clay mb-6 p-4 sm:p-6">
-              <h3 className="mb-4 text-lg font-black sm:text-xl">Cobertura por grado</h3>
+              <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
+                <div>
+                  <h3 className="text-lg font-black sm:text-xl">Cobertura por grado</h3>
+                  <p className="text-xs font-semibold text-slate-500 dark:text-slate-400">
+                    Avance ponderado según la cantidad de docentes asignados a cada grado
+                  </p>
+                </div>
+              </div>
               <ul className="grid gap-3 sm:grid-cols-2">
-                {(overview?.grades || []).map((grade) => (
-                  <li key={grade.code} className="rounded-2xl border-[3px] border-blue-50 bg-white p-4 dark:border-slate-800 dark:bg-slate-900/70">
-                    <div className="mb-2 flex items-center justify-between gap-2">
-                      <span className={`inline-flex h-8 items-center rounded-xl bg-gradient-to-r ${gradeTone[grade.code]} px-3 text-sm font-black text-white`}>
-                        {grade.name}
-                      </span>
-                      <span className="badge-clay badge-clay-blue">{grade.teacher_count} docente(s)</span>
-                    </div>
-                    <p className="text-xs font-bold text-slate-500 dark:text-slate-400">
-                      {grade.total_units} unidades · {grade.units_completed} completadas · avance {grade.avg_completion}%
-                    </p>
-                    <div className="progress-clay mt-2 h-2.5">
-                      <div className="progress-clay-fill" style={{ width: `${Math.min(100, grade.avg_completion)}%` }} />
-                    </div>
-                  </li>
-                ))}
+                {(overview?.grades || []).map((grade) => {
+                  const hasTeachers = grade.teacher_count > 0;
+                  return (
+                    <li key={grade.code} className="rounded-2xl border-[3px] border-blue-50 bg-white p-4 transition-all hover:border-blue-200 dark:border-slate-800 dark:bg-slate-900/70 sm:p-5">
+                      <div className="mb-2.5 flex items-center justify-between gap-2">
+                        <span className={`inline-flex h-8 items-center rounded-xl bg-gradient-to-r ${gradeTone[grade.code]} px-3 text-sm font-black text-white shadow-sm`}>
+                          {grade.name}
+                        </span>
+                        {hasTeachers ? (
+                          <span className="badge-clay badge-clay-blue">
+                            {grade.teacher_count} {grade.teacher_count === 1 ? 'docente' : 'docentes'}
+                          </span>
+                        ) : (
+                          <span className="badge-clay badge-clay-amber">
+                            Sin docentes
+                          </span>
+                        )}
+                      </div>
+
+                      <div className="mb-2">
+                        {hasTeachers ? (
+                          <p className="text-xs font-bold text-slate-600 dark:text-slate-300 sm:text-sm">
+                            <span className="font-black text-slate-800 dark:text-slate-100">{grade.units_completed} de {grade.expected_units || grade.total_units}</span> metas completadas ({grade.teacher_count} {grade.teacher_count === 1 ? 'docente' : 'docentes'} × 8 unid.) · <span className="font-black text-blue-600 dark:text-blue-400">avance {grade.avg_completion}%</span>
+                          </p>
+                        ) : (
+                          <p className="text-xs font-semibold text-slate-400 dark:text-slate-500">
+                            8 unidades en currículo · Sin docentes asignados · avance 0%
+                          </p>
+                        )}
+                      </div>
+
+                      <div className="progress-clay h-2.5">
+                        <div className="progress-clay-fill" style={{ width: `${Math.min(100, grade.avg_completion)}%` }} />
+                      </div>
+
+                      {/* Desglose por docente para análisis institucional */}
+                      {hasTeachers && grade.teachers?.length > 0 && (
+                        <div className="mt-3.5 border-t border-slate-100 pt-3 dark:border-slate-800/80">
+                          <p className="mb-1.5 text-[11px] font-black uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                            {grade.teachers.length === 1 ? 'Docente a cargo:' : 'Avance individual por docente:'}
+                          </p>
+                          <div className="flex flex-wrap gap-1.5">
+                            {grade.teachers.map((t) => (
+                              <div
+                                key={t.id}
+                                className="inline-flex items-center gap-1.5 rounded-xl border border-blue-100 bg-blue-50/70 px-2.5 py-1 text-xs font-bold text-slate-700 dark:border-slate-800 dark:bg-slate-800/80 dark:text-slate-200"
+                              >
+                                <span className="font-black text-blue-700 dark:text-blue-400">{t.username}:</span>
+                                <span>{t.units_completed}/{t.total_units || 8} ({t.completion_percent}%)</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {!hasTeachers && (
+                        <p className="mt-3 border-t border-slate-100 pt-2 text-[11px] font-bold text-amber-600 dark:border-slate-800/80 dark:text-amber-400">
+                          ℹ️ Asigna docentes en la pestaña &quot;Docentes&quot; para habilitar el registro de avance.
+                        </p>
+                      )}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 
@@ -404,7 +507,7 @@ export default function AdminPanel() {
           {/* Crear docente */}
           <div className="card-clay h-fit p-4 sm:p-6 lg:p-8">
             <h2 className="mb-5 flex items-center gap-2 text-xl font-black sm:mb-6 sm:text-2xl">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 text-white shadow-[0_3px_0_rgba(29,78,216,0.35)]">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-blue-300 bg-blue-100 text-blue-700 shadow-[0_3px_0_rgba(37,99,235,0.2),inset_0_1px_0_rgba(255,255,255,0.6)]">
                 <Plus size={19} aria-hidden="true" />
               </span>
               Crear docente
@@ -466,9 +569,9 @@ export default function AdminPanel() {
           <div className="card-clay p-4 sm:p-6 lg:col-span-2 lg:p-8">
             <div className="mb-5 flex flex-col gap-3 sm:mb-6 sm:flex-row sm:items-center sm:justify-between sm:gap-4">
               <h2 className="flex items-center gap-2 text-xl font-black sm:text-2xl">
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 text-white shadow-[0_3px_0_rgba(4,120,87,0.35)]">
-                  <GraduationCap size={19} aria-hidden="true" />
-                </span>
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl border-2 border-emerald-300 bg-emerald-100 text-emerald-700 shadow-[0_3px_0_rgba(16,185,129,0.2),inset_0_1px_0_rgba(255,255,255,0.6)]">
+                <GraduationCap size={19} aria-hidden="true" />
+              </span>
                 Docentes ({teachers.length})
               </h2>
               <div className="relative">
@@ -496,7 +599,7 @@ export default function AdminPanel() {
                   : 'Aún no hay docentes. Crea el primero con el formulario.'}
               </p>
             ) : (
-              <ul className="max-h-[34rem] space-y-3 overflow-y-auto pr-1" aria-busy={loading}>
+              <ul className="max-h-[34rem] space-y-3 overflow-y-auto overscroll-contain pr-1" aria-busy={loading}>
                 {filteredTeachers.map((teacher) => (
                   <li key={teacher.id}>
                     {editingId === teacher.id ? (

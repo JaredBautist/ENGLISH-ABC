@@ -59,7 +59,7 @@ export default function Modal({ title, subtitle, onClose, children, labelledById
 
   return (
     <div
-      className="fixed inset-0 z-[80] bg-slate-950/80 backdrop-blur-sm p-4 sm:p-6 flex items-center justify-center"
+      className="fixed inset-0 z-[80] flex items-center justify-center bg-slate-950/80 p-4 backdrop-blur-sm sm:p-6"
       onMouseDown={(event) => {
         if (event.target === event.currentTarget) onClose();
       }}
@@ -70,7 +70,7 @@ export default function Modal({ title, subtitle, onClose, children, labelledById
         aria-modal="true"
         aria-labelledby={labelledById}
         tabIndex={-1}
-        className="w-full max-w-2xl rounded-[2rem] border border-white/10 bg-slate-900 text-slate-100 shadow-2xl overflow-hidden focus:outline-none"
+        className="flex max-h-[calc(100dvh-2rem)] w-full max-w-2xl flex-col overflow-y-auto overscroll-contain rounded-[2rem] border border-white/10 bg-slate-900 text-slate-100 shadow-2xl focus:outline-none"
       >
         <div className="px-6 py-4 border-b border-white/10 flex items-center justify-between gap-4">
           <div className="min-w-0">
@@ -83,7 +83,7 @@ export default function Modal({ title, subtitle, onClose, children, labelledById
             type="button"
             onClick={onClose}
             aria-label="Close dialog"
-            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400 shrink-0"
+            className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-slate-400 transition-colors hover:bg-white/10 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400"
           >
             <X size={20} aria-hidden="true" />
           </button>

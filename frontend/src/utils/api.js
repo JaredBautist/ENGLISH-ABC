@@ -28,6 +28,29 @@ export const apiFetch = async (path, options = {}) => {
     headers
   });
 
+  // Handle silent token refresh on 401 Unauthorized
+  if (response.status === 401 && !options._retry) {
+    const refreshToken = tokenStorage.getRefreshToken();
+    if (refreshToken) {
+      try {
+        const refreshRes = await fetch(`${API_BASE}/auth/token/refresh/`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ refresh: refreshToken }),
+        });
+        if (refreshRes.ok) {
+          const refreshData = await parseBody(refreshRes);
+          if (refreshData?.access) {
+            tokenStorage.updateAccessToken(refreshData.access);
+            return apiFetch(path, { ...options, _retry: true });
+          }
+        }
+      } catch (refreshErr) {
+        console.warn('Silent token refresh failed:', refreshErr);
+      }
+    }
+  }
+
   const data = await parseBody(response);
   if (!response.ok) {
     const message = data?.detail || data?.message || 'Error de servidor.';

@@ -6,48 +6,89 @@ import { handleError } from '../utils/errorHandling';
 export const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
-  const [state, setState] = useState({
-    user: null,
-    token: null,
-    isLoading: true,
-    isAuthenticated: false,
-    error: null,
-    status: 'idle',
+  const [state, setState] = useState(() => {
+    const tokens = tokenStorage.getStoredTokens();
+    const cachedUser = tokenStorage.getUser();
+    if (tokens?.access && cachedUser) {
+      return {
+        user: cachedUser,
+        token: tokens.access,
+        isLoading: false,
+        isAuthenticated: true,
+        error: null,
+        status: 'success',
+      };
+    }
+    return {
+      user: null,
+      token: tokens?.access || null,
+      isLoading: Boolean(tokens?.access),
+      isAuthenticated: false,
+      error: null,
+      status: 'idle',
+    };
   });
 
-  // Initialize auth state on mount
+  // Revalidate auth state in background or fetch if no cached user
   useEffect(() => {
+    let isMounted = true;
+
     const initializeAuth = async () => {
       try {
         const tokens = tokenStorage.getStoredTokens();
-        if (tokens?.access) {
-          // Validate token with backend
-          const userData = await authService.me(tokens.access);
+        if (!tokens?.access) {
+          if (isMounted) {
+            setState((prev) => ({
+              ...prev,
+              isLoading: false,
+            }));
+          }
+          return;
+        }
+
+        // Validate token with backend
+        const userData = await authService.me(tokens.access);
+        if (!isMounted) return;
+
+        tokenStorage.saveUser(userData);
+        setState({
+          user: userData,
+          token: tokens.access,
+          isLoading: false,
+          isAuthenticated: true,
+          error: null,
+          status: 'success',
+        });
+      } catch (err) {
+        if (!isMounted) return;
+        console.error('Auth background validation error:', err);
+        // Only clear tokens if unauthorized (401/403)
+        const isUnauthorized = err.response?.status === 401 || err.response?.status === 403;
+        if (isUnauthorized) {
+          tokenStorage.clearTokens();
           setState({
-            user: userData,
-            token: tokens.access,
+            user: null,
+            token: null,
             isLoading: false,
-            isAuthenticated: true,
+            isAuthenticated: false,
             error: null,
-            status: 'success',
+            status: 'idle',
           });
         } else {
+          // If network glitch but had cached user, keep optimistic auth
           setState((prev) => ({
             ...prev,
             isLoading: false,
           }));
         }
-      } catch (err) {
-        console.error('Auth initialization error:', err);
-        tokenStorage.clearTokens();
-        setState((prev) => ({
-          ...prev,
-          isLoading: false,
-        }));
       }
     };
 
     initializeAuth();
+
+    return () => {
+      isMounted = false;
+    };
   }, []);
 
   const login = useCallback(async (email, password, rememberMe = false) => {
@@ -55,15 +96,17 @@ export function AuthProvider({ children }) {
       ...prev,
       status: 'loading',
       error: null,
-      isLoading: true,
+      isLoading: !prev.user,
     }));
 
     try {
       const response = await authService.login(email, password);
       const { access, refresh, user } = response;
 
-      // Store tokens
-      tokenStorage.saveTokens({ access, refresh }, rememberMe);
+      // Store tokens and cached user
+      tokenStorage.saveTokens({ access, refresh }, rememberMe, user);
+      tokenStorage.saveUser(user, rememberMe);
+      tokenStorage.saveRememberedEmail(email, rememberMe);
 
       setState({
         user,
@@ -88,7 +131,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   const logout = useCallback(() => {
-    tokenStorage.clearTokens();
+    tokenStorage.clearTokens(true);
     setState({
       user: null,
       token: null,

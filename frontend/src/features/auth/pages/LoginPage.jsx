@@ -11,7 +11,8 @@ export default function LoginPage() {
   useEffect(() => {
     if (isAuthenticated && user && !isLoading) {
       const redirectPath = user.role === 'superadmin' ? '/admin' : '/docente';
-      window.location.replace(redirectPath);
+      window.history.pushState({}, '', redirectPath);
+      window.dispatchEvent(new PopStateEvent('popstate'));
     }
   }, [isAuthenticated, user, isLoading]);
 
@@ -43,7 +44,7 @@ export default function LoginPage() {
       <section className="relative z-10 mx-auto grid min-h-[calc(100dvh-4rem)] w-full max-w-6xl items-center gap-10 py-4 lg:grid-cols-[1fr_440px] lg:gap-14">
         {/* Brand side */}
         <div className="mx-auto w-full max-w-2xl text-center lg:mx-0 lg:text-left">
-          <div className="mx-auto mb-7 inline-flex h-20 w-20 rotate-3 items-center justify-center rounded-[1.8rem] bg-gradient-to-br from-blue-500 to-blue-700 shadow-[0_10px_0_rgba(29,78,216,0.35),0_18px_32px_rgba(37,99,235,0.35)] transition-transform hover:rotate-0 lg:mx-0">
+          <div className="mx-auto mb-7 inline-flex h-20 w-20 rotate-3 items-center justify-center rounded-[1.8rem] bg-gradient-to-br from-blue-500 to-blue-700 shadow-[0_10px_0_rgba(29,78,216,0.35),0_18px_32px_rgba(37,99,235,0.35),inset_0_3px_0_rgba(255,255,255,0.45)] transition-transform hover:rotate-0 lg:mx-0">
             <GraduationCap size={38} className="text-white" aria-hidden="true" />
           </div>
 
@@ -53,9 +54,9 @@ export default function LoginPage() {
           </p>
 
           <h1 className="text-4xl font-extrabold leading-[1.1] sm:text-5xl lg:text-6xl">
-            Plataforma
+            English
             <span className="block bg-gradient-to-r from-blue-600 via-sky-500 to-emerald-500 bg-clip-text text-transparent">
-              Docente DBA
+              From Scratch
             </span>
           </h1>
 
@@ -98,8 +99,8 @@ export default function LoginPage() {
         {/* Login card */}
         <div className="card-clay mx-auto w-full max-w-[440px] p-6 sm:p-9">
           <div className="mb-7">
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-amber-400 to-amber-500 shadow-[0_4px_0_rgba(180,83,9,0.3)]">
-              <BookOpen size={23} className="text-amber-950" aria-hidden="true" />
+            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-2xl border-2 border-amber-300 bg-gradient-to-br from-amber-100 to-orange-100 text-amber-800 shadow-[0_4px_0_rgba(217,119,6,0.25),0_10px_20px_rgba(245,158,11,0.25),inset_0_2px_0_rgba(255,255,255,0.7)]">
+              <BookOpen size={23} aria-hidden="true" />
             </div>
             <h2 className="text-3xl font-extrabold leading-tight">Iniciar sesión</h2>
             <p className="mt-2 text-base leading-7 text-slate-600 dark:text-slate-400">

@@ -1,19 +1,24 @@
 import { useState, useCallback } from 'react';
 import { useAuth } from './useAuth';
+import { tokenStorage } from '../utils/tokenStorage';
 
 export function useLogin() {
   const { login } = useAuth();
-  const [formState, setFormState] = useState({
-    email: '',
-    password: '',
-    rememberMe: false,
+  const [formState, setFormState] = useState(() => {
+    const rememberedEmail = tokenStorage.getRememberedEmail();
+    const rememberPref = tokenStorage.getRememberPreference();
+    return {
+      email: rememberedEmail || '',
+      password: '',
+      rememberMe: Boolean(rememberedEmail || rememberPref),
+    };
   });
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = useCallback(
     async (e) => {
-      e.preventDefault();
+      e?.preventDefault?.();
       setError(null);
       setIsLoading(true);
 
@@ -21,6 +26,9 @@ export function useLogin() {
 
       if (!result.success) {
         setError(result.error);
+      } else {
+        // Sync remembered email preference
+        tokenStorage.saveRememberedEmail(formState.email, formState.rememberMe);
       }
 
       setIsLoading(false);
@@ -35,7 +43,12 @@ export function useLogin() {
   }, []);
 
   const resetForm = useCallback(() => {
-    setFormState({ email: '', password: '', rememberMe: false });
+    const rememberedEmail = tokenStorage.getRememberedEmail();
+    setFormState({
+      email: rememberedEmail || '',
+      password: '',
+      rememberMe: Boolean(rememberedEmail),
+    });
     setError(null);
   }, []);
 

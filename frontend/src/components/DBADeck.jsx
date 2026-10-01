@@ -1,5 +1,10 @@
-import React, { useMemo, useState } from 'react';
-import { CheckCircle2, ChevronLeft, ChevronRight, Home, Maximize, Minimize, Volume2 } from 'lucide-react';
+import React, { useEffect, useMemo, useState } from 'react';
+import {
+  Award, Check, CheckCircle2, ChevronLeft, ChevronRight, Home, Maximize, Minimize, RotateCcw, Sparkles, Volume2,
+} from 'lucide-react';
+import { apiFetch } from '../utils/api';
+import { speakFriendly } from '../shared/utils/friendlySpeech';
+import EmojiArt from './EmojiArt';
 import { unitSlides } from '../data/unitSlides';
 
 function normalize(value) {
@@ -7,17 +12,7 @@ function normalize(value) {
 }
 
 function speak(text) {
-  try {
-    if (typeof window !== 'undefined' && window.speechSynthesis) {
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.lang = 'en-US';
-      utterance.rate = 0.85;
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.speak(utterance);
-    }
-  } catch {
-    /* silent: speech is a nice-to-have for classroom projection */
-  }
+  speakFriendly(text, { rate: 0.85, pitch: 1.2 });
 }
 
 function ContentSlide({ slide }) {
@@ -43,7 +38,7 @@ function ContentSlide({ slide }) {
                 type="button"
                 onClick={() => speak(item.split('(')[0])}
                 aria-label={`Pronunciar ${item}`}
-                className="shrink-0 rounded-full bg-blue-50 p-1.5 text-blue-600 transition hover:bg-blue-100 active:scale-90 sm:p-2"
+                className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition hover:bg-blue-100 active:scale-90"
               >
                 <Volume2 size={16} aria-hidden="true" />
               </button>
@@ -82,7 +77,7 @@ function VocabularySlide({ slide }) {
             onClick={() => speak(entry.word)}
             className="group flex flex-col items-center gap-1.5 rounded-3xl border-[3px] border-emerald-100 bg-white p-3 transition-all hover:-translate-y-1 hover:border-emerald-400 hover:shadow-[0_10px_20px_rgba(16,185,129,0.15)] active:translate-y-0 active:scale-95 sm:gap-2 sm:p-4"
           >
-            <span className="text-4xl sm:text-5xl" aria-hidden="true">{entry.emoji}</span>
+            <EmojiArt emoji={entry.emoji} size="word" />
             <span className="text-center text-sm font-black leading-tight text-slate-800 sm:text-base">{entry.word}</span>
             <span className="text-center text-xs font-semibold text-slate-500 sm:text-sm">{entry.es}</span>
             <Volume2 size={15} className="text-emerald-500 opacity-0 transition-opacity group-hover:opacity-100" aria-hidden="true" />
@@ -172,16 +167,54 @@ function ActivitySlide({ slide }) {
 }
 
 function SongSlide({ slide }) {
+  const videoSrc = slide.videoUrl || (slide.videoId ? `https://www.youtube.com/embed/${slide.videoId}` : '');
   return (
     <div className="animate-fadeIn">
       <h3 className="mb-2 text-center text-xl font-black text-slate-800 sm:text-2xl lg:text-3xl">
-        {slide.emoji} {slide.title}
+        {slide.title}
       </h3>
       <p className="mb-4 text-center text-sm font-semibold text-slate-500 sm:mb-6 sm:text-base">{slide.description}</p>
       <div className="mx-auto max-w-3xl overflow-hidden rounded-2xl border-4 border-white bg-slate-900 shadow-[0_16px_40px_rgba(15,23,42,0.3)] sm:rounded-[2rem]">
         <div className="aspect-video">
-          <iframe src={slide.videoUrl} title={slide.title} className="h-full w-full" allowFullScreen />
+          <iframe src={videoSrc} title={slide.title} className="h-full w-full" allowFullScreen />
         </div>
+      </div>
+    </div>
+  );
+}
+
+function HomeworkSlide({ slide }) {
+  return (
+    <div className="animate-fadeIn">
+      <div className="mx-auto max-w-2xl rounded-3xl border-[3px] border-amber-200 bg-amber-50/80 p-5 sm:p-6">
+        <div className="mb-3 flex items-center justify-center gap-2">
+          <span className="rounded-xl bg-amber-500 px-3 py-1 text-xs font-black uppercase tracking-wider text-white">
+            Homework • Tarea para casa 🏠
+          </span>
+        </div>
+        <h3 className="mb-2 text-center text-xl font-black text-slate-800 sm:text-2xl">
+          {slide.title || 'Homework Time!'}
+        </h3>
+        {slide.description && (
+          <p className="mb-4 text-center text-sm font-bold text-slate-600 sm:text-base">
+            {slide.description}
+          </p>
+        )}
+        {slide.tasks && (
+          <ul className="space-y-2.5">
+            {slide.tasks.map((task, idx) => (
+              <li
+                key={idx}
+                className="flex items-start gap-3 rounded-2xl border-2 border-amber-100 bg-white p-3 text-sm font-extrabold text-slate-700 shadow-sm sm:text-base"
+              >
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-amber-400 text-xs font-black text-white">
+                  {idx + 1}
+                </span>
+                <span className="min-w-0">{task}</span>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );
@@ -190,11 +223,21 @@ function SongSlide({ slide }) {
 function SlideBody({ slide }) {
   if (slide.type === 'vocabulary') return <VocabularySlide slide={slide} />;
   if (slide.type === 'activity') return <ActivitySlide slide={slide} />;
-  if (slide.type === 'song') return <SongSlide slide={slide} />;
+  if (slide.type === 'song' || slide.type === 'video') return <SongSlide slide={slide} />;
+  if (slide.type === 'homework') return <HomeworkSlide slide={slide} />;
   return <ContentSlide slide={slide} />;
 }
 
-export default function DBADeck({ slidesKey, title, subtitle, dashboardHref = '/' }) {
+export default function DBADeck({
+  slidesKey,
+  title,
+  subtitle,
+  dashboardHref = '/',
+  gradeCode,
+  weekNumber,
+  onBack,
+  onCompleted,
+}) {
   const slides = useMemo(() => unitSlides[slidesKey] || [], [slidesKey]);
 
   return (
@@ -204,16 +247,57 @@ export default function DBADeck({ slidesKey, title, subtitle, dashboardHref = '/
       title={title}
       subtitle={subtitle}
       dashboardHref={dashboardHref}
+      gradeCode={gradeCode}
+      weekNumber={weekNumber}
+      onBack={onBack}
+      onCompleted={onCompleted}
     />
   );
 }
 
-function DeckInner({ slides, title, subtitle, dashboardHref }) {
+function DeckInner({
+  slides,
+  title,
+  subtitle,
+  dashboardHref,
+  gradeCode,
+  weekNumber,
+  onBack,
+  onCompleted,
+}) {
   const [current, setCurrent] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isCompleted, setIsCompleted] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const total = slides.length;
   const currentSlide = slides[current] || {};
   const displayProgress = total ? Math.round(((current + 1) / total) * 100) : 0;
+
+  const saveProgress = async (percent, completed = false) => {
+    if (!gradeCode || !weekNumber) return;
+    try {
+      await apiFetch('/teachers/me/progress/', {
+        method: 'POST',
+        body: JSON.stringify({
+          grade_code: gradeCode,
+          week_number: Number(weekNumber),
+          completion_percent: percent,
+          status: completed ? 'completed' : 'in_progress',
+        }),
+      });
+      onCompleted?.(percent, completed);
+    } catch (err) {
+      console.warn('No se pudo registrar el progreso en el backend:', err);
+    }
+  };
+
+  // Al abrir la clase por primera vez, registrar que se inició
+  useEffect(() => {
+    if (total > 0 && gradeCode && weekNumber) {
+      const initialPercent = Math.max(10, Math.round((1 / total) * 100));
+      saveProgress(initialPercent, false);
+    }
+  }, [gradeCode, weekNumber, total]);
 
   const toggleFullscreen = async () => {
     try {
@@ -237,7 +321,7 @@ function DeckInner({ slides, title, subtitle, dashboardHref }) {
 
   if (!total) {
     return (
-      <div className="flex min-h-screen items-center justify-center bg-[#eff6ff] p-4 sm:p-6 dark:bg-[#0b1224]">
+      <div className="bg-blobs flex min-h-dvh items-center justify-center bg-[#eff6ff] p-4 sm:p-6 dark:bg-[#0b1224]">
         <div className="card-clay max-w-md p-6 text-center sm:p-10">
           <p className="mb-4 text-5xl" aria-hidden="true">📚</p>
           <p className="text-lg font-black text-slate-700 sm:text-xl">Aún no hay diapositivas para esta unidad.</p>
@@ -251,7 +335,7 @@ function DeckInner({ slides, title, subtitle, dashboardHref }) {
 
   return (
     <div
-      className={`flex min-h-screen items-center justify-center bg-gradient-to-br from-blue-50 via-amber-50/60 to-emerald-50 transition-all dark:from-slate-950 dark:via-slate-950 dark:to-slate-900 ${
+      className={`bg-blobs flex min-h-dvh items-center justify-center bg-gradient-to-br from-blue-50 via-amber-50/60 to-emerald-50 transition-all dark:from-slate-950 dark:via-slate-950 dark:to-slate-900 ${
         isFullscreen ? 'p-0' : 'p-2 sm:p-4 lg:p-8'
       }`}
     >
@@ -277,70 +361,153 @@ function DeckInner({ slides, title, subtitle, dashboardHref }) {
               {isFullscreen ? <Minimize size={15} aria-hidden="true" /> : <Maximize size={15} aria-hidden="true" />}
               <span className="hidden sm:inline">{isFullscreen ? 'Salir' : 'Proyectar'}</span>
             </button>
-            <a
-              href={dashboardHref}
-              className="inline-flex items-center gap-1.5 rounded-xl bg-white/20 px-2.5 py-2 text-xs font-extrabold transition hover:bg-white/30 sm:rounded-2xl sm:px-4 sm:py-2.5 sm:text-sm"
-            >
-              <Home size={15} aria-hidden="true" />
-              <span className="hidden sm:inline">Panel</span>
-            </a>
+            {onBack ? (
+              <button
+                type="button"
+                onClick={onBack}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-white/20 px-2.5 py-2 text-xs font-extrabold transition hover:bg-white/30 sm:rounded-2xl sm:px-4 sm:py-2.5 sm:text-sm"
+              >
+                <Home size={15} aria-hidden="true" />
+                <span className="hidden sm:inline">Panel</span>
+              </button>
+            ) : (
+              <a
+                href={dashboardHref}
+                className="inline-flex items-center gap-1.5 rounded-xl bg-white/20 px-2.5 py-2 text-xs font-extrabold transition hover:bg-white/30 sm:rounded-2xl sm:px-4 sm:py-2.5 sm:text-sm"
+              >
+                <Home size={15} aria-hidden="true" />
+                <span className="hidden sm:inline">Panel</span>
+              </a>
+            )}
           </div>
         </div>
 
-        {/* Slide */}
+        {/* Slide Body or Celebratory Completion Screen */}
         <div className={`flex flex-1 flex-col justify-center px-3 py-5 sm:px-8 sm:py-8 lg:px-10 ${isFullscreen ? 'py-[4vh]' : ''}`}>
-          <div
-            className={`mb-4 text-center ${isFullscreen ? 'text-[6vh] leading-none' : 'text-5xl sm:text-6xl'}`}
-            aria-hidden="true"
-          >
-            {currentSlide.emoji || '✨'}
-          </div>
-          <SlideBody slide={currentSlide} />
+          {isCompleted ? (
+            <div className="animate-pop mx-auto max-w-lg text-center py-6">
+              <div className="mb-4 inline-flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-emerald-400 to-teal-500 text-white shadow-[0_10px_20px_rgba(16,185,129,0.3)]">
+                <Award size={44} aria-hidden="true" />
+              </div>
+              <h3 className="mb-2 text-2xl font-black text-slate-800 dark:text-slate-100 sm:text-3xl">
+                ¡Clase completada! 🎉
+              </h3>
+              <p className="mb-6 text-sm font-semibold text-slate-500 dark:text-slate-400 sm:text-base">
+                Has registrado el 100% de esta unidad en el plan institucional. El avance ya se encuentra sincronizado en tiempo real.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-3">
+                {onBack ? (
+                  <button
+                    type="button"
+                    onClick={onBack}
+                    className="btn-primary-clay inline-flex items-center gap-2 px-5 py-3 text-sm font-bold text-white sm:text-base"
+                  >
+                    <Home size={18} aria-hidden="true" /> Volver al panel docente
+                  </button>
+                ) : (
+                  <a
+                    href={dashboardHref}
+                    className="btn-primary-clay inline-flex items-center gap-2 px-5 py-3 text-sm font-bold text-white sm:text-base"
+                  >
+                    <Home size={18} aria-hidden="true" /> Volver al panel
+                  </a>
+                )}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setIsCompleted(false);
+                    setCurrent(0);
+                  }}
+                  className="btn-clay inline-flex items-center gap-2 border-[3px] border-slate-200 bg-white px-4 py-2.5 text-sm font-bold text-slate-700 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                >
+                  <RotateCcw size={16} aria-hidden="true" /> Repasar diapositivas
+                </button>
+              </div>
+            </div>
+          ) : (
+            <>
+              {currentSlide.emoji ? (
+                <div className={`mb-3 flex justify-center ${isFullscreen ? 'pb-[1vh]' : ''}`} aria-hidden="true">
+                  <EmojiArt emoji={currentSlide.emoji} size={isFullscreen ? 'heroFull' : 'hero'} />
+                </div>
+              ) : (
+                <div
+                  className={`mb-4 text-center ${isFullscreen ? 'text-[6vh] leading-none' : 'text-5xl sm:text-6xl'}`}
+                  aria-hidden="true"
+                >
+                  ✨
+                </div>
+              )}
+              <SlideBody slide={currentSlide} />
+            </>
+          )}
         </div>
 
         {/* Controls */}
-        <div className="flex items-center justify-between gap-2 border-t-[3px] border-blue-100 bg-blue-50/70 px-3 py-3.5 sm:gap-4 sm:px-6 sm:py-5 dark:border-slate-800 dark:bg-slate-950/60">
-          <button
-            type="button"
-            onClick={() => setCurrent(Math.max(0, current - 1))}
-            disabled={current === 0}
-            className="btn-clay inline-flex items-center gap-1 bg-gradient-to-r from-blue-600 to-sky-500 px-3 py-2.5 text-xs text-white disabled:opacity-40 sm:gap-2 sm:px-5 sm:py-3 sm:text-base"
-          >
-            <ChevronLeft size={17} aria-hidden="true" />
-            <span className="hidden sm:inline">Anterior</span>
-          </button>
-
-          <div className="min-w-0 flex-1 px-1">
-            <div className="mb-1 flex items-center justify-between text-[10px] font-black text-slate-500 sm:text-xs dark:text-slate-400">
-              <span>{current + 1} / {total}</span>
-              <span>{displayProgress}%</span>
-            </div>
-            <div
-              role="progressbar"
-              aria-valuenow={displayProgress}
-              aria-valuemin={0}
-              aria-valuemax={100}
-              aria-label="Progreso de la unidad"
-              className="progress-clay h-2.5 sm:h-3"
+        {!isCompleted && (
+          <div className="flex items-center justify-between gap-2 border-t-[3px] border-blue-100 bg-blue-50/70 px-3 py-3.5 sm:gap-4 sm:px-6 sm:py-5 dark:border-slate-800 dark:bg-slate-950/60">
+            <button
+              type="button"
+              onClick={() => setCurrent(Math.max(0, current - 1))}
+              disabled={current === 0}
+              className="btn-clay inline-flex items-center gap-1 bg-gradient-to-r from-blue-600 to-sky-500 px-3 py-3 text-xs text-white disabled:opacity-40 sm:gap-2 sm:px-5 sm:text-base"
             >
-              <div
-                className="progress-clay-fill"
-                style={{ width: `${displayProgress}%` }}
-              />
-            </div>
-          </div>
+              <ChevronLeft size={17} aria-hidden="true" />
+              <span className="hidden sm:inline">Anterior</span>
+            </button>
 
-          <button
-            type="button"
-            onClick={() => setCurrent(Math.min(total - 1, current + 1))}
-            disabled={current === total - 1}
-            className="btn-clay inline-flex items-center gap-1 bg-gradient-to-r from-sky-500 to-emerald-500 px-3 py-2.5 text-xs text-white disabled:opacity-40 sm:gap-2 sm:px-5 sm:py-3 sm:text-base"
-          >
-            {current === total - 1 && <CheckCircle2 size={17} aria-hidden="true" />}
-            <span className="hidden sm:inline">Siguiente</span>
-            <ChevronRight size={17} aria-hidden="true" />
-          </button>
-        </div>
+            <div className="min-w-0 flex-1 px-1">
+              <div className="mb-1 flex items-center justify-between text-[10px] font-black text-slate-500 sm:text-xs dark:text-slate-400">
+                <span>{current + 1} / {total}</span>
+                <span>{displayProgress}%</span>
+              </div>
+              <div
+                role="progressbar"
+                aria-valuenow={displayProgress}
+                aria-valuemin={0}
+                aria-valuemax={100}
+                aria-label="Progreso de la unidad"
+                className="progress-clay h-2.5 sm:h-3"
+              >
+                <div
+                  className="progress-clay-fill"
+                  style={{ width: `${displayProgress}%` }}
+                />
+              </div>
+            </div>
+
+            {current === total - 1 ? (
+              <button
+                type="button"
+                onClick={async () => {
+                  setIsSaving(true);
+                  await saveProgress(100, true);
+                  setIsCompleted(true);
+                  setIsSaving(false);
+                }}
+                disabled={isSaving}
+                className="btn-clay inline-flex items-center gap-1.5 bg-gradient-to-r from-emerald-500 to-teal-600 px-3.5 py-2.5 text-xs font-black text-white shadow-[0_4px_0_rgba(5,150,105,0.4)] ring-4 ring-emerald-200 transition-all hover:scale-105 active:scale-95 sm:gap-2 sm:px-6 sm:py-3 sm:text-base dark:ring-emerald-950"
+              >
+                <CheckCircle2 size={18} aria-hidden="true" />
+                <span>{isSaving ? 'Guardando…' : '¡Completar clase!'}</span>
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => {
+                  const next = Math.min(total - 1, current + 1);
+                  setCurrent(next);
+                  const nextPct = Math.round(((next + 1) / total) * 100);
+                  saveProgress(nextPct, next === total - 1);
+                }}
+                className="btn-clay inline-flex items-center gap-1 bg-gradient-to-r from-sky-500 to-emerald-500 px-3 py-3 text-xs text-white disabled:opacity-40 sm:gap-2 sm:px-5 sm:text-base"
+              >
+                <span className="hidden sm:inline">Siguiente</span>
+                <ChevronRight size={17} aria-hidden="true" />
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

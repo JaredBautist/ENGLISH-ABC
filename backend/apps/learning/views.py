@@ -1,8 +1,15 @@
+import hashlib
+import urllib.parse
+import urllib.request
+
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db.models import Avg, Count, Q
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
 from rest_framework import generics, status
+from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -127,37 +134,81 @@ class AdminOverviewView(APIView):
                     'units_touched': touched,
                     'units_completed': completed,
                     'avg_completion': round(float(avg), 2) if avg is not None else 0,
-                    'coverage_percent': round((touched / assigned_total) * 100, 2) if assigned_total else 0,
+                    'coverage_percent': round((completed / assigned_total) * 100, 2) if assigned_total else 0,
                 }
             )
 
-        # Cobertura por grado (docentes asignados y progreso agregado)
+        # Cobertura por grado (ponderada exactamente según la cantidad de docentes asignados)
         grade_rows = []
         for grade in grades:
             modules_count = Module.objects.filter(grade=grade, is_active=True).count()
-            assignment_count = TeacherGrade.objects.filter(grade=grade).count()
-            grade_progress = StudentProgress.objects.filter(module__grade=grade).aggregate(
-                avg_completion=Avg('completion_percent'),
-                completed=Count('id', filter=Q(completion_percent__gte=100)),
-            )
+            assigned_teachers = [
+                tg.teacher
+                for tg in TeacherGrade.objects.filter(
+                    grade=grade,
+                    teacher__role=User.Role.TEACHER,
+                    teacher__is_active=True,
+                ).select_related('teacher').order_by('teacher__username')
+            ]
+            teacher_count = len(assigned_teachers)
+
+            teacher_details = []
+            total_grade_units_done = 0
+
+            if teacher_count > 0:
+                for t in assigned_teachers:
+                    t_completed = StudentProgress.objects.filter(
+                        teacher=t,
+                        module__grade=grade,
+                        completion_percent__gte=100,
+                    ).count()
+                    t_percent = round((t_completed / modules_count) * 100, 2) if modules_count else 0
+                    total_grade_units_done += t_completed
+                    teacher_details.append(
+                        {
+                            'id': t.id,
+                            'username': t.username,
+                            'email': t.email,
+                            'units_completed': t_completed,
+                            'total_units': modules_count,
+                            'completion_percent': t_percent,
+                        }
+                    )
+
+                expected_units = modules_count * teacher_count
+                avg_percent = round((total_grade_units_done / expected_units) * 100, 2) if expected_units else 0
+            else:
+                expected_units = 0
+                avg_percent = 0.0
+
             grade_rows.append(
                 {
                     'code': grade.code,
                     'name': grade.name,
-                    'teacher_count': assignment_count,
-                    'total_units': modules_count,
-                    'avg_completion': round(float(grade_progress['avg_completion']), 2)
-                    if grade_progress['avg_completion'] is not None
-                    else 0,
-                    'units_completed': grade_progress['completed'] or 0,
+                    'teacher_count': teacher_count,
+                    'curriculum_units': modules_count,
+                    'total_units': expected_units if teacher_count > 0 else modules_count,
+                    'expected_units': expected_units,
+                    'units_completed': total_grade_units_done,
+                    'avg_completion': avg_percent,
+                    'teachers': teacher_details,
                 }
             )
 
         active_teacher_ids = [
             t['id']
             for t in teacher_rows
-            if t['units_touched'] > 0
+            if t['units_touched'] > 0 or t['units_completed'] > 0
         ]
+
+        total_assigned_targets = sum(g['expected_units'] for g in grade_rows)
+        total_assigned_completed = sum(g['units_completed'] for g in grade_rows)
+        institutional_coverage = (
+            round((total_assigned_completed / total_assigned_targets) * 100, 2)
+            if total_assigned_targets > 0
+            else 0.0
+        )
+
         return Response(
             {
                 'totals': {
@@ -165,7 +216,9 @@ class AdminOverviewView(APIView):
                     'active_teachers': len(active_teacher_ids),
                     'grades': grades.count(),
                     'total_units': total_modules,
-                    'units_completed': StudentProgress.objects.filter(completion_percent__gte=100).count(),
+                    'assigned_units': total_assigned_targets,
+                    'units_completed': total_assigned_completed,
+                    'institutional_coverage': institutional_coverage,
                 },
                 'teachers': teacher_rows,
                 'grades': grade_rows,
@@ -224,3 +277,59 @@ class AdminTeacherDetailView(APIView):
         teacher = get_object_or_404(User, id=teacher_id, role=User.Role.TEACHER)
         count, _ = TeacherGrade.objects.filter(teacher=teacher).delete()
         return Response({'detail': f'Teacher unassigned from {count} grade(s).'})
+
+
+class TTSView(APIView):
+    """
+    Endpoint de síntesis de voz natural en inglés / español.
+    Utiliza el motor neural de Google para entregar audio MP3 nítido y cálido,
+    con almacenamiento en caché para reproducción instantánea y cero latencia.
+    """
+
+    permission_classes = [AllowAny]
+
+    def get(self, request):
+        text = (request.query_params.get('text') or '').strip()
+        if not text:
+            return Response({'error': 'Parameter "text" is required.'}, status=status.HTTP_400_BAD_REQUEST)
+
+        if len(text) > 300:
+            return Response(
+                {'error': 'Parameter "text" cannot exceed 300 characters.'},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        lang = request.query_params.get('lang', 'en').strip().lower()
+        if lang not in ('en', 'es'):
+            lang = 'en'
+
+        cache_dir = settings.BASE_DIR / '.tts_cache'
+        cache_dir.mkdir(exist_ok=True)
+        text_hash = hashlib.md5(f'{lang}:{text.lower()}'.encode('utf-8')).hexdigest()
+        cache_file = cache_dir / f'{text_hash}.mp3'
+
+        if cache_file.exists():
+            with open(cache_file, 'rb') as f:
+                audio_bytes = f.read()
+        else:
+            encoded_text = urllib.parse.quote(text)
+            url = f'https://translate.google.com/translate_tts?ie=UTF-8&q={encoded_text}&tl={lang}&client=tw-ob'
+            req = urllib.request.Request(
+                url,
+                headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'},
+            )
+            try:
+                with urllib.request.urlopen(req, timeout=6) as response:
+                    audio_bytes = response.read()
+                with open(cache_file, 'wb') as f:
+                    f.write(audio_bytes)
+            except Exception as e:
+                return Response(
+                    {'error': f'TTS service unavailable: {str(e)}'},
+                    status=status.HTTP_502_BAD_GATEWAY,
+                )
+
+        response = HttpResponse(audio_bytes, content_type='audio/mpeg')
+        response['Cache-Control'] = 'public, max-age=604800, immutable'
+        return response
+
