@@ -1,11 +1,11 @@
 # Graph Report - English Platform  (2026-10-01)
 
 ## Corpus Check
-- 169 files · ~207,913 words
+- 169 files · ~208,307 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2719 nodes · 2980 edges · 224 communities (192 shown, 14 thin omitted)
+- 2719 nodes · 2981 edges · 224 communities (192 shown, 14 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 57 edges (avg confidence: 0.94)
 - Token cost: 0 input · 0 output
 
@@ -228,7 +228,7 @@
 3. `Grade` - 24 edges
 4. `LearningApiTests` - 24 edges
 5. `TeacherGrade` - 23 edges
-6. `react` - 22 edges
+6. `react` - 23 edges
 7. `CORE DIRECTIVE: AWWWARDS-LEVEL IMAGE ART DIRECTION` - 22 edges
 8. `Module` - 19 edges
 9. `StudentProgress` - 18 edges

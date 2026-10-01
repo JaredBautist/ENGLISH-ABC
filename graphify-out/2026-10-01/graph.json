@@ -36160,6 +36160,18 @@
       "weight": 1.0
     },
     {
+      "source": "frontend_src_components_emojiart",
+      "target": "ref_react",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "frontend/src/components/EmojiArt.jsx",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
       "source": "frontend_src_components_materialpages",
       "target": "ref_react",
       "relation": "imports_from",

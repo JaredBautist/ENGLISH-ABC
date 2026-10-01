@@ -1,16 +1,16 @@
 # Graph Report - English Platform  (2026-10-01)
 
 ## Corpus Check
-- 169 files · ~208,307 words
+- 169 files · ~210,328 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 2719 nodes · 2981 edges · 224 communities (192 shown, 14 thin omitted)
+- 2741 nodes · 3003 edges · 219 communities (188 shown, 13 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 57 edges (avg confidence: 0.94)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c9ab4434`
+- Built from commit: `86682ccb`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -31,7 +31,7 @@
 - learning/views.py
 - TeacherAccountSerializer
 - IsPlatformAdmin
-- setup.js
+- AdminPanel.integration.test.jsx
 - vercel.json
 - scripts
 - ProgressBar.jsx
@@ -62,7 +62,7 @@
 - Estado Actual del Proyecto - Actualización
 - 🎨 Mejoras de UI/UX - English Learning Platform
 - 🎯 Solución: Barra de Progreso y Desbloqueo de Semanas
-- DIALOGUE 2: "INTRODUCING YOUR FRIEND"
+- A1.2 ENGLISH CURRICULUM - WEEK 1: HELLO! (INTRODUCTIONS)
 - 📋 Pruebas a Realizar
 - ✅ Mejoras Aplicadas al Frontend
 - 📸 Guía Visual - Qué Deberías Ver
@@ -90,7 +90,7 @@
 - 🔧 Solución: Pantalla Fea (WeekDashboard)
 - Design System Master File
 - 🔧 Arreglar Teacher Dashboard
-- react
+- LoginForm.jsx
 - 🧪 Testing TeacherDashboard - Guía de Debugging
 - 2026-08-06.md
 - INTERACTIVE ACTIVITIES - WEEK 8
@@ -99,8 +99,8 @@
 - INTERACTIVE ACTIVITIES - WEEK 4
 - A1.2 ENGLISH CURRICULUM - WEEK 8: COMPREHENSIVE REVISION & CAPSTONE PROJECT
 - 🎨 Mejoras de Contraste
-- English From Scratch
-- AdminPanel.jsx
+- 🌟 English From Scratch 🇨🇴 🚀📚🎈
+- react
 - A1.2 ENGLISH CURRICULUM - WEEK 3: FAMILY
 - Componentes Agregados:
 - ACTIVITY 6: "DIALOGUE LISTENING & RESPONSE" (Slide 11)
@@ -111,7 +111,7 @@
 - SECTION B: GRAMMAR - MULTIPLE STRUCTURES (15 points)
 - English Platform (React + Django)
 - Local readiness review
-- ACTIVITY 1: "GREETINGS CAROUSEL" (Slide 2)
+- INTERACTIVE ACTIVITIES - WEEK 1
 - ACTIVITY 5: "GRAMMAR FILL-IN-THE-BLANK: TO BE CONJUGATION" (Slide 9)
 - ACTIVITY 7: "INTRODUCE YOURSELF - VIDEO RECORDING" (Slide 12)
 - ACTIVITY 8: "ROLE-PLAY WITH AI CHARACTER" (Slide 13)
@@ -129,7 +129,7 @@
 - 2. Component Boundaries
 - ACTIVITY 2: "DRAG & DROP - NAME CARD CREATION" (Slide 3)
 - ACTIVITY 3: "COUNTRIES MAP DRAG-DROP" (Slide 5)
-- INTERACTIVE ACTIVITIES - WEEK 1
+- ACTIVITY 4: "PROFESSION MATCHING GAME" (Slide 7)
 - ACTIVITY 2: "MATCH TIMES & ACTIVITIES" (Slide 7)
 - ACTIVITY 3: "PRESENT SIMPLE VERB CONJUGATION GAME" (Slide 8)
 - ACTIVITY 5: "DIALOGUE LISTENING - DAILY ROUTINES" (Slide 10)
@@ -181,11 +181,9 @@
 - update_unit_slides.js
 - 11. COMPONENT EXECUTION GUIDELINES
 - 18. EXTRA CREATIVITY & IMPLEMENTATION EDGE
-- A1.2 ENGLISH CURRICULUM - WEEK 1: HELLO! (INTRODUCTIONS)
 - 9. AI TELLS (Forbidden Patterns)
 - 12. THE COMBINATORIAL VARIATION ENGINE
 - 8. ANTI-AI-SLOP RULES
-- FORMATIVE ASSESSMENT CHECKPOINT - WEEK 1
 - DIALOGUE 1: "INTRODUCING FAMILY MEMBERS"
 - 11. REDESIGN PROTOCOL
 - 3. DEFAULT ARCHITECTURE & CONVENTIONS
@@ -194,7 +192,6 @@
 - 33. CATEGORY-SPECIFIC BIAS
 - 13. COLOR & MATERIAL RULES
 - 4. HERO MINIMALISM RULES
-- PRESENT SIMPLE OF "TO BE"
 - ACTIVITY 3: "FILL IN POSSESSIVE ADJECTIVES" (Slide 8)
 - FORMATIVE ASSESSMENT CHECKPOINT - WEEK 3
 - POSSESSIVE ADJECTIVES
@@ -219,8 +216,6 @@
 - 15. DEFAULT SITE PACKS
 - 20. EXAMPLE INTERPRETATIONS
 - useAuth
-- lucide-react
-- ThemeProvider.jsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `CORE DIRECTIVE: IMAGE-FIRST WEBSITE DESIGN TO CODE` - 39 edges
@@ -249,11 +244,11 @@
 ## Import Cycles
 - None detected.
 
-## Communities (224 total, 14 thin omitted)
+## Communities (219 total, 13 thin omitted)
 
 ### Community 0 - "App.jsx"
-Cohesion: 0.14
-Nodes (19): AdminPanel, App(), renderContent(), DiagnosticPage, homeForRole(), ListeningPage, normalizePath(), NotFound (+11 more)
+Cohesion: 0.11
+Nodes (21): App(), renderContent(), DiagnosticPage, homeForRole(), ListeningPage, Logout, normalizePath(), NotFound (+13 more)
 
 ### Community 1 - "MaterialPages.jsx"
 Cohesion: 0.16
@@ -315,9 +310,9 @@ Nodes (9): CreateTeacherSerializer, TeacherAccountSerializer, TeacherUpdateSeria
 Cohesion: 0.22
 Nodes (8): _is_platform_admin(), IsPlatformAdmin, IsStaffMember, IsTeacherOfGrade, Administración general de la institución: gestiona docentes y grados., Docentes y administradores (todo el personal institucional)., Permite el acceso solo si el docente tiene asignado el grado consultado., BasePermission
 
-### Community 16 - "setup.js"
-Cohesion: 0.29
-Nodes (5): localStorageMock, sessionStorageMock, @testing-library/jest-dom, @testing-library/react, vitest
+### Community 16 - "AdminPanel.integration.test.jsx"
+Cohesion: 0.17
+Nodes (8): overviewResponse, teachersResponse, localStorageMock, sessionStorageMock, @testing-library/jest-dom, @testing-library/react, @testing-library/user-event, vitest
 
 ### Community 17 - "vercel.json"
 Cohesion: 0.25
@@ -399,9 +394,9 @@ Nodes (35): 1. **Button Component** (`/components/ui/Button.jsx`), 2. **Card Com
 Cohesion: 0.06
 Nodes (33): 1. **Barra de Progreso Inteligente** (`WeekProgressBar.jsx`), 2. **Sistema de Notificaciones** (`Toast.jsx`), 3. **Progreso Basado en Actividades**, 🔧 Archivos Creados/Modificados, Archivos Modificados:, Checklist de Pruebas:, Colores del Sistema:, Comandos de Prueba: (+25 more)
 
-### Community 65 - "DIALOGUE 2: "INTRODUCING YOUR FRIEND""
-Cohesion: 0.20
-Nodes (10): DIALOGUE 1: "FIRST MEETING AT A CONFERENCE", DIALOGUE 2: "INTRODUCING YOUR FRIEND", FOLLOW-UP COMPREHENSION QUESTIONS, Follow-Up Questions, FULL DIALOGUE WITH PRONUNCIATION GUIDES, FULL DIALOGUE WITH PRONUNCIATION GUIDES, ROLE-PLAY DIALOGUES - WEEK 1, STUDENT PROMPTS / CUES (For Learner to Practice) (+2 more)
+### Community 65 - "A1.2 ENGLISH CURRICULUM - WEEK 1: HELLO! (INTRODUCTIONS)"
+Cohesion: 0.06
+Nodes (33): A1.2 ENGLISH CURRICULUM - WEEK 1: HELLO! (INTRODUCTIONS), ASSESSMENT STRUCTURE, Color-Coded Visual Explanation, Common Student Errors & Corrections, Conjugation Table, DIALOGUE 1: "FIRST MEETING AT A CONFERENCE", DIALOGUE 2: "INTRODUCING YOUR FRIEND", Example Sentences (5 Examples) (+25 more)
 
 ### Community 66 - "📋 Pruebas a Realizar"
 Cohesion: 0.06
@@ -472,8 +467,8 @@ Cohesion: 0.08
 Nodes (24): Files modified, Files modified, Files modified, Files modified, Files modified, Files modified, Files modified, Files modified (+16 more)
 
 ### Community 83 - "DBADeck.jsx"
-Cohesion: 0.15
-Nodes (11): DBADeck, ActivitySlide(), ContentSlide(), DBADeck(), DeckInner(), normalize(), speak(), VocabularySlide() (+3 more)
+Cohesion: 0.17
+Nodes (10): DBADeck, ActivitySlide(), ContentSlide(), DBADeck(), normalize(), speak(), VocabularySlide(), EmojiArt() (+2 more)
 
 ### Community 84 - "Interactive A1.2 Lesson System - Implementation Summary"
 Cohesion: 0.08
@@ -511,9 +506,9 @@ Nodes (16): Additional Forbidden Patterns, Anti-Patterns (Do NOT Use), Buttons, 
 Cohesion: 0.12
 Nodes (16): 🚀 Alternativa Rápida, Archivos a Crear:, Archivos a Modificar:, 🔧 Arreglar Teacher Dashboard, 📝 Cambios Necesarios, ✅ Checklist, 🎨 Diseño Esperado, 🚀 Implementación Rápida (+8 more)
 
-### Community 93 - "react"
-Cohesion: 0.20
-Nodes (11): LoginForm(), AuthContext, useLogin(), STORAGE_KEYS, tokenStorage, Alert, AlertDescription, AlertTitle (+3 more)
+### Community 93 - "LoginForm.jsx"
+Cohesion: 0.27
+Nodes (7): LoginForm(), useLogin(), Alert, AlertDescription, AlertTitle, Button, Input
 
 ### Community 94 - "🧪 Testing TeacherDashboard - Guía de Debugging"
 Cohesion: 0.12
@@ -547,13 +542,13 @@ Nodes (9): A1.2 ENGLISH CURRICULUM - WEEK 8: COMPREHENSIVE REVISION & CAPSTONE P
 Cohesion: 0.20
 Nodes (10): Ahora (Modo Oscuro), Ahora (Modo Oscuro), Ahora (Modo Oscuro), Antes (Modo Oscuro), Antes (Modo Oscuro), Antes (Modo Oscuro), Formulario de Crear Estudiante, Formulario de Edición (+2 more)
 
-### Community 102 - "English From Scratch"
-Cohesion: 0.20
-Nodes (9): API principal, Currículo y DBA, Deployment, English From Scratch, Estructura, Roles y rutas, Stack, Start local (+1 more)
+### Community 102 - "🌟 English From Scratch 🇨🇴 🚀📚🎈"
+Cohesion: 0.06
+Nodes (31): 🔐 Accesos y Credenciales de Prueba 🔑📋, ⚡ Arquitectura y Ultra Rendimiento 🚀🏎️, ⚙️ Backend & Base de Datos, 🌐 Catálogo de Endpoints REST API 📡🔌, 🤝 Contribución y Licencia 📜🎈, 📚 Currículo Oficial DBA MEN (32 Unidades) 📖🇨🇴, 📽️ Diapositivas Interactivas de Clase (DBADeck), 🎨 Diseño & Estética Claymorphism 🧸🎨 (+23 more)
 
-### Community 103 - "AdminPanel.jsx"
-Cohesion: 0.22
-Nodes (9): AdminPanel(), formatGrade(), gradeTone, overviewResponse, teachersResponse, DiagnosticPage(), apiFetch(), parseBody() (+1 more)
+### Community 103 - "react"
+Cohesion: 0.28
+Nodes (8): DeckInner(), AuthContext, STORAGE_KEYS, tokenStorage, DiagnosticPage(), apiFetch(), parseBody(), react
 
 ### Community 104 - "A1.2 ENGLISH CURRICULUM - WEEK 3: FAMILY"
 Cohesion: 0.22
@@ -595,9 +590,9 @@ Nodes (7): 1) Backend, 2) Frontend, Como se conserva la esencia original, Ejecut
 Cohesion: 0.29
 Nodes (6): 1. Correctness, 2. Architecture fit, 3. Security, 4. Performance, 5. Maintainability and verification, Local readiness review
 
-### Community 114 - "ACTIVITY 1: "GREETINGS CAROUSEL" (Slide 2)"
-Cohesion: 0.33
-Nodes (6): ACTIVITY 1: "GREETINGS CAROUSEL" (Slide 2), Error Anticipation & Correction, Feedback Messages, Instructions for Student, Success Criteria, Visual Design
+### Community 114 - "INTERACTIVE ACTIVITIES - WEEK 1"
+Cohesion: 0.29
+Nodes (7): ACTIVITY 1: "GREETINGS CAROUSEL" (Slide 2), Error Anticipation & Correction, Feedback Messages, Instructions for Student, INTERACTIVE ACTIVITIES - WEEK 1, Success Criteria, Visual Design
 
 ### Community 115 - "ACTIVITY 5: "GRAMMAR FILL-IN-THE-BLANK: TO BE CONJUGATION" (Slide 9)"
 Cohesion: 0.29
@@ -667,9 +662,9 @@ Nodes (6): ACTIVITY 2: "DRAG & DROP - NAME CARD CREATION" (Slide 3), Error Antic
 Cohesion: 0.33
 Nodes (6): ACTIVITY 3: "COUNTRIES MAP DRAG-DROP" (Slide 5), Error Anticipation & Correction, Feedback Messages, Instructions for Student, Success Criteria, Visual Design
 
-### Community 132 - "INTERACTIVE ACTIVITIES - WEEK 1"
-Cohesion: 0.29
-Nodes (7): ACTIVITY 4: "PROFESSION MATCHING GAME" (Slide 7), Error Anticipation & Correction, Feedback Messages, Instructions for Student, INTERACTIVE ACTIVITIES - WEEK 1, Success Criteria, Visual Design
+### Community 132 - "ACTIVITY 4: "PROFESSION MATCHING GAME" (Slide 7)"
+Cohesion: 0.33
+Nodes (6): ACTIVITY 4: "PROFESSION MATCHING GAME" (Slide 7), Error Anticipation & Correction, Feedback Messages, Instructions for Student, Success Criteria, Visual Design
 
 ### Community 133 - "ACTIVITY 2: "MATCH TIMES & ACTIVITIES" (Slide 7)"
 Cohesion: 0.33
@@ -863,10 +858,6 @@ Nodes (9): 11. COMPONENT EXECUTION GUIDELINES, 3D Cascading Card Deck, Diagonal 
 Cohesion: 0.22
 Nodes (9): 18. EXTRA CREATIVITY & IMPLEMENTATION EDGE, Composition variety check, Conversion focus, Cross-section contrast, CTA specificity, Cultural / tonal alignment, Data-viz restraint, Image variety inside one comp (+1 more)
 
-### Community 184 - "A1.2 ENGLISH CURRICULUM - WEEK 1: HELLO! (INTRODUCTIONS)"
-Cohesion: 0.22
-Nodes (8): A1.2 ENGLISH CURRICULUM - WEEK 1: HELLO! (INTRODUCTIONS), SECTION A: GREETINGS & BASICS (8 words), SECTION B: COUNTRIES (20 words), SECTION C: PROFESSIONS (12 words), SECTION D: KEY EXPRESSIONS (4 words/phrases), SLIDE-BY-SLIDE BREAKDOWN, VOCABULARY LIST - WEEK 1, WEEK 1 SUMMARY & TRANSITION
-
 ### Community 185 - "9. AI TELLS (Forbidden Patterns)"
 Cohesion: 0.25
 Nodes (8): 9.A Visual & CSS, 9. AI TELLS (Forbidden Patterns), 9.B Typography, 9.C Layout & Spacing, 9.D Content & Data ("Jane Doe" Effect), 9.E External Resources & Components, 9.F Production-Test Tells (banned outright), 9.G EM-DASH BAN (the single most-violated Tell)
@@ -878,10 +869,6 @@ Nodes (8): 12. THE COMBINATORIAL VARIATION ENGINE, Background Character, Hero Ar
 ### Community 187 - "8. ANTI-AI-SLOP RULES"
 Cohesion: 0.25
 Nodes (8): 8. ANTI-AI-SLOP RULES, Carousel / marquee slop (layout), Content slop, Data / KPI slop, Density slop, Layout slop, Typography slop, Visual slop
-
-### Community 188 - "FORMATIVE ASSESSMENT CHECKPOINT - WEEK 1"
-Cohesion: 0.25
-Nodes (8): ASSESSMENT STRUCTURE, FORMATIVE ASSESSMENT CHECKPOINT - WEEK 1, SCORE BREAKDOWN, SECTION A: VOCABULARY RECOGNITION (5 points), SECTION B: "TO BE" CONJUGATION (8 points), SECTION C: LISTENING COMPREHENSION (7 points), SECTION D: SPEAKING TASK - SELF-INTRODUCTION (5 points), SELF-CHECK REFLECTION (Not Graded - Metacognitive)
 
 ### Community 189 - "DIALOGUE 1: "INTRODUCING FAMILY MEMBERS""
 Cohesion: 0.25
@@ -914,10 +901,6 @@ Nodes (7): 13. COLOR & MATERIAL RULES, Background Confidence Rule, Background-im
 ### Community 196 - "4. HERO MINIMALISM RULES"
 Cohesion: 0.29
 Nodes (7): 4. HERO MINIMALISM RULES, Absolute Hero Rules, Graphic Restraint, Headline Rule, Hero Composition Bias, Pre-output check, Typography Execution
-
-### Community 197 - "PRESENT SIMPLE OF "TO BE""
-Cohesion: 0.29
-Nodes (7): Color-Coded Visual Explanation, Common Student Errors & Corrections, Conjugation Table, Example Sentences (5 Examples), GRAMMAR EXPLANATION - WEEK 1, PRESENT SIMPLE OF "TO BE", Rule Statement (Simple Terms)
 
 ### Community 198 - "ACTIVITY 3: "FILL IN POSSESSIVE ADJECTIVES" (Slide 8)"
 Cohesion: 0.29
@@ -1012,22 +995,18 @@ Cohesion: 0.50
 Nodes (4): 20. EXAMPLE INTERPRETATIONS, Example 1, Example 2, Example 3
 
 ### Community 221 - "useAuth"
-Cohesion: 0.25
-Nodes (11): LoginPage, Logout, useActiveGrade(), allowedGradesFor(), gradeTone, MaterialShell(), useAllowedGrades(), useAuth() (+3 more)
-
-### Community 223 - "ThemeProvider.jsx"
-Cohesion: 0.60
-Nodes (3): applyTheme(), ThemeContext, ThemeProvider()
+Cohesion: 0.16
+Nodes (17): AdminPanel, LoginPage, AdminPanel(), formatGrade(), gradeTone, useActiveGrade(), allowedGradesFor(), gradeTone (+9 more)
 
 ## Knowledge Gaps
-- **1759 isolated node(s):** `Migration`, `Role`, `Meta`, `Migration`, `Status` (+1754 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 1954 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **14 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **1775 isolated node(s):** `Migration`, `Role`, `Meta`, `Migration`, `Status` (+1770 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 1970 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `react` connect `react` to `App.jsx`, `MaterialPages.jsx`, `package.json`, `AdminPanel.jsx`, `DBADeck.jsx`, `Card.jsx`, `useAuth`, `lucide-react`, `ThemeProvider.jsx`?**
+- **Why does `react` connect `react` to `App.jsx`, `MaterialPages.jsx`, `package.json`, `DBADeck.jsx`, `LoginForm.jsx`, `Card.jsx`, `useAuth`?**
   _High betweenness centrality (0.005) - this node is a cross-community bridge._
 - **Why does `CORE DIRECTIVE: AWWWARDS-LEVEL IMAGE ART DIRECTION` connect `CORE DIRECTIVE: AWWWARDS-LEVEL IMAGE ART DIRECTION` to `13. COLOR & MATERIAL RULES`, `4. HERO MINIMALISM RULES`, `5. IMAGE COUNT & PAGE SLICING`, `8. ANTI-AI-SLOP RULES`, `2. THE COMBINATORIAL VARIATION ENGINE`, `11. COMPONENT EXECUTION GUIDELINES`, `18. EXTRA CREATIVITY & IMPLEMENTATION EDGE`, `15. DEFAULT SITE PACKS`, `20. EXAMPLE INTERPRETATIONS`?**
   _High betweenness centrality (0.002) - this node is a cross-community bridge._
@@ -1040,4 +1019,4 @@ _Questions this graph is uniquely positioned to answer:_
 - **Are the 10 inferred relationships involving `TeacherGrade` (e.g. with `CustomTokenObtainPairSerializer` and `UserMeSerializer`) actually correct?**
   _`TeacherGrade` has 10 INFERRED edges - model-reasoned connections that need verification._
 - **What connects `Migration`, `Role`, `Meta` to the rest of the system?**
-  _1759 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _1775 weakly-connected nodes found - possible documentation gaps or missing edges._

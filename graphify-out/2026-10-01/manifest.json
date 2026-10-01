@@ -288,10 +288,10 @@
     "semantic_hash": ""
   },
   "frontend/src/components/EmojiArt.jsx": {
-    "mtime": 1790876930.5917907,
-    "seen": 1790877359.9804132,
-    "ast_hash": "eb30b9a2b746615e62b65d119f930673",
-    "semantic_hash": "eb30b9a2b746615e62b65d119f930673"
+    "mtime": 1790885649.9014792,
+    "seen": 1790885772.1621354,
+    "ast_hash": "de4998b4f136478ea6ff383ea33a79b3",
+    "semantic_hash": ""
   },
   "frontend/src/components/MaterialPages.jsx": {
     "mtime": 1790882050.8164918,
@@ -330,10 +330,10 @@
     "semantic_hash": "26cfb5dd09a21405487257b769ce96e8"
   },
   "frontend/src/data/emojiArt.json": {
-    "mtime": 1790876880.555399,
-    "seen": 1790877359.9804204,
-    "ast_hash": "4fe14b116a54aab31a61970e0808bfaa",
-    "semantic_hash": "4fe14b116a54aab31a61970e0808bfaa"
+    "mtime": 1790885600.8508568,
+    "seen": 1790885772.1621447,
+    "ast_hash": "90c9a57306ff76bda61ffeacb14564b7",
+    "semantic_hash": ""
   },
   "frontend/src/data/grados.js": {
     "mtime": 1790786415.08668,
@@ -588,9 +588,9 @@
     "semantic_hash": ""
   },
   "docker-compose.yml": {
-    "mtime": 1790217018.8969095,
-    "seen": 1790877804.6614032,
-    "ast_hash": "378961f70ab859e0e3f730348cf42892",
+    "mtime": 1790885551.3762002,
+    "seen": 1790885772.1622202,
+    "ast_hash": "615aecf4edfd5ac8cdb65bf40ee3ea0a",
     "semantic_hash": ""
   },
   "docs/local-runtime/design.md": {
@@ -696,9 +696,9 @@
     "semantic_hash": ""
   },
   "frontend/index.html": {
-    "mtime": 1790882677.9731202,
-    "seen": 1790882786.5452719,
-    "ast_hash": "b7e947959c9d75badcb496070469bd2d",
+    "mtime": 1790885663.4176462,
+    "seen": 1790885772.162244,
+    "ast_hash": "de47c9f41dcd18107a64becfb78c91ee",
     "semantic_hash": ""
   },
   "markdowns/ACTUALIZACION_TEACHER_DASHBOARD_v2.md": {
@@ -2049,6 +2049,42 @@
     "mtime": 1790884879.853319,
     "seen": 1790884976.2618494,
     "ast_hash": "565a0cf6c0f66733dd55d7343ea6f619",
+    "semantic_hash": ""
+  },
+  "frontend/public/openmoji/0031-FE0F-20E3.svg": {
+    "mtime": 1790885589.0029988,
+    "seen": 1790885772.1622853,
+    "ast_hash": "397fe39c0b688e85a7d7cb07732cfc9d",
+    "semantic_hash": ""
+  },
+  "frontend/public/openmoji/0034-FE0F-20E3.svg": {
+    "mtime": 1790885589.2787344,
+    "seen": 1790885772.1622865,
+    "ast_hash": "754bd49126bd61dbfe3322b55b3e2baf",
+    "semantic_hash": ""
+  },
+  "frontend/public/openmoji/0037-FE0F-20E3.svg": {
+    "mtime": 1790885589.5841854,
+    "seen": 1790885772.1622877,
+    "ast_hash": "92683d73169d6f56aaa222aae3760da7",
+    "semantic_hash": ""
+  },
+  "frontend/public/openmoji/1F3AC.svg": {
+    "mtime": 1790885576.0715315,
+    "seen": 1790885772.1623154,
+    "ast_hash": "367784f641f43d3da986dcd92c8508c2",
+    "semantic_hash": ""
+  },
+  "backend/.tts_cache/98159a69165bd7194446dc2660a87462.mp3": {
+    "mtime": 1790885825.0012565,
+    "seen": 1790885861.5083094,
+    "ast_hash": "8e18c00f067cbaf1dc5ade7c20776b81",
+    "semantic_hash": ""
+  },
+  "backend/.tts_cache/a5b2b34de9dc3639e849022bab03a809.mp3": {
+    "mtime": 1790885787.4860084,
+    "seen": 1790885861.5083117,
+    "ast_hash": "dc696e43438a7e1137de77648109440a",
     "semantic_hash": ""
   }
 }
