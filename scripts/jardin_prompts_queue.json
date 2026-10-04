@@ -1,0 +1,158 @@
+[
+  {
+    "filename": "mommy.jpg",
+    "name": "mommy_clay",
+    "category": "familia",
+    "prompt": "Cute loving mother smiling gently in 3D claymation clay style, preschool educational style, soft smooth colorful plasticine modeling clay, friendly kind smile, colorful pastel clothes, clean bright studio lighting, white clean background, high detail, stop-motion animation aesthetic, no text, no letters."
+  },
+  {
+    "filename": "daddy.jpg",
+    "name": "daddy_clay",
+    "category": "familia",
+    "prompt": "Friendly happy father smiling warmly in 3D claymation clay style, preschool educational style, soft smooth colorful plasticine modeling clay, wearing a green clay sweater, kind expression, clean bright studio lighting, white clean background, high detail, stop-motion animation aesthetic, no text, no letters."
+  },
+  {
+    "filename": "brother.jpg",
+    "name": "brother_clay",
+    "category": "familia",
+    "prompt": "Cheerful young boy with playful smile in 3D claymation clay style, preschool educational style, soft smooth colorful plasticine modeling clay, holding a small toy car, colorful shirt, clean bright studio lighting, white clean background, high detail, stop-motion animation aesthetic, no text, no letters."
+  },
+  {
+    "filename": "sister.jpg",
+    "name": "sister_clay",
+    "category": "familia",
+    "prompt": "Happy smiling young girl with cute clay braided pigtails in 3D claymation clay style, preschool educational style, soft smooth colorful plasticine modeling clay, wearing cute pink overalls, bright studio lighting, white clean background, high detail, stop-motion animation aesthetic, no text, no letters."
+  },
+  {
+    "filename": "grandma.jpg",
+    "name": "grandma_clay",
+    "category": "familia",
+    "prompt": "Kind sweet grandmother with gray clay hair in a bun and round spectacles smiling in 3D claymation clay style, preschool educational style, soft smooth plasticine modeling clay, colorful knitted cardigan, bright studio lighting, white clean background, high detail, stop-motion animation aesthetic, no text, no letters."
+  },
+  {
+    "filename": "grandpa.jpg",
+    "name": "grandpa_clay",
+    "category": "familia",
+    "prompt": "Warm friendly grandfather with mustache and cozy clay vest smiling in 3D claymation clay style, preschool educational style, soft smooth plasticine modeling clay, friendly eyes, bright studio lighting, white clean background, high detail, stop-motion animation aesthetic, no text, no letters."
+  },
+  {
+    "filename": "family_group.jpg",
+    "name": "family_group_clay",
+    "category": "familia",
+    "prompt": "Happy loving diverse family standing together (mother, father, brother, sister, and baby) in 3D claymation clay style, preschool educational style, colorful soft smooth plasticine modeling clay, joyful expressions, bright studio lighting, white clean background, high detail, stop-motion animation aesthetic, no text, no letters."
+  },
+  {
+    "filename": "head.jpg",
+    "name": "head_clay",
+    "category": "cuerpo",
+    "prompt": "Child head with friendly smiling face and hair modeled in 3D claymation clay style, preschool educational style, colorful plasticine, bright studio lighting, white clean background, high detail, stop-motion aesthetic, no text."
+  },
+  {
+    "filename": "hands.jpg",
+    "name": "hands_clay",
+    "category": "cuerpo",
+    "prompt": "Two cute little child hands open with five little clay fingers each in 3D claymation clay style, preschool educational style, colorful plasticine, clean studio lighting, white background, high detail, no text."
+  },
+  {
+    "filename": "hands_clap.jpg",
+    "name": "hands_clap_clay",
+    "category": "cuerpo",
+    "prompt": "Two cute clay hands clapping happily with tiny celebratory sparkles in 3D claymation clay style, preschool educational style, colorful plasticine modeling clay, bright studio lighting, white background, stop-motion aesthetic, no text."
+  },
+  {
+    "filename": "feet.jpg",
+    "name": "feet_clay",
+    "category": "cuerpo",
+    "prompt": "Two cute little child feet modeled in colorful 3D claymation clay style, preschool educational style, soft smooth plasticine modeling clay, bright studio lighting, white background, no text."
+  },
+  {
+    "filename": "run.jpg",
+    "name": "run_clay",
+    "category": "cuerpo",
+    "prompt": "Cute child running happily with arms swinging playfully in 3D claymation clay style, preschool educational style, colorful plasticine modeling clay, action pose, bright studio lighting, white background, no text."
+  },
+  {
+    "filename": "tummy.jpg",
+    "name": "tummy_clay",
+    "category": "cuerpo",
+    "prompt": "Cute little preschool child happily pointing to their tummy/belly in 3D claymation clay style, educational style, colorful plasticine modeling clay, smiling, bright studio lighting, white background, no text."
+  },
+  {
+    "filename": "blocks.jpg",
+    "name": "blocks_clay",
+    "category": "juguetes",
+    "prompt": "Four colorful toy wooden building blocks with embossed ABC and 123 in 3D claymation clay style, preschool educational style, vibrant smooth plasticine clay, bright studio lighting, white background, no text."
+  },
+  {
+    "filename": "crayon.jpg",
+    "name": "crayon_clay",
+    "category": "colores",
+    "prompt": "Chunky colorful wax crayons of rainbow colors standing together in 3D claymation clay style, preschool educational style, smooth colorful plasticine, bright studio lighting, white background, no text."
+  },
+  {
+    "filename": "red.jpg",
+    "name": "red_clay",
+    "category": "colores",
+    "prompt": "Splash and sculptured playful red plasticine blob shaped like a shiny strawberry or red heart with cute eyes in 3D claymation clay style, vibrant cherry red, bright studio lighting, white background, no text."
+  },
+  {
+    "filename": "blue.jpg",
+    "name": "blue_clay",
+    "category": "colores",
+    "prompt": "Splash and sculptured playful blue plasticine blob with gentle waves in 3D claymation clay style, vibrant sky blue, bright studio lighting, white background, no text."
+  },
+  {
+    "filename": "yellow.jpg",
+    "name": "yellow_clay",
+    "category": "colores",
+    "prompt": "Radiant sunny yellow plasticine sculpture with happy smile in 3D claymation clay style, vibrant warm yellow, bright studio lighting, white background, no text."
+  },
+  {
+    "filename": "green.jpg",
+    "name": "green_clay",
+    "category": "colores",
+    "prompt": "Lush fresh green plasticine sculpture shaped like a cheerful leaf with tiny dew drops in 3D claymation clay style, vibrant emerald green, bright studio lighting, white background, no text."
+  },
+  {
+    "filename": "orange_color.jpg",
+    "name": "orange_clay",
+    "category": "colores",
+    "prompt": "Playful orange plasticine sculpture shaped like a juicy orange fruit in 3D claymation clay style, vibrant bright orange, studio lighting, white background, no text."
+  },
+  {
+    "filename": "purple.jpg",
+    "name": "purple_clay",
+    "category": "colores",
+    "prompt": "Playful purple plasticine sculpture shaped like a cluster of grapes in 3D claymation clay style, rich royal violet purple, bright studio lighting, white background, no text."
+  },
+  {
+    "filename": "white.jpg",
+    "name": "white_clay",
+    "category": "colores",
+    "prompt": "Fluffy white plasticine cloud sculpture with a gentle friendly smile in 3D claymation clay style, pristine soft white, pastel studio lighting, light contrast background, no text."
+  },
+  {
+    "filename": "black.jpg",
+    "name": "black_clay",
+    "category": "colores",
+    "prompt": "Sleek cute black plasticine friendly cat silhouette sculpture in 3D claymation clay style, clean rich black plasticine, studio lighting, light contrast background, no text."
+  },
+  {
+    "filename": "cake.jpg",
+    "name": "cake_clay",
+    "category": "repaso",
+    "prompt": "Festive colorful birthday cake with lit candles and swirl frosting modeled in 3D claymation clay style, preschool educational style, vibrant plasticine, bright studio lighting, white background, no text."
+  },
+  {
+    "filename": "happy.jpg",
+    "name": "happy_clay",
+    "category": "repaso",
+    "prompt": "Extremely joyful child face with big glowing smile and sparkling eyes modeled in 3D claymation clay style, preschool educational style, colorful plasticine, bright studio lighting, white background, no text."
+  },
+  {
+    "filename": "sing.jpg",
+    "name": "sing_clay",
+    "category": "repaso",
+    "prompt": "Cute cheerful child with open mouth singing musical notes modeled in 3D claymation clay style, preschool educational style, colorful plasticine, floating musical notes, bright studio lighting, white background, no text."
+  }
+]
