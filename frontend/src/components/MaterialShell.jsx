@@ -29,10 +29,11 @@ const gradeTone = {
   segundo: 'from-emerald-500 to-teal-500',
 };
 
-export default function MaterialShell({ materialTitle, materialIcon: MaterialIcon, activeGrade, onGradeChange, backHref = '/docente', children }) {
+export default function MaterialShell({ materialTitle, materialIcon: MaterialIcon, activeGrade, onGradeChange, backHref = '/docente', gradeFilter, children }) {
   const { user, logout } = useAuth();
   const { isDark, toggleTheme } = useTheme();
-  const allowedGrades = useAllowedGrades();
+  const rawAllowedGrades = useAllowedGrades();
+  const allowedGrades = gradeFilter ? rawAllowedGrades.filter(gradeFilter) : rawAllowedGrades;
 
   return (
     <div className="bg-blobs min-h-screen bg-[#eff6ff] text-slate-900 transition-colors duration-300 dark:bg-[#0b1224] dark:text-slate-100">

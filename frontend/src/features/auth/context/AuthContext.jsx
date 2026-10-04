@@ -86,8 +86,23 @@ export function AuthProvider({ children }) {
 
     initializeAuth();
 
+    const handleAuthExpired = () => {
+      if (!isMounted) return;
+      tokenStorage.clearTokens(true);
+      setState({
+        user: null,
+        token: null,
+        isLoading: false,
+        isAuthenticated: false,
+        error: null,
+        status: 'idle',
+      });
+    };
+    window.addEventListener('auth:expired', handleAuthExpired);
+
     return () => {
       isMounted = false;
+      window.removeEventListener('auth:expired', handleAuthExpired);
     };
   }, []);
 

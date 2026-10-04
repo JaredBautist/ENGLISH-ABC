@@ -9,15 +9,17 @@ import { useAuth } from '../features/auth/hooks/useAuth';
 import { getListening, getVideos, getWriting } from '../data/material';
 import { defaultGradeId } from '../data/grados';
 
-function useActiveGrade() {
+function useActiveGrade(filterFn) {
   const { user } = useAuth();
-  const allowedGrades = useMemo(() => allowedGradesFor(user), [user]);
+  const rawAllowed = useMemo(() => allowedGradesFor(user), [user]);
+  const allowedGrades = useMemo(() => (filterFn ? rawAllowed.filter(filterFn) : rawAllowed), [rawAllowed, filterFn]);
   const requested = window.location.search.split('grado=')[1]?.split('&')[0];
-  const [activeGrade, setActiveGrade] = useState(
-    allowedGrades.includes(requested) ? requested : allowedGrades[0] || defaultGradeId,
-  );
+  const [activeGrade, setActiveGrade] = useState(() => {
+    if (requested && (!filterFn || filterFn(requested))) return requested;
+    return allowedGrades[0] || (filterFn ? 'primero' : defaultGradeId);
+  });
 
-  // Si el grado en la URL no está asignado al docente (p. ej. enlace compartido),
+  // Si el grado en la URL no está asignado al docente o no pasa el filtro,
   // cae al primer grado permitido en cuanto se conoce el usuario.
   useEffect(() => {
     if (allowedGrades.length > 0 && !allowedGrades.includes(activeGrade)) {
@@ -594,8 +596,10 @@ function FreeWriting({ activity }) {
 }
 
 export function WritingPage() {
-  const [activeGrade, setActiveGrade] = useActiveGrade();
-  const items = useMemo(() => getWriting(activeGrade), [activeGrade]);
+  const isPrimary = (code) => !['jardin', 'transicion'].includes(code);
+  const [activeGrade, setActiveGrade] = useActiveGrade(isPrimary);
+  const isPreescolar = activeGrade === 'jardin' || activeGrade === 'transicion';
+  const items = useMemo(() => (isPreescolar ? [] : getWriting(activeGrade)), [activeGrade, isPreescolar]);
 
   return (
     <MaterialShell
@@ -603,21 +607,52 @@ export function WritingPage() {
       materialIcon={PenLine}
       activeGrade={activeGrade}
       onGradeChange={setActiveGrade}
+      gradeFilter={isPrimary}
     >
-      <div className="grid gap-4 sm:gap-5">
-        {items.map((activity) => (
-          <article key={activity.id} className="card-clay p-4 sm:p-6">
-            <span className="badge-clay badge-clay-green mb-2">
-              {activity.type === 'free' ? 'Escritura libre' : 'Guiada'}
-            </span>
-            <h2 className="text-base font-black sm:text-lg">{activity.title}</h2>
-            <p className="mb-4 text-sm font-semibold text-slate-500 dark:text-slate-400">{activity.description}</p>
-            {activity.type === 'free' ? <FreeWriting activity={activity} /> : <GuidedWriting activity={activity} />}
-          </article>
-        ))}
-      </div>
-      {items.length === 0 && (
-        <p className="card-clay p-6 text-center font-bold text-slate-500">Material en preparación para este grado.</p>
+      {isPreescolar ? (
+        <div className="card-clay mx-auto my-6 max-w-xl p-6 text-center sm:p-10">
+          <span className="mb-4 block text-5xl" role="img" aria-label="Escucha y canciones">
+            🎧
+          </span>
+          <h2 className="mb-2 text-xl font-black text-slate-800 dark:text-slate-100 sm:text-2xl">
+            En {activeGrade === 'jardin' ? 'Jardín' : 'Transición'} el aprendizaje es 100% Oral y Visual
+          </h2>
+          <p className="mb-6 text-sm font-semibold leading-relaxed text-slate-600 dark:text-slate-300">
+            Según los <strong>Derechos Básicos de Aprendizaje (DBA)</strong> del Ministerio de Educación Nacional, los niños de preescolar aprenden inglés asociando sonidos, imágenes y canciones sin lectoescritura. Las actividades de Writing inician formalmente en <strong>1° de Primaria</strong>.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={`/docente/listening?grado=${activeGrade}`}
+              className="btn-primary-clay inline-flex items-center gap-2 px-5 py-3 text-sm font-bold text-white sm:text-base"
+            >
+              <Headphones size={18} aria-hidden="true" /> Ir a Listening
+            </a>
+            <a
+              href={`/docente/videos?grado=${activeGrade}`}
+              className="btn-clay inline-flex items-center gap-2 border-[3px] border-rose-200 bg-rose-50 px-5 py-3 text-sm font-bold text-rose-700 hover:bg-rose-100 dark:border-rose-800 dark:bg-rose-950/40 dark:text-rose-300 sm:text-base"
+            >
+              <Play size={18} aria-hidden="true" /> Ir a Videos
+            </a>
+          </div>
+        </div>
+      ) : (
+        <>
+          <div className="grid gap-4 sm:gap-5">
+            {items.map((activity) => (
+              <article key={activity.id} className="card-clay p-4 sm:p-6">
+                <span className="badge-clay badge-clay-green mb-2">
+                  {activity.type === 'free' ? 'Escritura libre' : 'Guiada'}
+                </span>
+                <h2 className="text-base font-black sm:text-lg">{activity.title}</h2>
+                <p className="mb-4 text-sm font-semibold text-slate-500 dark:text-slate-400">{activity.description}</p>
+                {activity.type === 'free' ? <FreeWriting activity={activity} /> : <GuidedWriting activity={activity} />}
+              </article>
+            ))}
+          </div>
+          {items.length === 0 && (
+            <p className="card-clay p-6 text-center font-bold text-slate-500">Material en preparación para este grado.</p>
+          )}
+        </>
       )}
     </MaterialShell>
   );

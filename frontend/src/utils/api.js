@@ -12,6 +12,47 @@ const parseBody = async (response) => {
   }
 };
 
+let refreshPromise = null;
+
+const requestNewAccessToken = async () => {
+  if (refreshPromise) return refreshPromise;
+
+  refreshPromise = (async () => {
+    const refreshToken = tokenStorage.getRefreshToken();
+    if (!refreshToken) {
+      tokenStorage.clearTokens();
+      throw new Error('No hay sesión activa.');
+    }
+
+    try {
+      const refreshRes = await fetch(`${API_BASE}/auth/token/refresh/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ refresh: refreshToken }),
+      });
+
+      if (!refreshRes.ok) {
+        tokenStorage.clearTokens();
+        if (typeof window !== 'undefined') {
+          window.dispatchEvent(new CustomEvent('auth:expired'));
+        }
+        throw new Error('Sesión expirada.');
+      }
+
+      const refreshData = await parseBody(refreshRes);
+      if (refreshData?.access) {
+        tokenStorage.updateTokens(refreshData.access, refreshData.refresh);
+        return refreshData.access;
+      }
+      throw new Error('Respuesta inválida del servidor.');
+    } finally {
+      refreshPromise = null;
+    }
+  })();
+
+  return refreshPromise;
+};
+
 export const apiFetch = async (path, options = {}) => {
   const headers = {
     'Content-Type': 'application/json',
@@ -29,25 +70,21 @@ export const apiFetch = async (path, options = {}) => {
   });
 
   // Handle silent token refresh on 401 Unauthorized
-  if (response.status === 401 && !options._retry) {
-    const refreshToken = tokenStorage.getRefreshToken();
-    if (refreshToken) {
-      try {
-        const refreshRes = await fetch(`${API_BASE}/auth/token/refresh/`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ refresh: refreshToken }),
+  if (response.status === 401 && !options._retry && !path.includes('/auth/')) {
+    try {
+      const newAccess = await requestNewAccessToken();
+      if (newAccess) {
+        return apiFetch(path, {
+          ...options,
+          _retry: true,
+          headers: {
+            ...options.headers,
+            Authorization: `Bearer ${newAccess}`,
+          },
         });
-        if (refreshRes.ok) {
-          const refreshData = await parseBody(refreshRes);
-          if (refreshData?.access) {
-            tokenStorage.updateAccessToken(refreshData.access);
-            return apiFetch(path, { ...options, _retry: true });
-          }
-        }
-      } catch (refreshErr) {
-        console.warn('Silent token refresh failed:', refreshErr);
       }
+    } catch (refreshErr) {
+      console.warn('Silent token refresh failed:', refreshErr);
     }
   }
 

@@ -175,6 +175,23 @@ export const tokenStorage = {
   },
 
   /**
+   * Update both access and rotated refresh tokens
+   */
+  updateTokens(newAccessToken, newRefreshToken) {
+    if (newAccessToken) {
+      this.updateAccessToken(newAccessToken);
+    }
+    if (newRefreshToken) {
+      if (isStorageAvailable('localStorage') && localStorage.getItem(STORAGE_KEYS.REFRESH_TOKEN)) {
+        localStorage.setItem(STORAGE_KEYS.REFRESH_TOKEN, newRefreshToken);
+      }
+      if (isStorageAvailable('sessionStorage') && sessionStorage.getItem(STORAGE_KEYS.REFRESH_TOKEN)) {
+        sessionStorage.setItem(STORAGE_KEYS.REFRESH_TOKEN, newRefreshToken);
+      }
+    }
+  },
+
+  /**
    * Save user profile
    */
   saveUser(user, rememberMe = null) {

@@ -1,11 +1,3 @@
-/**
- * Contenido de slides por unidad (32 unidades: 4 grados x 8 unidades).
- * Tipos: content | vocabulary | activity | song | homework.
- * Los videos embebidos son canales oficiales verificados
- * (Super Simple Songs, Noodle & Pals, The Kiboomers, The Singing Walrus).
- * Cada unidad cuenta con su video pedagógico y su slide final de homework.
- */
-
 export const unitSlides = {
   "jardin-hello": [
     {
@@ -14,14 +6,35 @@ export const unitSlides = {
       "title": "Hello!",
       "description": "Saluda con la profe: Hello! / Hi! / Bye-bye!",
       "items": [
-        "Hello! (Hola)",
-        "Hi! (¡Hola! informal)",
-        "Bye-bye! (Adiós)",
-        "Good morning! (Buenos días)"
+        {
+          "text": "Hello!",
+          "es": "Hola",
+          "emoji": "👋",
+          "image": "/cards/hello.jpg"
+        },
+        {
+          "text": "Hi!",
+          "es": "¡Hola! informal",
+          "emoji": "🙋",
+          "image": "/cards/hi.jpg"
+        },
+        {
+          "text": "Bye-bye!",
+          "es": "Adiós",
+          "emoji": "🚪",
+          "image": "/cards/bye.jpg"
+        },
+        {
+          "text": "Good morning!",
+          "es": "Buenos días",
+          "emoji": "🌅",
+          "image": "/cards/morning.jpg"
+        }
       ],
       "examples": [
         "Teacher: Hello! — Student: Hello!"
-      ]
+      ],
+      "image": "/topics/greetings.jpg"
     },
     {
       "type": "vocabulary",
@@ -31,17 +44,20 @@ export const unitSlides = {
         {
           "word": "My name is…",
           "emoji": "🙋",
-          "es": "Mi nombre es…"
+          "es": "Mi nombre es…",
+          "image": "/cards/name.jpg"
         },
         {
           "word": "What is your name?",
           "emoji": "❓",
-          "es": "¿Cuál es tu nombre?"
+          "es": "¿Cuál es tu nombre?",
+          "image": "/cards/ask_name.jpg"
         },
         {
           "word": "Nice to meet you!",
           "emoji": "🤝",
-          "es": "¡Mucho gusto!"
+          "es": "¡Mucho gusto!",
+          "image": "/cards/handshake.jpg"
         }
       ]
     },
@@ -54,19 +70,41 @@ export const unitSlides = {
     },
     {
       "type": "content",
-      "emoji": "🕘",
+      "emoji": "🏫",
       "title": "Rutinas del salón",
-      "description": "Rutinas diarias con gestos.",
+      "description": "Rutinas diarias con gestos y acciones.",
+      "image": "/topics/classroom.jpg",
       "items": [
-        "Clean up! (¡A recoger!)",
-        "Line up! (¡Formen fila!)",
-        "Sit down, please (Siéntense, por favor)",
-        "Quiet, please (Silencio, por favor)"
+        {
+          "text": "Clean up!",
+          "es": "¡A recoger!",
+          "emoji": "🧹",
+          "image": "/cards/cleanup.jpg"
+        },
+        {
+          "text": "Line up!",
+          "es": "¡Formen fila!",
+          "emoji": "🚶",
+          "image": "/cards/lineup.jpg"
+        },
+        {
+          "text": "Sit down, please",
+          "es": "Siéntense, por favor",
+          "emoji": "🪑",
+          "image": "/cards/sitdown.jpg"
+        },
+        {
+          "text": "Quiet, please",
+          "es": "Silencio, por favor",
+          "emoji": "🤫",
+          "image": "/cards/quiet.jpg"
+        }
       ]
     },
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/teacher.jpg",
       "question": "La profe dice \"Hello!\" ¿Qué respondes?",
       "options": [
         "Hello!",
@@ -78,6 +116,7 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/bye.jpg",
       "question": "Al terminar la clase, la profe dice…",
       "options": [
         "Bye-bye!",
@@ -105,11 +144,32 @@ export const unitSlides = {
       "title": "Colors",
       "description": "Los colores del salón.",
       "items": [
-        "Red (rojo)",
-        "Blue (azul)",
-        "Yellow (amarillo)",
-        "Green (verde)"
-      ]
+        {
+          "text": "Red",
+          "es": "rojo",
+          "emoji": "🔴",
+          "image": "/cards/red.jpg"
+        },
+        {
+          "text": "Blue",
+          "es": "azul",
+          "emoji": "🔵",
+          "image": "/cards/blue.jpg"
+        },
+        {
+          "text": "Yellow",
+          "es": "amarillo",
+          "emoji": "🟡",
+          "image": "/cards/yellow.jpg"
+        },
+        {
+          "text": "Green",
+          "es": "verde",
+          "emoji": "🟢",
+          "image": "/cards/green.jpg"
+        }
+      ],
+      "image": "/topics/colors.jpg"
     },
     {
       "type": "vocabulary",
@@ -119,22 +179,26 @@ export const unitSlides = {
         {
           "word": "Orange",
           "emoji": "🟠",
-          "es": "Naranja"
+          "es": "Naranja",
+          "image": "/cards/orange_color.jpg"
         },
         {
           "word": "Purple",
           "emoji": "🟣",
-          "es": "Morado"
+          "es": "Morado",
+          "image": "/cards/purple.jpg"
         },
         {
           "word": "Black",
           "emoji": "⚫",
-          "es": "Negro"
+          "es": "Negro",
+          "image": "/cards/black.jpg"
         },
         {
           "word": "White",
           "emoji": "⚪",
-          "es": "Blanco"
+          "es": "Blanco",
+          "image": "/cards/white.jpg"
         }
       ]
     },
@@ -146,22 +210,26 @@ export const unitSlides = {
         {
           "word": "Book",
           "emoji": "📚",
-          "es": "Libro"
+          "es": "Libro",
+          "image": "/cards/book.jpg"
         },
         {
           "word": "Pencil",
           "emoji": "✏️",
-          "es": "Lápiz"
+          "es": "Lápiz",
+          "image": "/cards/pencil.jpg"
         },
         {
           "word": "Crayon",
           "emoji": "🖍️",
-          "es": "Crayón"
+          "es": "Crayón",
+          "image": "/cards/crayon.jpg"
         },
         {
           "word": "Chair",
           "emoji": "🪑",
-          "es": "Silla"
+          "es": "Silla",
+          "image": "/cards/chair.jpg"
         }
       ]
     },
@@ -213,17 +281,68 @@ export const unitSlides = {
       "title": "Numbers 1-10",
       "description": "Cuenta con los dedos de la mano.",
       "items": [
-        "One (1)",
-        "Two (2)",
-        "Three (3)",
-        "Four (4)",
-        "Five (5)",
-        "Six (6)",
-        "Seven (7)",
-        "Eight (8)",
-        "Nine (9)",
-        "Ten (10)"
-      ]
+        {
+          "text": "⃣ One",
+          "es": "1",
+          "emoji": "1️",
+          "image": "/cards/number1.jpg"
+        },
+        {
+          "text": "⃣ Two",
+          "es": "2",
+          "emoji": "2️",
+          "image": "/cards/number2.jpg"
+        },
+        {
+          "text": "⃣ Three",
+          "es": "3",
+          "emoji": "3️",
+          "image": "/cards/number3.jpg"
+        },
+        {
+          "text": "⃣ Four",
+          "es": "4",
+          "emoji": "4️",
+          "image": "/cards/number4.jpg"
+        },
+        {
+          "text": "⃣ Five",
+          "es": "5",
+          "emoji": "5️",
+          "image": "/cards/number5.jpg"
+        },
+        {
+          "text": "⃣ Six",
+          "es": "6",
+          "emoji": "6️",
+          "image": "/cards/number6.jpg"
+        },
+        {
+          "text": "⃣ Seven",
+          "es": "7",
+          "emoji": "7️",
+          "image": "/cards/number7.jpg"
+        },
+        {
+          "text": "⃣ Eight",
+          "es": "8",
+          "emoji": "8️",
+          "image": "/cards/number8.jpg"
+        },
+        {
+          "text": "⃣ Nine",
+          "es": "9",
+          "emoji": "9️",
+          "image": "/cards/number9.jpg"
+        },
+        {
+          "text": "Ten",
+          "es": "10",
+          "emoji": "🔟",
+          "image": "/cards/number10.jpg"
+        }
+      ],
+      "image": "/topics/numbers.jpg"
     },
     {
       "type": "vocabulary",
@@ -233,22 +352,26 @@ export const unitSlides = {
         {
           "word": "One apple",
           "emoji": "🍎",
-          "es": "Una manzana"
+          "es": "Una manzana",
+          "image": "/cards/one_apple.jpg"
         },
         {
           "word": "Two books",
           "emoji": "📚",
-          "es": "Dos libros"
+          "es": "Dos libros",
+          "image": "/cards/two_books.jpg"
         },
         {
           "word": "Three pencils",
           "emoji": "✏️",
-          "es": "Tres lápices"
+          "es": "Tres lápices",
+          "image": "/cards/three_pencils.jpg"
         },
         {
           "word": "Ten fingers",
           "emoji": "🖐️",
-          "es": "Diez dedos"
+          "es": "Diez dedos",
+          "image": "/cards/ten_fingers.jpg"
         }
       ]
     },
@@ -265,10 +388,30 @@ export const unitSlides = {
       "title": "Juego: salta y cuenta",
       "description": "Cada niño salta mientras todos cuentan en inglés.",
       "items": [
-        "Jump one! (¡Salto uno!)",
-        "Jump two! (¡Salto dos!)",
-        "Jump three! (¡Salto tres!)",
-        "Hasta jump ten!"
+        {
+          "text": "Jump one!",
+          "es": "¡Salto uno!",
+          "emoji": "🦘",
+          "image": "/cards/body_jump.jpg"
+        },
+        {
+          "text": "Jump two!",
+          "es": "¡Salto dos!",
+          "emoji": "🦘",
+          "image": "/cards/body_jump.jpg"
+        },
+        {
+          "text": "Jump three!",
+          "es": "¡Salto tres!",
+          "emoji": "🦘",
+          "image": "/cards/body_jump.jpg"
+        },
+        {
+          "text": "Jump ten!",
+          "es": "¡Salto diez!",
+          "emoji": "🦘",
+          "image": "/cards/body_jump.jpg"
+        }
       ]
     },
     {
@@ -312,11 +455,32 @@ export const unitSlides = {
       "title": "My toys",
       "description": "Los juguetes que todos conocen.",
       "items": [
-        "Ball (pelota)",
-        "Doll (muñeca)",
-        "Car (carro)",
-        "Kite (cometa)"
-      ]
+        {
+          "text": "Ball",
+          "es": "pelota",
+          "emoji": "⚽",
+          "image": "/cards/ball.jpg"
+        },
+        {
+          "text": "Doll",
+          "es": "muñeca",
+          "emoji": "🪆",
+          "image": "/cards/doll.jpg"
+        },
+        {
+          "text": "Car",
+          "es": "carro",
+          "emoji": "🚗",
+          "image": "/cards/car.jpg"
+        },
+        {
+          "text": "Kite",
+          "es": "cometa",
+          "emoji": "🪁",
+          "image": "/cards/kite.jpg"
+        }
+      ],
+      "image": "/topics/toys.jpg"
     },
     {
       "type": "vocabulary",
@@ -326,22 +490,26 @@ export const unitSlides = {
         {
           "word": "Teddy bear",
           "emoji": "🧸",
-          "es": "Oso de peluche"
+          "es": "Oso de peluche",
+          "image": "/cards/teddy.jpg"
         },
         {
           "word": "Blocks",
           "emoji": "🧱",
-          "es": "Bloques"
+          "es": "Bloques",
+          "image": "/cards/blocks.jpg"
         },
         {
           "word": "Robot",
           "emoji": "🤖",
-          "es": "Robot"
+          "es": "Robot",
+          "image": "/cards/robot.jpg"
         },
         {
           "word": "Train",
           "emoji": "🚂",
-          "es": "Tren"
+          "es": "Tren",
+          "image": "/cards/train.jpg"
         }
       ]
     },
@@ -403,11 +571,32 @@ export const unitSlides = {
       "title": "Farm animals",
       "description": "Animales de la granja con sus sonidos.",
       "items": [
-        "Cow (vaca) — moo!",
-        "Dog (perro) — woof!",
-        "Cat (gato) — meow!",
-        "Duck (pato) — quack!"
-      ]
+        {
+          "text": "Cow (vaca) — moo!",
+          "es": "",
+          "emoji": "🐮",
+          "image": "/cards/cow.jpg"
+        },
+        {
+          "text": "Dog (perro) — woof!",
+          "es": "",
+          "emoji": "🐶",
+          "image": "/cards/dog.jpg"
+        },
+        {
+          "text": "Cat (gato) — meow!",
+          "es": "",
+          "emoji": "🐱",
+          "image": "/cards/cat.jpg"
+        },
+        {
+          "text": "Duck (pato) — quack!",
+          "es": "",
+          "emoji": "🦆",
+          "image": "/cards/duck.jpg"
+        }
+      ],
+      "image": "/topics/farm_animals.jpg"
     },
     {
       "type": "vocabulary",
@@ -417,22 +606,26 @@ export const unitSlides = {
         {
           "word": "Pig",
           "emoji": "🐷",
-          "es": "Cerdo"
+          "es": "Cerdo",
+          "image": "/cards/pig.jpg"
         },
         {
           "word": "Horse",
           "emoji": "🐴",
-          "es": "Caballo"
+          "es": "Caballo",
+          "image": "/cards/horse.jpg"
         },
         {
           "word": "Chicken",
           "emoji": "🐔",
-          "es": "Gallina"
+          "es": "Gallina",
+          "image": "/cards/chicken.jpg"
         },
         {
           "word": "Sheep",
           "emoji": "🐑",
-          "es": "Oveja"
+          "es": "Oveja",
+          "image": "/cards/sheep.jpg"
         }
       ]
     },
@@ -449,10 +642,30 @@ export const unitSlides = {
       "title": "Adivina el animal",
       "description": "La profe hace el sonido y los niños adivinan.",
       "items": [
-        "Moo! → Cow",
-        "Woof! → Dog",
-        "Quack! → Duck",
-        "Meow! → Cat"
+        {
+          "text": "Moo! → Cow",
+          "es": "",
+          "emoji": "🐮",
+          "image": "/cards/cow.jpg"
+        },
+        {
+          "text": "Woof! → Dog",
+          "es": "",
+          "emoji": "🐶",
+          "image": "/cards/dog.jpg"
+        },
+        {
+          "text": "Quack! → Duck",
+          "es": "",
+          "emoji": "🦆",
+          "image": "/cards/duck.jpg"
+        },
+        {
+          "text": "Meow! → Cat",
+          "es": "",
+          "emoji": "🐱",
+          "image": "/cards/cat.jpg"
+        }
       ]
     },
     {
@@ -496,11 +709,32 @@ export const unitSlides = {
       "title": "My body moves",
       "description": "Partes del cuerpo que se mueven.",
       "items": [
-        "Jump (saltar)",
-        "Run (correr)",
-        "Clap (aplaudir)",
-        "Stomp (pisar fuerte)"
-      ]
+        {
+          "text": "Jump",
+          "es": "saltar",
+          "emoji": "🦘",
+          "image": "/cards/body_jump.jpg"
+        },
+        {
+          "text": "Run",
+          "es": "correr",
+          "emoji": "🏃",
+          "image": "/cards/run.jpg"
+        },
+        {
+          "text": "Clap",
+          "es": "aplaudir",
+          "emoji": "👏",
+          "image": "/cards/hands_clap.jpg"
+        },
+        {
+          "text": "Stomp",
+          "es": "pisar fuerte",
+          "emoji": "🦶",
+          "image": "/cards/feet.jpg"
+        }
+      ],
+      "image": "/topics/body_parts.jpg"
     },
     {
       "type": "vocabulary",
@@ -510,22 +744,26 @@ export const unitSlides = {
         {
           "word": "Head",
           "emoji": "🧠",
-          "es": "Cabeza"
+          "es": "Cabeza",
+          "image": "/cards/head.jpg"
         },
         {
           "word": "Hands",
           "emoji": "🙌",
-          "es": "Manos"
+          "es": "Manos",
+          "image": "/cards/hands.jpg"
         },
         {
           "word": "Feet",
           "emoji": "🦶",
-          "es": "Pies"
+          "es": "Pies",
+          "image": "/cards/feet.jpg"
         },
         {
           "word": "Tummy",
           "emoji": "🫃",
-          "es": "Panza"
+          "es": "Panza",
+          "image": "/cards/tummy.jpg"
         }
       ]
     },
@@ -542,10 +780,30 @@ export const unitSlides = {
       "title": "La profe dice…",
       "description": "Solo obedezcan si empieza con \"Simon says\".",
       "items": [
-        "Simon says: jump!",
-        "Simon says: clap!",
-        "Simon says: touch your head!",
-        "Run! (¡Trampa, no te muevas!)"
+        {
+          "text": "Simon says: jump!",
+          "es": "",
+          "emoji": "✨",
+          "image": "/cards/body_jump.jpg"
+        },
+        {
+          "text": "Simon says: clap!",
+          "es": "",
+          "emoji": "✨",
+          "image": "/cards/hands_clap.jpg"
+        },
+        {
+          "text": "Simon says: touch your head!",
+          "es": "",
+          "emoji": "✨",
+          "image": "/cards/head.jpg"
+        },
+        {
+          "text": "Run!",
+          "es": "¡Trampa, no te muevas!",
+          "emoji": "✨",
+          "image": null
+        }
       ]
     },
     {
@@ -589,11 +847,32 @@ export const unitSlides = {
       "title": "My family",
       "description": "La familia en casa.",
       "items": [
-        "Mommy (mamá)",
-        "Daddy (papá)",
-        "Baby (bebé)",
-        "Me (yo)"
-      ]
+        {
+          "text": "Mommy",
+          "es": "mamá",
+          "emoji": "👩",
+          "image": "/cards/mommy.jpg"
+        },
+        {
+          "text": "Daddy",
+          "es": "papá",
+          "emoji": "👨",
+          "image": "/cards/daddy.jpg"
+        },
+        {
+          "text": "Baby",
+          "es": "bebé",
+          "emoji": "👶",
+          "image": "/cards/baby.jpg"
+        },
+        {
+          "text": "Me",
+          "es": "yo",
+          "emoji": "🙋",
+          "image": "/cards/name.jpg"
+        }
+      ],
+      "image": "/topics/family.jpg"
     },
     {
       "type": "vocabulary",
@@ -603,22 +882,26 @@ export const unitSlides = {
         {
           "word": "Family",
           "emoji": "🏡",
-          "es": "Familia"
+          "es": "Familia",
+          "image": "/cards/family_group.jpg"
         },
         {
           "word": "Grandma",
           "emoji": "👵",
-          "es": "Abuela"
+          "es": "Abuela",
+          "image": "/cards/grandma.jpg"
         },
         {
           "word": "Grandpa",
           "emoji": "👴",
-          "es": "Abuelo"
+          "es": "Abuelo",
+          "image": "/cards/grandpa.jpg"
         },
         {
           "word": "Sister",
           "emoji": "👧",
-          "es": "Hermana"
+          "es": "Hermana",
+          "image": "/cards/sister.jpg"
         }
       ]
     },
@@ -681,11 +964,32 @@ export const unitSlides = {
       "title": "Big review!",
       "description": "Repaso de todo el año con fiesta.",
       "items": [
-        "Hello / Bye-bye",
-        "Colors: red, blue, yellow, green",
-        "Numbers: one to ten",
-        "Animals, toys, family"
-      ]
+        {
+          "text": "Hello / 🚪 Bye-bye",
+          "es": "",
+          "emoji": "👋",
+          "image": "/cards/hello.jpg"
+        },
+        {
+          "text": "Colors: red, blue, yellow, green",
+          "es": "",
+          "emoji": "🎨",
+          "image": "/cards/red.jpg"
+        },
+        {
+          "text": "Numbers: one to ten",
+          "es": "",
+          "emoji": "🔢",
+          "image": "/cards/number1.jpg"
+        },
+        {
+          "text": "Animals, 🧸 Toys, 👨‍👩‍👧 Family",
+          "es": "",
+          "emoji": "🐾",
+          "image": "/topics/toys.jpg"
+        }
+      ],
+      "image": "/topics/classroom.jpg"
     },
     {
       "type": "vocabulary",
@@ -695,22 +999,26 @@ export const unitSlides = {
         {
           "word": "Cake",
           "emoji": "🎂",
-          "es": "Torta"
+          "es": "Torta",
+          "image": "/cards/cake.jpg"
         },
         {
           "word": "Balloon",
           "emoji": "🎈",
-          "es": "Globo"
+          "es": "Globo",
+          "image": "/cards/number7.jpg"
         },
         {
           "word": "Music",
           "emoji": "🎶",
-          "es": "Música"
+          "es": "Música",
+          "image": "/cards/sing.jpg"
         },
         {
           "word": "Happy",
           "emoji": "😄",
-          "es": "Feliz"
+          "es": "Feliz",
+          "image": "/cards/happy.jpg"
         }
       ]
     },
@@ -773,14 +1081,35 @@ export const unitSlides = {
       "title": "My family",
       "description": "La familia de cada niño.",
       "items": [
-        "Mommy (mamá)",
-        "Daddy (papá)",
-        "Brother (hermano)",
-        "Sister (hermana)"
+        {
+          "text": "Mommy",
+          "es": "mamá",
+          "emoji": "👩",
+          "image": "/cards/mommy.jpg"
+        },
+        {
+          "text": "Daddy",
+          "es": "papá",
+          "emoji": "👨",
+          "image": "/cards/daddy.jpg"
+        },
+        {
+          "text": "Brother",
+          "es": "hermano",
+          "emoji": "👦",
+          "image": null
+        },
+        {
+          "text": "Sister",
+          "es": "hermana",
+          "emoji": "👧",
+          "image": null
+        }
       ],
       "examples": [
         "This is my mommy. (Esta es mi mamá.)"
-      ]
+      ],
+      "image": "/topics/family.jpg"
     },
     {
       "type": "vocabulary",
@@ -790,22 +1119,26 @@ export const unitSlides = {
         {
           "word": "Family",
           "emoji": "🏡",
-          "es": "Familia"
+          "es": "Familia",
+          "image": "/cards/family_group.jpg"
         },
         {
           "word": "Baby",
           "emoji": "👶",
-          "es": "Bebé"
+          "es": "Bebé",
+          "image": null
         },
         {
           "word": "Grandma",
           "emoji": "👵",
-          "es": "Abuela"
+          "es": "Abuela",
+          "image": null
         },
         {
           "word": "Grandpa",
           "emoji": "👴",
-          "es": "Abuelo"
+          "es": "Abuelo",
+          "image": null
         }
       ]
     },
@@ -822,10 +1155,30 @@ export const unitSlides = {
       "title": "Dibuja tu familia",
       "description": "Cada niño dibuja su familia y nombra a cada uno en inglés.",
       "items": [
-        "This is my daddy.",
-        "This is my mommy.",
-        "This is my brother.",
-        "This is my sister."
+        {
+          "text": "This is my daddy.",
+          "es": "",
+          "emoji": "👨",
+          "image": "/cards/hi.jpg"
+        },
+        {
+          "text": "This is my mommy.",
+          "es": "",
+          "emoji": "👩",
+          "image": "/cards/hi.jpg"
+        },
+        {
+          "text": "This is my brother.",
+          "es": "",
+          "emoji": "👦",
+          "image": "/cards/hi.jpg"
+        },
+        {
+          "text": "This is my sister.",
+          "es": "",
+          "emoji": "👧",
+          "image": "/cards/hi.jpg"
+        }
       ],
       "examples": [
         "Teacher: Who is this? — Student: My mommy!"
@@ -872,11 +1225,32 @@ export const unitSlides = {
       "title": "My body",
       "description": "Partes del cuerpo con gestos.",
       "items": [
-        "Head (cabeza)",
-        "Hands (manos)",
-        "Feet (pies)",
-        "Eyes (ojos)"
-      ]
+        {
+          "text": "Head",
+          "es": "cabeza",
+          "emoji": "🗣️",
+          "image": "/cards/head.jpg"
+        },
+        {
+          "text": "Hands",
+          "es": "manos",
+          "emoji": "🙌",
+          "image": null
+        },
+        {
+          "text": "Feet",
+          "es": "pies",
+          "emoji": "🦶",
+          "image": null
+        },
+        {
+          "text": "Eyes",
+          "es": "ojos",
+          "emoji": "👀",
+          "image": null
+        }
+      ],
+      "image": "/topics/body_parts.jpg"
     },
     {
       "type": "vocabulary",
@@ -886,22 +1260,26 @@ export const unitSlides = {
         {
           "word": "Nose",
           "emoji": "👃",
-          "es": "Nariz"
+          "es": "Nariz",
+          "image": null
         },
         {
           "word": "Mouth",
           "emoji": "👄",
-          "es": "Boca"
+          "es": "Boca",
+          "image": null
         },
         {
           "word": "Ears",
           "emoji": "👂",
-          "es": "Orejas"
+          "es": "Orejas",
+          "image": null
         },
         {
           "word": "Arms",
           "emoji": "💪",
-          "es": "Brazos"
+          "es": "Brazos",
+          "image": null
         }
       ]
     },
@@ -913,17 +1291,20 @@ export const unitSlides = {
         {
           "word": "Touch your head",
           "emoji": "🙋",
-          "es": "Toca tu cabeza"
+          "es": "Toca tu cabeza",
+          "image": "/cards/head.jpg"
         },
         {
           "word": "Touch your nose",
           "emoji": "👃",
-          "es": "Toca tu nariz"
+          "es": "Toca tu nariz",
+          "image": null
         },
         {
           "word": "Clap your hands",
           "emoji": "👏",
-          "es": "Aplaude"
+          "es": "Aplaude",
+          "image": "/cards/hands_clap.jpg"
         }
       ]
     },
@@ -975,11 +1356,32 @@ export const unitSlides = {
       "title": "My house",
       "description": "Las partes de la casa.",
       "items": [
-        "House (casa)",
-        "Door (puerta)",
-        "Window (ventana)",
-        "Roof (techo)"
-      ]
+        {
+          "text": "House",
+          "es": "casa",
+          "emoji": "🏡",
+          "image": null
+        },
+        {
+          "text": "Door",
+          "es": "puerta",
+          "emoji": "🚪",
+          "image": null
+        },
+        {
+          "text": "Window",
+          "es": "ventana",
+          "emoji": "🪟",
+          "image": null
+        },
+        {
+          "text": "Roof",
+          "es": "techo",
+          "emoji": "🏠",
+          "image": null
+        }
+      ],
+      "image": "/topics/house.jpg"
     },
     {
       "type": "vocabulary",
@@ -989,22 +1391,26 @@ export const unitSlides = {
         {
           "word": "Kitchen",
           "emoji": "🍳",
-          "es": "Cocina"
+          "es": "Cocina",
+          "image": null
         },
         {
           "word": "Bedroom",
           "emoji": "🛏️",
-          "es": "Cuarto"
+          "es": "Cuarto",
+          "image": null
         },
         {
           "word": "Bathroom",
           "emoji": "🚿",
-          "es": "Baño"
+          "es": "Baño",
+          "image": null
         },
         {
           "word": "Living room",
           "emoji": "🛋️",
-          "es": "Sala"
+          "es": "Sala",
+          "image": null
         }
       ]
     },
@@ -1016,22 +1422,26 @@ export const unitSlides = {
         {
           "word": "Bed",
           "emoji": "🛏️",
-          "es": "Cama"
+          "es": "Cama",
+          "image": null
         },
         {
           "word": "Table",
           "emoji": "🪑",
-          "es": "Mesa"
+          "es": "Mesa",
+          "image": null
         },
         {
           "word": "Chair",
           "emoji": "💺",
-          "es": "Silla"
+          "es": "Silla",
+          "image": null
         },
         {
           "word": "Lamp",
           "emoji": "💡",
-          "es": "Lámpara"
+          "es": "Lámpara",
+          "image": null
         }
       ]
     },
@@ -1083,11 +1493,32 @@ export const unitSlides = {
       "title": "My classroom",
       "description": "El salón de clases.",
       "items": [
-        "Classroom (salón)",
-        "Desk (escritorio)",
-        "Board (tablero)",
-        "Door (puerta)"
-      ]
+        {
+          "text": "Classroom",
+          "es": "salón",
+          "emoji": "🏫",
+          "image": "/topics/classroom.jpg"
+        },
+        {
+          "text": "Desk",
+          "es": "escritorio",
+          "emoji": "🪑",
+          "image": null
+        },
+        {
+          "text": "Board",
+          "es": "tablero",
+          "emoji": "📋",
+          "image": null
+        },
+        {
+          "text": "Door",
+          "es": "puerta",
+          "emoji": "🚪",
+          "image": null
+        }
+      ],
+      "image": "/topics/classroom.jpg"
     },
     {
       "type": "vocabulary",
@@ -1097,22 +1528,26 @@ export const unitSlides = {
         {
           "word": "Book",
           "emoji": "📚",
-          "es": "Libro"
+          "es": "Libro",
+          "image": "/cards/book.jpg"
         },
         {
           "word": "Pencil",
           "emoji": "✏️",
-          "es": "Lápiz"
+          "es": "Lápiz",
+          "image": "/cards/pencil.jpg"
         },
         {
           "word": "Paper",
           "emoji": "📄",
-          "es": "Papel"
+          "es": "Papel",
+          "image": null
         },
         {
           "word": "Backpack",
           "emoji": "🎒",
-          "es": "Morral"
+          "es": "Morral",
+          "image": "/cards/backpack.jpg"
         }
       ]
     },
@@ -1124,22 +1559,26 @@ export const unitSlides = {
         {
           "word": "School",
           "emoji": "🏫",
-          "es": "Escuela"
+          "es": "Escuela",
+          "image": "/topics/school_care.jpg"
         },
         {
           "word": "Playground",
           "emoji": "🛝",
-          "es": "Parque"
+          "es": "Parque",
+          "image": null
         },
         {
           "word": "Garden",
           "emoji": "🌳",
-          "es": "Jardín"
+          "es": "Jardín",
+          "image": null
         },
         {
           "word": "Bathroom",
           "emoji": "🚻",
-          "es": "Baño"
+          "es": "Baño",
+          "image": null
         }
       ]
     },
@@ -1191,11 +1630,32 @@ export const unitSlides = {
       "title": "Clothes & weather",
       "description": "La ropa según el clima.",
       "items": [
-        "Shirt (camisa)",
-        "Pants (pantalón)",
-        "Shoes (zapatos)",
-        "Jacket (chaqueta)"
-      ]
+        {
+          "text": "Shirt",
+          "es": "camisa",
+          "emoji": "👕",
+          "image": null
+        },
+        {
+          "text": "Pants",
+          "es": "pantalón",
+          "emoji": "👖",
+          "image": null
+        },
+        {
+          "text": "Shoes",
+          "es": "zapatos",
+          "emoji": "👟",
+          "image": null
+        },
+        {
+          "text": "Jacket",
+          "es": "chaqueta",
+          "emoji": "🧥",
+          "image": null
+        }
+      ],
+      "image": "/topics/weather.jpg"
     },
     {
       "type": "vocabulary",
@@ -1205,22 +1665,26 @@ export const unitSlides = {
         {
           "word": "Sunny",
           "emoji": "☀️",
-          "es": "Soleado"
+          "es": "Soleado",
+          "image": null
         },
         {
           "word": "Rainy",
           "emoji": "🌧️",
-          "es": "Lluvioso"
+          "es": "Lluvioso",
+          "image": null
         },
         {
           "word": "Cold",
           "emoji": "🥶",
-          "es": "Frío"
+          "es": "Frío",
+          "image": null
         },
         {
           "word": "Hot",
           "emoji": "🥵",
-          "es": "Caliente"
+          "es": "Caliente",
+          "image": null
         }
       ]
     },
@@ -1232,22 +1696,26 @@ export const unitSlides = {
         {
           "word": "Hat",
           "emoji": "👒",
-          "es": "Sombrero"
+          "es": "Sombrero",
+          "image": "/cards/name.jpg"
         },
         {
           "word": "Socks",
           "emoji": "🧦",
-          "es": "Medias"
+          "es": "Medias",
+          "image": null
         },
         {
           "word": "Boots",
           "emoji": "👢",
-          "es": "Botas"
+          "es": "Botas",
+          "image": null
         },
         {
           "word": "Sweater",
           "emoji": "🧶",
-          "es": "Suéter"
+          "es": "Suéter",
+          "image": null
         }
       ]
     },
@@ -1299,11 +1767,32 @@ export const unitSlides = {
       "title": "Food I like",
       "description": "Comidas y frutas.",
       "items": [
-        "Apple (manzana)",
-        "Banana (banano)",
-        "Milk (leche)",
-        "Bread (pan)"
-      ]
+        {
+          "text": "Apple",
+          "es": "manzana",
+          "emoji": "🍎",
+          "image": null
+        },
+        {
+          "text": "Banana",
+          "es": "banano",
+          "emoji": "🍌",
+          "image": null
+        },
+        {
+          "text": "Milk",
+          "es": "leche",
+          "emoji": "🥛",
+          "image": null
+        },
+        {
+          "text": "Bread",
+          "es": "pan",
+          "emoji": "🍞",
+          "image": null
+        }
+      ],
+      "image": "/topics/food.jpg"
     },
     {
       "type": "vocabulary",
@@ -1313,22 +1802,26 @@ export const unitSlides = {
         {
           "word": "Rice",
           "emoji": "🍚",
-          "es": "Arroz"
+          "es": "Arroz",
+          "image": null
         },
         {
           "word": "Soup",
           "emoji": "🍲",
-          "es": "Sopa"
+          "es": "Sopa",
+          "image": null
         },
         {
           "word": "Juice",
           "emoji": "🧃",
-          "es": "Jugo"
+          "es": "Jugo",
+          "image": null
         },
         {
           "word": "Water",
           "emoji": "💧",
-          "es": "Agua"
+          "es": "Agua",
+          "image": null
         }
       ]
     },
@@ -1390,11 +1883,32 @@ export const unitSlides = {
       "title": "Animals around me",
       "description": "Mascotas y animales del entorno.",
       "items": [
-        "Dog (perro)",
-        "Cat (gato)",
-        "Bird (pájaro)",
-        "Fish (pez)"
-      ]
+        {
+          "text": "Dog",
+          "es": "perro",
+          "emoji": "🐶",
+          "image": "/cards/dog.jpg"
+        },
+        {
+          "text": "Cat",
+          "es": "gato",
+          "emoji": "🐱",
+          "image": "/cards/cat.jpg"
+        },
+        {
+          "text": "Bird",
+          "es": "pájaro",
+          "emoji": "🐦",
+          "image": null
+        },
+        {
+          "text": "Fish",
+          "es": "pez",
+          "emoji": "🐟",
+          "image": null
+        }
+      ],
+      "image": "/topics/farm_animals.jpg"
     },
     {
       "type": "vocabulary",
@@ -1404,22 +1918,26 @@ export const unitSlides = {
         {
           "word": "Big dog",
           "emoji": "🐕",
-          "es": "Perro grande"
+          "es": "Perro grande",
+          "image": "/cards/dog.jpg"
         },
         {
           "word": "Small cat",
           "emoji": "🐈",
-          "es": "Gato pequeño"
+          "es": "Gato pequeño",
+          "image": "/cards/cat.jpg"
         },
         {
           "word": "Big bird",
           "emoji": "🦜",
-          "es": "Pájaro grande"
+          "es": "Pájaro grande",
+          "image": null
         },
         {
           "word": "Small fish",
           "emoji": "🐠",
-          "es": "Pez pequeño"
+          "es": "Pez pequeño",
+          "image": null
         }
       ]
     },
@@ -1431,22 +1949,26 @@ export const unitSlides = {
         {
           "word": "Lion",
           "emoji": "🦁",
-          "es": "León"
+          "es": "León",
+          "image": "/cards/lion.jpg"
         },
         {
           "word": "Monkey",
           "emoji": "🐒",
-          "es": "Mono"
+          "es": "Mono",
+          "image": null
         },
         {
           "word": "Elephant",
           "emoji": "🐘",
-          "es": "Elefante"
+          "es": "Elefante",
+          "image": null
         },
         {
           "word": "Snake",
           "emoji": "🐍",
-          "es": "Serpiente"
+          "es": "Serpiente",
+          "image": null
         }
       ]
     },
@@ -1498,11 +2020,32 @@ export const unitSlides = {
       "title": "My community",
       "description": "Mi comunidad y su gente.",
       "items": [
-        "Family (familia)",
-        "Friends (amigos)",
-        "Teacher (profe)",
-        "School (escuela)"
-      ]
+        {
+          "text": "‍👩‍👧 Family",
+          "es": "familia",
+          "emoji": "👨",
+          "image": "/cards/family_group.jpg"
+        },
+        {
+          "text": "‍🤝‍🧑 Friends",
+          "es": "amigos",
+          "emoji": "🧑",
+          "image": null
+        },
+        {
+          "text": "‍🏫 Teacher",
+          "es": "profe",
+          "emoji": "🧑",
+          "image": "/cards/teacher.jpg"
+        },
+        {
+          "text": "School",
+          "es": "escuela",
+          "emoji": "🏫",
+          "image": "/topics/school_care.jpg"
+        }
+      ],
+      "image": "/topics/community_helpers.jpg"
     },
     {
       "type": "vocabulary",
@@ -1512,22 +2055,26 @@ export const unitSlides = {
         {
           "word": "Doctor",
           "emoji": "👨‍⚕️",
-          "es": "Doctor"
+          "es": "Doctor",
+          "image": null
         },
         {
           "word": "Police officer",
           "emoji": "👮",
-          "es": "Policía"
+          "es": "Policía",
+          "image": null
         },
         {
           "word": "Firefighter",
           "emoji": "🚒",
-          "es": "Bombero"
+          "es": "Bombero",
+          "image": null
         },
         {
           "word": "Farmer",
           "emoji": "🧑‍🌾",
-          "es": "Granjero"
+          "es": "Granjero",
+          "image": null
         }
       ]
     },
@@ -1544,10 +2091,30 @@ export const unitSlides = {
       "title": "Repaso del año",
       "description": "Todo lo aprendido: familia, cuerpo, casa, salón, comida, animales.",
       "items": [
-        "This is my mommy.",
-        "Touch your nose!",
-        "I like bananas.",
-        "The lion is big."
+        {
+          "text": "This is my mommy.",
+          "es": "",
+          "emoji": "👩",
+          "image": "/cards/hi.jpg"
+        },
+        {
+          "text": "Touch your nose!",
+          "es": "",
+          "emoji": "👃",
+          "image": null
+        },
+        {
+          "text": "I like bananas.",
+          "es": "",
+          "emoji": "🍌",
+          "image": null
+        },
+        {
+          "text": "The lion is big.",
+          "es": "",
+          "emoji": "🦁",
+          "image": "/cards/lion.jpg"
+        }
       ]
     },
     {
@@ -1591,11 +2158,32 @@ export const unitSlides = {
       "title": "Classroom instructions",
       "description": "Instrucciones de clase: escucha y haz.",
       "items": [
-        "Stand up (pararse)",
-        "Sit down (sentarse)",
-        "Open your book (abrir el libro)",
-        "Listen (escuchar)"
-      ]
+        {
+          "text": "Stand up",
+          "es": "pararse",
+          "emoji": "🧍",
+          "image": null
+        },
+        {
+          "text": "Sit down",
+          "es": "sentarse",
+          "emoji": "🪑",
+          "image": "/cards/sitdown.jpg"
+        },
+        {
+          "text": "Open your book",
+          "es": "abrir el libro",
+          "emoji": "📖",
+          "image": "/cards/book.jpg"
+        },
+        {
+          "text": "Listen",
+          "es": "escuchar",
+          "emoji": "👂",
+          "image": null
+        }
+      ],
+      "image": "/topics/classroom.jpg"
     },
     {
       "type": "vocabulary",
@@ -1605,22 +2193,26 @@ export const unitSlides = {
         {
           "word": "Close your book",
           "emoji": "📕",
-          "es": "Cierra el libro"
+          "es": "Cierra el libro",
+          "image": "/cards/book.jpg"
         },
         {
           "word": "Point to…",
           "emoji": "👉",
-          "es": "Señala…"
+          "es": "Señala…",
+          "image": null
         },
         {
           "word": "Raise your hand",
           "emoji": "✋",
-          "es": "Levanta la mano"
+          "es": "Levanta la mano",
+          "image": null
         },
         {
           "word": "Line up",
           "emoji": "🚶",
-          "es": "Formen fila"
+          "es": "Formen fila",
+          "image": "/cards/lineup.jpg"
         }
       ]
     },
@@ -1637,10 +2229,30 @@ export const unitSlides = {
       "title": "Simon Says",
       "description": "Solo obedezcan si la profe dice \"Simon says\".",
       "items": [
-        "Simon says: stand up!",
-        "Simon says: touch your head!",
-        "Simon says: point to the door!",
-        "Sit down! (¡Trampa! No se paren)"
+        {
+          "text": "Simon says: stand up!",
+          "es": "",
+          "emoji": "✨",
+          "image": null
+        },
+        {
+          "text": "Simon says: touch your head!",
+          "es": "",
+          "emoji": "✨",
+          "image": "/cards/head.jpg"
+        },
+        {
+          "text": "Simon says: point to the door!",
+          "es": "",
+          "emoji": "✨",
+          "image": null
+        },
+        {
+          "text": "Sit down!",
+          "es": "¡Trampa! No se paren",
+          "emoji": "✨",
+          "image": "/cards/sitdown.jpg"
+        }
       ],
       "examples": [
         "Teacher: Simon says clap! — Everyone claps."
@@ -1694,10 +2306,26 @@ export const unitSlides = {
       "title": "This is me!",
       "description": "Información personal básica.",
       "items": [
-        "My name is Ana (Mi nombre es Ana)",
-        "I am 7 years old (Tengo 7 años)",
-        "I am from Colombia (Soy de Colombia)"
-      ]
+        {
+          "text": "My name is Ana",
+          "es": "Mi nombre es Ana",
+          "emoji": "🙋",
+          "image": "/cards/name.jpg"
+        },
+        {
+          "text": "I am 7 years old",
+          "es": "Tengo 7 años",
+          "emoji": "🎂",
+          "image": null
+        },
+        {
+          "text": "🇴 I am from Colombia",
+          "es": "Soy de Colombia",
+          "emoji": "🇨",
+          "image": null
+        }
+      ],
+      "image": "/topics/greetings.jpg"
     },
     {
       "type": "vocabulary",
@@ -1707,17 +2335,20 @@ export const unitSlides = {
         {
           "word": "What is your name?",
           "emoji": "❓",
-          "es": "¿Cuál es tu nombre?"
+          "es": "¿Cuál es tu nombre?",
+          "image": "/cards/name.jpg"
         },
         {
           "word": "How old are you?",
           "emoji": "🎂",
-          "es": "¿Cuántos años tienes?"
+          "es": "¿Cuántos años tienes?",
+          "image": null
         },
         {
           "word": "I am seven years old",
           "emoji": "7️⃣",
-          "es": "Tengo siete años"
+          "es": "Tengo siete años",
+          "image": null
         }
       ]
     },
@@ -1736,22 +2367,26 @@ export const unitSlides = {
         {
           "word": "One, two, three",
           "emoji": "1️⃣",
-          "es": "Uno, dos, tres"
+          "es": "Uno, dos, tres",
+          "image": "/cards/number1.jpg"
         },
         {
           "word": "Four, five, six",
           "emoji": "4️⃣",
-          "es": "Cuatro, cinco, seis"
+          "es": "Cuatro, cinco, seis",
+          "image": "/cards/number4.jpg"
         },
         {
           "word": "Seven, eight",
           "emoji": "7️⃣",
-          "es": "Siete, ocho"
+          "es": "Siete, ocho",
+          "image": null
         },
         {
           "word": "Nine, ten",
           "emoji": "🔟",
-          "es": "Nueve, diez"
+          "es": "Nueve, diez",
+          "image": null
         }
       ]
     },
@@ -1799,11 +2434,32 @@ export const unitSlides = {
       "title": "Describing my family",
       "description": "Cualidades físicas simples.",
       "items": [
-        "Tall (alto/a)",
-        "Short (bajo/a)",
-        "Long hair (cabello largo)",
-        "Short hair (cabello corto)"
-      ]
+        {
+          "text": "Tall",
+          "es": "alto/a",
+          "emoji": "🦒",
+          "image": null
+        },
+        {
+          "text": "Short",
+          "es": "bajo/a",
+          "emoji": "🐰",
+          "image": null
+        },
+        {
+          "text": "‍♀️ Long hair",
+          "es": "cabello largo",
+          "emoji": "💇",
+          "image": null
+        },
+        {
+          "text": "‍♂️ Short hair",
+          "es": "cabello corto",
+          "emoji": "💇",
+          "image": null
+        }
+      ],
+      "image": "/topics/family.jpg"
     },
     {
       "type": "vocabulary",
@@ -1813,22 +2469,26 @@ export const unitSlides = {
         {
           "word": "My mommy is tall",
           "emoji": "👩",
-          "es": "Mi mamá es alta"
+          "es": "Mi mamá es alta",
+          "image": "/cards/mommy.jpg"
         },
         {
           "word": "My daddy is short",
           "emoji": "👨",
-          "es": "Mi papá es bajo"
+          "es": "Mi papá es bajo",
+          "image": "/cards/daddy.jpg"
         },
         {
           "word": "My sister has long hair",
           "emoji": "👧",
-          "es": "Mi hermana tiene cabello largo"
+          "es": "Mi hermana tiene cabello largo",
+          "image": null
         },
         {
           "word": "My grandpa has short hair",
           "emoji": "👴",
-          "es": "Mi abuelo tiene cabello corto"
+          "es": "Mi abuelo tiene cabello corto",
+          "image": null
         }
       ]
     },
@@ -1847,22 +2507,26 @@ export const unitSlides = {
         {
           "word": "Black hair",
           "emoji": "⚫",
-          "es": "Cabello negro"
+          "es": "Cabello negro",
+          "image": null
         },
         {
           "word": "Brown hair",
           "emoji": "🟤",
-          "es": "Cabello café"
+          "es": "Cabello café",
+          "image": "/cards/brown.jpg"
         },
         {
           "word": "Blonde hair",
           "emoji": "🟡",
-          "es": "Cabello rubio"
+          "es": "Cabello rubio",
+          "image": null
         },
         {
           "word": "Brown eyes",
           "emoji": "👁️",
-          "es": "Ojos café"
+          "es": "Ojos café",
+          "image": "/cards/brown.jpg"
         }
       ]
     },
@@ -1916,14 +2580,50 @@ export const unitSlides = {
       "title": "Numbers 1-30",
       "description": "Contamos más lejos.",
       "items": [
-        "Eleven (11)",
-        "Twelve (12)",
-        "Thirteen (13)",
-        "Fourteen (14)",
-        "Fifteen (15)",
-        "Twenty (20)",
-        "Thirty (30)"
-      ]
+        {
+          "text": "Eleven",
+          "es": "11",
+          "emoji": "🔢",
+          "image": null
+        },
+        {
+          "text": "Twelve",
+          "es": "12",
+          "emoji": "🔢",
+          "image": null
+        },
+        {
+          "text": "Thirteen",
+          "es": "13",
+          "emoji": "🔢",
+          "image": "/cards/hi.jpg"
+        },
+        {
+          "text": "Fourteen",
+          "es": "14",
+          "emoji": "🔢",
+          "image": "/cards/number4.jpg"
+        },
+        {
+          "text": "Fifteen",
+          "es": "15",
+          "emoji": "🔢",
+          "image": null
+        },
+        {
+          "text": "Twenty",
+          "es": "20",
+          "emoji": "🔢",
+          "image": null
+        },
+        {
+          "text": "Thirty",
+          "es": "30",
+          "emoji": "🔢",
+          "image": "/cards/hi.jpg"
+        }
+      ],
+      "image": "/topics/numbers.jpg"
     },
     {
       "type": "vocabulary",
@@ -1933,22 +2633,26 @@ export const unitSlides = {
         {
           "word": "Blue book",
           "emoji": "📘",
-          "es": "Libro azul"
+          "es": "Libro azul",
+          "image": "/cards/blue.jpg"
         },
         {
           "word": "Red pencil",
           "emoji": "✏️",
-          "es": "Lápiz rojo"
+          "es": "Lápiz rojo",
+          "image": "/cards/red.jpg"
         },
         {
           "word": "Green board",
           "emoji": "🟩",
-          "es": "Tablero verde"
+          "es": "Tablero verde",
+          "image": "/cards/green.jpg"
         },
         {
           "word": "Yellow crayon",
           "emoji": "🖍️",
-          "es": "Crayón amarillo"
+          "es": "Crayón amarillo",
+          "image": "/cards/yellow.jpg"
         }
       ]
     },
@@ -2022,11 +2726,32 @@ export const unitSlides = {
       "title": "I care for my school",
       "description": "Cuido mi escuela y el planeta.",
       "items": [
-        "Clean up (limpiar)",
-        "Recycle (reciclar)",
-        "Save water (ahorrar agua)",
-        "Plant trees (sembrar árboles)"
-      ]
+        {
+          "text": "Clean up",
+          "es": "limpiar",
+          "emoji": "🧹",
+          "image": "/cards/cleanup.jpg"
+        },
+        {
+          "text": "️ Recycle",
+          "es": "reciclar",
+          "emoji": "♻",
+          "image": null
+        },
+        {
+          "text": "Save water",
+          "es": "ahorrar agua",
+          "emoji": "💧",
+          "image": null
+        },
+        {
+          "text": "Plant trees",
+          "es": "sembrar árboles",
+          "emoji": "🌱",
+          "image": null
+        }
+      ],
+      "image": "/topics/school_care.jpg"
     },
     {
       "type": "vocabulary",
@@ -2036,22 +2761,26 @@ export const unitSlides = {
         {
           "word": "Reduce",
           "emoji": "📉",
-          "es": "Reducir"
+          "es": "Reducir",
+          "image": "/cards/red.jpg"
         },
         {
           "word": "Reuse",
           "emoji": "♻️",
-          "es": "Reutilizar"
+          "es": "Reutilizar",
+          "image": null
         },
         {
           "word": "Recycle",
           "emoji": "🗑️",
-          "es": "Reciclar"
+          "es": "Reciclar",
+          "image": null
         },
         {
           "word": "Trash",
           "emoji": "🚮",
-          "es": "Basura"
+          "es": "Basura",
+          "image": null
         }
       ]
     },
@@ -2070,22 +2799,26 @@ export const unitSlides = {
         {
           "word": "Throw trash in the bin",
           "emoji": "🗑️",
-          "es": "Bota la basura en la caneca"
+          "es": "Bota la basura en la caneca",
+          "image": null
         },
         {
           "word": "Turn off the lights",
           "emoji": "💡",
-          "es": "Apaga las luces"
+          "es": "Apaga las luces",
+          "image": null
         },
         {
           "word": "Close the tap",
           "emoji": "🚰",
-          "es": "Cierra la llave"
+          "es": "Cierra la llave",
+          "image": null
         },
         {
           "word": "Water the plants",
           "emoji": "🌱",
-          "es": "Riega las plantas"
+          "es": "Riega las plantas",
+          "image": null
         }
       ]
     },
@@ -2140,11 +2873,32 @@ export const unitSlides = {
       "title": "My classroom",
       "description": "Objetos del salón.",
       "items": [
-        "Desk (escritorio)",
-        "Chair (silla)",
-        "Board (tablero)",
-        "Window (ventana)"
-      ]
+        {
+          "text": "Desk",
+          "es": "escritorio",
+          "emoji": "🪑",
+          "image": null
+        },
+        {
+          "text": "Chair",
+          "es": "silla",
+          "emoji": "🪑",
+          "image": null
+        },
+        {
+          "text": "Board",
+          "es": "tablero",
+          "emoji": "📋",
+          "image": null
+        },
+        {
+          "text": "Window",
+          "es": "ventana",
+          "emoji": "🪟",
+          "image": null
+        }
+      ],
+      "image": "/topics/classroom.jpg"
     },
     {
       "type": "vocabulary",
@@ -2154,22 +2908,26 @@ export const unitSlides = {
         {
           "word": "There is one desk",
           "emoji": "🪑",
-          "es": "Hay un escritorio"
+          "es": "Hay un escritorio",
+          "image": "/cards/number1.jpg"
         },
         {
           "word": "There are many chairs",
           "emoji": "💺",
-          "es": "Hay muchas sillas"
+          "es": "Hay muchas sillas",
+          "image": null
         },
         {
           "word": "There is a board",
           "emoji": "🟫",
-          "es": "Hay un tablero"
+          "es": "Hay un tablero",
+          "image": null
         },
         {
           "word": "There are two windows",
           "emoji": "🪟",
-          "es": "Hay dos ventanas"
+          "es": "Hay dos ventanas",
+          "image": "/cards/number2.jpg"
         }
       ]
     },
@@ -2188,22 +2946,26 @@ export const unitSlides = {
         {
           "word": "Scissors",
           "emoji": "✂️",
-          "es": "Tijeras"
+          "es": "Tijeras",
+          "image": null
         },
         {
           "word": "Glue",
           "emoji": "🧴",
-          "es": "Pega"
+          "es": "Pega",
+          "image": null
         },
         {
           "word": "Ruler",
           "emoji": "📏",
-          "es": "Regla"
+          "es": "Regla",
+          "image": null
         },
         {
           "word": "Eraser",
           "emoji": "🧽",
-          "es": "Borrador"
+          "es": "Borrador",
+          "image": null
         }
       ]
     },
@@ -2255,11 +3017,32 @@ export const unitSlides = {
       "title": "My classmates and me",
       "description": "Describimos a nuestros compañeros.",
       "items": [
-        "He is tall (Él es alto)",
-        "She is short (Ella es baja)",
-        "He has black hair (Él tiene cabello negro)",
-        "She has brown eyes (Ella tiene ojos café)"
-      ]
+        {
+          "text": "He is tall",
+          "es": "Él es alto",
+          "emoji": "🦒",
+          "image": null
+        },
+        {
+          "text": "She is short",
+          "es": "Ella es baja",
+          "emoji": "🐰",
+          "image": null
+        },
+        {
+          "text": "He has black hair",
+          "es": "Él tiene cabello negro",
+          "emoji": "🖤",
+          "image": null
+        },
+        {
+          "text": "She has brown eyes",
+          "es": "Ella tiene ojos café",
+          "emoji": "👁️",
+          "image": "/cards/brown.jpg"
+        }
+      ],
+      "image": "/topics/school_care.jpg"
     },
     {
       "type": "vocabulary",
@@ -2269,22 +3052,26 @@ export const unitSlides = {
         {
           "word": "He is my friend",
           "emoji": "👦",
-          "es": "Él es mi amigo"
+          "es": "Él es mi amigo",
+          "image": null
         },
         {
           "word": "She is my friend",
           "emoji": "👧",
-          "es": "Ella es mi amiga"
+          "es": "Ella es mi amiga",
+          "image": null
         },
         {
           "word": "He has curly hair",
           "emoji": "🌀",
-          "es": "Él tiene cabello rizado"
+          "es": "Él tiene cabello rizado",
+          "image": null
         },
         {
           "word": "She has straight hair",
           "emoji": "➖",
-          "es": "Ella tiene cabello liso"
+          "es": "Ella tiene cabello liso",
+          "image": null
         }
       ]
     },
@@ -2352,11 +3139,32 @@ export const unitSlides = {
       "title": "Year review",
       "description": "Repaso final de 1°.",
       "items": [
-        "Instructions: stand up, sit down, open your book",
-        "Personal info: my name is…, I am 7",
-        "Descriptions: tall, short, long hair",
-        "Environment: recycle, save water"
-      ]
+        {
+          "text": "Instructions: stand up, sit down, open your book",
+          "es": "",
+          "emoji": "✨",
+          "image": "/cards/sitdown.jpg"
+        },
+        {
+          "text": "Personal info: my name is…, I am 7",
+          "es": "",
+          "emoji": "✨",
+          "image": "/cards/name.jpg"
+        },
+        {
+          "text": "Descriptions: tall, short, long hair",
+          "es": "",
+          "emoji": "✨",
+          "image": null
+        },
+        {
+          "text": "Environment: recycle, save water",
+          "es": "",
+          "emoji": "✨",
+          "image": null
+        }
+      ],
+      "image": "/topics/stories.jpg"
     },
     {
       "type": "vocabulary",
@@ -2366,22 +3174,26 @@ export const unitSlides = {
         {
           "word": "Listen",
           "emoji": "👂",
-          "es": "Escuchar"
+          "es": "Escuchar",
+          "image": null
         },
         {
           "word": "Seven",
           "emoji": "7️⃣",
-          "es": "Siete"
+          "es": "Siete",
+          "image": null
         },
         {
           "word": "Tall",
           "emoji": "📏",
-          "es": "Alto"
+          "es": "Alto",
+          "image": null
         },
         {
           "word": "Recycle",
           "emoji": "♻️",
-          "es": "Reciclar"
+          "es": "Reciclar",
+          "image": null
         }
       ]
     },
@@ -2449,11 +3261,32 @@ export const unitSlides = {
       "title": "My body & my family",
       "description": "Repaso con acciones.",
       "items": [
-        "I run (yo corro)",
-        "I jump (yo salto)",
-        "My brother runs (mi hermano corre)",
-        "My sister sings (mi hermana canta)"
-      ]
+        {
+          "text": "I run",
+          "es": "yo corro",
+          "emoji": "🏃",
+          "image": null
+        },
+        {
+          "text": "I jump",
+          "es": "yo salto",
+          "emoji": "🦘",
+          "image": "/cards/body_jump.jpg"
+        },
+        {
+          "text": "My brother runs",
+          "es": "mi hermano corre",
+          "emoji": "🏃",
+          "image": null
+        },
+        {
+          "text": "My sister sings",
+          "es": "mi hermana canta",
+          "emoji": "🎤",
+          "image": null
+        }
+      ],
+      "image": "/topics/family.jpg"
     },
     {
       "type": "vocabulary",
@@ -2463,17 +3296,20 @@ export const unitSlides = {
         {
           "word": "Mommy cooks",
           "emoji": "🍲",
-          "es": "Mamá cocina"
+          "es": "Mamá cocina",
+          "image": "/cards/mommy.jpg"
         },
         {
           "word": "Daddy works",
           "emoji": "💼",
-          "es": "Papá trabaja"
+          "es": "Papá trabaja",
+          "image": "/cards/daddy.jpg"
         },
         {
           "word": "I play",
           "emoji": "⚽",
-          "es": "Yo juego"
+          "es": "Yo juego",
+          "image": null
         }
       ]
     },
@@ -2485,22 +3321,26 @@ export const unitSlides = {
         {
           "word": "Shoulders",
           "emoji": "🤷",
-          "es": "Hombros"
+          "es": "Hombros",
+          "image": null
         },
         {
           "word": "Knees",
           "emoji": "🦵",
-          "es": "Rodillas"
+          "es": "Rodillas",
+          "image": null
         },
         {
           "word": "Toes",
           "emoji": "🦶",
-          "es": "Dedos del pie"
+          "es": "Dedos del pie",
+          "image": null
         },
         {
           "word": "Fingers",
           "emoji": "🖐️",
-          "es": "Dedos"
+          "es": "Dedos",
+          "image": null
         }
       ]
     },
@@ -2553,10 +3393,26 @@ export const unitSlides = {
       "title": "Story sequence",
       "description": "Ordena la historia con First, Then, Finally.",
       "items": [
-        "First… (Primero…)",
-        "Then… (Entonces…)",
-        "Finally… (Finalmente…)"
-      ]
+        {
+          "text": "⃣ First…",
+          "es": "Primero…",
+          "emoji": "1️",
+          "image": null
+        },
+        {
+          "text": "⃣ Then…",
+          "es": "Entonces…",
+          "emoji": "2️",
+          "image": null
+        },
+        {
+          "text": "Finally…",
+          "es": "Finalmente…",
+          "emoji": "🏁",
+          "image": null
+        }
+      ],
+      "image": "/topics/stories.jpg"
     },
     {
       "type": "vocabulary",
@@ -2566,22 +3422,26 @@ export const unitSlides = {
         {
           "word": "Beginning",
           "emoji": "🌅",
-          "es": "Comienzo"
+          "es": "Comienzo",
+          "image": null
         },
         {
           "word": "Middle",
           "emoji": "⏱️",
-          "es": "Mitad"
+          "es": "Mitad",
+          "image": null
         },
         {
           "word": "End",
           "emoji": "🌇",
-          "es": "Final"
+          "es": "Final",
+          "image": null
         },
         {
           "word": "Character",
           "emoji": "🧒",
-          "es": "Personaje"
+          "es": "Personaje",
+          "image": null
         }
       ]
     },
@@ -2598,10 +3458,26 @@ export const unitSlides = {
       "title": "La historia del gatito",
       "description": "La profe cuenta con dibujos y los niños la re-cuentan.",
       "items": [
-        "First, the kitten is hungry. (Primero, el gatito tiene hambre.)",
-        "Then, he looks for milk. (Entonces, busca leche.)",
-        "Finally, he drinks the milk. (Finalmente, toma la leche.)"
-      ]
+        {
+          "text": "1️⃣ First, the kitten is hungry.",
+          "es": "Primero, el gatito tiene hambre.",
+          "emoji": "🐱",
+          "image": null
+        },
+        {
+          "text": "2️⃣ Then, he looks for milk.",
+          "es": "Entonces, busca leche.",
+          "emoji": "🥛",
+          "image": null
+        },
+        {
+          "text": "🏁 Finally, he drinks the milk.",
+          "es": "Finalmente, toma la leche.",
+          "emoji": "😋",
+          "image": null
+        }
+      ],
+      "image": "/cards/hi.jpg"
     },
     {
       "type": "content",
@@ -2655,11 +3531,32 @@ export const unitSlides = {
       "title": "My house and my things",
       "description": "La casa y los objetos.",
       "items": [
-        "Kitchen (cocina)",
-        "Bedroom (cuarto)",
-        "Bathroom (baño)",
-        "Living room (sala)"
-      ]
+        {
+          "text": "Kitchen",
+          "es": "cocina",
+          "emoji": "🍳",
+          "image": null
+        },
+        {
+          "text": "Bedroom",
+          "es": "cuarto",
+          "emoji": "🛏️",
+          "image": null
+        },
+        {
+          "text": "Bathroom",
+          "es": "baño",
+          "emoji": "🚿",
+          "image": null
+        },
+        {
+          "text": "Living room",
+          "es": "sala",
+          "emoji": "🛋️",
+          "image": null
+        }
+      ],
+      "image": "/topics/house.jpg"
     },
     {
       "type": "vocabulary",
@@ -2669,22 +3566,26 @@ export const unitSlides = {
         {
           "word": "Bed",
           "emoji": "🛏️",
-          "es": "Cama"
+          "es": "Cama",
+          "image": null
         },
         {
           "word": "Fridge",
           "emoji": "🧊",
-          "es": "Nevera"
+          "es": "Nevera",
+          "image": null
         },
         {
           "word": "Mirror",
           "emoji": "🪞",
-          "es": "Espejo"
+          "es": "Espejo",
+          "image": null
         },
         {
           "word": "Sofa",
           "emoji": "🛋️",
-          "es": "Sofá"
+          "es": "Sofá",
+          "image": null
         }
       ]
     },
@@ -2703,22 +3604,26 @@ export const unitSlides = {
         {
           "word": "Eleven pillows",
           "emoji": "🛏️",
-          "es": "Once almohadas"
+          "es": "Once almohadas",
+          "image": null
         },
         {
           "word": "Twelve spoons",
           "emoji": "🥄",
-          "es": "Doce cucharas"
+          "es": "Doce cucharas",
+          "image": null
         },
         {
           "word": "Thirteen toys",
           "emoji": "🧸",
-          "es": "Trece juguetes"
+          "es": "Trece juguetes",
+          "image": null
         },
         {
           "word": "Twenty books",
           "emoji": "📚",
-          "es": "Veinte libros"
+          "es": "Veinte libros",
+          "image": "/cards/book.jpg"
         }
       ]
     },
@@ -2772,11 +3677,32 @@ export const unitSlides = {
       "title": "Tell me about you",
       "description": "Información personal completa.",
       "items": [
-        "My name is… (Mi nombre es…)",
-        "I am 8 years old (Tengo 8 años)",
-        "I am from Colombia (Soy de Colombia)",
-        "I live in… (Vivo en…)"
-      ]
+        {
+          "text": "My name is…",
+          "es": "Mi nombre es…",
+          "emoji": "🙋",
+          "image": "/cards/name.jpg"
+        },
+        {
+          "text": "I am 8 years old",
+          "es": "Tengo 8 años",
+          "emoji": "🎂",
+          "image": null
+        },
+        {
+          "text": "🇴 I am from Colombia",
+          "es": "Soy de Colombia",
+          "emoji": "🇨",
+          "image": null
+        },
+        {
+          "text": "I live in…",
+          "es": "Vivo en…",
+          "emoji": "🏡",
+          "image": null
+        }
+      ],
+      "image": "/topics/routines.jpg"
     },
     {
       "type": "vocabulary",
@@ -2786,22 +3712,26 @@ export const unitSlides = {
         {
           "word": "Where are you from?",
           "emoji": "🗺️",
-          "es": "¿De dónde eres?"
+          "es": "¿De dónde eres?",
+          "image": null
         },
         {
           "word": "I am from Colombia",
           "emoji": "🇨🇴",
-          "es": "Soy de Colombia"
+          "es": "Soy de Colombia",
+          "image": null
         },
         {
           "word": "Where do you live?",
           "emoji": "🏘️",
-          "es": "¿Dónde vives?"
+          "es": "¿Dónde vives?",
+          "image": null
         },
         {
           "word": "How old are you?",
           "emoji": "🎂",
-          "es": "¿Cuántos años tienes?"
+          "es": "¿Cuántos años tienes?",
+          "image": null
         }
       ]
     },
@@ -2869,11 +3799,32 @@ export const unitSlides = {
       "title": "Wild animals",
       "description": "Animales salvajes y lo que pueden hacer.",
       "items": [
-        "The lion can run (El león puede correr)",
-        "The bird can fly (El pájaro puede volar)",
-        "The fish can swim (El pez puede nadar)",
-        "The monkey can jump (El mono puede saltar)"
-      ]
+        {
+          "text": "The lion can run",
+          "es": "El león puede correr",
+          "emoji": "🦁",
+          "image": "/cards/lion.jpg"
+        },
+        {
+          "text": "The bird can fly",
+          "es": "El pájaro puede volar",
+          "emoji": "🦅",
+          "image": null
+        },
+        {
+          "text": "The fish can swim",
+          "es": "El pez puede nadar",
+          "emoji": "🐠",
+          "image": null
+        },
+        {
+          "text": "The monkey can jump",
+          "es": "El mono puede saltar",
+          "emoji": "🐒",
+          "image": "/cards/body_jump.jpg"
+        }
+      ],
+      "image": "/topics/wild_animals.jpg"
     },
     {
       "type": "vocabulary",
@@ -2883,22 +3834,26 @@ export const unitSlides = {
         {
           "word": "A fish can't fly",
           "emoji": "🐠",
-          "es": "Un pez no puede volar"
+          "es": "Un pez no puede volar",
+          "image": null
         },
         {
           "word": "A bird can fly",
           "emoji": "🦜",
-          "es": "Un pájaro puede volar"
+          "es": "Un pájaro puede volar",
+          "image": null
         },
         {
           "word": "A snake can't run",
           "emoji": "🐍",
-          "es": "Una serpiente no puede correr"
+          "es": "Una serpiente no puede correr",
+          "image": null
         },
         {
           "word": "A monkey can climb",
           "emoji": "🐒",
-          "es": "Un mono puede trepar"
+          "es": "Un mono puede trepar",
+          "image": null
         }
       ]
     },
@@ -2910,22 +3865,26 @@ export const unitSlides = {
         {
           "word": "Jungle",
           "emoji": "🌴",
-          "es": "Selva"
+          "es": "Selva",
+          "image": null
         },
         {
           "word": "Ocean",
           "emoji": "🌊",
-          "es": "Océano"
+          "es": "Océano",
+          "image": null
         },
         {
           "word": "Forest",
           "emoji": "🌲",
-          "es": "Bosque"
+          "es": "Bosque",
+          "image": null
         },
         {
           "word": "Farm",
           "emoji": "🚜",
-          "es": "Granja"
+          "es": "Granja",
+          "image": null
         }
       ]
     },
@@ -2977,11 +3936,32 @@ export const unitSlides = {
       "title": "Clothes & weather",
       "description": "Lo que uso según el clima.",
       "items": [
-        "I wear a jacket (Uso chaqueta)",
-        "It is cold (Hace frío)",
-        "I wear shorts (Uso pantaloneta)",
-        "It is hot (Hace calor)"
-      ]
+        {
+          "text": "I wear a jacket",
+          "es": "Uso chaqueta",
+          "emoji": "🧥",
+          "image": null
+        },
+        {
+          "text": "It is cold",
+          "es": "Hace frío",
+          "emoji": "🥶",
+          "image": null
+        },
+        {
+          "text": "I wear shorts",
+          "es": "Uso pantaloneta",
+          "emoji": "🩳",
+          "image": null
+        },
+        {
+          "text": "️ It is hot",
+          "es": "Hace calor",
+          "emoji": "☀",
+          "image": null
+        }
+      ],
+      "image": "/topics/clothes.jpg"
     },
     {
       "type": "vocabulary",
@@ -2991,22 +3971,26 @@ export const unitSlides = {
         {
           "word": "Sunny",
           "emoji": "☀️",
-          "es": "Soleado"
+          "es": "Soleado",
+          "image": null
         },
         {
           "word": "Rainy",
           "emoji": "🌧️",
-          "es": "Lluvioso"
+          "es": "Lluvioso",
+          "image": null
         },
         {
           "word": "Windy",
           "emoji": "💨",
-          "es": "Ventoso"
+          "es": "Ventoso",
+          "image": null
         },
         {
           "word": "Cloudy",
           "emoji": "☁️",
-          "es": "Nublado"
+          "es": "Nublado",
+          "image": null
         }
       ]
     },
@@ -3025,22 +4009,26 @@ export const unitSlides = {
         {
           "word": "T-shirt",
           "emoji": "👕",
-          "es": "Camiseta"
+          "es": "Camiseta",
+          "image": null
         },
         {
           "word": "Dress",
           "emoji": "👗",
-          "es": "Vestido"
+          "es": "Vestido",
+          "image": null
         },
         {
           "word": "Sweater",
           "emoji": "🧶",
-          "es": "Suéter"
+          "es": "Suéter",
+          "image": null
         },
         {
           "word": "Raincoat",
           "emoji": "🧥",
-          "es": "Impermeable"
+          "es": "Impermeable",
+          "image": null
         }
       ]
     },
@@ -3095,11 +4083,32 @@ export const unitSlides = {
       "title": "Colombian celebrations",
       "description": "Festividades de nuestro país.",
       "items": [
-        "Christmas (Navidad)",
-        "Carnival (Carnaval)",
-        "Independence Day (Día de la Independencia)",
-        "Easter (Semana Santa)"
-      ]
+        {
+          "text": "Christmas",
+          "es": "Navidad",
+          "emoji": "🎄",
+          "image": null
+        },
+        {
+          "text": "Carnival",
+          "es": "Carnaval",
+          "emoji": "🎭",
+          "image": null
+        },
+        {
+          "text": "🇴 Independence Day",
+          "es": "Día de la Independencia",
+          "emoji": "🇨",
+          "image": null
+        },
+        {
+          "text": "Easter",
+          "es": "Semana Santa",
+          "emoji": "🕊️",
+          "image": null
+        }
+      ],
+      "image": "/topics/celebration.jpg"
     },
     {
       "type": "vocabulary",
@@ -3109,22 +4118,26 @@ export const unitSlides = {
         {
           "word": "Music",
           "emoji": "🎶",
-          "es": "Música"
+          "es": "Música",
+          "image": null
         },
         {
           "word": "Dance",
           "emoji": "💃",
-          "es": "Baile"
+          "es": "Baile",
+          "image": null
         },
         {
           "word": "Costume",
           "emoji": "🎭",
-          "es": "Disfraz"
+          "es": "Disfraz",
+          "image": null
         },
         {
           "word": "Parade",
           "emoji": "🥁",
-          "es": "Desfile"
+          "es": "Desfile",
+          "image": null
         }
       ]
     },
@@ -3143,22 +4156,26 @@ export const unitSlides = {
         {
           "word": "Barranquilla Carnival",
           "emoji": "🎭",
-          "es": "Carnaval de Barranquilla"
+          "es": "Carnaval de Barranquilla",
+          "image": null
         },
         {
           "word": "Flower Festival",
           "emoji": "🌸",
-          "es": "Feria de las Flores"
+          "es": "Feria de las Flores",
+          "image": null
         },
         {
           "word": "Black and White Carnival",
           "emoji": "🖤",
-          "es": "Carnaval de Blancos y Negros"
+          "es": "Carnaval de Blancos y Negros",
+          "image": "/cards/hi.jpg"
         },
         {
           "word": "Candles Day",
           "emoji": "🕯️",
-          "es": "Día de las Velitas"
+          "es": "Día de las Velitas",
+          "image": null
         }
       ]
     },
@@ -3212,11 +4229,32 @@ export const unitSlides = {
       "title": "Tell your story",
       "description": "Cuento mi historia con imágenes.",
       "items": [
-        "First… (Primero…)",
-        "Then… (Entonces…)",
-        "After that… (Después…)",
-        "Finally… (Finalmente…)"
-      ]
+        {
+          "text": "⃣ First…",
+          "es": "Primero…",
+          "emoji": "1️",
+          "image": null
+        },
+        {
+          "text": "⃣ Then…",
+          "es": "Entonces…",
+          "emoji": "2️",
+          "image": null
+        },
+        {
+          "text": "⃣ After that…",
+          "es": "Después…",
+          "emoji": "3️",
+          "image": null
+        },
+        {
+          "text": "Finally…",
+          "es": "Finalmente…",
+          "emoji": "🏁",
+          "image": null
+        }
+      ],
+      "image": "/topics/stories.jpg"
     },
     {
       "type": "vocabulary",
@@ -3226,22 +4264,26 @@ export const unitSlides = {
         {
           "word": "Happy",
           "emoji": "😄",
-          "es": "Feliz"
+          "es": "Feliz",
+          "image": null
         },
         {
           "word": "Sad",
           "emoji": "😢",
-          "es": "Triste"
+          "es": "Triste",
+          "image": null
         },
         {
           "word": "Scared",
           "emoji": "😨",
-          "es": "Asustado"
+          "es": "Asustado",
+          "image": "/cards/red.jpg"
         },
         {
           "word": "Surprised",
           "emoji": "😲",
-          "es": "Sorprendido"
+          "es": "Sorprendido",
+          "image": null
         }
       ]
     },
@@ -3261,7 +4303,8 @@ export const unitSlides = {
         "First, the puppy plays in the park.",
         "Then, he is sad because he is lost.",
         "Finally, he finds his family."
-      ]
+      ],
+      "image": "/cards/hi.jpg"
     },
     {
       "type": "activity",

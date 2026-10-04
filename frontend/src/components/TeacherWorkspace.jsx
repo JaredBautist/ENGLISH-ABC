@@ -242,41 +242,50 @@ export default function TeacherWorkspace() {
         ) : (
           <>
             {/* Material didáctico del grado activo */}
-            {activeGrade && (
-              <section aria-labelledby="material-heading" className="mb-6 sm:mb-8">
-                <h2 id="material-heading" className="mb-3 text-xs font-black uppercase tracking-widest text-slate-400 sm:text-sm dark:text-slate-500">
-                  Material didáctico — {activeGrade.name}
-                </h2>
-                <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
-                  {[
-                    { href: `/docente/videos?grado=${activeGrade.id}`, icon: Play, title: 'Videos', description: 'Canciones y videos para proyectar', tone: 'border-2 border-rose-300 bg-rose-100 text-rose-700', shadow: 'rgba(244,114,182,0.4)', glow: 'rgba(236,72,153,0.28)' },
-                    { href: `/docente/listening?grado=${activeGrade.id}`, icon: Headphones, title: 'Listening', description: 'Actividades de escucha interactivas', tone: 'border-2 border-sky-300 bg-sky-100 text-sky-700', shadow: 'rgba(96,165,250,0.4)', glow: 'rgba(59,130,246,0.28)' },
-                    { href: `/docente/writing?grado=${activeGrade.id}`, icon: PenLine, title: 'Writing', description: 'Escritura guiada y libre con modelos', tone: 'border-2 border-emerald-300 bg-emerald-100 text-emerald-700', shadow: 'rgba(52,211,153,0.4)', glow: 'rgba(20,184,166,0.28)' },
-                  ].map((material) => {
-                    const Icon = material.icon;
-                    return (
-                      <a
-                        key={material.href}
-                        href={material.href}
-                        className={`card-clay card-clay-hover flex items-center gap-3.5 p-4 sm:flex-col sm:items-start sm:gap-3 sm:p-5 ${focusRing}`}
-                      >
-                        <span
-                          className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl ${material.tone} shadow-[0_4px_0_var(--mat-shadow),0_10px_22px_var(--mat-glow),inset_0_2px_0_rgba(255,255,255,0.65)] sm:h-12 sm:w-12`}
-                          style={{ '--mat-shadow': material.shadow, '--mat-glow': material.glow }}
+            {activeGrade && (() => {
+              const isPreescolar = activeGrade.id === 'jardin' || activeGrade.id === 'transicion';
+              const materials = [
+                { href: `/docente/videos?grado=${activeGrade.id}`, icon: Play, title: 'Videos', description: 'Canciones y videos para proyectar', tone: 'border-2 border-rose-300 bg-rose-100 text-rose-700', shadow: 'rgba(244,114,182,0.4)', glow: 'rgba(236,72,153,0.28)' },
+                { href: `/docente/listening?grado=${activeGrade.id}`, icon: Headphones, title: 'Listening', description: 'Actividades de escucha interactivas', tone: 'border-2 border-sky-300 bg-sky-100 text-sky-700', shadow: 'rgba(96,165,250,0.4)', glow: 'rgba(59,130,246,0.28)' },
+                ...(!isPreescolar
+                  ? [{ href: `/docente/writing?grado=${activeGrade.id}`, icon: PenLine, title: 'Writing', description: 'Escritura guiada y libre con modelos', tone: 'border-2 border-emerald-300 bg-emerald-100 text-emerald-700', shadow: 'rgba(52,211,153,0.4)', glow: 'rgba(20,184,166,0.28)' }]
+                  : []),
+              ];
+
+              return (
+                <section aria-labelledby="material-heading" className="mb-6 sm:mb-8">
+                  <div className="mb-3">
+                    <h2 id="material-heading" className="text-xs font-black uppercase tracking-widest text-slate-400 sm:text-sm dark:text-slate-500">
+                      Material didáctico — {activeGrade.name}
+                    </h2>
+                  </div>
+                  <div className={`grid grid-cols-1 gap-3 ${materials.length === 2 ? 'sm:grid-cols-2' : 'sm:grid-cols-3'} sm:gap-4`}>
+                    {materials.map((material) => {
+                      const Icon = material.icon;
+                      return (
+                        <a
+                          key={material.href}
+                          href={material.href}
+                          className={`card-clay card-clay-hover flex items-center gap-3.5 p-4 sm:flex-col sm:items-start sm:gap-3 sm:p-5 ${focusRing}`}
                         >
-                          <Icon size={21} aria-hidden="true" />
-                        </span>
-                        <span className="min-w-0">
-                          <span className="block font-black sm:text-lg">{material.title}</span>
-                          <span className="block text-xs font-semibold text-slate-500 dark:text-slate-400 sm:text-sm">{material.description}</span>
-                        </span>
-                        <ChevronRight size={18} className="ml-auto shrink-0 text-slate-300 sm:hidden" aria-hidden="true" />
-                      </a>
-                    );
-                  })}
-                </div>
-              </section>
-            )}
+                          <span
+                            className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl ${material.tone} shadow-[0_4px_0_var(--mat-shadow),0_10px_22px_var(--mat-glow),inset_0_2px_0_rgba(255,255,255,0.65)] sm:h-12 sm:w-12`}
+                            style={{ '--mat-shadow': material.shadow, '--mat-glow': material.glow }}
+                          >
+                            <Icon size={21} aria-hidden="true" />
+                          </span>
+                          <span className="min-w-0">
+                            <span className="block font-black sm:text-lg">{material.title}</span>
+                            <span className="block text-xs font-semibold text-slate-500 dark:text-slate-400 sm:text-sm">{material.description}</span>
+                          </span>
+                          <ChevronRight size={18} className="ml-auto shrink-0 text-slate-300 sm:hidden" aria-hidden="true" />
+                        </a>
+                      );
+                    })}
+                  </div>
+                </section>
+              );
+            })()}
 
             {/* Selector de grados */}
             <div className="mb-6 grid grid-cols-2 gap-3 sm:mb-8 sm:gap-4 md:grid-cols-4" role="tablist" aria-label="Grados asignados">
