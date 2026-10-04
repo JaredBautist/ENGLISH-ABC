@@ -129,6 +129,7 @@ export const unitSlides = {
       "type": "homework",
       "emoji": "🏠",
       "title": "Homework: Saludos en familia",
+      "image": "/cards/morning.jpg",
       "description": "Practica los saludos en casa con el apoyo de tus papás.",
       "tasks": [
         "Saluda a tus papás al despertar diciendo \"Good morning!\".",
@@ -243,6 +244,7 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/sunny.jpg",
       "question": "¿De qué color es el sol?",
       "options": [
         "Yellow",
@@ -254,6 +256,7 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/pencil.jpg",
       "question": "\"Pencil\" es…",
       "options": [
         "Un lápiz",
@@ -266,6 +269,7 @@ export const unitSlides = {
       "type": "homework",
       "emoji": "🏠",
       "title": "Homework: Cacería de colores",
+      "image": "/topics/colors.jpg",
       "description": "Busca colores en tu casa y nómbralos en inglés.",
       "tasks": [
         "Encuentra un objeto \"Blue\" (azul) y uno \"Red\" (rojo) en tu casa.",
@@ -417,6 +421,7 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/number3.jpg",
       "question": "\"Three\" es…",
       "options": [
         "3",
@@ -428,6 +433,7 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/number10.jpg",
       "question": "¿Cuál es el número 10?",
       "options": [
         "Ten",
@@ -440,6 +446,7 @@ export const unitSlides = {
       "type": "homework",
       "emoji": "🏠",
       "title": "Homework: Conteo con deditos",
+      "image": "/cards/ten_fingers.jpg",
       "description": "Practica los números del 1 al 10 con tus manos.",
       "tasks": [
         "Muestra tus manos y cuenta del 1 al 5 en inglés.",
@@ -525,6 +532,33 @@ export const unitSlides = {
       "emoji": "💬",
       "title": "I like…",
       "description": "Cada niño dice el juguete que le gusta.",
+      "image": "/topics/toys.jpg",
+      "items": [
+        {
+          "text": "I like the ball!",
+          "es": "¡Me gusta la pelota!",
+          "emoji": "⚽",
+          "image": "/cards/ball.jpg"
+        },
+        {
+          "text": "I like the doll!",
+          "es": "¡Me gusta la muñeca!",
+          "emoji": "🪆",
+          "image": "/cards/doll.jpg"
+        },
+        {
+          "text": "I like the car!",
+          "es": "¡Me gusta el carro!",
+          "emoji": "🚗",
+          "image": "/cards/car.jpg"
+        },
+        {
+          "text": "I like the teddy bear!",
+          "es": "¡Me gusta el osito!",
+          "emoji": "🧸",
+          "image": "/cards/teddy.jpg"
+        }
+      ],
       "examples": [
         "I like the ball! (¡Me gusta la pelota!)",
         "I like the teddy bear! (¡Me gusta el osito!)"
@@ -533,6 +567,7 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/doll.jpg",
       "question": "\"Doll\" es…",
       "options": [
         "Muñeca",
@@ -544,6 +579,7 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/ball.jpg",
       "question": "¿Cómo dices \"Me gusta la pelota\"?",
       "options": [
         "I like the ball",
@@ -556,6 +592,7 @@ export const unitSlides = {
       "type": "homework",
       "emoji": "🏠",
       "title": "Homework: Mi juguete favorito",
+      "image": "/cards/teddy.jpg",
       "description": "Comparte y describe tu juguete preferido.",
       "tasks": [
         "Elige tu juguete preferido y di: \"I like my [ball / doll / car]\".",
@@ -671,6 +708,7 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/cow.jpg",
       "question": "El sonido \"Moo\" es de…",
       "options": [
         "Cow",
@@ -682,6 +720,7 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/duck.jpg",
       "question": "\"Pato\" en inglés es…",
       "options": [
         "Duck",
@@ -694,6 +733,7 @@ export const unitSlides = {
       "type": "homework",
       "emoji": "🏠",
       "title": "Homework: Sonidos de la granja",
+      "image": "/topics/farm_animals.jpg",
       "description": "Imita a los animales y di su nombre en inglés.",
       "tasks": [
         "Imita el sonido de una vaca (\"Cow\"), un perro (\"Dog\") y un gato (\"Cat\").",
@@ -802,13 +842,14 @@ export const unitSlides = {
           "text": "Run!",
           "es": "¡Trampa, no te muevas!",
           "emoji": "✨",
-          "image": null
+          "image": "/cards/run.jpg"
         }
       ]
     },
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/hands_clap.jpg",
       "question": "\"Clap\" es…",
       "options": [
         "Aplaudir",
@@ -820,6 +861,7 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/jump.jpg",
       "question": "\"Jump\" es…",
       "options": [
         "Saltar",
@@ -832,6 +874,7 @@ export const unitSlides = {
       "type": "homework",
       "emoji": "🏠",
       "title": "Homework: Mueve tu cuerpo",
+      "image": "/cards/body_jump.jpg",
       "description": "Actívate con movimiento y partes del cuerpo.",
       "tasks": [
         "Toca tu cabeza diciendo \"Head\", tus manos diciendo \"Hands\" y tus pies diciendo \"Feet\".",
@@ -917,6 +960,7 @@ export const unitSlides = {
       "emoji": "🖼️",
       "title": "Mi familia dibujada",
       "description": "Cada niño muestra su dibujo y nombra a su familia.",
+      "image": "/cards/family_group.jpg",
       "examples": [
         "This is my mommy.",
         "This is my daddy.",
@@ -926,6 +970,7 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/grandma.jpg",
       "question": "\"Grandma\" es…",
       "options": [
         "Abuela",
@@ -937,6 +982,7 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/daddy.jpg",
       "question": "\"This is my daddy\" significa…",
       "options": [
         "Este es mi papá",
@@ -949,6 +995,7 @@ export const unitSlides = {
       "type": "homework",
       "emoji": "🏠",
       "title": "Homework: Abrazo familiar",
+      "image": "/cards/family_group.jpg",
       "description": "Demuestra cariño a tu familia en inglés.",
       "tasks": [
         "Abraza a tu mamá o papá diciendo \"I love you Mommy / Daddy\".",
@@ -1032,6 +1079,7 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/red.jpg",
       "question": "\"Red\" es…",
       "options": [
         "Rojo",
@@ -1043,6 +1091,7 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/number5.jpg",
       "question": "\"Five\" es…",
       "options": [
         "5",
@@ -1054,6 +1103,7 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
+      "image": "/cards/number7.jpg",
       "question": "\"Balloon\" es…",
       "options": [
         "Globo",
@@ -1066,6 +1116,7 @@ export const unitSlides = {
       "type": "homework",
       "emoji": "🏠",
       "title": "Homework: Gran fiesta del saber",
+      "image": "/cards/happy.jpg",
       "description": "Repasa lo mejor que aprendiste en Jardín.",
       "tasks": [
         "Dile a tus papás tu palabra favorita en inglés.",

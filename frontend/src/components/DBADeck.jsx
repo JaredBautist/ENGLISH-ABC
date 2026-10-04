@@ -494,17 +494,26 @@ function SongSlide({ slide }) {
 function HomeworkSlide({ slide }) {
   return (
     <div className="animate-fadeIn">
-      <div className="mx-auto max-w-2xl rounded-3xl border-[3px] border-amber-200 bg-amber-50/80 p-5 sm:p-6">
+      <div className="mx-auto max-w-2xl rounded-3xl border-[3px] border-amber-200 bg-amber-50/80 p-5 sm:p-6 dark:border-amber-900/40 dark:bg-amber-950/20">
         <div className="mb-3 flex items-center justify-center gap-2">
           <span className="rounded-xl bg-amber-500 px-3 py-1 text-xs font-black uppercase tracking-wider text-white">
             Homework • Tarea para casa 🏠
           </span>
         </div>
-        <h3 className="mb-2 text-center text-xl font-black text-slate-800 sm:text-2xl">
+        {slide.image && (
+          <div className="mb-4 flex justify-center">
+            <HeroIllustration
+              src={slide.image}
+              alt={slide.title || 'Tarea para casa'}
+              className="h-36 w-auto max-w-sm object-cover rounded-2xl sm:h-44 shadow-md"
+            />
+          </div>
+        )}
+        <h3 className="mb-2 text-center text-xl font-black text-slate-800 dark:text-slate-100 sm:text-2xl">
           {slide.title || 'Homework Time!'}
         </h3>
         {slide.description && (
-          <p className="mb-4 text-center text-sm font-bold text-slate-600 sm:text-base">
+          <p className="mb-4 text-center text-sm font-bold text-slate-600 dark:text-slate-300 sm:text-base">
             {slide.description}
           </p>
         )}

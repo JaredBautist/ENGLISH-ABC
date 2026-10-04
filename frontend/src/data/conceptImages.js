@@ -302,6 +302,29 @@ export const CONCEPT_IMAGES = {
   'policía': '/cards/police.jpg',
   'firefighter': '/cards/firefighter.jpg',
   'bombero': '/cards/firefighter.jpg',
+
+  // Frases y opciones de actividades Jardín
+  'i like the ball': '/cards/ball.jpg',
+  'i like the doll': '/cards/doll.jpg',
+  'i like the car': '/cards/car.jpg',
+  'i like the train': '/cards/train.jpg',
+  'i like the teddy': '/cards/teddy.jpg',
+  'una muñeca': '/cards/doll.jpg',
+  'una pelota': '/cards/ball.jpg',
+  'un carro': '/cards/car.jpg',
+  'un tren': '/cards/train.jpg',
+  'aplaude': '/cards/hands_clap.jpg',
+  'salta': '/cards/jump.jpg',
+  'corre': '/cards/run.jpg',
+  'toca tu cabeza': '/cards/head.jpg',
+  'camina': '/cards/run.jpg',
+  'dormir': '/cards/cold.jpg',
+  'este es mi papá': '/cards/daddy.jpg',
+  'esta es mi mamá': '/cards/mommy.jpg',
+  'este es mi perro': '/cards/dog.jpg',
+  'este es mi hermano': '/cards/brother.jpg',
+  'globo': '/cards/number7.jpg',
+  'balloon': '/cards/number7.jpg',
 };
 
 /**
