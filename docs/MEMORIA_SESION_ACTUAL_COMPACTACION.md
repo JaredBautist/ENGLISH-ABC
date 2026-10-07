@@ -105,16 +105,18 @@ Se consolidó una biblioteca de **47 tarjetas 3D en plastilina infantil** almace
 ## 🕸️ 5. Alimentación y Actualización del Grafo (Graphify)
 
 * **Herramienta:** `/home/balckyshadown/.local/bin/graphify`
-* **Extracción AST:**
-  * 39 archivos de código modificados analizados e indexados.
-  * Reemplazo de 162 nodos desactualizados.
-  * Deduplicación de 145 nodos.
+* **Última Actualización:** 07 de octubre de 2026
+* **Extracción AST Incremental:**
+  * 6 archivos de código fuente modificados re-analizados e indexados.
+  * Reemplazo de 14 nodos actualizados.
+  * Respaldo generado en `graphify-out/2026-10-07/`.
 * **Clustering y Detección de Comunidades:**
-  * **2,693 nodos**
-  * **3,057 aristas (edges)**
+  * **2,695 nodos** (+2 nodos nuevos indexados)
+  * **3,058 aristas (edges)** (+1 arista)
   * **204 comunidades temáticas/arquitectónicas**
 * **Artefactos actualizados:**
   * `graphify-out/graph.json`
   * `graphify-out/GRAPH_REPORT.md`
   * `graphify-out/graph.html`
   * `graphify-out/.graphify_analysis.json`
+  * `graphify-out/manifest.json`
