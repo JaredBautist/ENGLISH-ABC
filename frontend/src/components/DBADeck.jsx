@@ -81,6 +81,7 @@ function CardIllustration({ src, alt, emoji, className = "h-full w-full object-c
         alt={alt}
         className={`${className} ${loaded ? 'opacity-100' : 'opacity-0'} transition-opacity duration-200`}
         loading="lazy"
+        decoding="async"
         onLoad={() => setLoaded(true)}
         onError={() => setError(true)}
       />
@@ -112,6 +113,7 @@ function HeroIllustration({ src, alt, emoji, className = "h-32 w-auto max-w-xs r
           alt={alt || 'Ilustración'}
           className={className}
           loading="lazy"
+          decoding="async"
           onError={() => setError(true)}
         />
         {emoji && (
@@ -640,6 +642,37 @@ function DeckInner({
     document.addEventListener('fullscreenchange', onChange);
     return () => document.removeEventListener('fullscreenchange', onChange);
   }, []);
+
+  // Precarga predictiva en segundo plano de imágenes de las próximas diapositivas
+  useEffect(() => {
+    if (!slides || total === 0) return;
+    const upcoming = [slides[current + 1], slides[current + 2]].filter(Boolean);
+    upcoming.forEach((s) => {
+      const hero = s.image || (s.title ? getConceptImage(s.title) : null);
+      if (hero) {
+        const img = new Image();
+        img.src = hero;
+      }
+      if (Array.isArray(s.items)) {
+        s.items.forEach((it) => {
+          const itemImg = it.image || (it.text ? getConceptImage(it.text) : null);
+          if (itemImg) {
+            const img = new Image();
+            img.src = itemImg;
+          }
+        });
+      }
+      if (Array.isArray(s.words)) {
+        s.words.forEach((w) => {
+          const wordImg = w.image || (w.word ? getConceptImage(w.word) : null);
+          if (wordImg) {
+            const img = new Image();
+            img.src = wordImg;
+          }
+        });
+      }
+    });
+  }, [current, slides, total]);
 
   if (!total) {
     return (
