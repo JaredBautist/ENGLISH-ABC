@@ -1,7 +1,5 @@
-const fs = require('fs');
-const path = require('path');
+const { loadUnitSlides, saveUnitSlides } = require('./lib/unit_slides_store.cjs');
 
-const targetFile = path.resolve(__dirname, '../frontend/src/data/unitSlides.js');
 
 const unitVideos = {
   'primero-instrucciones': {
@@ -466,15 +464,7 @@ const unitHomework = {
   },
 };
 
-// Read original file
-const originalCode = fs.readFileSync(targetFile, 'utf8');
-
-// Parse the unitSlides object by evaluating in a clean sandbox
-const sandbox = {};
-const vm = require('vm');
-const scriptCode = originalCode.replace('export const unitSlides =', 'unitSlides =');
-vm.runInNewContext(scriptCode, sandbox);
-const { unitSlides } = sandbox;
+const unitSlides = loadUnitSlides();
 
 console.log('Original unitSlides loaded:', Object.keys(unitSlides).length, 'units');
 
@@ -503,17 +493,5 @@ for (const [unitKey, slides] of Object.entries(unitSlides)) {
   }
 }
 
-// Generate new unitSlides.js code
-const newCode = `/**
- * Contenido de slides por unidad (32 unidades: 4 grados x 8 unidades).
- * Tipos: content | vocabulary | activity | song | homework.
- * Los videos embebidos son canales oficiales verificados
- * (Super Simple Songs, Noodle & Pals, The Kiboomers, The Singing Walrus).
- * Cada unidad cuenta con su video pedagógico y su slide final de homework.
- */
-
-export const unitSlides = ${JSON.stringify(unitSlides, null, 2)};
-`;
-
-fs.writeFileSync(targetFile, newCode, 'utf8');
-console.log('Successfully updated unitSlides.js!');
+saveUnitSlides(unitSlides);
+console.log('Successfully updated grade slide files!');

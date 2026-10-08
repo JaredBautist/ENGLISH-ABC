@@ -160,7 +160,9 @@ function ContentSlide({ slide }) {
       {items.length > 0 && (
         <div
           className={`mb-6 grid gap-4 sm:gap-5 ${
-            items.length <= 2
+            items.length === 1
+              ? 'grid-cols-1 w-full max-w-sm mx-auto'
+              : items.length <= 2
               ? 'grid-cols-1 sm:grid-cols-2 max-w-2xl mx-auto'
               : items.length <= 4
               ? 'grid-cols-2 sm:grid-cols-2 lg:grid-cols-4'
@@ -281,7 +283,9 @@ function VocabularySlide({ slide }) {
           {slide.description}
         </p>
       )}
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-5 lg:grid-cols-4">
+      <div className={`grid grid-cols-2 gap-4 sm:gap-5 ${slide.words.length === 2
+        ? 'mx-auto sm:w-[calc((200%-1.25rem)/3)] lg:w-[calc((100%-1.25rem)/2)]'
+        : 'sm:grid-cols-3 lg:grid-cols-4'}`}>
         {slide.words.map((entry) => {
           const cardImg = entry.image || getConceptImage(entry.word);
           return (
@@ -412,7 +416,9 @@ function ActivitySlide({ slide }) {
       </div>
 
       {/* Grid de Opciones Visuales Ilustradas */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
+      <div className={`grid grid-cols-1 gap-4 sm:gap-6 ${slide.options.length === 2
+        ? 'mx-auto sm:grid-cols-2 sm:w-[calc((200%-1.5rem)/3)]'
+        : 'sm:grid-cols-3'}`}>
         {slide.options.map((option) => {
           const active = selected === option;
           const optionImage = getConceptImage(option);
