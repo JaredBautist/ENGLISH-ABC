@@ -87,7 +87,8 @@ export const unitSlides = {
       "emoji": "🎵",
       "title": "Hello Song",
       "description": "Saluda cuando escuches Hello. Puedes mover una mano o participar con la voz. Si el video no carga, juega al eco del saludo con la profe.",
-      "videoUrl": "https://www.youtube.com/embed/tVlcKp3bWH8"
+      "videoUrl": "https://www.youtube.com/embed/tVlcKp3bWH8",
+      "image": "/cards/hello.jpg"
     },
     {
       "type": "activity",
@@ -148,94 +149,84 @@ export const unitSlides = {
       "type": "content",
       "emoji": "🌈",
       "title": "Colors",
-      "description": "Los colores del salón.",
+      "description": "Escucha y señala el color que nombra la profe. Mira la zona coloreada de cada imagen.",
+      "image": "/topics/colors.jpg",
       "items": [
         {
           "text": "Red",
-          "es": "rojo",
+          "es": "Rojo",
           "emoji": "🔴",
           "image": "/cards/red.jpg"
         },
         {
           "text": "Blue",
-          "es": "azul",
+          "es": "Azul",
           "emoji": "🔵",
           "image": "/cards/blue.jpg"
-        },
-        {
-          "text": "Yellow",
-          "es": "amarillo",
-          "emoji": "🟡",
-          "image": "/cards/yellow.jpg"
-        },
-        {
-          "text": "Green",
-          "es": "verde",
-          "emoji": "🟢",
-          "image": "/cards/green.jpg"
-        }
-      ],
-      "image": "/topics/colors.jpg"
-    },
-    {
-      "type": "vocabulary",
-      "title": "More colors",
-      "description": "Señala objetos de cada color en el salón.",
-      "words": [
-        {
-          "word": "Orange",
-          "emoji": "🟠",
-          "es": "Naranja",
-          "image": "/cards/orange_color.jpg"
-        },
-        {
-          "word": "Purple",
-          "emoji": "🟣",
-          "es": "Morado",
-          "image": "/cards/purple.jpg"
-        },
-        {
-          "word": "Black",
-          "emoji": "⚫",
-          "es": "Negro",
-          "image": "/cards/black.jpg"
-        },
-        {
-          "word": "White",
-          "emoji": "⚪",
-          "es": "Blanco",
-          "image": "/cards/white.jpg"
         }
       ]
     },
     {
       "type": "vocabulary",
-      "title": "School objects",
-      "description": "Objetos del salón con colores.",
+      "title": "Yellow / Green",
+      "description": "Escucha una tarjeta por vez. Busca el mismo color en el salón o señala la imagen.",
       "words": [
         {
-          "word": "Book",
-          "emoji": "📚",
-          "es": "Libro",
-          "image": "/cards/book.jpg"
+          "word": "Yellow",
+          "es": "Amarillo",
+          "emoji": "🟡",
+          "image": "/cards/yellow.jpg"
         },
         {
-          "word": "Pencil",
-          "emoji": "✏️",
-          "es": "Lápiz",
-          "image": "/cards/pencil.jpg"
-        },
+          "word": "Green",
+          "es": "Verde",
+          "emoji": "🟢",
+          "image": "/cards/green.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy encuentra rojo",
+      "description": "Teddy busca colores. La profe señala el rojo; escucha y ayúdalo a encontrarlo.",
+      "image": "/cards/red.jpg",
+      "items": [
         {
-          "word": "Crayon",
-          "emoji": "🖍️",
-          "es": "Crayón",
-          "image": "/cards/crayon.jpg"
-        },
+          "text": "I see red.",
+          "es": "Veo rojo.",
+          "emoji": "🔴",
+          "image": "/cards/red.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy encuentra azul",
+      "description": "Ahora Teddy encuentra azul. Escucha y señala lo azul en la tarjeta.",
+      "image": "/cards/blue.jpg",
+      "items": [
         {
-          "word": "Chair",
-          "emoji": "🪑",
-          "es": "Silla",
-          "image": "/cards/chair.jpg"
+          "text": "I see blue.",
+          "es": "Veo azul.",
+          "emoji": "🔵",
+          "image": "/cards/blue.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy encuentra amarillo",
+      "description": "Teddy termina su búsqueda con amarillo. Recuerda los tres colores con la profe.",
+      "image": "/cards/yellow.jpg",
+      "items": [
+        {
+          "text": "I see yellow.",
+          "es": "Veo amarillo.",
+          "emoji": "🟡",
+          "image": "/cards/yellow.jpg"
         }
       ]
     },
@@ -243,43 +234,122 @@ export const unitSlides = {
       "type": "song",
       "emoji": "🎵",
       "title": "I See Something Blue",
-      "description": "Encuentra objetos azules mientras cantan.",
-      "videoUrl": "https://www.youtube.com/embed/jYAWf8Y91hA"
+      "description": "Señala algo azul cuando escuches Blue. También puedes mirar la tarjeta. Si el video no carga, haz el eco con la profe.",
+      "videoUrl": "https://www.youtube.com/embed/jYAWf8Y91hA",
+      "image": "/cards/blue.jpg"
     },
     {
       "type": "activity",
       "activityType": "choice",
-      "image": "/cards/sunny.jpg",
-      "question": "¿De qué color es el sol?",
+      "question": "Red",
       "options": [
-        "Yellow",
-        "Blue",
-        "Green"
+        "Red",
+        "Blue"
       ],
-      "correct": "Yellow"
+      "correct": "Red"
     },
     {
       "type": "activity",
       "activityType": "choice",
-      "image": "/cards/pencil.jpg",
-      "question": "\"Pencil\" es…",
+      "question": "Blue",
       "options": [
-        "Un lápiz",
-        "Un libro",
-        "Una silla"
+        "Red",
+        "Blue"
       ],
-      "correct": "Un lápiz"
+      "correct": "Blue"
+    },
+    {
+      "type": "content",
+      "emoji": "👂",
+      "title": "Eco: colores",
+      "description": "Escucha, espera y repite si quieres. La profe alterna las palabras; puedes responder señalando.",
+      "image": "/topics/colors.jpg",
+      "items": [
+        {
+          "text": "Red",
+          "es": "Rojo",
+          "emoji": "🔴",
+          "image": "/cards/red.jpg"
+        },
+        {
+          "text": "Blue",
+          "es": "Azul",
+          "emoji": "🔵",
+          "image": "/cards/blue.jpg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional: más colores",
+      "description": "Solo cuando el grupo esté preparado. Trabaja una pareja por sesión; no es requisito para avanzar.",
+      "words": [
+        {
+          "word": "Orange",
+          "es": "Naranja",
+          "emoji": "🟠",
+          "image": "/cards/orange_color.jpg"
+        },
+        {
+          "word": "Purple",
+          "es": "Morado",
+          "emoji": "🟣",
+          "image": "/cards/purple.jpg"
+        },
+        {
+          "word": "Black",
+          "es": "Negro",
+          "emoji": "⚫",
+          "image": "/cards/black.jpg"
+        },
+        {
+          "word": "White",
+          "es": "Blanco",
+          "emoji": "⚪",
+          "image": "/cards/white.jpg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional: objetos del salón",
+      "description": "La profe muestra un objeto real y reproduce su nombre. Relaciona objeto e imagen sin leer.",
+      "words": [
+        {
+          "word": "Book",
+          "es": "Libro",
+          "emoji": "📚",
+          "image": "/cards/book.jpg"
+        },
+        {
+          "word": "Pencil",
+          "es": "Lápiz",
+          "emoji": "✏️",
+          "image": "/cards/pencil.jpg"
+        },
+        {
+          "word": "Crayon",
+          "es": "Crayón",
+          "emoji": "🖍️",
+          "image": "/cards/crayon.jpg"
+        },
+        {
+          "word": "Chair",
+          "es": "Silla",
+          "emoji": "🪑",
+          "image": "/cards/chair.jpg"
+        }
+      ]
     },
     {
       "type": "homework",
       "emoji": "🏠",
-      "title": "Homework: Cacería de colores",
+      "title": "Colores en casa",
       "image": "/topics/colors.jpg",
-      "description": "Busca colores en tu casa y nómbralos en inglés.",
+      "description": "Busca rojo o azul en lo que ya tengas en casa; también puedes usar estas tarjetas. Con un familiar o cuidador, puedes responder con tu voz, un gesto o señalando. Sin escritura, grabaciones ni compras.",
       "tasks": [
-        "Encuentra un objeto \"Blue\" (azul) y uno \"Red\" (rojo) en tu casa.",
-        "Muéstraselos a tu familia diciendo el color en voz alta.",
-        "Colorea un sol amarillo diciendo \"Yellow sun!\"."
+        "Red",
+        "Blue"
       ]
     }
   ],
@@ -287,100 +357,97 @@ export const unitSlides = {
     {
       "type": "content",
       "emoji": "🔢",
-      "title": "Numbers 1-10",
-      "description": "Cuenta con los dedos de la mano.",
+      "title": "One, two, three",
+      "description": "Cuenta despacio con la profe. Señala cada objeto de la imagen una sola vez al escuchar.",
+      "image": "/topics/numbers.jpg",
       "items": [
         {
-          "text": "⃣ One",
+          "text": "One",
           "es": "1",
-          "emoji": "1️",
+          "emoji": "🔢",
           "image": "/cards/number1.jpg"
         },
         {
-          "text": "⃣ Two",
+          "text": "Two",
           "es": "2",
-          "emoji": "2️",
+          "emoji": "🔢",
           "image": "/cards/number2.jpg"
         },
         {
-          "text": "⃣ Three",
+          "text": "Three",
           "es": "3",
-          "emoji": "3️",
+          "emoji": "🔢",
           "image": "/cards/number3.jpg"
-        },
-        {
-          "text": "⃣ Four",
-          "es": "4",
-          "emoji": "4️",
-          "image": "/cards/number4.jpg"
-        },
-        {
-          "text": "⃣ Five",
-          "es": "5",
-          "emoji": "5️",
-          "image": "/cards/number5.jpg"
-        },
-        {
-          "text": "⃣ Six",
-          "es": "6",
-          "emoji": "6️",
-          "image": "/cards/number6.jpg"
-        },
-        {
-          "text": "⃣ Seven",
-          "es": "7",
-          "emoji": "7️",
-          "image": "/cards/number7.jpg"
-        },
-        {
-          "text": "⃣ Eight",
-          "es": "8",
-          "emoji": "8️",
-          "image": "/cards/number8.jpg"
-        },
-        {
-          "text": "⃣ Nine",
-          "es": "9",
-          "emoji": "9️",
-          "image": "/cards/number9.jpg"
-        },
-        {
-          "text": "Ten",
-          "es": "10",
-          "emoji": "🔟",
-          "image": "/cards/number10.jpg"
         }
-      ],
-      "image": "/topics/numbers.jpg"
+      ]
     },
     {
       "type": "vocabulary",
-      "title": "Count with me",
-      "description": "La profe muestra objetos y todos cuentan.",
+      "title": "Contamos objetos",
+      "description": "La profe muestra cantidades reales o las tarjetas; escucha y señala. No necesitas leer el número.",
       "words": [
         {
           "word": "One apple",
-          "emoji": "🍎",
           "es": "Una manzana",
+          "emoji": "🍎",
           "image": "/cards/one_apple.jpg"
         },
         {
           "word": "Two books",
-          "emoji": "📚",
           "es": "Dos libros",
+          "emoji": "📚",
           "image": "/cards/two_books.jpg"
         },
         {
           "word": "Three pencils",
-          "emoji": "✏️",
           "es": "Tres lápices",
+          "emoji": "✏️",
           "image": "/cards/three_pencils.jpg"
-        },
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy encuentra uno",
+      "description": "Teddy prepara el juego y encuentra una manzana. Escucha y señala la manzana.",
+      "image": "/cards/one_apple.jpg",
+      "items": [
         {
-          "word": "Ten fingers",
-          "emoji": "🖐️",
-          "es": "Diez dedos",
-          "image": "/cards/ten_fingers.jpg"
+          "text": "One apple",
+          "es": "Una manzana",
+          "emoji": "🍎",
+          "image": "/cards/one_apple.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy encuentra dos",
+      "description": "Teddy añade dos libros. Cuenta los libros con la profe.",
+      "image": "/cards/two_books.jpg",
+      "items": [
+        {
+          "text": "Two books",
+          "es": "Dos libros",
+          "emoji": "📚",
+          "image": "/cards/two_books.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy encuentra tres",
+      "description": "Teddy añade tres lápices. Recorre la imagen señalando uno por uno.",
+      "image": "/cards/three_pencils.jpg",
+      "items": [
+        {
+          "text": "Three pencils",
+          "es": "Tres lápices",
+          "emoji": "✏️",
+          "image": "/cards/three_pencils.jpg"
         }
       ]
     },
@@ -388,75 +455,130 @@ export const unitSlides = {
       "type": "song",
       "emoji": "🎵",
       "title": "Counting Bananas",
-      "description": "Cuenta los plátanos con los monitos.",
-      "videoUrl": "https://www.youtube.com/embed/N-6bxyzyHZs"
+      "description": "Acompaña el conteo hasta donde conozcas. Puedes usar dedos, señalar o escuchar. Si el video no carga, haz el eco con la profe.",
+      "videoUrl": "https://www.youtube.com/embed/N-6bxyzyHZs",
+      "image": "/cards/banana.jpg"
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "question": "One",
+      "options": [
+        "One",
+        "Three"
+      ],
+      "correct": "One"
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "question": "Three",
+      "options": [
+        "One",
+        "Three"
+      ],
+      "correct": "Three"
     },
     {
       "type": "content",
-      "emoji": "🎮",
-      "title": "Juego: salta y cuenta",
-      "description": "Cada niño salta mientras todos cuentan en inglés.",
+      "emoji": "👂",
+      "title": "Eco: contamos despacio",
+      "description": "La profe dice una palabra y hace una pausa. Repite o señala la cantidad; no hace falta saltar.",
+      "image": "/topics/numbers.jpg",
       "items": [
         {
-          "text": "Jump one!",
-          "es": "¡Salto uno!",
-          "emoji": "🦘",
-          "image": "/cards/body_jump.jpg"
+          "text": "One",
+          "es": "1",
+          "emoji": "🔢",
+          "image": "/cards/number1.jpg"
         },
         {
-          "text": "Jump two!",
-          "es": "¡Salto dos!",
-          "emoji": "🦘",
-          "image": "/cards/body_jump.jpg"
+          "text": "Two",
+          "es": "2",
+          "emoji": "🔢",
+          "image": "/cards/number2.jpg"
         },
         {
-          "text": "Jump three!",
-          "es": "¡Salto tres!",
-          "emoji": "🦘",
-          "image": "/cards/body_jump.jpg"
-        },
-        {
-          "text": "Jump ten!",
-          "es": "¡Salto diez!",
-          "emoji": "🦘",
-          "image": "/cards/body_jump.jpg"
+          "text": "Three",
+          "es": "3",
+          "emoji": "🔢",
+          "image": "/cards/number3.jpg"
         }
       ]
     },
     {
-      "type": "activity",
-      "activityType": "choice",
-      "image": "/cards/number3.jpg",
-      "question": "\"Three\" es…",
-      "options": [
-        "3",
-        "2",
-        "5"
-      ],
-      "correct": "3"
+      "type": "vocabulary",
+      "title": "Ampliación opcional: four / five",
+      "description": "Cuando 1–3 sean familiares, cuenta cuatro y cinco objetos con ayuda.",
+      "words": [
+        {
+          "word": "Four",
+          "es": "4",
+          "emoji": "🔢",
+          "image": "/cards/number4.jpg"
+        },
+        {
+          "word": "Five",
+          "es": "5",
+          "emoji": "🔢",
+          "image": "/cards/number5.jpg"
+        }
+      ]
     },
     {
-      "type": "activity",
-      "activityType": "choice",
-      "image": "/cards/number10.jpg",
-      "question": "¿Cuál es el número 10?",
-      "options": [
-        "Ten",
-        "Two",
-        "Nine"
-      ],
-      "correct": "Ten"
+      "type": "vocabulary",
+      "title": "Ampliación opcional: six / seven / eight",
+      "description": "Para otra sesión, si el grupo está preparado. Cuenta uno a uno con apoyo.",
+      "words": [
+        {
+          "word": "Six",
+          "es": "6",
+          "emoji": "🔢",
+          "image": "/cards/number6.jpg"
+        },
+        {
+          "word": "Seven",
+          "es": "7",
+          "emoji": "🔢",
+          "image": "/cards/number7.jpg"
+        },
+        {
+          "word": "Eight",
+          "es": "8",
+          "emoji": "🔢",
+          "image": "/cards/number8.jpg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional: nine / ten",
+      "description": "Continúa hasta diez sin exigir memorizar todo en una clase.",
+      "words": [
+        {
+          "word": "Nine",
+          "es": "9",
+          "emoji": "🔢",
+          "image": "/cards/number9.jpg"
+        },
+        {
+          "word": "Ten",
+          "es": "10",
+          "emoji": "🔢",
+          "image": "/cards/number10.jpg"
+        }
+      ]
     },
     {
       "type": "homework",
       "emoji": "🏠",
-      "title": "Homework: Conteo con deditos",
-      "image": "/cards/ten_fingers.jpg",
-      "description": "Practica los números del 1 al 10 con tus manos.",
+      "title": "Contamos en casa",
+      "image": "/cards/three_pencils.jpg",
+      "description": "Cuenta de uno a tres con objetos seguros que ya tengas. El adulto evita piezas pequeñas. Con un familiar o cuidador, puedes responder con tu voz, un gesto o señalando. Sin escritura, grabaciones ni compras.",
       "tasks": [
-        "Muestra tus manos y cuenta del 1 al 5 en inglés.",
-        "Busca 3 cucharas o juguetes y cuenta: \"One, two, three!\".",
-        "Dibuja 5 bolitas de plastilina o bolitas de colores en tu cuaderno."
+        "One",
+        "Two",
+        "Three"
       ]
     }
   ],
@@ -465,63 +587,84 @@ export const unitSlides = {
       "type": "content",
       "emoji": "🧸",
       "title": "My toys",
-      "description": "Los juguetes que todos conocen.",
+      "description": "Escucha y señala el juguete nombrado. No necesitas tenerlo: las imágenes sirven para jugar.",
+      "image": "/topics/toys.jpg",
       "items": [
         {
           "text": "Ball",
-          "es": "pelota",
+          "es": "Pelota",
           "emoji": "⚽",
           "image": "/cards/ball.jpg"
         },
         {
           "text": "Doll",
-          "es": "muñeca",
-          "emoji": "🪆",
+          "es": "Muñeca",
+          "emoji": "🧸",
           "image": "/cards/doll.jpg"
-        },
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Car / Teddy bear",
+      "description": "La profe presenta dos juguetes más. Escucha y elige señalando.",
+      "words": [
         {
-          "text": "Car",
-          "es": "carro",
+          "word": "Car",
+          "es": "Carro",
           "emoji": "🚗",
           "image": "/cards/car.jpg"
         },
         {
-          "text": "Kite",
-          "es": "cometa",
-          "emoji": "🪁",
-          "image": "/cards/kite.jpg"
+          "word": "Teddy bear",
+          "es": "Oso de peluche",
+          "emoji": "🧸",
+          "image": "/cards/teddy.jpg"
         }
-      ],
-      "image": "/topics/toys.jpg"
+      ]
     },
     {
-      "type": "vocabulary",
-      "title": "More toys",
-      "description": "Muestra los juguetes reales o tarjetas.",
-      "words": [
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy ve una pelota",
+      "description": "Teddy busca un juguete. La profe narra y señala la pelota.",
+      "image": "/cards/ball.jpg",
+      "items": [
         {
-          "word": "Teddy bear",
-          "emoji": "🧸",
-          "es": "Oso de peluche",
-          "image": "/cards/teddy.jpg"
-        },
+          "text": "I see a ball.",
+          "es": "Veo una pelota.",
+          "emoji": "⚽",
+          "image": "/cards/ball.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy elige la pelota",
+      "description": "Teddy elige la pelota. Escucha su frase; puedes mostrar tu preferencia con un gesto.",
+      "image": "/cards/ball.jpg",
+      "items": [
         {
-          "word": "Blocks",
-          "emoji": "🧱",
-          "es": "Bloques",
-          "image": "/cards/blocks.jpg"
-        },
+          "text": "I like the ball.",
+          "es": "Me gusta la pelota.",
+          "emoji": "⚽",
+          "image": "/cards/ball.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Guardamos con Teddy",
+      "description": "Al terminar, Teddy ayuda a guardar. La profe modela el gesto sin exigir movimiento.",
+      "image": "/cards/cleanup.jpg",
+      "items": [
         {
-          "word": "Robot",
-          "emoji": "🤖",
-          "es": "Robot",
-          "image": "/cards/robot.jpg"
-        },
-        {
-          "word": "Train",
-          "emoji": "🚂",
-          "es": "Tren",
-          "image": "/cards/train.jpg"
+          "text": "Clean up!",
+          "es": "¡A recoger!",
+          "emoji": "🧹",
+          "image": "/cards/cleanup.jpg"
         }
       ]
     },
@@ -529,80 +672,92 @@ export const unitSlides = {
       "type": "song",
       "emoji": "🎵",
       "title": "Clean Up Song",
-      "description": "Guarden los juguetes cantando.",
-      "videoUrl": "https://www.youtube.com/embed/0d6Ed3baRj8"
+      "description": "Escucha Clean up y representa cómo guardarías un juguete, o señala. Si el video no carga, haz el eco con la profe.",
+      "videoUrl": "https://www.youtube.com/embed/0d6Ed3baRj8",
+      "image": "/cards/cleanup.jpg"
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "question": "Ball",
+      "options": [
+        "Ball",
+        "Doll"
+      ],
+      "correct": "Ball"
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "question": "Doll",
+      "options": [
+        "Ball",
+        "Doll"
+      ],
+      "correct": "Doll"
     },
     {
       "type": "content",
-      "emoji": "💬",
-      "title": "I like…",
-      "description": "Cada niño dice el juguete que le gusta.",
+      "emoji": "👂",
+      "title": "Eco: mis juguetes",
+      "description": "Escucha Ball y Doll. La profe deja un turno para tu voz o para señalar la imagen.",
       "image": "/topics/toys.jpg",
       "items": [
         {
-          "text": "I like the ball!",
-          "es": "¡Me gusta la pelota!",
+          "text": "Ball",
+          "es": "Pelota",
           "emoji": "⚽",
           "image": "/cards/ball.jpg"
         },
         {
-          "text": "I like the doll!",
-          "es": "¡Me gusta la muñeca!",
-          "emoji": "🪆",
-          "image": "/cards/doll.jpg"
-        },
-        {
-          "text": "I like the car!",
-          "es": "¡Me gusta el carro!",
-          "emoji": "🚗",
-          "image": "/cards/car.jpg"
-        },
-        {
-          "text": "I like the teddy bear!",
-          "es": "¡Me gusta el osito!",
+          "text": "Doll",
+          "es": "Muñeca",
           "emoji": "🧸",
-          "image": "/cards/teddy.jpg"
+          "image": "/cards/doll.jpg"
         }
-      ],
-      "examples": [
-        "I like the ball! (¡Me gusta la pelota!)",
-        "I like the teddy bear! (¡Me gusta el osito!)"
       ]
     },
     {
-      "type": "activity",
-      "activityType": "choice",
-      "image": "/cards/doll.jpg",
-      "question": "\"Doll\" es…",
-      "options": [
-        "Muñeca",
-        "Pelota",
-        "Carro"
-      ],
-      "correct": "Muñeca"
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "image": "/cards/ball.jpg",
-      "question": "¿Cómo dices \"Me gusta la pelota\"?",
-      "options": [
-        "I like the ball",
-        "I like the doll",
-        "I like the car"
-      ],
-      "correct": "I like the ball"
+      "type": "vocabulary",
+      "title": "Ampliación opcional: otros juguetes",
+      "description": "Trabaja una pareja en otra sesión, según el grupo.",
+      "words": [
+        {
+          "word": "Kite",
+          "es": "Cometa",
+          "emoji": "🪁",
+          "image": "/cards/kite.jpg"
+        },
+        {
+          "word": "Blocks",
+          "es": "Bloques",
+          "emoji": "🧱",
+          "image": "/cards/blocks.jpg"
+        },
+        {
+          "word": "Robot",
+          "es": "Robot",
+          "emoji": "🤖",
+          "image": "/cards/robot.jpg"
+        },
+        {
+          "word": "Train",
+          "es": "Tren",
+          "emoji": "🚂",
+          "image": "/cards/train.jpg"
+        }
+      ]
     },
     {
       "type": "homework",
       "emoji": "🏠",
-      "title": "Homework: Mi juguete favorito",
+      "title": "Jugamos en casa",
       "image": "/cards/teddy.jpg",
-      "description": "Comparte y describe tu juguete preferido.",
+      "description": "Señala tu juguete preferido en las tarjetas y juega a guardarlo; no necesitas uno nuevo. Con un familiar o cuidador, puedes responder con tu voz, un gesto o señalando. Sin escritura, grabaciones ni compras.",
       "tasks": [
-        "Elige tu juguete preferido y di: \"I like my [ball / doll / car]\".",
-        "Dibuja tu juguete favorito en una hoja blanca.",
-        "Guarda tus juguetes cantando la canción de \"Clean Up\"."
+        "Ball",
+        "Doll",
+        "Clean up!"
       ]
     }
   ],
@@ -611,63 +766,84 @@ export const unitSlides = {
       "type": "content",
       "emoji": "🐮",
       "title": "Farm animals",
-      "description": "Animales de la granja con sus sonidos.",
+      "description": "Mira los animales. Escucha su nombre y señala. La profe puede imitar su sonido antes de nombrarlos.",
+      "image": "/topics/farm_animals.jpg",
       "items": [
         {
-          "text": "Cow (vaca) — moo!",
-          "es": "",
+          "text": "Cow",
+          "es": "Vaca",
           "emoji": "🐮",
           "image": "/cards/cow.jpg"
         },
         {
-          "text": "Dog (perro) — woof!",
-          "es": "",
+          "text": "Duck",
+          "es": "Pato",
+          "emoji": "🦆",
+          "image": "/cards/duck.jpg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Dog / Cat",
+      "description": "Escucha los nombres. Responde con voz, mirada o señalando la tarjeta.",
+      "words": [
+        {
+          "word": "Dog",
+          "es": "Perro",
           "emoji": "🐶",
           "image": "/cards/dog.jpg"
         },
         {
-          "text": "Cat (gato) — meow!",
-          "es": "",
+          "word": "Cat",
+          "es": "Gato",
           "emoji": "🐱",
           "image": "/cards/cat.jpg"
-        },
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy visita la granja",
+      "description": "Teddy llega y encuentra una vaca. Saluda a la vaca con la profe.",
+      "image": "/cards/cow.jpg",
+      "items": [
         {
-          "text": "Duck (pato) — quack!",
-          "es": "",
+          "text": "Hello, cow!",
+          "es": "¡Hola, vaca!",
+          "emoji": "🐮",
+          "image": "/cards/cow.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy encuentra un pato",
+      "description": "Durante la visita aparece un pato. Escucha y salúdalo con un gesto.",
+      "image": "/cards/duck.jpg",
+      "items": [
+        {
+          "text": "Hello, duck!",
+          "es": "¡Hola, pato!",
           "emoji": "🦆",
           "image": "/cards/duck.jpg"
         }
-      ],
-      "image": "/topics/farm_animals.jpg"
+      ]
     },
     {
-      "type": "vocabulary",
-      "title": "More farm animals",
-      "description": "Haz el sonido de cada animal.",
-      "words": [
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy se despide",
+      "description": "La visita termina. Teddy se despide de la vaca. Recuerda a quién saludó primero.",
+      "image": "/cards/cow.jpg",
+      "items": [
         {
-          "word": "Pig",
-          "emoji": "🐷",
-          "es": "Cerdo",
-          "image": "/cards/pig.jpg"
-        },
-        {
-          "word": "Horse",
-          "emoji": "🐴",
-          "es": "Caballo",
-          "image": "/cards/horse.jpg"
-        },
-        {
-          "word": "Chicken",
-          "emoji": "🐔",
-          "es": "Gallina",
-          "image": "/cards/chicken.jpg"
-        },
-        {
-          "word": "Sheep",
-          "emoji": "🐑",
-          "es": "Oveja",
-          "image": "/cards/sheep.jpg"
+          "text": "Bye-bye, cow!",
+          "es": "¡Adiós, vaca!",
+          "emoji": "🐮",
+          "image": "/cards/cow.jpg"
         }
       ]
     },
@@ -675,49 +851,16 @@ export const unitSlides = {
       "type": "song",
       "emoji": "🎵",
       "title": "Old MacDonald Had a Farm",
-      "description": "Canten con los sonidos de los animales.",
-      "videoUrl": "https://www.youtube.com/embed/_6HzoUcx3eo"
-    },
-    {
-      "type": "content",
-      "emoji": "🎭",
-      "title": "Adivina el animal",
-      "description": "La profe hace el sonido y los niños adivinan.",
-      "items": [
-        {
-          "text": "Moo! → Cow",
-          "es": "",
-          "emoji": "🐮",
-          "image": "/cards/cow.jpg"
-        },
-        {
-          "text": "Woof! → Dog",
-          "es": "",
-          "emoji": "🐶",
-          "image": "/cards/dog.jpg"
-        },
-        {
-          "text": "Quack! → Duck",
-          "es": "",
-          "emoji": "🦆",
-          "image": "/cards/duck.jpg"
-        },
-        {
-          "text": "Meow! → Cat",
-          "es": "",
-          "emoji": "🐱",
-          "image": "/cards/cat.jpg"
-        }
-      ]
+      "description": "Señala los animales que reconozcas y participa con voz o gestos voluntarios. Si el video no carga, haz el eco con la profe.",
+      "videoUrl": "https://www.youtube.com/embed/_6HzoUcx3eo",
+      "image": "/topics/farm_animals.jpg"
     },
     {
       "type": "activity",
       "activityType": "choice",
-      "image": "/cards/cow.jpg",
-      "question": "El sonido \"Moo\" es de…",
+      "question": "Cow",
       "options": [
         "Cow",
-        "Cat",
         "Duck"
       ],
       "correct": "Cow"
@@ -725,25 +868,75 @@ export const unitSlides = {
     {
       "type": "activity",
       "activityType": "choice",
-      "image": "/cards/duck.jpg",
-      "question": "\"Pato\" en inglés es…",
+      "question": "Duck",
       "options": [
-        "Duck",
-        "Dog",
-        "Pig"
+        "Cow",
+        "Duck"
       ],
       "correct": "Duck"
     },
     {
+      "type": "content",
+      "emoji": "👂",
+      "title": "Eco: voces de la granja",
+      "description": "La profe imita una vaca o un pato; señala y escucha el nombre. Imitar animales es juego de escucha, no una prueba de pronunciación.",
+      "image": "/topics/farm_animals.jpg",
+      "items": [
+        {
+          "text": "Cow",
+          "es": "Vaca",
+          "emoji": "🐮",
+          "image": "/cards/cow.jpg"
+        },
+        {
+          "text": "Duck",
+          "es": "Pato",
+          "emoji": "🦆",
+          "image": "/cards/duck.jpg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional: más animales",
+      "description": "Escucha una pareja por sesión y vuelve a los animales conocidos.",
+      "words": [
+        {
+          "word": "Pig",
+          "es": "Cerdo",
+          "emoji": "🐷",
+          "image": "/cards/pig.jpg"
+        },
+        {
+          "word": "Horse",
+          "es": "Caballo",
+          "emoji": "🐴",
+          "image": "/cards/horse.jpg"
+        },
+        {
+          "word": "Chicken",
+          "es": "Gallina",
+          "emoji": "🐔",
+          "image": "/cards/chicken.jpg"
+        },
+        {
+          "word": "Sheep",
+          "es": "Oveja",
+          "emoji": "🐑",
+          "image": "/cards/sheep.jpg"
+        }
+      ]
+    },
+    {
       "type": "homework",
       "emoji": "🏠",
-      "title": "Homework: Sonidos de la granja",
+      "title": "Una visita imaginaria",
       "image": "/topics/farm_animals.jpg",
-      "description": "Imita a los animales y di su nombre en inglés.",
+      "description": "Juega a visitar los animales de estas imágenes; el adulto puede hacer sus sonidos. Con un familiar o cuidador, puedes responder con tu voz, un gesto o señalando. Sin escritura, grabaciones ni compras.",
       "tasks": [
-        "Imita el sonido de una vaca (\"Cow\"), un perro (\"Dog\") y un gato (\"Cat\").",
-        "Pide a un adulto que adivine qué animal estás imitando.",
-        "Dibuja al animal de la granja que más te guste."
+        "Cow",
+        "Duck",
+        "Bye-bye, cow!"
       ]
     }
   ],
@@ -752,63 +945,115 @@ export const unitSlides = {
       "type": "content",
       "emoji": "🤸",
       "title": "My body moves",
-      "description": "Partes del cuerpo que se mueven.",
+      "description": "Escucha y observa las acciones. Puedes hacer un gesto cómodo o señalar; saltar no es obligatorio.",
+      "image": "/topics/body_parts.jpg",
       "items": [
         {
-          "text": "Jump",
-          "es": "saltar",
-          "emoji": "🦘",
-          "image": "/cards/body_jump.jpg"
-        },
-        {
-          "text": "Run",
-          "es": "correr",
-          "emoji": "🏃",
-          "image": "/cards/run.jpg"
-        },
-        {
           "text": "Clap",
-          "es": "aplaudir",
+          "es": "Aplaudir",
           "emoji": "👏",
           "image": "/cards/hands_clap.jpg"
         },
         {
-          "text": "Stomp",
-          "es": "pisar fuerte",
-          "emoji": "🦶",
-          "image": "/cards/feet.jpg"
+          "text": "Jump",
+          "es": "Saltar",
+          "emoji": "🤸",
+          "image": "/cards/body_jump.jpg"
         }
-      ],
-      "image": "/topics/body_parts.jpg"
+      ]
     },
     {
       "type": "vocabulary",
-      "title": "Body parts",
-      "description": "Toca cada parte al decirla.",
+      "title": "Head / Hands",
+      "description": "La profe señala su cabeza y sus manos. Puedes señalar las tarjetas sin tocar tu cuerpo.",
       "words": [
         {
           "word": "Head",
-          "emoji": "🧠",
           "es": "Cabeza",
+          "emoji": "🙋",
           "image": "/cards/head.jpg"
         },
         {
           "word": "Hands",
-          "emoji": "🙌",
           "es": "Manos",
+          "emoji": "🙌",
           "image": "/cards/hands.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy escucha",
+      "description": "Teddy va a jugar. Primero escucha; la profe representa la acción.",
+      "image": "/cards/listen.jpg",
+      "items": [
+        {
+          "text": "Listen.",
+          "es": "Escucha.",
+          "emoji": "👂",
+          "image": "/cards/listen.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy aplaude",
+      "description": "Teddy oye la indicación. Acompaña con un gesto o señala la imagen.",
+      "image": "/cards/hands_clap.jpg",
+      "items": [
+        {
+          "text": "Clap",
+          "es": "Aplaudir",
+          "emoji": "👏",
+          "image": "/cards/hands_clap.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy salta",
+      "description": "La profe representa un salto de Teddy. Tú puedes mover un dedo, señalar o mirar.",
+      "image": "/cards/body_jump.jpg",
+      "items": [
+        {
+          "text": "Jump",
+          "es": "Saltar",
+          "emoji": "🤸",
+          "image": "/cards/body_jump.jpg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Antes de la canción",
+      "description": "Presenta las partes que aparecerán en la canción. El adulto señala; no exige rapidez.",
+      "words": [
+        {
+          "word": "Head",
+          "es": "Cabeza",
+          "emoji": "🙋",
+          "image": "/cards/head.jpg"
         },
         {
-          "word": "Feet",
+          "word": "Shoulders",
+          "es": "Hombros",
+          "emoji": "🙋",
+          "image": "/cards/shoulders.jpg"
+        },
+        {
+          "word": "Knees",
+          "es": "Rodillas",
+          "emoji": "🦵",
+          "image": "/cards/knees.jpg"
+        },
+        {
+          "word": "Toes",
+          "es": "Dedos del pie",
           "emoji": "🦶",
-          "es": "Pies",
-          "image": "/cards/feet.jpg"
-        },
-        {
-          "word": "Tummy",
-          "emoji": "🫃",
-          "es": "Panza",
-          "image": "/cards/tummy.jpg"
+          "image": "/cards/toes.jpg"
         }
       ]
     },
@@ -816,140 +1061,165 @@ export const unitSlides = {
       "type": "song",
       "emoji": "🎵",
       "title": "Head, Shoulders, Knees and Toes",
-      "description": "Toquen cada parte mientras cantan.",
-      "videoUrl": "https://www.youtube.com/embed/RuqvGiZi0qg"
+      "description": "Mira cómo la profe señala las partes del cuerpo. Puedes usar las tarjetas en lugar de moverte. Si el video no carga, haz el eco con la profe.",
+      "videoUrl": "https://www.youtube.com/embed/RuqvGiZi0qg",
+      "image": "/topics/body_parts.jpg"
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "question": "Clap",
+      "options": [
+        "Clap",
+        "Jump"
+      ],
+      "correct": "Clap"
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "question": "Jump",
+      "options": [
+        "Clap",
+        "Jump"
+      ],
+      "correct": "Jump"
     },
     {
       "type": "content",
-      "emoji": "🎮",
-      "title": "La profe dice…",
-      "description": "Solo obedezcan si empieza con \"Simon says\".",
+      "emoji": "👂",
+      "title": "Eco: escucho y actúo",
+      "description": "La profe dice una acción y espera. Repite, señala o haz un gesto cómodo; no hay trampas ni eliminación.",
+      "image": "/topics/body_parts.jpg",
       "items": [
         {
-          "text": "Simon says: jump!",
-          "es": "",
-          "emoji": "✨",
-          "image": "/cards/body_jump.jpg"
-        },
-        {
-          "text": "Simon says: clap!",
-          "es": "",
-          "emoji": "✨",
+          "text": "Clap",
+          "es": "Aplaudir",
+          "emoji": "👏",
           "image": "/cards/hands_clap.jpg"
         },
         {
-          "text": "Simon says: touch your head!",
-          "es": "",
-          "emoji": "✨",
-          "image": "/cards/head.jpg"
-        },
-        {
-          "text": "Run!",
-          "es": "¡Trampa, no te muevas!",
-          "emoji": "✨",
-          "image": "/cards/run.jpg"
+          "text": "Jump",
+          "es": "Saltar",
+          "emoji": "🤸",
+          "image": "/cards/body_jump.jpg"
         }
       ]
     },
     {
-      "type": "activity",
-      "activityType": "choice",
-      "image": "/cards/hands_clap.jpg",
-      "question": "\"Clap\" es…",
-      "options": [
-        "Aplaudir",
-        "Saltar",
-        "Correr"
-      ],
-      "correct": "Aplaudir"
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "image": "/cards/jump.jpg",
-      "question": "\"Jump\" es…",
-      "options": [
-        "Saltar",
-        "Cantar",
-        "Dormir"
-      ],
-      "correct": "Saltar"
+      "type": "vocabulary",
+      "title": "Ampliación opcional: feet / tummy",
+      "description": "Solo si el grupo está preparado. Escucha y señala la imagen.",
+      "words": [
+        {
+          "word": "Feet",
+          "es": "Pies",
+          "emoji": "🦶",
+          "image": "/cards/feet.jpg"
+        },
+        {
+          "word": "Tummy",
+          "es": "Barriga",
+          "emoji": "🙋",
+          "image": "/cards/tummy.jpg"
+        }
+      ]
     },
     {
       "type": "homework",
       "emoji": "🏠",
-      "title": "Homework: Mueve tu cuerpo",
-      "image": "/cards/body_jump.jpg",
-      "description": "Actívate con movimiento y partes del cuerpo.",
+      "title": "Escuchamos en casa",
+      "image": "/cards/hands_clap.jpg",
+      "description": "Un adulto dice una acción y tú eliges cómo representarla de forma cómoda y segura. Con un familiar o cuidador, puedes responder con tu voz, un gesto o señalando. Sin escritura, grabaciones ni compras.",
       "tasks": [
-        "Toca tu cabeza diciendo \"Head\", tus manos diciendo \"Hands\" y tus pies diciendo \"Feet\".",
-        "Da 3 saltos diciendo \"Jump! Jump! Jump!\".",
-        "Aplaude fuerte diciendo \"Clap your hands!\"."
+        "Clap",
+        "Jump"
       ]
     }
   ],
   "jardin-familia": [
     {
       "type": "content",
-      "emoji": "👨‍👩‍👧",
+      "emoji": "🏠",
       "title": "My family",
-      "description": "La familia en casa.",
+      "description": "Esta es una familia de un cuento; no todas las familias son iguales. Escucha y señala, sin contar tu vida personal.",
+      "image": "/topics/family.jpg",
       "items": [
         {
           "text": "Mommy",
-          "es": "mamá",
+          "es": "Mamá",
           "emoji": "👩",
           "image": "/cards/mommy.jpg"
         },
         {
           "text": "Daddy",
-          "es": "papá",
+          "es": "Papá",
           "emoji": "👨",
           "image": "/cards/daddy.jpg"
-        },
-        {
-          "text": "Baby",
-          "es": "bebé",
-          "emoji": "👶",
-          "image": "/cards/baby.jpg"
-        },
-        {
-          "text": "Me",
-          "es": "yo",
-          "emoji": "🙋",
-          "image": "/cards/name.jpg"
         }
-      ],
-      "image": "/topics/family.jpg"
+      ]
     },
     {
       "type": "vocabulary",
-      "title": "Family words",
-      "description": "Señala y repite.",
+      "title": "Grandma / Grandpa",
+      "description": "Conoce a dos personajes más. Puedes hablar de la familia imaginaria de Teddy.",
       "words": [
         {
-          "word": "Family",
-          "emoji": "🏡",
-          "es": "Familia",
-          "image": "/cards/family_group.jpg"
-        },
-        {
           "word": "Grandma",
-          "emoji": "👵",
           "es": "Abuela",
+          "emoji": "👵",
           "image": "/cards/grandma.jpg"
         },
         {
           "word": "Grandpa",
-          "emoji": "👴",
           "es": "Abuelo",
+          "emoji": "👴",
           "image": "/cards/grandpa.jpg"
-        },
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy saluda a Grandma",
+      "description": "En este cuento Teddy visita a su abuela. La profe representa la llegada.",
+      "image": "/cards/grandma.jpg",
+      "items": [
         {
-          "word": "Sister",
-          "emoji": "👧",
-          "es": "Hermana",
-          "image": "/cards/sister.jpg"
+          "text": "Hello, Grandma!",
+          "es": "¡Hola, abuela!",
+          "emoji": "👵",
+          "image": "/cards/grandma.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy saluda a Grandpa",
+      "description": "El abuelo se une a la visita. Escucha y saluda al personaje.",
+      "image": "/cards/grandpa.jpg",
+      "items": [
+        {
+          "text": "Hello, Grandpa!",
+          "es": "¡Hola, abuelo!",
+          "emoji": "👴",
+          "image": "/cards/grandpa.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy termina la visita",
+      "description": "Teddy se despide. Puedes señalar o saludar con la mano; no hace falta abrazar.",
+      "image": "/cards/grandma.jpg",
+      "items": [
+        {
+          "text": "Bye-bye, Grandma!",
+          "es": "¡Adiós, abuela!",
+          "emoji": "👵",
+          "image": "/cards/grandma.jpg"
         }
       ]
     },
@@ -957,55 +1227,92 @@ export const unitSlides = {
       "type": "song",
       "emoji": "🎵",
       "title": "The Finger Family",
-      "description": "Canten con los dedos: daddy finger, mommy finger…",
-      "videoUrl": "https://www.youtube.com/embed/eBVqcTEC3zQ"
+      "description": "Señala personajes o acompaña con un gesto. La canción muestra una familia posible, no la de todos. Si el video no carga, haz el eco con la profe.",
+      "videoUrl": "https://www.youtube.com/embed/eBVqcTEC3zQ",
+      "image": "/cards/family_group.jpg"
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "question": "Grandma",
+      "options": [
+        "Grandma",
+        "Grandpa"
+      ],
+      "correct": "Grandma"
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "question": "Grandpa",
+      "options": [
+        "Grandma",
+        "Grandpa"
+      ],
+      "correct": "Grandpa"
     },
     {
       "type": "content",
-      "emoji": "🖼️",
-      "title": "Mi familia dibujada",
-      "description": "Cada niño muestra su dibujo y nombra a su familia.",
-      "image": "/cards/family_group.jpg",
-      "examples": [
-        "This is my mommy.",
-        "This is my daddy.",
-        "This is my baby brother."
+      "emoji": "👂",
+      "title": "Eco: saludamos a los personajes",
+      "description": "La profe dice un nombre y deja una pausa. Repite o señala sin necesidad de hablar de tu familia.",
+      "image": "/topics/family.jpg",
+      "items": [
+        {
+          "text": "Grandma",
+          "es": "Abuela",
+          "emoji": "👵",
+          "image": "/cards/grandma.jpg"
+        },
+        {
+          "text": "Grandpa",
+          "es": "Abuelo",
+          "emoji": "👴",
+          "image": "/cards/grandpa.jpg"
+        }
       ]
     },
     {
-      "type": "activity",
-      "activityType": "choice",
-      "image": "/cards/grandma.jpg",
-      "question": "\"Grandma\" es…",
-      "options": [
-        "Abuela",
-        "Mamá",
-        "Hermana"
-      ],
-      "correct": "Abuela"
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "image": "/cards/daddy.jpg",
-      "question": "\"This is my daddy\" significa…",
-      "options": [
-        "Este es mi papá",
-        "Esta es mi mamá",
-        "Este es mi perro"
-      ],
-      "correct": "Este es mi papá"
+      "type": "vocabulary",
+      "title": "Ampliación opcional: otros personajes",
+      "description": "Presenta una pareja por sesión. Son palabras del cuento, no una lista que cada familia deba cumplir.",
+      "words": [
+        {
+          "word": "Baby",
+          "es": "Bebé",
+          "emoji": "👶",
+          "image": "/cards/baby.jpg"
+        },
+        {
+          "word": "Sister",
+          "es": "Hermana",
+          "emoji": "👧",
+          "image": "/cards/sister.jpg"
+        },
+        {
+          "word": "Brother",
+          "es": "Hermano",
+          "emoji": "👦",
+          "image": "/cards/brother.jpg"
+        },
+        {
+          "word": "Family",
+          "es": "Familia",
+          "emoji": "🏠",
+          "image": "/cards/family_group.jpg"
+        }
+      ]
     },
     {
       "type": "homework",
       "emoji": "🏠",
-      "title": "Homework: Abrazo familiar",
+      "title": "Una visita de cuento",
       "image": "/cards/family_group.jpg",
-      "description": "Demuestra cariño a tu familia en inglés.",
+      "description": "Saluda a los personajes de las tarjetas. No se necesitan fotos personales ni contacto físico. Con un familiar o cuidador, puedes responder con tu voz, un gesto o señalando. Sin escritura, grabaciones ni compras.",
       "tasks": [
-        "Abraza a tu mamá o papá diciendo \"I love you Mommy / Daddy\".",
-        "Señala una foto familiar y nombra a quién ves: \"Mom, Dad, Baby\".",
-        "Canta la canción de los deditos de la familia (\"Finger Family\")."
+        "Grandma",
+        "Grandpa",
+        "Hello, Grandma!"
       ]
     }
   ],
@@ -1013,64 +1320,116 @@ export const unitSlides = {
     {
       "type": "content",
       "emoji": "🎉",
-      "title": "Big review!",
-      "description": "Repaso de todo el año con fiesta.",
+      "title": "Hello again!",
+      "description": "Vamos a recordar juntos. Escucha y señala el saludo o la despedida.",
+      "image": "/topics/classroom.jpg",
       "items": [
         {
-          "text": "Hello / 🚪 Bye-bye",
-          "es": "",
+          "text": "Hello!",
+          "es": "Hola",
           "emoji": "👋",
           "image": "/cards/hello.jpg"
         },
         {
-          "text": "Colors: red, blue, yellow, green",
-          "es": "",
-          "emoji": "🎨",
+          "text": "Bye-bye!",
+          "es": "Adiós",
+          "emoji": "🚪",
+          "image": "/cards/bye.jpg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Recordamos colores y cantidades",
+      "description": "La profe alterna colores y números conocidos, sin pedir leer las palabras.",
+      "words": [
+        {
+          "word": "Red",
+          "es": "Rojo",
+          "emoji": "🔴",
           "image": "/cards/red.jpg"
         },
         {
-          "text": "Numbers: one to ten",
-          "es": "",
+          "word": "Blue",
+          "es": "Azul",
+          "emoji": "🔵",
+          "image": "/cards/blue.jpg"
+        },
+        {
+          "word": "One",
+          "es": "1",
           "emoji": "🔢",
           "image": "/cards/number1.jpg"
         },
         {
-          "text": "Animals, 🧸 Toys, 👨‍👩‍👧 Family",
-          "es": "",
-          "emoji": "🐾",
-          "image": "/topics/toys.jpg"
+          "word": "Three",
+          "es": "3",
+          "emoji": "🔢",
+          "image": "/cards/number3.jpg"
         }
-      ],
-      "image": "/topics/classroom.jpg"
+      ]
     },
     {
       "type": "vocabulary",
-      "title": "Party words",
-      "description": "Palabras de fiesta.",
+      "title": "Happy / Sad",
+      "description": "Mira la expresión de cada personaje. La profe modela las palabras; no necesitas explicar cómo te sientes.",
       "words": [
         {
-          "word": "Cake",
-          "emoji": "🎂",
-          "es": "Torta",
-          "image": "/cards/cake.jpg"
-        },
-        {
-          "word": "Balloon",
-          "emoji": "🎈",
-          "es": "Globo",
-          "image": "/cards/number7.jpg"
-        },
-        {
-          "word": "Music",
-          "emoji": "🎶",
-          "es": "Música",
-          "image": "/cards/sing.jpg"
-        },
-        {
           "word": "Happy",
-          "emoji": "😄",
           "es": "Feliz",
+          "emoji": "😊",
           "image": "/cards/happy.jpg"
+        },
+        {
+          "word": "Sad",
+          "es": "Triste",
+          "emoji": "😢",
+          "image": "/cards/sad.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy llega al encuentro",
+      "description": "Teddy llega a jugar con sus amigos. Escucha y salúdalo.",
+      "image": "/cards/teddy.jpg",
+      "items": [
+        {
+          "text": "Hello, Teddy!",
+          "es": "¡Hola, Teddy!",
+          "emoji": "🧸",
+          "image": "/cards/teddy.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy elige un juguete",
+      "description": "Teddy elige una pelota. Señala su elección y cuenta qué recuerda el grupo.",
+      "image": "/cards/ball.jpg",
+      "items": [
+        {
+          "text": "I like the ball.",
+          "es": "Me gusta la pelota.",
+          "emoji": "⚽",
+          "image": "/cards/ball.jpg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Cuento: Teddy se despide contento",
+      "description": "Al terminar, Teddy se despide. El adulto representa su alegría y su despedida.",
+      "image": "/cards/teddy.jpg",
+      "items": [
+        {
+          "text": "Bye-bye, Teddy!",
+          "es": "¡Adiós, Teddy!",
+          "emoji": "🧸",
+          "image": "/cards/teddy.jpg"
         }
       ]
     },
@@ -1078,55 +1437,67 @@ export const unitSlides = {
       "type": "song",
       "emoji": "🎵",
       "title": "If You're Happy and You Know It",
-      "description": "Canten y hagan las acciones de la fiesta.",
-      "videoUrl": "https://www.youtube.com/embed/l4WNrvVjiTw"
+      "description": "Observa a los personajes y participa con un gesto o con tu voz. No es obligatorio sentirse feliz ni aplaudir. Si el video no carga, haz el eco con la profe.",
+      "videoUrl": "https://www.youtube.com/embed/l4WNrvVjiTw",
+      "image": "/cards/happy.jpg"
     },
     {
       "type": "activity",
       "activityType": "choice",
-      "image": "/cards/red.jpg",
-      "question": "\"Red\" es…",
+      "question": "Happy",
       "options": [
-        "Rojo",
-        "Azul",
-        "Verde"
+        "Happy",
+        "Sad"
       ],
-      "correct": "Rojo"
+      "correct": "Happy"
     },
     {
       "type": "activity",
       "activityType": "choice",
-      "image": "/cards/number5.jpg",
-      "question": "\"Five\" es…",
+      "question": "Sad",
       "options": [
-        "5",
-        "4",
-        "9"
+        "Happy",
+        "Sad"
       ],
-      "correct": "5"
+      "correct": "Sad"
     },
     {
-      "type": "activity",
-      "activityType": "choice",
-      "image": "/cards/number7.jpg",
-      "question": "\"Balloon\" es…",
-      "options": [
-        "Globo",
-        "Torta",
-        "Música"
-      ],
-      "correct": "Globo"
+      "type": "content",
+      "emoji": "👂",
+      "title": "Eco: mis palabras favoritas",
+      "description": "Escucha las palabras y elige una para repetir o señalar. La profe invita al grupo a recordar su unidad.",
+      "image": "/topics/classroom.jpg",
+      "items": [
+        {
+          "text": "Cow",
+          "es": "Vaca",
+          "emoji": "🐮",
+          "image": "/cards/cow.jpg"
+        },
+        {
+          "text": "Ball",
+          "es": "Pelota",
+          "emoji": "⚽",
+          "image": "/cards/ball.jpg"
+        },
+        {
+          "text": "Clap",
+          "es": "Aplaudir",
+          "emoji": "👏",
+          "image": "/cards/hands_clap.jpg"
+        }
+      ]
     },
     {
       "type": "homework",
       "emoji": "🏠",
-      "title": "Homework: Gran fiesta del saber",
+      "title": "Compartimos lo aprendido",
       "image": "/cards/happy.jpg",
-      "description": "Repasa lo mejor que aprendiste en Jardín.",
+      "description": "Elige una tarjeta conocida y juega a nombrarla. Cada niño puede participar a su manera. Con un familiar o cuidador, puedes responder con tu voz, un gesto o señalando. Sin escritura, grabaciones ni compras.",
       "tasks": [
-        "Dile a tus papás tu palabra favorita en inglés.",
-        "Canta con tu familia la canción que más te gustó.",
-        "Choca las cinco con todos en casa diciendo: \"Great job!\"."
+        "Cow",
+        "Ball",
+        "Clap"
       ]
     }
   ]

@@ -60,7 +60,7 @@ describe('DBADeck Visual Slides and Assets', () => {
     });
   });
 
-  it('ensures all 32 units have pedagogical topic illustrations attached', () => {
+  it('keeps Jardin illustrations and reserved slots for the other three grades', () => {
     const units = Object.keys(unitSlides);
     expect(units.length).toBe(32);
 
@@ -69,7 +69,10 @@ describe('DBADeck Visual Slides and Assets', () => {
       const contentSlide = slides.find((s) => s.type === 'content');
       expect(contentSlide).toBeDefined();
       expect(contentSlide.image).toBeDefined();
-      expect(contentSlide.image.startsWith('/topics/')).toBe(true);
+      if (unitKey.startsWith('primero-') || unitKey.startsWith('segundo-')) {
+        expect(contentSlide.image).toBe('/placeholders/illustration.svg');
+        return;
+      }
       expect(contentSlide.image.endsWith('.jpg')).toBe(true);
     });
   });

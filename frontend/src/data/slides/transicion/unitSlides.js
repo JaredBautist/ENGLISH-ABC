@@ -65,14 +65,16 @@ export const unitSlides = {
           "es": "Abuelo",
           "image": "/cards/grandpa.jpg"
         }
-      ]
+      ],
+      "image": "/cards/family_group.jpg"
     },
     {
       "type": "song",
       "emoji": "🎵",
       "title": "The Finger Family",
       "description": "Canten con los dedos: daddy finger, mommy finger…",
-      "videoUrl": "https://www.youtube.com/embed/eBVqcTEC3zQ"
+      "videoUrl": "https://www.youtube.com/embed/eBVqcTEC3zQ",
+      "image": "/cards/family_group.jpg"
     },
     {
       "type": "content",
@@ -107,7 +109,8 @@ export const unitSlides = {
       ],
       "examples": [
         "Teacher: Who is this? — Student: My mommy!"
-      ]
+      ],
+      "image": "/cards/family_group.jpg"
     },
     {
       "type": "activity",
@@ -118,7 +121,12 @@ export const unitSlides = {
         "Este es mi perro",
         "Adiós mamá"
       ],
-      "correct": "Esta es mi mamá"
+      "correct": "Esta es mi mamá",
+      "optionImages": {
+        "Esta es mi mamá": "/cards/mommy.jpg",
+        "Este es mi perro": "/cards/dog.jpg",
+        "Adiós mamá": "/cards/mommy.jpg"
+      }
     },
     {
       "type": "activity",
@@ -129,7 +137,12 @@ export const unitSlides = {
         "Sister",
         "Baby"
       ],
-      "correct": "Brother"
+      "correct": "Brother",
+      "optionImages": {
+        "Brother": "/cards/brother.jpg",
+        "Sister": "/cards/sister.jpg",
+        "Baby": "/cards/baby.jpg"
+      }
     },
     {
       "type": "homework",
@@ -140,7 +153,8 @@ export const unitSlides = {
         "Presenta a alguien en casa diciendo: \"This is my mom\" o \"This is my dad\".",
         "Dibuja a tu familia reunida en la sala o comedor.",
         "Di en inglés: \"I love my family\"."
-      ]
+      ],
+      "image": "/cards/family_group.jpg"
     }
   ],
   "transicion-cuerpo": [
@@ -206,7 +220,8 @@ export const unitSlides = {
           "es": "Brazos",
           "image": "/cards/arms.jpg"
         }
-      ]
+      ],
+      "image": "/topics/body_parts.jpg"
     },
     {
       "type": "vocabulary",
@@ -231,14 +246,16 @@ export const unitSlides = {
           "es": "Aplaude",
           "image": "/cards/hands_clap.jpg"
         }
-      ]
+      ],
+      "image": "/topics/body_parts.jpg"
     },
     {
       "type": "song",
       "emoji": "🎵",
       "title": "Head, Shoulders, Knees and Toes",
       "description": "Tocar cada parte mientras cantan.",
-      "videoUrl": "https://www.youtube.com/embed/RuqvGiZi0qg"
+      "videoUrl": "https://www.youtube.com/embed/RuqvGiZi0qg",
+      "image": "/cards/head.jpg"
     },
     {
       "type": "activity",
@@ -249,7 +266,12 @@ export const unitSlides = {
         "Dormir",
         "Saltar"
       ],
-      "correct": "Aplaudir"
+      "correct": "Aplaudir",
+      "optionImages": {
+        "Aplaudir": "/cards/hands_clap.jpg",
+        "Dormir": "/cards/cold.jpg",
+        "Saltar": "/cards/body_jump.jpg"
+      }
     },
     {
       "type": "activity",
@@ -260,7 +282,12 @@ export const unitSlides = {
         "Las orejas",
         "Los pies"
       ],
-      "correct": "Los ojos"
+      "correct": "Los ojos",
+      "optionImages": {
+        "Los ojos": "/cards/eyes.jpg",
+        "Las orejas": "/cards/ears.jpg",
+        "Los pies": "/cards/feet.jpg"
+      }
     },
     {
       "type": "homework",
@@ -271,7 +298,8 @@ export const unitSlides = {
         "Canta y baila \"Head, Shoulders, Knees and Toes\" frente al espejo.",
         "Toca tus ojos (\"Eyes\"), orejas (\"Ears\"), boca (\"Mouth\") y nariz (\"Nose\").",
         "Dibuja una carita feliz y señala cada parte aprendida."
-      ]
+      ],
+      "image": "/cards/head.jpg"
     }
   ],
   "transicion-casa": [
@@ -303,7 +331,7 @@ export const unitSlides = {
           "text": "Roof",
           "es": "techo",
           "emoji": "🏠",
-          "image": null
+          "image": "/topics/house.jpg"
         }
       ],
       "image": "/topics/house.jpg"
@@ -317,27 +345,28 @@ export const unitSlides = {
           "word": "Kitchen",
           "emoji": "🍳",
           "es": "Cocina",
-          "image": null
+          "image": "/topics/house.jpg"
         },
         {
           "word": "Bedroom",
           "emoji": "🛏️",
           "es": "Cuarto",
-          "image": null
+          "image": "/topics/house.jpg"
         },
         {
           "word": "Bathroom",
           "emoji": "🚿",
           "es": "Baño",
-          "image": null
+          "image": "/topics/house.jpg"
         },
         {
           "word": "Living room",
           "emoji": "🛋️",
           "es": "Sala",
-          "image": null
+          "image": "/topics/house.jpg"
         }
-      ]
+      ],
+      "image": "/topics/house.jpg"
     },
     {
       "type": "vocabulary",
@@ -348,13 +377,13 @@ export const unitSlides = {
           "word": "Bed",
           "emoji": "🛏️",
           "es": "Cama",
-          "image": null
+          "image": "/topics/house.jpg"
         },
         {
           "word": "Table",
           "emoji": "🪑",
           "es": "Mesa",
-          "image": null
+          "image": "/topics/house.jpg"
         },
         {
           "word": "Chair",
@@ -366,16 +395,18 @@ export const unitSlides = {
           "word": "Lamp",
           "emoji": "💡",
           "es": "Lámpara",
-          "image": null
+          "image": "/topics/house.jpg"
         }
-      ]
+      ],
+      "image": "/topics/house.jpg"
     },
     {
       "type": "song",
       "emoji": "🎵",
       "title": "Rain Rain Go Away",
       "description": "La familia quiere jugar en casa mientras llueve.",
-      "videoUrl": "https://www.youtube.com/embed/LFrKYjrIDs8"
+      "videoUrl": "https://www.youtube.com/embed/LFrKYjrIDs8",
+      "image": "/topics/house.jpg"
     },
     {
       "type": "activity",
@@ -386,7 +417,12 @@ export const unitSlides = {
         "El baño",
         "La sala"
       ],
-      "correct": "La cocina"
+      "correct": "La cocina",
+      "optionImages": {
+        "La cocina": "/topics/house.jpg",
+        "El baño": "/topics/house.jpg",
+        "La sala": "/topics/house.jpg"
+      }
     },
     {
       "type": "activity",
@@ -397,7 +433,12 @@ export const unitSlides = {
         "Ventana",
         "Techo"
       ],
-      "correct": "Puerta"
+      "correct": "Puerta",
+      "optionImages": {
+        "Puerta": "/cards/door.jpg",
+        "Ventana": "/cards/window.jpg",
+        "Techo": "/topics/house.jpg"
+      }
     },
     {
       "type": "homework",
@@ -408,7 +449,8 @@ export const unitSlides = {
         "Visita tu habitación diciendo \"Bedroom\" y la cocina diciendo \"Kitchen\".",
         "Dibuja la habitación de tu casa donde más te gusta jugar.",
         "Di a tu familia: \"Welcome to our home!\"."
-      ]
+      ],
+      "image": "/cards/house.jpg"
     }
   ],
   "transicion-salon": [
@@ -466,7 +508,7 @@ export const unitSlides = {
           "word": "Paper",
           "emoji": "📄",
           "es": "Papel",
-          "image": null
+          "image": "/topics/classroom.jpg"
         },
         {
           "word": "Backpack",
@@ -474,7 +516,8 @@ export const unitSlides = {
           "es": "Morral",
           "image": "/cards/backpack.jpg"
         }
-      ]
+      ],
+      "image": "/topics/classroom.jpg"
     },
     {
       "type": "vocabulary",
@@ -491,28 +534,30 @@ export const unitSlides = {
           "word": "Playground",
           "emoji": "🛝",
           "es": "Parque",
-          "image": null
+          "image": "/topics/classroom.jpg"
         },
         {
           "word": "Garden",
           "emoji": "🌳",
           "es": "Jardín",
-          "image": null
+          "image": "/topics/classroom.jpg"
         },
         {
           "word": "Bathroom",
           "emoji": "🚻",
           "es": "Baño",
-          "image": null
+          "image": "/topics/classroom.jpg"
         }
-      ]
+      ],
+      "image": "/topics/school_care.jpg"
     },
     {
       "type": "song",
       "emoji": "🎵",
       "title": "This Is the Way We Go to School",
       "description": "El camino a la escuela.",
-      "videoUrl": "https://www.youtube.com/embed/4XLQpRI_wOQ"
+      "videoUrl": "https://www.youtube.com/embed/4XLQpRI_wOQ",
+      "image": "/topics/school_care.jpg"
     },
     {
       "type": "activity",
@@ -523,7 +568,12 @@ export const unitSlides = {
         "Libro",
         "Tablero"
       ],
-      "correct": "Morral"
+      "correct": "Morral",
+      "optionImages": {
+        "Morral": "/topics/classroom.jpg",
+        "Libro": "/cards/book.jpg",
+        "Tablero": "/cards/board.jpg"
+      }
     },
     {
       "type": "activity",
@@ -534,7 +584,12 @@ export const unitSlides = {
         "Kitchen",
         "Bedroom"
       ],
-      "correct": "Playground"
+      "correct": "Playground",
+      "optionImages": {
+        "Playground": "/topics/classroom.jpg",
+        "Kitchen": "/topics/classroom.jpg",
+        "Bedroom": "/topics/classroom.jpg"
+      }
     },
     {
       "type": "homework",
@@ -545,7 +600,8 @@ export const unitSlides = {
         "Revisa tu mochila y nombra 3 útiles: \"Book, pencil, notebook\".",
         "Dibuja un lápiz de tu color favorito.",
         "Deja tu cartuchera ordenada diciendo \"Everything is ready!\"."
-      ]
+      ],
+      "image": "/cards/backpack.jpg"
     }
   ],
   "transicion-ropa-clima": [
@@ -559,25 +615,25 @@ export const unitSlides = {
           "text": "Shirt",
           "es": "camisa",
           "emoji": "👕",
-          "image": null
+          "image": "/topics/clothes.jpg"
         },
         {
           "text": "Pants",
           "es": "pantalón",
           "emoji": "👖",
-          "image": null
+          "image": "/topics/clothes.jpg"
         },
         {
           "text": "Shoes",
           "es": "zapatos",
           "emoji": "👟",
-          "image": null
+          "image": "/topics/clothes.jpg"
         },
         {
           "text": "Jacket",
           "es": "chaqueta",
           "emoji": "🧥",
-          "image": null
+          "image": "/topics/clothes.jpg"
         }
       ],
       "image": "/topics/weather.jpg"
@@ -611,7 +667,8 @@ export const unitSlides = {
           "es": "Caliente",
           "image": "/cards/hot.jpg"
         }
-      ]
+      ],
+      "image": "/topics/clothes.jpg"
     },
     {
       "type": "vocabulary",
@@ -622,34 +679,36 @@ export const unitSlides = {
           "word": "Hat",
           "emoji": "👒",
           "es": "Sombrero",
-          "image": "/cards/name.jpg"
+          "image": "/cards/sunny.jpg"
         },
         {
           "word": "Socks",
           "emoji": "🧦",
           "es": "Medias",
-          "image": null
+          "image": "/topics/clothes.jpg"
         },
         {
           "word": "Boots",
           "emoji": "👢",
           "es": "Botas",
-          "image": null
+          "image": "/cards/rainy.jpg"
         },
         {
           "word": "Sweater",
           "emoji": "🧶",
           "es": "Suéter",
-          "image": null
+          "image": "/topics/clothes.jpg"
         }
-      ]
+      ],
+      "image": "/topics/clothes.jpg"
     },
     {
       "type": "song",
       "emoji": "🎵",
       "title": "Put On Your Shoes",
       "description": "Pónganse los zapatos cantando.",
-      "videoUrl": "https://www.youtube.com/embed/-jBfb33_KHU"
+      "videoUrl": "https://www.youtube.com/embed/-jBfb33_KHU",
+      "image": "/topics/clothes.jpg"
     },
     {
       "type": "activity",
@@ -660,7 +719,12 @@ export const unitSlides = {
         "Hat",
         "Swimsuit"
       ],
-      "correct": "Boots"
+      "correct": "Boots",
+      "optionImages": {
+        "Boots": "/cards/rainy.jpg",
+        "Hat": "/cards/sunny.jpg",
+        "Swimsuit": "/cards/swim.jpg"
+      }
     },
     {
       "type": "activity",
@@ -671,7 +735,12 @@ export const unitSlides = {
         "Lluvioso",
         "Frío"
       ],
-      "correct": "Soleado"
+      "correct": "Soleado",
+      "optionImages": {
+        "Soleado": "/cards/sunny.jpg",
+        "Lluvioso": "/cards/rainy.jpg",
+        "Frío": "/cards/cold.jpg"
+      }
     },
     {
       "type": "homework",
@@ -682,7 +751,8 @@ export const unitSlides = {
         "Mira por la ventana y di si hoy está \"Sunny\" (soleado) o \"Rainy\" (lluvioso).",
         "Señala tu ropa y nombra: \"Shirt\" (camiseta), \"Pants\" (pantalón) y \"Shoes\" (zapatos).",
         "Dobla una prenda de ropa con ayuda de un adulto."
-      ]
+      ],
+      "image": "/topics/clothes.jpg"
     }
   ],
   "transicion-comidas": [
@@ -728,13 +798,13 @@ export const unitSlides = {
           "word": "Rice",
           "emoji": "🍚",
           "es": "Arroz",
-          "image": null
+          "image": "/topics/food.jpg"
         },
         {
           "word": "Soup",
           "emoji": "🍲",
           "es": "Sopa",
-          "image": null
+          "image": "/topics/food.jpg"
         },
         {
           "word": "Juice",
@@ -748,7 +818,8 @@ export const unitSlides = {
           "es": "Agua",
           "image": "/cards/water.jpg"
         }
-      ]
+      ],
+      "image": "/topics/food.jpg"
     },
     {
       "type": "content",
@@ -758,14 +829,16 @@ export const unitSlides = {
       "examples": [
         "I like bananas! (¡Me gustan los bananos!)",
         "I don't like soup. (No me gusta la sopa.)"
-      ]
+      ],
+      "image": "/topics/food.jpg"
     },
     {
       "type": "song",
       "emoji": "🎵",
       "title": "Do You Like Broccoli Ice Cream?",
       "description": "Respondan Yes, I do! / No, I don't!",
-      "videoUrl": "https://www.youtube.com/embed/frN3nvhIHUk"
+      "videoUrl": "https://www.youtube.com/embed/frN3nvhIHUk",
+      "image": "/topics/food.jpg"
     },
     {
       "type": "activity",
@@ -776,7 +849,12 @@ export const unitSlides = {
         "No me gustan las manzanas",
         "Quiero agua"
       ],
-      "correct": "Me gustan las manzanas"
+      "correct": "Me gustan las manzanas",
+      "optionImages": {
+        "Me gustan las manzanas": "/cards/apple.jpg",
+        "No me gustan las manzanas": "/cards/sad.jpg",
+        "Quiero agua": "/cards/water.jpg"
+      }
     },
     {
       "type": "activity",
@@ -787,7 +865,12 @@ export const unitSlides = {
         "Jugo",
         "Pan"
       ],
-      "correct": "Leche"
+      "correct": "Leche",
+      "optionImages": {
+        "Leche": "/cards/milk.jpg",
+        "Jugo": "/cards/juice.jpg",
+        "Pan": "/cards/bread.jpg"
+      }
     },
     {
       "type": "homework",
@@ -798,7 +881,8 @@ export const unitSlides = {
         "En la cena di: \"I like...\" con una fruta o comida que te guste.",
         "Dibuja una manzana (\"Red apple\") o un plátano (\"Yellow banana\").",
         "Da las gracias en inglés: \"Thank you for the delicious food!\"."
-      ]
+      ],
+      "image": "/topics/food.jpg"
     }
   ],
   "transicion-animales": [
@@ -864,7 +948,8 @@ export const unitSlides = {
           "es": "Pez pequeño",
           "image": "/cards/fish.jpg"
         }
-      ]
+      ],
+      "image": "/topics/farm_animals.jpg"
     },
     {
       "type": "vocabulary",
@@ -893,16 +978,18 @@ export const unitSlides = {
           "word": "Snake",
           "emoji": "🐍",
           "es": "Serpiente",
-          "image": null
+          "image": "/topics/farm_animals.jpg"
         }
-      ]
+      ],
+      "image": "/topics/farm_animals.jpg"
     },
     {
       "type": "song",
       "emoji": "🎵",
       "title": "What Do You Hear?",
       "description": "Escuchen el sonido y digan el animal.",
-      "videoUrl": "https://www.youtube.com/embed/YVgv1EFJZHc"
+      "videoUrl": "https://www.youtube.com/embed/YVgv1EFJZHc",
+      "image": "/topics/farm_animals.jpg"
     },
     {
       "type": "activity",
@@ -913,7 +1000,12 @@ export const unitSlides = {
         "Pet (mascota)",
         "Small"
       ],
-      "correct": "Wild (salvaje)"
+      "correct": "Wild (salvaje)",
+      "optionImages": {
+        "Wild (salvaje)": "/cards/lion.jpg",
+        "Pet (mascota)": "/cards/dog.jpg",
+        "Small": "/cards/bird.jpg"
+      }
     },
     {
       "type": "activity",
@@ -924,7 +1016,12 @@ export const unitSlides = {
         "Mono",
         "Pájaro"
       ],
-      "correct": "Elefante"
+      "correct": "Elefante",
+      "optionImages": {
+        "Elefante": "/cards/elephant.jpg",
+        "Mono": "/cards/monkey.jpg",
+        "Pájaro": "/cards/bird.jpg"
+      }
     },
     {
       "type": "homework",
@@ -935,7 +1032,8 @@ export const unitSlides = {
         "Di qué animal te gusta más: \"I like the dog\" o \"I like the cat\".",
         "Dibuja un animal grande (\"Big lion\") y un animal pequeño (\"Small bird\").",
         "Haz el sonido de 3 animales para que tu familia los adivine."
-      ]
+      ],
+      "image": "/topics/farm_animals.jpg"
     }
   ],
   "transicion-comunidad-repaso": [
@@ -955,7 +1053,7 @@ export const unitSlides = {
           "text": "‍🤝‍🧑 Friends",
           "es": "amigos",
           "emoji": "🧑",
-          "image": null
+          "image": "/cards/teacher.jpg"
         },
         {
           "text": "‍🏫 Teacher",
@@ -999,16 +1097,18 @@ export const unitSlides = {
           "word": "Farmer",
           "emoji": "🧑‍🌾",
           "es": "Granjero",
-          "image": null
+          "image": "/cards/teacher.jpg"
         }
-      ]
+      ],
+      "image": "/cards/teacher.jpg"
     },
     {
       "type": "song",
       "emoji": "🎵",
       "title": "Hello Song (repaso)",
       "description": "Canten y saluden como al inicio del año.",
-      "videoUrl": "https://www.youtube.com/embed/tVlcKp3bWH8"
+      "videoUrl": "https://www.youtube.com/embed/tVlcKp3bWH8",
+      "image": "/cards/hello.jpg"
     },
     {
       "type": "content",
@@ -1032,7 +1132,7 @@ export const unitSlides = {
           "text": "I like bananas.",
           "es": "",
           "emoji": "🍌",
-          "image": null
+          "image": "/cards/banana.jpg"
         },
         {
           "text": "The lion is big.",
@@ -1040,7 +1140,8 @@ export const unitSlides = {
           "emoji": "🦁",
           "image": "/cards/lion.jpg"
         }
-      ]
+      ],
+      "image": "/cards/teacher.jpg"
     },
     {
       "type": "activity",
@@ -1051,7 +1152,12 @@ export const unitSlides = {
         "Doctor",
         "Policía"
       ],
-      "correct": "Bombero"
+      "correct": "Bombero",
+      "optionImages": {
+        "Bombero": "/cards/firefighter.jpg",
+        "Doctor": "/cards/doctor.jpg",
+        "Policía": "/cards/police.jpg"
+      }
     },
     {
       "type": "activity",
@@ -1062,7 +1168,12 @@ export const unitSlides = {
         "Aplaude",
         "Salta"
       ],
-      "correct": "Toca tu cabeza"
+      "correct": "Toca tu cabeza",
+      "optionImages": {
+        "Toca tu cabeza": "/cards/head.jpg",
+        "Aplaude": "/cards/hands_clap.jpg",
+        "Salta": "/cards/jump.jpg"
+      }
     },
     {
       "type": "homework",
@@ -1073,7 +1184,8 @@ export const unitSlides = {
         "Nombra una profesión que te inspire: \"Teacher, Doctor o Firefighter\".",
         "Dibuja a un miembro de la comunidad ayudando a los demás.",
         "Comparte con tus papás 3 palabras nuevas que aprendiste en Transición."
-      ]
+      ],
+      "image": "/cards/teacher.jpg"
     }
   ]
 };

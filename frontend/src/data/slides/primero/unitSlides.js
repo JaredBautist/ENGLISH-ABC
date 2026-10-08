@@ -2,1103 +2,2242 @@ export const unitSlides = {
   "primero-instrucciones": [
     {
       "type": "content",
-      "emoji": "🧑‍🏫",
-      "title": "Classroom instructions",
-      "description": "Instrucciones de clase: escucha y haz.",
+      "emoji": "✨",
+      "title": "We learn together",
+      "description": "La profe presenta el vocabulario con voz, gestos u objetos seguros. Los espacios de ilustración se completarán después; no necesitas leer sin ayuda.",
+      "image": "/placeholders/illustration.svg",
       "items": [
         {
-          "text": "Stand up",
-          "es": "pararse",
-          "emoji": "🧍",
-          "image": "/cards/standup.jpg"
-        },
-        {
-          "text": "Sit down",
-          "es": "sentarse",
-          "emoji": "🪑",
-          "image": "/cards/sitdown.jpg"
-        },
-        {
-          "text": "Open your book",
-          "es": "abrir el libro",
-          "emoji": "📖",
-          "image": "/cards/book.jpg"
-        },
-        {
           "text": "Listen",
-          "es": "escuchar",
-          "emoji": "👂",
-          "image": "/cards/listen.jpg"
+          "es": "Escucha",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "text": "Book",
+          "es": "Libro",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "text": "Open",
+          "es": "Abre",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "text": "Close",
+          "es": "Cierra",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         }
-      ],
-      "image": "/topics/classroom.jpg"
+      ]
     },
     {
       "type": "vocabulary",
-      "title": "More commands",
-      "description": "Practica con gestos.",
+      "title": "Frases para escuchar y usar",
+      "description": "Escucha una frase por vez. La profe modela su significado; puedes responder con palabras, un gesto o señalando.",
       "words": [
         {
-          "word": "Close your book",
-          "emoji": "📕",
-          "es": "Cierra el libro",
-          "image": "/cards/book.jpg"
+          "word": "Open your book, please.",
+          "es": "Abre tu libro, por favor.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "Point to…",
-          "emoji": "👉",
-          "es": "Señala…",
-          "image": null
+          "word": "Close your book, please.",
+          "es": "Cierra tu libro, por favor.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 1",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "First, Ana opens her book.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 2",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Then, Ana listens to the teacher.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 3",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Finally, Ana closes her book.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Leemos juntos",
+      "image": "/placeholders/illustration.svg",
+      "description": "La profe lee y señala cada frase. Escucha y participa con una palabra conocida; la lectura es compartida.",
+      "examples": [
+        "First, Ana opens her book.",
+        "Then, Ana listens to the teacher.",
+        "Finally, Ana closes her book."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "listening",
+      "question": "Open your book, please.",
+      "options": [
+        "Open your book, please.",
+        "Close your book, please."
+      ],
+      "correct": "Open your book, please.",
+      "optionImages": {
+        "Open your book, please.": "/placeholders/illustration.svg",
+        "Close your book, please.": "/placeholders/illustration.svg"
+      }
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "reading",
+      "question": "What does Ana open?",
+      "options": [
+        "her book",
+        "the teacher"
+      ],
+      "correct": "her book",
+      "optionImages": {
+        "her book": "/placeholders/illustration.svg",
+        "the teacher": "/placeholders/illustration.svg"
+      },
+      "evidence": "First, Ana opens her book.",
+      "explanation": "La primera frase dice que Ana abre su libro; teacher es la persona a quien escucha, no un objeto que abre."
+    },
+    {
+      "type": "content",
+      "emoji": "✏️",
+      "title": "Escritura con apoyo (opcional)",
+      "image": "/placeholders/illustration.svg",
+      "description": "Observa y escucha el modelo. La siguiente actividad permite completar una palabra con ayuda; también puedes dar una respuesta oral y la profe la escribe. No se exige escribir para comprender.",
+      "examples": [
+        "Open your book, please."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "fill",
+      "prompt": "Open your ___, please.",
+      "answer": "book",
+      "placeholder": "Una palabra; también puedes responder oralmente"
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Contamos la historia",
+      "description": "Representa primero abrir, después escuchar y al final cerrar. Puedes señalar en vez de moverte.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "First, Ana opens her book.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "Raise your hand",
-          "emoji": "✋",
-          "es": "Levanta la mano",
-          "image": null
+          "text": "Then, Ana listens to the teacher.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "Line up",
-          "emoji": "🚶",
-          "es": "Formen fila",
-          "image": "/cards/lineup.jpg"
+          "text": "Finally, Ana closes her book.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Eco: palabras en contexto",
+      "description": "Escucha open y close dentro de las frases. Repite con un gesto cómodo; sin trampas ni eliminación.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Open your book, please.",
+          "es": "Abre tu libro, por favor.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "text": "Close your book, please.",
+          "es": "Cierra tu libro, por favor.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional",
+      "description": "Para otra sesión, según el grupo. La profe modela una palabra o frase por vez y permite respuesta oral.",
+      "words": [
+        {
+          "word": "Stand up, please.",
+          "es": "Ponte de pie, por favor.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Sit down, please.",
+          "es": "Siéntate, por favor.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Raise your hand.",
+          "es": "Levanta la mano.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Thank you.",
+          "es": "Gracias.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         }
       ]
     },
     {
       "type": "song",
       "emoji": "🎬",
-      "title": "Action Song: Stand Up, Sit Down & Listen!",
-      "description": "Canta y sigue las instrucciones escolares con movimiento corporal.",
+      "title": "Video opcional de repaso",
+      "description": "Recurso existente pendiente de revisión docente. Úsalo solo si corresponde al objetivo del grupo. Si no está disponible o no es adecuado, vuelve al eco y cuenta la historia.",
       "videoUrl": "https://www.youtube.com/embed/dUXk8Nc5qQ8"
-    },
-    {
-      "type": "content",
-      "emoji": "🎮",
-      "title": "Simon Says",
-      "description": "Solo obedezcan si la profe dice \"Simon says\".",
-      "items": [
-        {
-          "text": "Simon says: stand up!",
-          "es": "",
-          "emoji": "✨",
-          "image": "/cards/standup.jpg"
-        },
-        {
-          "text": "Simon says: touch your head!",
-          "es": "",
-          "emoji": "✨",
-          "image": "/cards/head.jpg"
-        },
-        {
-          "text": "Simon says: point to the door!",
-          "es": "",
-          "emoji": "✨",
-          "image": "/cards/door.jpg"
-        },
-        {
-          "text": "Sit down!",
-          "es": "¡Trampa! No se paren",
-          "emoji": "✨",
-          "image": "/cards/sitdown.jpg"
-        }
-      ],
-      "examples": [
-        "Teacher: Simon says clap! — Everyone claps."
-      ]
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "Teacher: \"Stand up, please!\" Los estudiantes…",
-      "options": [
-        "Se paran",
-        "Se sientan",
-        "Abren el libro"
-      ],
-      "correct": "Se paran"
-    },
-    {
-      "type": "activity",
-      "activityType": "fill",
-      "prompt": "Completa: Teacher: \"___ your book, please.\" (abrir)",
-      "answer": "Open",
-      "placeholder": "Escribe el verbo…"
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "\"Raise your hand\" significa…",
-      "options": [
-        "Levanta la mano",
-        "Cierra el libro",
-        "Formen fila"
-      ],
-      "correct": "Levanta la mano"
     },
     {
       "type": "homework",
       "emoji": "🏠",
-      "title": "Homework: Simon Says escolar",
-      "description": "Juega en casa a dar y seguir instrucciones en inglés.",
+      "title": "Practicamos con apoyo",
+      "image": "/placeholders/illustration.svg",
+      "description": "Con un familiar o cuidador, elige una frase y represéntala o cuenta el relato. Puedes usar personajes ficticios y dar una respuesta oral. La escritura es opcional; no se requieren compras, grabaciones ni datos privados.",
       "tasks": [
-        "Juega a \"Simon Says\" con tus hermanos o papás: \"Stand up, sit down, listen, clap!\".",
-        "Escribe en tu cuaderno las dos palabras mágicas: \"Please\" y \"Thank you\".",
-        "Dibuja a un estudiante levantando la mano en clase."
+        "Open your book, please.",
+        "Close your book, please."
       ]
     }
   ],
   "primero-this-is-me": [
     {
       "type": "content",
-      "emoji": "🙋",
-      "title": "This is me!",
-      "description": "Información personal básica.",
+      "emoji": "✨",
+      "title": "This is me",
+      "description": "La profe presenta el vocabulario con voz, gestos u objetos seguros. Los espacios de ilustración se completarán después; no necesitas leer sin ayuda.",
+      "image": "/placeholders/illustration.svg",
       "items": [
         {
-          "text": "My name is Ana",
-          "es": "Mi nombre es Ana",
-          "emoji": "🙋",
-          "image": "/cards/name.jpg"
+          "text": "Name",
+          "es": "Nombre",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "I am 7 years old",
-          "es": "Tengo 7 años",
-          "emoji": "🎂",
-          "image": "/cards/number7.jpg"
+          "text": "Seven",
+          "es": "Siete",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "🇴 I am from Colombia",
-          "es": "Soy de Colombia",
-          "emoji": "🇨",
-          "image": null
+          "text": "Eight",
+          "es": "Ocho",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "text": "Friend",
+          "es": "Amigo o amiga",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         }
-      ],
-      "image": "/topics/greetings.jpg"
+      ]
     },
     {
       "type": "vocabulary",
-      "title": "Questions & answers",
-      "description": "Modela con un estudiante y luego todos practican.",
+      "title": "Frases para escuchar y usar",
+      "description": "Escucha una frase por vez. La profe modela su significado; puedes responder con palabras, un gesto o señalando.",
+      "words": [
+        {
+          "word": "My name is Ana.",
+          "es": "Me llamo Ana.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "My name is Ben.",
+          "es": "Me llamo Ben.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 1",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "My name is Ana.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 2",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "I am seven years old.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 3",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "My friend Ben is eight years old.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Leemos juntos",
+      "image": "/placeholders/illustration.svg",
+      "description": "La profe lee y señala cada frase. Escucha y participa con una palabra conocida; la lectura es compartida.",
+      "examples": [
+        "My name is Ana.",
+        "I am seven years old.",
+        "My friend Ben is eight years old."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "listening",
+      "question": "My name is Ben.",
+      "options": [
+        "My name is Ana.",
+        "My name is Ben."
+      ],
+      "correct": "My name is Ben.",
+      "optionImages": {
+        "My name is Ana.": "/placeholders/illustration.svg",
+        "My name is Ben.": "/placeholders/illustration.svg"
+      }
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "reading",
+      "question": "Who is eight years old?",
+      "options": [
+        "Ana",
+        "Ben"
+      ],
+      "correct": "Ben",
+      "optionImages": {
+        "Ana": "/placeholders/illustration.svg",
+        "Ben": "/placeholders/illustration.svg"
+      },
+      "evidence": "My friend Ben is eight years old.",
+      "explanation": "La tercera frase atribuye ocho años a Ben; Ana tiene siete."
+    },
+    {
+      "type": "content",
+      "emoji": "✏️",
+      "title": "Escritura con apoyo (opcional)",
+      "image": "/placeholders/illustration.svg",
+      "description": "Observa y escucha el modelo. La siguiente actividad permite completar una palabra con ayuda; también puedes dar una respuesta oral y la profe la escribe. No se exige escribir para comprender.",
+      "examples": [
+        "My name is Ana."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "fill",
+      "prompt": "My ___ is Ana.",
+      "answer": "name",
+      "placeholder": "Una palabra; también puedes responder oralmente"
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Contamos la historia",
+      "description": "Presenta a Ana y Ben siguiendo el modelo. Puedes usar personajes inventados, sin dar datos reales.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "My name is Ana.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "text": "I am seven years old.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "text": "My friend Ben is eight years old.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Eco: palabras en contexto",
+      "description": "La profe pregunta What is your name? y modela una respuesta. Di un nombre ficticio si prefieres.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "My name is Ana.",
+          "es": "Me llamo Ana.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "text": "My name is Ben.",
+          "es": "Me llamo Ben.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional",
+      "description": "Para otra sesión, según el grupo. La profe modela una palabra o frase por vez y permite respuesta oral.",
       "words": [
         {
           "word": "What is your name?",
-          "emoji": "❓",
-          "es": "¿Cuál es tu nombre?",
-          "image": "/cards/name.jpg"
+          "es": "¿Cómo te llamas?",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
           "word": "How old are you?",
-          "emoji": "🎂",
           "es": "¿Cuántos años tienes?",
-          "image": null
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "I am seven years old",
-          "emoji": "7️⃣",
-          "es": "Tengo siete años",
-          "image": "/cards/number7.jpg"
+          "word": "I am seven years old.",
+          "es": "Tengo siete años.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "I am eight years old.",
+          "es": "Tengo ocho años.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         }
       ]
     },
     {
       "type": "song",
       "emoji": "🎬",
-      "title": "What's Your Name? Song",
-      "description": "Aprende a presentarte y decir tu nombre y edad cantando.",
+      "title": "Video opcional de repaso",
+      "description": "Recurso existente pendiente de revisión docente. Úsalo solo si corresponde al objetivo del grupo. Si no está disponible o no es adecuado, vuelve al eco y cuenta la historia.",
       "videoUrl": "https://www.youtube.com/embed/ALcL3MuU4xQ"
-    },
-    {
-      "type": "vocabulary",
-      "title": "Numbers 1-10",
-      "description": "Cuenta con los dedos.",
-      "words": [
-        {
-          "word": "One, two, three",
-          "emoji": "1️⃣",
-          "es": "Uno, dos, tres",
-          "image": "/cards/number1.jpg"
-        },
-        {
-          "word": "Four, five, six",
-          "emoji": "4️⃣",
-          "es": "Cuatro, cinco, seis",
-          "image": "/cards/number4.jpg"
-        },
-        {
-          "word": "Seven, eight",
-          "emoji": "7️⃣",
-          "es": "Siete, ocho",
-          "image": "/cards/number7.jpg"
-        },
-        {
-          "word": "Nine, ten",
-          "emoji": "🔟",
-          "es": "Nueve, diez",
-          "image": "/cards/number9.jpg"
-        }
-      ]
-    },
-    {
-      "type": "activity",
-      "activityType": "fill",
-      "prompt": "Completa: \"My ___ is Camila.\" (nombre)",
-      "answer": "name",
-      "placeholder": "Escribe la palabra…"
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "\"How old are you?\" se responde con…",
-      "options": [
-        "I am 7 years old",
-        "My name is Juan",
-        "Goodbye"
-      ],
-      "correct": "I am 7 years old"
-    },
-    {
-      "type": "activity",
-      "activityType": "fill",
-      "prompt": "Completa: \"I am ___ years old.\" (siete)",
-      "answer": "seven",
-      "placeholder": "Escribe el número en inglés…"
     },
     {
       "type": "homework",
       "emoji": "🏠",
-      "title": "Homework: Mi tarjeta de identidad",
-      "description": "Elabora tu carnet de presentación en inglés.",
+      "title": "Practicamos con apoyo",
+      "image": "/placeholders/illustration.svg",
+      "description": "Con un familiar o cuidador, elige una frase y represéntala o cuenta el relato. Puedes usar personajes ficticios y dar una respuesta oral. La escritura es opcional; no se requieren compras, grabaciones ni datos privados.",
       "tasks": [
-        "Escribe en tu cuaderno: \"My name is [nombre]\" y \"I am [edad] years old\".",
-        "Dibuja tu autorretrato con tu ropa escolar o favorita.",
-        "Preséntate frente a tu familia diciendo las dos frases con voz clara."
+        "My name is Ana.",
+        "I am seven years old."
       ]
     }
   ],
   "primero-describo-familia": [
     {
       "type": "content",
-      "emoji": "👨‍👩‍👧‍👦",
-      "title": "Describing my family",
-      "description": "Cualidades físicas simples.",
+      "emoji": "✨",
+      "title": "Different and welcome",
+      "description": "La profe presenta el vocabulario con voz, gestos u objetos seguros. Los espacios de ilustración se completarán después; no necesitas leer sin ayuda.",
+      "image": "/placeholders/illustration.svg",
       "items": [
         {
           "text": "Tall",
-          "es": "alto/a",
-          "emoji": "🦒",
-          "image": null
+          "es": "Alto o alta",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
           "text": "Short",
-          "es": "bajo/a",
-          "emoji": "🐰",
-          "image": null
+          "es": "Bajo o baja",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "‍♀️ Long hair",
-          "es": "cabello largo",
-          "emoji": "💇",
-          "image": null
+          "text": "Long hair",
+          "es": "Cabello largo",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "‍♂️ Short hair",
-          "es": "cabello corto",
-          "emoji": "💇",
-          "image": null
+          "text": "Short hair",
+          "es": "Cabello corto",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         }
-      ],
-      "image": "/topics/family.jpg"
+      ]
     },
     {
       "type": "vocabulary",
-      "title": "Describing words",
-      "description": "Describe a tu familia.",
+      "title": "Frases para escuchar y usar",
+      "description": "Escucha una frase por vez. La profe modela su significado; puedes responder con palabras, un gesto o señalando.",
       "words": [
         {
-          "word": "My mommy is tall",
-          "emoji": "👩",
-          "es": "Mi mamá es alta",
-          "image": "/cards/mommy.jpg"
+          "word": "Ana has long hair.",
+          "es": "Ana tiene cabello largo.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "My daddy is short",
-          "emoji": "👨",
-          "es": "Mi papá es bajo",
-          "image": "/cards/daddy.jpg"
+          "word": "Ben has short hair.",
+          "es": "Ben tiene cabello corto.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 1",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Ana has long hair.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 2",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Ben has short hair.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 3",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Ana and Ben help at home.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Leemos juntos",
+      "image": "/placeholders/illustration.svg",
+      "description": "La profe lee y señala cada frase. Escucha y participa con una palabra conocida; la lectura es compartida.",
+      "examples": [
+        "Ana has long hair.",
+        "Ben has short hair.",
+        "Ana and Ben help at home."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "listening",
+      "question": "Ana has long hair.",
+      "options": [
+        "Ana has long hair.",
+        "Ben has short hair."
+      ],
+      "correct": "Ana has long hair.",
+      "optionImages": {
+        "Ana has long hair.": "/placeholders/illustration.svg",
+        "Ben has short hair.": "/placeholders/illustration.svg"
+      }
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "reading",
+      "question": "Who has long hair?",
+      "options": [
+        "Ana",
+        "Ben"
+      ],
+      "correct": "Ana",
+      "optionImages": {
+        "Ana": "/placeholders/illustration.svg",
+        "Ben": "/placeholders/illustration.svg"
+      },
+      "evidence": "Ana has long hair.",
+      "explanation": "El texto presenta el cabello largo de Ana y el corto de Ben; no se atribuyen valores a las diferencias."
+    },
+    {
+      "type": "content",
+      "emoji": "✏️",
+      "title": "Escritura con apoyo (opcional)",
+      "image": "/placeholders/illustration.svg",
+      "description": "Observa y escucha el modelo. La siguiente actividad permite completar una palabra con ayuda; también puedes dar una respuesta oral y la profe la escribe. No se exige escribir para comprender.",
+      "examples": [
+        "Ana has long hair."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "fill",
+      "prompt": "Ana has ___ hair.",
+      "answer": "long",
+      "placeholder": "Una palabra; también puedes responder oralmente"
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Contamos la historia",
+      "description": "Describe a los personajes y cuenta qué hacen juntos. Evita comparar o juzgar cuerpos de compañeros.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Ana has long hair.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "My sister has long hair",
-          "emoji": "👧",
-          "es": "Mi hermana tiene cabello largo",
-          "image": "/cards/sister.jpg"
+          "text": "Ben has short hair.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "My grandpa has short hair",
-          "emoji": "👴",
-          "es": "Mi abuelo tiene cabello corto",
-          "image": "/cards/grandpa.jpg"
+          "text": "Ana and Ben help at home.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Eco: palabras en contexto",
+      "description": "Repite long hair y short hair con un ritmo cómodo. La profe modela sin exigir un acento específico.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Ana has long hair.",
+          "es": "Ana tiene cabello largo.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "text": "Ben has short hair.",
+          "es": "Ben tiene cabello corto.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional",
+      "description": "Para otra sesión, según el grupo. La profe modela una palabra o frase por vez y permite respuesta oral.",
+      "words": [
+        {
+          "word": "She is tall.",
+          "es": "Ella es alta.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "He is short.",
+          "es": "Él es bajo.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "We help at home.",
+          "es": "Ayudamos en casa.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "We are different.",
+          "es": "Somos diferentes.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         }
       ]
     },
     {
       "type": "song",
       "emoji": "🎬",
-      "title": "This Is My Family Song",
-      "description": "Canción para identificar a los miembros de la familia y sus características.",
+      "title": "Video opcional de repaso",
+      "description": "Recurso existente pendiente de revisión docente. Úsalo solo si corresponde al objetivo del grupo. Si no está disponible o no es adecuado, vuelve al eco y cuenta la historia.",
       "videoUrl": "https://www.youtube.com/embed/zMdq9jSaNLg"
-    },
-    {
-      "type": "vocabulary",
-      "title": "Eyes and hair colors",
-      "description": "Colores de ojos y cabello.",
-      "words": [
-        {
-          "word": "Black hair",
-          "emoji": "⚫",
-          "es": "Cabello negro",
-          "image": "/cards/black.jpg"
-        },
-        {
-          "word": "Brown hair",
-          "emoji": "🟤",
-          "es": "Cabello café",
-          "image": "/cards/brown.jpg"
-        },
-        {
-          "word": "Blonde hair",
-          "emoji": "🟡",
-          "es": "Cabello rubio",
-          "image": null
-        },
-        {
-          "word": "Brown eyes",
-          "emoji": "👁️",
-          "es": "Ojos café",
-          "image": "/cards/brown.jpg"
-        }
-      ]
-    },
-    {
-      "type": "content",
-      "emoji": "🗣️",
-      "title": "Describe y adivina",
-      "description": "Un niño describe, los demás adivinan quién es.",
-      "examples": [
-        "She is tall. She has long hair. → ¡Es la profe!"
-      ]
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "\"My mommy is tall\" significa…",
-      "options": [
-        "Mi mamá es alta",
-        "Mi mamá es baja",
-        "Mi mamá es joven"
-      ],
-      "correct": "Mi mamá es alta"
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "\"Short hair\" es…",
-      "options": [
-        "Cabello corto",
-        "Cabello largo",
-        "Ser bajo"
-      ],
-      "correct": "Cabello corto"
     },
     {
       "type": "homework",
       "emoji": "🏠",
-      "title": "Homework: Retrato descriptivo familiar",
-      "description": "Describe a alguien de tu familia con palabras en inglés.",
+      "title": "Practicamos con apoyo",
+      "image": "/placeholders/illustration.svg",
+      "description": "Con un familiar o cuidador, elige una frase y represéntala o cuenta el relato. Puedes usar personajes ficticios y dar una respuesta oral. La escritura es opcional; no se requieren compras, grabaciones ni datos privados.",
       "tasks": [
-        "Elige a un familiar y escribe: \"This is my [mom / dad]. He/She is [tall / short]\".",
-        "Describe el color de su cabello: \"Black hair\" o \"Brown hair\".",
-        "Léele tu tarjeta en inglés y pídele que te dé su visto bueno."
+        "Ana has long hair.",
+        "Ben has short hair."
       ]
     }
   ],
   "primero-colores-numeros": [
     {
       "type": "content",
-      "emoji": "🔢",
-      "title": "Numbers 1-30",
-      "description": "Contamos más lejos.",
+      "emoji": "✨",
+      "title": "Colors and counting",
+      "description": "La profe presenta el vocabulario con voz, gestos u objetos seguros. Los espacios de ilustración se completarán después; no necesitas leer sin ayuda.",
+      "image": "/placeholders/illustration.svg",
       "items": [
         {
-          "text": "Eleven",
-          "es": "11",
-          "emoji": "🔢",
-          "image": null
+          "text": "Red",
+          "es": "Rojo",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "Twelve",
-          "es": "12",
-          "emoji": "🔢",
-          "image": null
+          "text": "Blue",
+          "es": "Azul",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "Thirteen",
-          "es": "13",
-          "emoji": "🔢",
-          "image": null
+          "text": "Seven",
+          "es": "Siete",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "Fourteen",
-          "es": "14",
-          "emoji": "🔢",
-          "image": "/cards/number4.jpg"
-        },
-        {
-          "text": "Fifteen",
-          "es": "15",
-          "emoji": "🔢",
-          "image": null
-        },
-        {
-          "text": "Twenty",
-          "es": "20",
-          "emoji": "🔢",
-          "image": null
-        },
-        {
-          "text": "Thirty",
-          "es": "30",
-          "emoji": "🔢",
-          "image": null
+          "text": "Eight",
+          "es": "Ocho",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         }
-      ],
-      "image": "/topics/numbers.jpg"
+      ]
     },
     {
       "type": "vocabulary",
-      "title": "Colors review",
-      "description": "Colores + objetos del salón.",
+      "title": "Frases para escuchar y usar",
+      "description": "Escucha una frase por vez. La profe modela su significado; puedes responder con palabras, un gesto o señalando.",
       "words": [
         {
-          "word": "Blue book",
-          "emoji": "📘",
-          "es": "Libro azul",
-          "image": "/cards/blue.jpg"
+          "word": "The book is blue.",
+          "es": "El libro es azul.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "Red pencil",
-          "emoji": "✏️",
-          "es": "Lápiz rojo",
-          "image": "/cards/red.jpg"
+          "word": "The pencil is red.",
+          "es": "El lápiz es rojo.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 1",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Ana is seven years old.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 2",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Her book is blue.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 3",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Her pencil is red.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Leemos juntos",
+      "image": "/placeholders/illustration.svg",
+      "description": "La profe lee y señala cada frase. Escucha y participa con una palabra conocida; la lectura es compartida.",
+      "examples": [
+        "Ana is seven years old.",
+        "Her book is blue.",
+        "Her pencil is red."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "listening",
+      "question": "The pencil is red.",
+      "options": [
+        "The book is blue.",
+        "The pencil is red."
+      ],
+      "correct": "The pencil is red.",
+      "optionImages": {
+        "The book is blue.": "/placeholders/illustration.svg",
+        "The pencil is red.": "/placeholders/illustration.svg"
+      }
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "reading",
+      "question": "What is blue?",
+      "options": [
+        "Her pencil",
+        "Her book"
+      ],
+      "correct": "Her book",
+      "optionImages": {
+        "Her pencil": "/placeholders/illustration.svg",
+        "Her book": "/placeholders/illustration.svg"
+      },
+      "evidence": "Her book is blue.",
+      "explanation": "La segunda frase describe el libro azul. El lápiz aparece en la tercera y es rojo."
+    },
+    {
+      "type": "content",
+      "emoji": "✏️",
+      "title": "Escritura con apoyo (opcional)",
+      "image": "/placeholders/illustration.svg",
+      "description": "Observa y escucha el modelo. La siguiente actividad permite completar una palabra con ayuda; también puedes dar una respuesta oral y la profe la escribe. No se exige escribir para comprender.",
+      "examples": [
+        "The book is blue."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "fill",
+      "prompt": "The book is ___.",
+      "answer": "blue",
+      "placeholder": "Una palabra; también puedes responder oralmente"
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Contamos la historia",
+      "description": "Recuerda edad, libro y lápiz. Usa objetos seguros o el modelo oral; no exijas memorizar treinta números de una vez.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Ana is seven years old.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "Green board",
-          "emoji": "🟩",
-          "es": "Tablero verde",
-          "image": "/cards/green.jpg"
+          "text": "Her book is blue.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "Yellow crayon",
-          "emoji": "🖍️",
-          "es": "Crayón amarillo",
-          "image": "/cards/yellow.jpg"
+          "text": "Her pencil is red.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Eco: palabras en contexto",
+      "description": "Escucha seven y eight y cuenta despacio objetos seguros. Si el grupo necesita apoyo, vuelve a uno, dos y tres.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "The book is blue.",
+          "es": "El libro es azul.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "text": "The pencil is red.",
+          "es": "El lápiz es rojo.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional 1",
+      "description": "Para otra sesión, según el grupo. La profe modela una palabra o frase por vez y permite respuesta oral.",
+      "words": [
+        {
+          "word": "One",
+          "es": "1",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Two",
+          "es": "2",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Three",
+          "es": "3",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Four",
+          "es": "4",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional 2",
+      "description": "Para otra sesión, según el grupo. La profe modela una palabra o frase por vez y permite respuesta oral.",
+      "words": [
+        {
+          "word": "Five",
+          "es": "5",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Six",
+          "es": "6",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Nine",
+          "es": "9",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Ten",
+          "es": "10",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional 3",
+      "description": "Para otra sesión, según el grupo. La profe modela una palabra o frase por vez y permite respuesta oral.",
+      "words": [
+        {
+          "word": "Eleven",
+          "es": "11",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Twelve",
+          "es": "12",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Thirteen",
+          "es": "13",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Fourteen",
+          "es": "14",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional 4",
+      "description": "Para otra sesión, según el grupo. La profe modela una palabra o frase por vez y permite respuesta oral.",
+      "words": [
+        {
+          "word": "Fifteen",
+          "es": "15",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Sixteen",
+          "es": "16",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Seventeen",
+          "es": "17",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Eighteen",
+          "es": "18",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional 5",
+      "description": "Para otra sesión, según el grupo. La profe modela una palabra o frase por vez y permite respuesta oral.",
+      "words": [
+        {
+          "word": "Nineteen",
+          "es": "19",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Twenty",
+          "es": "20",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Twenty-one",
+          "es": "21",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Twenty-two",
+          "es": "22",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional 6",
+      "description": "Para otra sesión, según el grupo. La profe modela una palabra o frase por vez y permite respuesta oral.",
+      "words": [
+        {
+          "word": "Twenty-three",
+          "es": "23",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Twenty-four",
+          "es": "24",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Twenty-five",
+          "es": "25",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Twenty-six",
+          "es": "26",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional 7",
+      "description": "Para otra sesión, según el grupo. La profe modela una palabra o frase por vez y permite respuesta oral.",
+      "words": [
+        {
+          "word": "Twenty-seven",
+          "es": "27",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Twenty-eight",
+          "es": "28",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Twenty-nine",
+          "es": "29",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Thirty",
+          "es": "30",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         }
       ]
     },
     {
       "type": "song",
       "emoji": "🎬",
-      "title": "Numbers 1 to 20 Song",
-      "description": "Cuenta del 1 al 20 cantando con ritmo y alegría.",
+      "title": "Video opcional de repaso",
+      "description": "Recurso existente pendiente de revisión docente. Úsalo solo si corresponde al objetivo del grupo. Si no está disponible o no es adecuado, vuelve al eco y cuenta la historia.",
       "videoUrl": "https://www.youtube.com/embed/OEbRDtCAFdU"
-    },
-    {
-      "type": "content",
-      "emoji": "🎂",
-      "title": "How old are you?",
-      "description": "Practiquen con números hasta 30.",
-      "examples": [
-        "I am seven years old.",
-        "I am eight years old.",
-        "I am ten years old."
-      ]
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "\"Twelve\" es…",
-      "options": [
-        "12",
-        "20",
-        "2"
-      ],
-      "correct": "12"
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "¿Cómo dices \"30\"?",
-      "options": [
-        "Thirty",
-        "Thirteen",
-        "Three"
-      ],
-      "correct": "Thirty"
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "\"Red pencil\" es…",
-      "options": [
-        "Lápiz rojo",
-        "Libro azul",
-        "Crayón amarillo"
-      ],
-      "correct": "Lápiz rojo"
     },
     {
       "type": "homework",
       "emoji": "🏠",
-      "title": "Homework: Detective de números",
-      "description": "Cuenta objetos cotidianos en casa en inglés.",
+      "title": "Practicamos con apoyo",
+      "image": "/placeholders/illustration.svg",
+      "description": "Con un familiar o cuidador, elige una frase y represéntala o cuenta el relato. Puedes usar personajes ficticios y dar una respuesta oral. La escritura es opcional; no se requieren compras, grabaciones ni datos privados.",
       "tasks": [
-        "Cuenta cuántos zapatos o libros hay en tu cuarto y dilo en inglés (ej: \"Ten shoes\").",
-        "Pregunta la edad a un familiar: \"How old are you?\".",
-        "Escribe los números del 1 al 15 en inglés en tu cuaderno."
+        "The book is blue.",
+        "The pencil is red."
       ]
     }
   ],
   "primero-cuido-escuela": [
     {
       "type": "content",
-      "emoji": "🌍",
-      "title": "I care for my school",
-      "description": "Cuido mi escuela y el planeta.",
+      "emoji": "✨",
+      "title": "We care for our school",
+      "description": "La profe presenta el vocabulario con voz, gestos u objetos seguros. Los espacios de ilustración se completarán después; no necesitas leer sin ayuda.",
+      "image": "/placeholders/illustration.svg",
       "items": [
         {
-          "text": "Clean up",
-          "es": "limpiar",
-          "emoji": "🧹",
-          "image": "/cards/cleanup.jpg"
+          "text": "Water",
+          "es": "Agua",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "️ Recycle",
-          "es": "reciclar",
-          "emoji": "♻",
-          "image": null
+          "text": "Paper",
+          "es": "Papel",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "Save water",
-          "es": "ahorrar agua",
-          "emoji": "💧",
-          "image": "/cards/water.jpg"
+          "text": "Plants",
+          "es": "Plantas",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "Plant trees",
-          "es": "sembrar árboles",
-          "emoji": "🌱",
-          "image": null
+          "text": "Bin",
+          "es": "Caneca",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         }
-      ],
-      "image": "/topics/school_care.jpg"
+      ]
     },
     {
       "type": "vocabulary",
-      "title": "The 3 Rs",
-      "description": "Reduce, reuse, recycle.",
+      "title": "Frases para escuchar y usar",
+      "description": "Escucha una frase por vez. La profe modela su significado; puedes responder con palabras, un gesto o señalando.",
       "words": [
         {
-          "word": "Reduce",
-          "emoji": "📉",
-          "es": "Reducir",
-          "image": null
+          "word": "Save water.",
+          "es": "Cuida el agua.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "Reuse",
-          "emoji": "♻️",
-          "es": "Reutilizar",
-          "image": null
+          "word": "Reuse paper.",
+          "es": "Reutiliza el papel.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 1",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "First, Ana washes her hands.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 2",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Then, Ana turns off the tap.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 3",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Finally, Ana reuses paper for a drawing.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Leemos juntos",
+      "image": "/placeholders/illustration.svg",
+      "description": "La profe lee y señala cada frase. Escucha y participa con una palabra conocida; la lectura es compartida.",
+      "examples": [
+        "First, Ana washes her hands.",
+        "Then, Ana turns off the tap.",
+        "Finally, Ana reuses paper for a drawing."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "listening",
+      "question": "Save water.",
+      "options": [
+        "Save water.",
+        "Reuse paper."
+      ],
+      "correct": "Save water.",
+      "optionImages": {
+        "Save water.": "/placeholders/illustration.svg",
+        "Reuse paper.": "/placeholders/illustration.svg"
+      }
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "reading",
+      "question": "What does Ana reuse?",
+      "options": [
+        "paper",
+        "the tap"
+      ],
+      "correct": "paper",
+      "optionImages": {
+        "paper": "/placeholders/illustration.svg",
+        "the tap": "/placeholders/illustration.svg"
+      },
+      "evidence": "Finally, Ana reuses paper for a drawing.",
+      "explanation": "La frase final menciona reutilizar papel. La llave se cierra en la frase anterior."
+    },
+    {
+      "type": "content",
+      "emoji": "✏️",
+      "title": "Escritura con apoyo (opcional)",
+      "image": "/placeholders/illustration.svg",
+      "description": "Observa y escucha el modelo. La siguiente actividad permite completar una palabra con ayuda; también puedes dar una respuesta oral y la profe la escribe. No se exige escribir para comprender.",
+      "examples": [
+        "Save water."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "fill",
+      "prompt": "Save ___.",
+      "answer": "water",
+      "placeholder": "Una palabra; también puedes responder oralmente"
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Contamos la historia",
+      "description": "Ordena lavado, cierre de la llave y reutilización. La profe representa las acciones; no manipules instalaciones.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "First, Ana washes her hands.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "Recycle",
-          "emoji": "🗑️",
-          "es": "Reciclar",
-          "image": null
+          "text": "Then, Ana turns off the tap.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "Trash",
-          "emoji": "🚮",
-          "es": "Basura",
-          "image": null
+          "text": "Finally, Ana reuses paper for a drawing.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Eco: palabras en contexto",
+      "description": "Escucha las palabras y repite una frase útil. Explica con un gesto cómo cuidas un recurso.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Save water.",
+          "es": "Cuida el agua.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "text": "Reuse paper.",
+          "es": "Reutiliza el papel.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional",
+      "description": "Para otra sesión, según el grupo. La profe modela una palabra o frase por vez y permite respuesta oral.",
+      "words": [
+        {
+          "word": "Clean up, please.",
+          "es": "Recoge, por favor.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Turn off the tap.",
+          "es": "Cierra la llave.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Put paper in the bin.",
+          "es": "Pon el papel en la caneca.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "We care for plants.",
+          "es": "Cuidamos las plantas.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         }
       ]
     },
     {
       "type": "song",
       "emoji": "🎬",
-      "title": "Clean Up and Care Song",
-      "description": "Canción para cuidar el aula de clase y reciclar.",
+      "title": "Video opcional de repaso",
+      "description": "Recurso existente pendiente de revisión docente. Úsalo solo si corresponde al objetivo del grupo. Si no está disponible o no es adecuado, vuelve al eco y cuenta la historia.",
       "videoUrl": "https://www.youtube.com/embed/DR-cfDsHCGA"
-    },
-    {
-      "type": "vocabulary",
-      "title": "School care actions",
-      "description": "Acciones para cuidar la escuela.",
-      "words": [
-        {
-          "word": "Throw trash in the bin",
-          "emoji": "🗑️",
-          "es": "Bota la basura en la caneca",
-          "image": null
-        },
-        {
-          "word": "Turn off the lights",
-          "emoji": "💡",
-          "es": "Apaga las luces",
-          "image": null
-        },
-        {
-          "word": "Close the tap",
-          "emoji": "🚰",
-          "es": "Cierra la llave",
-          "image": null
-        },
-        {
-          "word": "Water the plants",
-          "emoji": "🌱",
-          "es": "Riega las plantas",
-          "image": "/cards/water.jpg"
-        }
-      ]
-    },
-    {
-      "type": "content",
-      "emoji": "🎮",
-      "title": "¿Buena o mala acción?",
-      "description": "La profe muestra una acción y todos responden Good! o Not good!",
-      "examples": [
-        "Drawing on the wall → Not good!",
-        "Throwing trash in the bin → Good!"
-      ]
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "\"Recycle\" significa…",
-      "options": [
-        "Reciclar",
-        "Limpiar",
-        "Correr"
-      ],
-      "correct": "Reciclar"
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "¿Qué haces con la basura?",
-      "options": [
-        "Throw it in the bin",
-        "Turn off the lights",
-        "Water the plants"
-      ],
-      "correct": "Throw it in the bin"
     },
     {
       "type": "homework",
       "emoji": "🏠",
-      "title": "Homework: Misión ecológica en casa",
-      "description": "Aplica el cuidado ambiental en tu hogar.",
+      "title": "Practicamos con apoyo",
+      "image": "/placeholders/illustration.svg",
+      "description": "Con un familiar o cuidador, elige una frase y represéntala o cuenta el relato. Puedes usar personajes ficticios y dar una respuesta oral. La escritura es opcional; no se requieren compras, grabaciones ni datos privados.",
       "tasks": [
-        "Ayuda a ordenar tu espacio diciendo: \"Clean up, clean up!\".",
-        "Separa con tu familia una botella o papel para reciclar (\"Recycle!\").",
-        "Dibuja un cartel pequeño que diga \"Turn off the lights\" para la pared."
+        "Save water.",
+        "Reuse paper."
       ]
     }
   ],
   "primero-salon-objetos": [
     {
       "type": "content",
-      "emoji": "🎒",
-      "title": "My classroom",
-      "description": "Objetos del salón.",
+      "emoji": "✨",
+      "title": "Our classroom objects",
+      "description": "La profe presenta el vocabulario con voz, gestos u objetos seguros. Los espacios de ilustración se completarán después; no necesitas leer sin ayuda.",
+      "image": "/placeholders/illustration.svg",
       "items": [
         {
+          "text": "Book",
+          "es": "Libro",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
           "text": "Desk",
-          "es": "escritorio",
-          "emoji": "🪑",
-          "image": "/cards/desk.jpg"
+          "es": "Escritorio",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
           "text": "Chair",
-          "es": "silla",
-          "emoji": "🪑",
-          "image": "/cards/chair.jpg"
-        },
-        {
-          "text": "Board",
-          "es": "tablero",
-          "emoji": "📋",
-          "image": "/cards/board.jpg"
+          "es": "Silla",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
           "text": "Window",
-          "es": "ventana",
-          "emoji": "🪟",
-          "image": "/cards/window.jpg"
+          "es": "Ventana",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         }
-      ],
-      "image": "/topics/classroom.jpg"
+      ]
     },
     {
       "type": "vocabulary",
-      "title": "There is / There are",
-      "description": "Hay uno → There is. Hay varios → There are.",
+      "title": "Frases para escuchar y usar",
+      "description": "Escucha una frase por vez. La profe modela su significado; puedes responder con palabras, un gesto o señalando.",
       "words": [
         {
-          "word": "There is one desk",
-          "emoji": "🪑",
-          "es": "Hay un escritorio",
-          "image": "/cards/number1.jpg"
+          "word": "There is one book.",
+          "es": "Hay un libro.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "There are many chairs",
-          "emoji": "💺",
-          "es": "Hay muchas sillas",
-          "image": null
+          "word": "There are two chairs.",
+          "es": "Hay dos sillas.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 1",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "There is one book on the desk.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 2",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "There are two chairs.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 3",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Ana puts the book on the shelf.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Leemos juntos",
+      "image": "/placeholders/illustration.svg",
+      "description": "La profe lee y señala cada frase. Escucha y participa con una palabra conocida; la lectura es compartida.",
+      "examples": [
+        "There is one book on the desk.",
+        "There are two chairs.",
+        "Ana puts the book on the shelf."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "listening",
+      "question": "There are two chairs.",
+      "options": [
+        "There is one book.",
+        "There are two chairs."
+      ],
+      "correct": "There are two chairs.",
+      "optionImages": {
+        "There is one book.": "/placeholders/illustration.svg",
+        "There are two chairs.": "/placeholders/illustration.svg"
+      }
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "reading",
+      "question": "Where is the book at the beginning?",
+      "options": [
+        "the shelf",
+        "the desk"
+      ],
+      "correct": "the desk",
+      "optionImages": {
+        "the shelf": "/placeholders/illustration.svg",
+        "the desk": "/placeholders/illustration.svg"
+      },
+      "evidence": "There is one book on the desk.",
+      "explanation": "Al principio está sobre el escritorio. Ana lo lleva al estante al final."
+    },
+    {
+      "type": "content",
+      "emoji": "✏️",
+      "title": "Escritura con apoyo (opcional)",
+      "image": "/placeholders/illustration.svg",
+      "description": "Observa y escucha el modelo. La siguiente actividad permite completar una palabra con ayuda; también puedes dar una respuesta oral y la profe la escribe. No se exige escribir para comprender.",
+      "examples": [
+        "There are two chairs."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "fill",
+      "prompt": "There ___ two chairs.",
+      "answer": "are",
+      "placeholder": "Una palabra; también puedes responder oralmente"
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Contamos la historia",
+      "description": "Muestra un objeto y luego dos. Cuenta dónde estaba el libro al principio y al final.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "There is one book on the desk.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "There is a board",
-          "emoji": "🟫",
-          "es": "Hay un tablero",
-          "image": "/cards/board.jpg"
+          "text": "There are two chairs.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "There are two windows",
-          "emoji": "🪟",
-          "es": "Hay dos ventanas",
-          "image": "/cards/number2.jpg"
+          "text": "Ana puts the book on the shelf.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Eco: palabras en contexto",
+      "description": "Escucha There is y There are dentro de los modelos. Señala una cantidad; no hace falta recitar reglas.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "There is one book.",
+          "es": "Hay un libro.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "text": "There are two chairs.",
+          "es": "Hay dos sillas.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional",
+      "description": "Para otra sesión, según el grupo. La profe modela una palabra o frase por vez y permite respuesta oral.",
+      "words": [
+        {
+          "word": "Ruler",
+          "es": "Regla",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Eraser",
+          "es": "Borrador",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Shelf",
+          "es": "Estante",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Where is the book?",
+          "es": "¿Dónde está el libro?",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         }
       ]
     },
     {
       "type": "song",
       "emoji": "🎬",
-      "title": "School Supplies Song",
-      "description": "Reconoce lápices, libros y reglas con esta canción animada.",
+      "title": "Video opcional de repaso",
+      "description": "Recurso existente pendiente de revisión docente. Úsalo solo si corresponde al objetivo del grupo. Si no está disponible o no es adecuado, vuelve al eco y cuenta la historia.",
       "videoUrl": "https://www.youtube.com/embed/0d6Ed3baRj8"
-    },
-    {
-      "type": "vocabulary",
-      "title": "School supplies",
-      "description": "Útiles escolares.",
-      "words": [
-        {
-          "word": "Scissors",
-          "emoji": "✂️",
-          "es": "Tijeras",
-          "image": null
-        },
-        {
-          "word": "Glue",
-          "emoji": "🧴",
-          "es": "Pega",
-          "image": null
-        },
-        {
-          "word": "Ruler",
-          "emoji": "📏",
-          "es": "Regla",
-          "image": "/cards/ruler.jpg"
-        },
-        {
-          "word": "Eraser",
-          "emoji": "🧽",
-          "es": "Borrador",
-          "image": "/cards/eraser.jpg"
-        }
-      ]
-    },
-    {
-      "type": "activity",
-      "activityType": "fill",
-      "prompt": "Completa: \"There ___ two windows.\" (varios)",
-      "answer": "are",
-      "placeholder": "is o are…"
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "\"Ruler\" es…",
-      "options": [
-        "Regla",
-        "Tijeras",
-        "Borrador"
-      ],
-      "correct": "Regla"
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "\"There is a board\" significa…",
-      "options": [
-        "Hay un tablero",
-        "Hay muchas sillas",
-        "Hay dos ventanas"
-      ],
-      "correct": "Hay un tablero"
     },
     {
       "type": "homework",
       "emoji": "🏠",
-      "title": "Homework: Mi cartuchera en acción",
-      "description": "Reconoce tus útiles y escribe oraciones cortas.",
+      "title": "Practicamos con apoyo",
+      "image": "/placeholders/illustration.svg",
+      "description": "Con un familiar o cuidador, elige una frase y represéntala o cuenta el relato. Puedes usar personajes ficticios y dar una respuesta oral. La escritura es opcional; no se requieren compras, grabaciones ni datos privados.",
       "tasks": [
-        "Abre tu cartuchera y nombra 4 útiles: \"Pencil, eraser, ruler, notebook\".",
-        "Escribe una oración sencilla: \"There is one pencil in my backpack\".",
-        "Deja tu bolso organizado para llegar con todo listo a la escuela."
+        "There is one book.",
+        "There are two chairs."
       ]
     }
   ],
   "primero-compañeros": [
     {
       "type": "content",
-      "emoji": "🧑‍🤝‍🧑",
+      "emoji": "✨",
       "title": "My classmates and me",
-      "description": "Describimos a nuestros compañeros.",
+      "description": "La profe presenta el vocabulario con voz, gestos u objetos seguros. Los espacios de ilustración se completarán después; no necesitas leer sin ayuda.",
+      "image": "/placeholders/illustration.svg",
       "items": [
         {
-          "text": "He is tall",
-          "es": "Él es alto",
-          "emoji": "🦒",
-          "image": null
+          "text": "Friend",
+          "es": "Amigo o amiga",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "She is short",
-          "es": "Ella es baja",
-          "emoji": "🐰",
-          "image": null
+          "text": "Kind",
+          "es": "Amable",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "He has black hair",
-          "es": "Él tiene cabello negro",
-          "emoji": "🖤",
-          "image": "/cards/black.jpg"
+          "text": "Curly hair",
+          "es": "Cabello rizado",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "She has brown eyes",
-          "es": "Ella tiene ojos café",
-          "emoji": "👁️",
-          "image": "/cards/brown.jpg"
+          "text": "Straight hair",
+          "es": "Cabello liso",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         }
-      ],
-      "image": "/topics/school_care.jpg"
+      ]
     },
     {
       "type": "vocabulary",
-      "title": "He / She",
-      "description": "He para él, She para ella.",
+      "title": "Frases para escuchar y usar",
+      "description": "Escucha una frase por vez. La profe modela su significado; puedes responder con palabras, un gesto o señalando.",
       "words": [
         {
-          "word": "He is my friend",
-          "emoji": "👦",
-          "es": "Él es mi amigo",
-          "image": null
+          "word": "Lina has curly hair.",
+          "es": "Lina tiene cabello rizado.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "She is my friend",
-          "emoji": "👧",
-          "es": "Ella es mi amiga",
-          "image": null
+          "word": "Leo has straight hair.",
+          "es": "Leo tiene cabello liso.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 1",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Lina has curly hair.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 2",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Leo has straight hair.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 3",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Lina and Leo share a book.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Leemos juntos",
+      "image": "/placeholders/illustration.svg",
+      "description": "La profe lee y señala cada frase. Escucha y participa con una palabra conocida; la lectura es compartida.",
+      "examples": [
+        "Lina has curly hair.",
+        "Leo has straight hair.",
+        "Lina and Leo share a book."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "listening",
+      "question": "Lina has curly hair.",
+      "options": [
+        "Lina has curly hair.",
+        "Leo has straight hair."
+      ],
+      "correct": "Lina has curly hair.",
+      "optionImages": {
+        "Lina has curly hair.": "/placeholders/illustration.svg",
+        "Leo has straight hair.": "/placeholders/illustration.svg"
+      }
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "reading",
+      "question": "Who has curly hair?",
+      "options": [
+        "Lina",
+        "Leo"
+      ],
+      "correct": "Lina",
+      "optionImages": {
+        "Lina": "/placeholders/illustration.svg",
+        "Leo": "/placeholders/illustration.svg"
+      },
+      "evidence": "Lina has curly hair.",
+      "explanation": "El texto describe a Lina con cabello rizado y a Leo con cabello liso."
+    },
+    {
+      "type": "content",
+      "emoji": "✏️",
+      "title": "Escritura con apoyo (opcional)",
+      "image": "/placeholders/illustration.svg",
+      "description": "Observa y escucha el modelo. La siguiente actividad permite completar una palabra con ayuda; también puedes dar una respuesta oral y la profe la escribe. No se exige escribir para comprender.",
+      "examples": [
+        "Lina has curly hair."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "fill",
+      "prompt": "Lina has ___ hair.",
+      "answer": "curly",
+      "placeholder": "Una palabra; también puedes responder oralmente"
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Contamos la historia",
+      "description": "Cuenta una característica de cada personaje y lo que comparten. No adivines identidades por su aspecto.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Lina has curly hair.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "He has curly hair",
-          "emoji": "🌀",
-          "es": "Él tiene cabello rizado",
-          "image": null
+          "text": "Leo has straight hair.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "She has straight hair",
-          "emoji": "➖",
-          "es": "Ella tiene cabello liso",
-          "image": null
+          "text": "Lina and Leo share a book.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Eco: palabras en contexto",
+      "description": "Escucha cada descripción y repite con respeto. Puedes hablar siempre de los personajes ficticios.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Lina has curly hair.",
+          "es": "Lina tiene cabello rizado.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "text": "Leo has straight hair.",
+          "es": "Leo tiene cabello liso.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional",
+      "description": "Para otra sesión, según el grupo. La profe modela una palabra o frase por vez y permite respuesta oral.",
+      "words": [
+        {
+          "word": "She is my friend.",
+          "es": "Ella es mi amiga.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "He is my friend.",
+          "es": "Él es mi amigo.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "We share a book.",
+          "es": "Compartimos un libro.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "We are kind.",
+          "es": "Somos amables.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         }
       ]
     },
     {
       "type": "song",
       "emoji": "🎬",
-      "title": "We Are Friends Song",
-      "description": "Celebra la amistad y el compañerismo en el colegio.",
+      "title": "Video opcional de repaso",
+      "description": "Recurso existente pendiente de revisión docente. Úsalo solo si corresponde al objetivo del grupo. Si no está disponible o no es adecuado, vuelve al eco y cuenta la historia.",
       "videoUrl": "https://www.youtube.com/embed/vXXiyIGqliE"
-    },
-    {
-      "type": "content",
-      "emoji": "🎮",
-      "title": "¿Quién es?",
-      "description": "Describan a un compañero y adivinen.",
-      "examples": [
-        "He is tall. He has short hair. → ¿Quién es?"
-      ]
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "\"She has curly hair\" significa…",
-      "options": [
-        "Ella tiene cabello rizado",
-        "Él tiene cabello liso",
-        "Ella es baja"
-      ],
-      "correct": "Ella tiene cabello rizado"
-    },
-    {
-      "type": "activity",
-      "activityType": "fill",
-      "prompt": "Completa: \"___ is my friend.\" (para una niña)",
-      "answer": "She",
-      "placeholder": "He o She…"
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "\"Straight hair\" es…",
-      "options": [
-        "Cabello liso",
-        "Cabello rizado",
-        "Cabello corto"
-      ],
-      "correct": "Cabello liso"
     },
     {
       "type": "homework",
       "emoji": "🏠",
-      "title": "Homework: Tarjeta para un amigo",
-      "description": "Expresa valores de amistad y compañerismo.",
+      "title": "Practicamos con apoyo",
+      "image": "/placeholders/illustration.svg",
+      "description": "Con un familiar o cuidador, elige una frase y represéntala o cuenta el relato. Puedes usar personajes ficticios y dar una respuesta oral. La escritura es opcional; no se requieren compras, grabaciones ni datos privados.",
       "tasks": [
-        "Piensa en tu amigo(a) de clase y escribe: \"My friend is happy and kind\".",
-        "Hazle un dibujo de ambos compartiendo en el colegio.",
-        "Prepárate para saludarlo mañana con una sonrisa: \"Hello, my good friend!\"."
+        "Lina has curly hair.",
+        "Leo has straight hair."
       ]
     }
   ],
   "primero-repaso": [
     {
       "type": "content",
-      "emoji": "🏁",
-      "title": "Year review",
-      "description": "Repaso final de 1°.",
+      "emoji": "✨",
+      "title": "Our first-grade story",
+      "description": "La profe presenta el vocabulario con voz, gestos u objetos seguros. Los espacios de ilustración se completarán después; no necesitas leer sin ayuda.",
+      "image": "/placeholders/illustration.svg",
       "items": [
         {
-          "text": "Instructions: stand up, sit down, open your book",
-          "es": "",
+          "text": "Listen",
+          "es": "Escucha",
           "emoji": "✨",
-          "image": "/cards/sitdown.jpg"
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "Personal info: my name is…, I am 7",
-          "es": "",
+          "text": "Book",
+          "es": "Libro",
           "emoji": "✨",
-          "image": "/cards/name.jpg"
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "Descriptions: tall, short, long hair",
-          "es": "",
+          "text": "Water",
+          "es": "Agua",
           "emoji": "✨",
-          "image": null
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "text": "Environment: recycle, save water",
-          "es": "",
+          "text": "Friend",
+          "es": "Amigo o amiga",
           "emoji": "✨",
-          "image": "/cards/water.jpg"
+          "image": "/placeholders/illustration.svg"
         }
-      ],
-      "image": "/topics/stories.jpg"
+      ]
     },
     {
       "type": "vocabulary",
-      "title": "Big word wall",
-      "description": "Palabras del año.",
+      "title": "Frases para escuchar y usar",
+      "description": "Escucha una frase por vez. La profe modela su significado; puedes responder con palabras, un gesto o señalando.",
       "words": [
         {
-          "word": "Listen",
-          "emoji": "👂",
-          "es": "Escuchar",
-          "image": "/cards/listen.jpg"
+          "word": "Open your book, please.",
+          "es": "Abre tu libro, por favor.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "Seven",
-          "emoji": "7️⃣",
-          "es": "Siete",
-          "image": "/cards/number7.jpg"
+          "word": "Save water.",
+          "es": "Cuida el agua.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 1",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "First, Ana opens her book.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 2",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Then, Ana reads with her friend Ben.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Historia: momento 3",
+      "description": "Escucha este momento del cuento. La profe modela y pregunta qué sucede; puedes explicarlo en español antes de ensayar el inglés.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Finally, Ana closes her book.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "📖",
+      "title": "Leemos juntos",
+      "image": "/placeholders/illustration.svg",
+      "description": "La profe lee y señala cada frase. Escucha y participa con una palabra conocida; la lectura es compartida.",
+      "examples": [
+        "First, Ana opens her book.",
+        "Then, Ana reads with her friend Ben.",
+        "Finally, Ana closes her book."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "listening",
+      "question": "Save water.",
+      "options": [
+        "Open your book, please.",
+        "Save water."
+      ],
+      "correct": "Save water.",
+      "optionImages": {
+        "Open your book, please.": "/placeholders/illustration.svg",
+        "Save water.": "/placeholders/illustration.svg"
+      }
+    },
+    {
+      "type": "activity",
+      "activityType": "choice",
+      "skill": "reading",
+      "question": "Who reads with Ana?",
+      "options": [
+        "Ana",
+        "Ben"
+      ],
+      "correct": "Ben",
+      "optionImages": {
+        "Ana": "/placeholders/illustration.svg",
+        "Ben": "/placeholders/illustration.svg"
+      },
+      "evidence": "Then, Ana reads with her friend Ben.",
+      "explanation": "La segunda frase identifica a Ben como el amigo con quien lee Ana."
+    },
+    {
+      "type": "content",
+      "emoji": "✏️",
+      "title": "Escritura con apoyo (opcional)",
+      "image": "/placeholders/illustration.svg",
+      "description": "Observa y escucha el modelo. La siguiente actividad permite completar una palabra con ayuda; también puedes dar una respuesta oral y la profe la escribe. No se exige escribir para comprender.",
+      "examples": [
+        "My name is Ana."
+      ]
+    },
+    {
+      "type": "activity",
+      "activityType": "fill",
+      "prompt": "My name ___ Ana.",
+      "answer": "is",
+      "placeholder": "Una palabra; también puedes responder oralmente"
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Contamos la historia",
+      "description": "Cuenta el comienzo, lo que hacen juntos y el final. Revisa una unidad anterior si necesitas apoyo.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "First, Ana opens her book.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "Tall",
-          "emoji": "📏",
-          "es": "Alto",
-          "image": null
+          "text": "Then, Ana reads with her friend Ben.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         },
         {
-          "word": "Recycle",
-          "emoji": "♻️",
-          "es": "Reciclar",
-          "image": null
+          "text": "Finally, Ana closes her book.",
+          "es": "",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "content",
+      "emoji": "✨",
+      "title": "Eco: palabras en contexto",
+      "description": "Escucha las frases conocidas. La profe invita a participar sin competir ni medir rapidez.",
+      "image": "/placeholders/illustration.svg",
+      "items": [
+        {
+          "text": "Open your book, please.",
+          "es": "Abre tu libro, por favor.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "text": "Save water.",
+          "es": "Cuida el agua.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        }
+      ]
+    },
+    {
+      "type": "vocabulary",
+      "title": "Ampliación opcional",
+      "description": "Para otra sesión, según el grupo. La profe modela una palabra o frase por vez y permite respuesta oral.",
+      "words": [
+        {
+          "word": "My name is Ana.",
+          "es": "Me llamo Ana.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "I am seven years old.",
+          "es": "Tengo siete años.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "We help at home.",
+          "es": "Ayudamos en casa.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
+        },
+        {
+          "word": "Thank you.",
+          "es": "Gracias.",
+          "emoji": "✨",
+          "image": "/placeholders/illustration.svg"
         }
       ]
     },
     {
       "type": "song",
       "emoji": "🎬",
-      "title": "Follow the Rules and Review Song",
-      "description": "Repaso dinámico de todas las instrucciones y palabras del año.",
+      "title": "Video opcional de repaso",
+      "description": "Recurso existente pendiente de revisión docente. Úsalo solo si corresponde al objetivo del grupo. Si no está disponible o no es adecuado, vuelve al eco y cuenta la historia.",
       "videoUrl": "https://www.youtube.com/embed/ckKQclquAXU"
-    },
-    {
-      "type": "content",
-      "emoji": "🎮",
-      "title": "Trivia por equipos",
-      "description": "Dos equipos compiten respondiendo.",
-      "examples": [
-        "Teacher: How do you say \"trece\"? — Team: Thirteen!"
-      ]
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "\"Close your book\" significa…",
-      "options": [
-        "Cierra el libro",
-        "Abre el libro",
-        "Escucha"
-      ],
-      "correct": "Cierra el libro"
-    },
-    {
-      "type": "activity",
-      "activityType": "fill",
-      "prompt": "Completa: \"My name ___ Sofía.\"",
-      "answer": "is",
-      "placeholder": "Escribe el verbo…"
-    },
-    {
-      "type": "activity",
-      "activityType": "choice",
-      "question": "\"Save water\" es…",
-      "options": [
-        "Ahorrar agua",
-        "Sembrar árboles",
-        "Reciclar"
-      ],
-      "correct": "Ahorrar agua"
     },
     {
       "type": "homework",
       "emoji": "🏠",
-      "title": "Homework: Gran repaso del año",
-      "description": "Demuestra todo tu talento bilingüe en casa.",
+      "title": "Practicamos con apoyo",
+      "image": "/placeholders/illustration.svg",
+      "description": "Con un familiar o cuidador, elige una frase y represéntala o cuenta el relato. Puedes usar personajes ficticios y dar una respuesta oral. La escritura es opcional; no se requieren compras, grabaciones ni datos privados.",
       "tasks": [
-        "Di a tus papás tu nombre, tu edad y tus 3 colores favoritos sin mirar el cuaderno.",
-        "Cuenta en inglés del 1 al 20 aplaudiendo con ritmo.",
-        "Pide a un adulto que firme tu cuaderno con un mensaje de felicitación."
+        "Open your book, please.",
+        "Save water."
       ]
     }
   ]

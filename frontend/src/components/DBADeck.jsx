@@ -421,7 +421,7 @@ function ActivitySlide({ slide }) {
         : 'sm:grid-cols-3'}`}>
         {slide.options.map((option) => {
           const active = selected === option;
-          const optionImage = getConceptImage(option);
+          const optionImage = slide.optionImages?.[option] ?? getConceptImage(option);
           return (
             <button
               key={option}
@@ -799,7 +799,7 @@ function DeckInner({
                   ✨
                 </div>
               )}
-              <SlideBody slide={currentSlide} />
+              <SlideBody key={current} slide={currentSlide} />
             </>
           )}
         </div>
